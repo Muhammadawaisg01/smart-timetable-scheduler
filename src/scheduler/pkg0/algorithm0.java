@@ -2,80 +2,72 @@
 package scheduler.pkg0 ; 
 
 import static scheduler.pkg0.Scheduler0.rooms ; 
-
+import scheduler.pkg0.Semester;
 public class algorithm0 { 
 
-public static void algorithm() { 
-        boolean check1 = false ;  
-        boolean check2 = false ; 
+    public static void algorithm() {                    // algo
         
-//        if( rooms.size() > sections ) 
-//        { 
-//            check1 = true ; 
-//        } 
-        int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, r = 0, c = 0 ; 
-        c = rooms.size() ; 
+        boolean check1 = false; 
+        boolean check2 = false; 
+
+        int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, r = 0, c = 0;
+        c = rooms.size();
         String course_name, day_name = "" ; 
         int var = 0, slot = 0 ; 
-//       ArrayList<TimeSlot> slots = new ArrayList<>() ;  
-
         
-        for(int a = 0 ; a < semesters.size() ; a++ ){
-        
-        }
-        for (k = 0 ; k < sections ; k++) {                           // algo starts here  
-            
-            i= (k) % c;
+        for (int sem = 0; sem < semesters.size(); sem++) {                // algo starts here  
 
-            Room rm = rooms.get(i) ; 
-            
-//                    var = Room.check_fitness( days.get(c) ) ;           // Fitness Function     
-//                    if(var > 0 )  
-//                    {
-//                    }
-
-            for (o = 0; o < 2 ; o++) // for credit hours/timeslots = 2    
-            {
-//                        n = o ; 
-                for (int a = 0; a < course.size(); a++) {
+            if( sem >= 4 ) {
+                j = 2 ; 
+                } 
+            else {
+                j=0;
+            }
+            for ( k = 0; k < semesters.get(sem).sections.size(); k++ ) {
+                Room rm = rooms.get(var) ; 
+                var++ ; 
+                if ( var == c ) { 
+                    var = 0 ; 
+                } ;                 
+                for ( o = 0; o < 2; o++) // for credit hours/timeslots = 2    
+                {
                     
-                    for (l = 0; l < rm.days.get(0).timeslots.size(); l++) {
-                        
-                        for (r = 0 ; r < rm.days.size() ; r++) {
+                    for (int a = 0; a < semesters.get(sem).courses.size(); a++) {
+                    if( sem >= 4 ) {
+                        l = j; 
+                        } else {
+                        l = 0 ;
+                    }
+                    
+                        for (l = j ; l < rm.days.get(0).timeslots.size(); l++) {
                             
-                            if (rm.days.get(r).timeslots.get(l).check == false) {
-
-//                                System.out.println("/////////////\t" + rm.days.get(r).name + "\t" + r + "\t" + rm.name);
+                            for (r = 0 ; r < rm.days.size() ; r++) { 
                                 
-                                day_name = rm.days.get(r).name ; 
-                                
-                                rm.days.get(r).timeslots.get(l).check = true ; 
+                                if (rm.days.get(r).timeslots.get(l).check == false) { 
+                                    day_name = rm.days.get(r).name ; 
 
-                                course_name = course.get(a).title ; 
-                                scheduler.add(new scheduler(rooms.get(i).name, "Section " + (k + 1),
-                                        day_name, rm.days.get(r).timeslots.get(l).no, course_name));
+                                    rm.days.get(r).timeslots.get(l).check = true ; 
+                                    
+                                    course_name = semesters.get(sem).courses.get(a).title;
+                                    scheduler.add(new scheduler(rm.name, semesters.get(sem).no , "" + (semesters.get(sem).sections.get(k).no),
+                                            day_name, rm.days.get(r).timeslots.get(l).duration, course_name));
 
-                                check1 = true;
+                                    check1 = true;
+                                    break;
+                                }
+                            }
+                            if (check1) {
+                                check1 = false;
                                 break;
                             }
                         }
-                        if (check1) {
-                            check1 = false;
-                            break;
-                        }
-                    }
 
-                } //slot=0 ; 
-                permute(course);
-                //                    Course temp = course.get(0)  ;   
-                //                    course.remove( course.get(0) ) ; 
-                //                    course.add(temp) ; 
-            }
+                    } //slot=0 ; 
+                    permute(semesters.get(sem).courses);
+
+                }
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 
-
-//        }
-//            viewModel() ; 
-//            arrayCleaning() ; 
+            }
         }
     } // algorithm 
 

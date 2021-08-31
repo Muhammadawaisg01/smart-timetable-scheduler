@@ -7,6 +7,9 @@ public class Room {
     
     String name ; 
     boolean check ; 
+    
+//    String isLab;
+//    String capacity;
     ArrayList<Day> days ; 
     
     public Room( String name, boolean check, ArrayList<Day> days ) { 

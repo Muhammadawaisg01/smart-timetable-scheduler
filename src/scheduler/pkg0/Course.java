@@ -1,27 +1,28 @@
+
 package scheduler.pkg0 ; 
+
+import java.util.ArrayList;
 
 public class Course {
     
-int code ; 
-String title ; 
-int credit_hours ; 
-String lab ; 
+    String course_code ; 
+    String title ; 
+    String credit_hours ; 
+    String lab ; 
+    int semester;
+    
+//    ArrayList<String> program ; 
+//    ArrayList<String> semester; 
+    public Course() { 
+    } 
 
-
-    public Course() {
-    }
-
-    public Course(int code, String title, int credit_hours, String lab) {
-        this.code = code;
+    public Course(String course_code, String title, String credit_hours, String lab, int semester) {
+        this.course_code = course_code;
         this.title = title;
         this.credit_hours = credit_hours;
         this.lab = lab;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" + "code=" + code + ", title=" + title + ", credit_hours=" + credit_hours + ", lab=" + lab + '}';
-    }
+        this.semester = semester;
+    }     
 
 
 }

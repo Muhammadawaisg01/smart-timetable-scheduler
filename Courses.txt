@@ -1,0 +1,7 @@
+static String course_name[] = {"ICT", "ISLAMIYAT", "CALCULUS", "English", " PF", "MULTICAL",
+        "ECA", "Report", "Discrete Structures", "Pak Study", "Genetics",
+         "Data structures", "OOP", "Comm. Skills", "SE", "Stats", "DLD", "OS",
+         "OOSE", "ITM", "DB", "ppit", "dccn", "AI", "SRE", "WEB", "LA",
+        "VP", "HCI", "SQE", "SDA", "SPM",
+        "MAD", "web", "DP", "Testing",
+        "Research", "French", "enterpreneurship", "CAL2"};

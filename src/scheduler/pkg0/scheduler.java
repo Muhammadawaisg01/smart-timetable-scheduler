@@ -1,23 +1,29 @@
+
 package scheduler.pkg0 ; 
 
 import java.util.ArrayList;
 
 public class scheduler { 
     
-    String semester_no;
+//    String professor;
+//    String program ; 
+    
+    int semester_no ; 
     String section ; 
     String room ; 
-    String  slot ; 
+    int slot ; 
     String day ; 
     String course ; 
-
-    public scheduler( String room, String sem_no,String section ,String day,String slot, String course ) { 
+    int lecture_no;
+    
+    public scheduler( String room, int sem_no,String section ,String day,int slot, String course,int lec_no ) { 
         this.section = section;
         this.room = room;
         this.slot = slot;
         this.day = day;
         this.course = course;
         this.semester_no = sem_no;
+        this.lecture_no=lec_no;
     }   
 
     public scheduler() {
@@ -25,8 +31,11 @@ public class scheduler {
 
     @Override
     public String toString() {
-        return "scheduler{"+  " room= " + room + ",  semester_no= " + semester_no + ", section=" + section + ", slot=" + slot + ", day=" + day + ", course=" + course + '}';
+        return "scheduler{" + "semester_no=" + semester_no + ", section=" + section + ", room=" + room + ", slot=" + slot + ", day=" + day + ", course=" + course + ", lecture_no=" + lecture_no + '}';
     }
+
+
+    
     
 //    @Override 
 //    public String toString( ) 

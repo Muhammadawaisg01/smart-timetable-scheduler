@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Day {
     
     int id  ; 
-    String name ;
+    String name ; 
     ArrayList<TimeSlot> timeslots ; 
 
     public Day( int id, String name, ArrayList<TimeSlot> timeslots ) { 
