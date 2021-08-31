@@ -1,20 +1,18 @@
 
 package scheduler.pkg0;
 
-public class Timeslot_for_Professor {
+public class Professor_Timeslot {
 
-    String no ; 
-    String duration ;
+    int no ; 
     String program ;
-    String semester ;
+    int semester ;
     String section;
     String room ; 
     String course; 
     Boolean check;
     
-    public Timeslot_for_Professor(String no, String duration, String section, String room, String course, Boolean check, String semester, String program) {
+    public Professor_Timeslot(int no, String section, String room, String course, Boolean check, int semester, String program) {
         this.no = no;
-        this.duration = duration;
         this.section = section;
         this.room = room;
         this.course = course;
@@ -23,7 +21,7 @@ public class Timeslot_for_Professor {
         this.program = program;
     }
 
-    public Timeslot_for_Professor() {
+    public Professor_Timeslot() {
     }
     
     

@@ -105,7 +105,7 @@ public class Scheduler0 {
     public static void slotting(int room, int day, int slot) { 
         for (int r = 0; r < room; r++) { 
             Room rm = new Room() ; 
-            rm.name = "1 0 " + (r + 1) ; 
+            rm.name = "10 " + (r + 1) ; 
             rm.check = false ; 
             for (int d = 0; d < day; d++) {
                 Day d1 = new Day();
