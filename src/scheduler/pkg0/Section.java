@@ -1,17 +1,23 @@
 
 package scheduler.pkg0 ;
 
-public class Section {
+public class Section {   
     String no ; 
+    
+    Section_Schedule schedule ; 
+    
 //    int strength;           // student strength
-
+    
+// ArrayList<>();               //ArrayList for section schedule   
+    
+    
     public Section(String no) {
         this.no = no;
     }
-
+    
     public Section() {
     }
-
+    
     public String getNo() {
         return no;
     }

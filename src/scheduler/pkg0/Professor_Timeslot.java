@@ -1,10 +1,11 @@
 
+
 package scheduler.pkg0;
 
 public class Professor_Timeslot {
 
     int no ; 
-    String program ;
+//    String program ;
     int semester ;
     String section;
     String room ; 
@@ -18,8 +19,8 @@ public class Professor_Timeslot {
         this.course = course;
         this.check = check;
         this.semester = semester;
-        this.program = program;
-    }
+//        this.program = program;
+    } 
 
     public Professor_Timeslot() {
     }

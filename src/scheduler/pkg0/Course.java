@@ -9,11 +9,14 @@ public class Course {
     String title ; 
     String credit_hours ; 
     String lab ; 
-    int semester;
+    int semester ; 
+
+    // maximum enrollment
     
 //    ArrayList<String> program ; 
 //    ArrayList<String> semester; 
     public Course() { 
+        
     } 
 
     public Course(String course_code, String title, String credit_hours, String lab, int semester) {
@@ -24,6 +27,6 @@ public class Course {
         this.semester = semester;
     }     
 
-
 }
+
 

@@ -1,5 +1,6 @@
 
-package scheduler.pkg0;
+
+package scheduler.pkg0 ; 
 
 public class TimeSlot { 
     int no ; 

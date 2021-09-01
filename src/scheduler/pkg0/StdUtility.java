@@ -87,8 +87,9 @@ public class StdUtility {
 //        std_day.name = "Mon";
 //        std.add(new Student("01","Ali","7",1, )  )  
     }
-
-    public void assigning_Schedule_To_Student() {   // assigning schedule to students
+    
+    
+    public void assigning_Schedule_To_Student() {   // assigning schedule to students   
         ArrayList<Student> new_std_array = new ArrayList<>();
         ArrayList<Integer> indexes = new ArrayList<>();
         ArrayList<scheduler> new_schedule_array = new ArrayList<>() ; 
@@ -126,7 +127,8 @@ public class StdUtility {
                                     for (int m = 0; m < std.days.get(k).timeslots.size(); m++) {
                             
                             if (timeslot == std.days.get(k).timeslots.get(m).slot_no && 
-                                    std.days.get(k).timeslots.get(m).check==false  ) { 
+                                    std.days.get(k).timeslots.get(m).check==false &&
+                                    std.days.get(k).name.equalsIgnoreCase(day) )  { 
 //                                            System.out.println(student_list.get(j).days.get(k).timeslots.get(m));
                                             std.days.get(k).timeslots.get(m).check = true;
 //                                            System.out.println("I am the course \t\n"+course+"\n");

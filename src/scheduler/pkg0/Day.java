@@ -3,7 +3,7 @@ package scheduler.pkg0;
 
 import java.util.ArrayList;
 
-public class Day {
+public class Day {  
     
     int id  ; 
     String name ; 
