@@ -4,8 +4,8 @@ import java.util.ArrayList ;
 
 public class Semester { 
     int no ; 
-    ArrayList<Course> courses ; 
-    ArrayList<Section> sections ; 
+    ArrayList<Course> courses;
+    ArrayList<Section> sections;
     
     public Semester() {
     }

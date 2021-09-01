@@ -22,6 +22,12 @@ public class Professor_Timeslot {
     }
 
     public Professor_Timeslot() {
+        no = 0;
+        program = "";
+        semester = 0;
+        room = "";
+        course = "";
+        check = false;
     }
     
     

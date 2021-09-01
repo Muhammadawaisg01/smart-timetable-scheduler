@@ -4,18 +4,20 @@ package scheduler.pkg0;
 import java.util.ArrayList;
 
 public class Day_for_Professor {
-    String no ; 
-    String name ; 
+    String no ;
     ArrayList<Professor_Timeslot> timeslots ; 
 
-    public Day_for_Professor(String no, String name, ArrayList<Professor_Timeslot> timeslots) {
+    public Day_for_Professor(String no, ArrayList<Professor_Timeslot> timeslots) {
         this.no = no;
-        this.name = name;
         this.timeslots = timeslots;
     }
     
 
-    public Day_for_Professor() {
+    public Day_for_Professor(int totalSlots) {
+        no = "";
+        for (int i = 0; i < totalSlots; i++) {
+            timeslots.add(new Professor_Timeslot());
+        }
     }
     
     
