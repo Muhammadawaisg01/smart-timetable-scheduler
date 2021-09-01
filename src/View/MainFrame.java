@@ -23,7 +23,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        Department_Panel = new javax.swing.JPanel();
+        Dept = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -94,6 +94,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel37 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        Department = new javax.swing.JPanel();
+        jPanel38 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -193,14 +195,14 @@ public class MainFrame extends javax.swing.JFrame {
         });
         MainPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 330, 30));
 
-        Department_Panel.setBackground(new java.awt.Color(255, 255, 255));
-        Department_Panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
-        Department_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Dept.setBackground(new java.awt.Color(255, 255, 255));
+        Dept.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
+        Dept.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 153));
         jLabel6.setText("Department");
-        Department_Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
+        Dept.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,9 +215,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        Department_Panel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Dept.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        MainPanel.add(Department_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 260, 130));
+        MainPanel.add(Dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 260, 130));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
@@ -533,7 +535,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 34)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 102, 153));
         jLabel8.setText("Courses");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
@@ -879,6 +881,32 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(MainPanel, "card2");
 
+        javax.swing.GroupLayout DepartmentLayout = new javax.swing.GroupLayout(Department);
+        Department.setLayout(DepartmentLayout);
+        DepartmentLayout.setHorizontalGroup(
+            DepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        DepartmentLayout.setVerticalGroup(
+            DepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Department, "card5");
+
+        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
+        jPanel38.setLayout(jPanel38Layout);
+        jPanel38Layout.setHorizontalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        jPanel38Layout.setVerticalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel38, "card6");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1215,7 +1243,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Department_Panel;
+    private javax.swing.JPanel Department;
+    private javax.swing.JPanel Dept;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1288,6 +1317,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

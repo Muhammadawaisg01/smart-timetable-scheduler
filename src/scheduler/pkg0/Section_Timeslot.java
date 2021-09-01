@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 
-package scheduler.pkg0;
-
+package scheduler.pkg0 ; 
 
 public class Section_Timeslot {
-
+    
     String room;
-    String day;
+    String course;
     int slot_no;
     int lecture_no;
     boolean check; 
