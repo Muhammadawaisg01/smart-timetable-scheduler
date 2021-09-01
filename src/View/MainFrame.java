@@ -14,13 +14,18 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         MainPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        Dept = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -89,15 +94,64 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel37 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        Department = new javax.swing.JPanel();
+        jPanel38 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("          LOGO");
+        jLabel1.setToolTipText("Logo");
+        jLabel1.setAlignmentX(0.5F);
+        jLabel1.setAutoscrolls(true);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Dashboard");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(794, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(jLabel3)
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, "card2");
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel3, "card3");
 
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,7 +171,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel10.setText("I AM THE FIRST Panel(Main)");
+        jLabel10.setText(" THE FIRST Panel(Main)");
         jLabel10.setToolTipText("Logo");
         jLabel10.setAlignmentX(0.5F);
         jLabel10.setAutoscrolls(true);
@@ -141,30 +195,29 @@ public class MainFrame extends javax.swing.JFrame {
         });
         MainPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 330, 30));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
+        Dept.setBackground(new java.awt.Color(255, 255, 255));
+        Dept.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
+        Dept.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 153));
         jLabel6.setText("Department");
+        Dept.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 100, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel6)
-                .addContainerGap(62, Short.MAX_VALUE))
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        MainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 260, 130));
+        Dept.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        MainPanel.add(Dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 260, 130));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
@@ -480,26 +533,12 @@ public class MainFrame extends javax.swing.JFrame {
                 jPanel6MouseEntered(evt);
             }
         });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 34)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 102, 153));
         jLabel8.setText("Courses");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel8)
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
 
         MainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 260, 130));
 
@@ -842,56 +881,31 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(MainPanel, "card2");
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("          LOGO");
-        jLabel1.setToolTipText("Logo");
-        jLabel1.setAlignmentX(0.5F);
-        jLabel1.setAutoscrolls(true);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Dashboard");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(794, Short.MAX_VALUE))
+        javax.swing.GroupLayout DepartmentLayout = new javax.swing.GroupLayout(Department);
+        Department.setLayout(DepartmentLayout);
+        DepartmentLayout.setHorizontalGroup(
+            DepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(jLabel3)
-                .addContainerGap(338, Short.MAX_VALUE))
+        DepartmentLayout.setVerticalGroup(
+            DepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, "card2");
+        getContentPane().add(Department, "card5");
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel3, "card3");
+        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
+        jPanel38.setLayout(jPanel38Layout);
+        jPanel38Layout.setHorizontalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        jPanel38Layout.setVerticalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel38, "card6");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1229,6 +1243,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Department;
+    private javax.swing.JPanel Dept;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1301,6 +1317,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

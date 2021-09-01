@@ -59,7 +59,7 @@ public class Scheduler0 {
         obj.assigning_Schedule_To_Student(); 
         
         for(Student s1 : StdUtility.student_list){
-            s1.toString();
+//            s1.toString();
             s1.displayStudent();
         }
 //        Student s1 = new Student();

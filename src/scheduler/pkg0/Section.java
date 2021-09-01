@@ -1,17 +1,25 @@
 
 package scheduler.pkg0 ;
 
-public class Section {
+import java.util.ArrayList;
+
+public class Section {   
     String no ; 
 //    int strength;           // student strength
-
-    public Section(String no) {
-        this.no = no;
-    }
-
+    
+    ArrayList<Course> courses ;      
+    
+    ArrayList<Professor_Section_Allocation> allocations ;   
+    
+    Section_Schedule schedule ; 
+    
+    public Section( String no ) {   
+        this.no = no ; 
+    }   
+    
     public Section() {
     }
-
+    
     public String getNo() {
         return no;
     }

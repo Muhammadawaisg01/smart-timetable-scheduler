@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Student {
 //    String program ; 
 
-    String registration_no;
+    String registration_no ; 
     String name;
-    String semester;
+    String semester;    // make it int 
     String section;
-    ArrayList<Day_for_Student> days;
-    ArrayList<String> courses= new ArrayList<>();
+    ArrayList<Day_for_Student> days ; 
+    ArrayList<String> courses= new ArrayList<>() ; 
 
     public Student(String registration_no, String name, String semester, String section, ArrayList<Day_for_Student> days, ArrayList<String> courses) {
         this.registration_no = registration_no;

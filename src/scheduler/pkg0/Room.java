@@ -9,14 +9,15 @@ public class Room {
     boolean check ; 
     
 //    String isLab;
-//    String capacity;
+//    int capacity;
+    
     ArrayList<Day> days ; 
     
     public Room( String name, boolean check, ArrayList<Day> days ) { 
         this.name = name ; 
         this.check = check ; 
         this.days = days ; 
-    }
+    }   
     
     public Room() {
         
