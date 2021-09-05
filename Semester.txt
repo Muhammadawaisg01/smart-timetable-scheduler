@@ -1,0 +1,31 @@
+
+
+1,A,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+1,B,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+1,C,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+1,D,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+2,A,Report,Discrete Structures,Pak Study,Genetics
+2,B,Report,Discrete Structures,Pak Study,Genetics
+2,C,Report,Discrete Structures,Pak Study,Genetics
+2,D,Report,Discrete Structures,Pak Study,Genetics
+3,A,OOP,Comm. Skills,SE,Stats,DLD
+3,B,OOP,Comm. Skills,SE,Stats,DLD
+3,C,OOP,Comm. Skills,SE,Stats,DLD
+4,A,OOSE,ITM,DB,ppit,dccn,AI
+4,B,OOSE,ITM,DB,ppit,dccn,AI
+4,C,OOSE,ITM,DB,ppit,dccn,AI
+5,A,VP,HCI,SQE,SDA,SPM
+5,B,VP,HCI,SQE,SDA,SPM
+5,C,VP,HCI,SQE,SDA,SPM
+5,D,VP,HCI,SQE,SDA,SPM
+6,A,MAD,WEB,DP,Testing
+6,B,MAD,WEB,DP,Testing
+6,C,MAD,WEB,DP,Testing
+6,D,MAD,WEB,DP,Testing
+7,A,Research,French,enterpreneurship,CAL2
+7,B,Research,French,enterpreneurship,CAL2
+7,C,Research,French,enterpreneurship,CAL2
+8,A,HCI,SQE,ECA,Report,CALCULUS
+8,B,HCI,SQE,ECA,Report,CALCULUS
+8,C,SQE,SE,Stats,DLD,Stats
+

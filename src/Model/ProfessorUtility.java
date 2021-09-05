@@ -27,7 +27,7 @@ public class ProfessorUtility {
             String[] line;
             while (read.hasNext()) {
                 line = read.nextLine().split(",");
-                list.add(new Professor(Integer.parseInt(line[0]), line[1], 5));
+                list.add(new Professor(Integer.parseInt(line[0]), line[1]));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -43,13 +43,13 @@ public class ProfessorUtility {
     @param Professor: Name of Professor to be assign
      */
 
-    public static void assignProfToSection (Semester semester, String section, String course, String prof) {
-        ArrayList<Section> sectionArrayList = semester.sections;
-        ArrayList<Course> courseArrayList = semester.sections.courses;
-        sectionArrayList.forEach(sec -> {
-            if (sec.no.equalsIgnoreCase(section)) {
-
+    public static void assignProfToSection (Semester semester, String section, String course, int profId) {
+        // assign prof to section
+        ArrayList<Section> sec = semester.getSections();
+        for (Section section1: sec) {
+            if(section.equalsIgnoreCase(section1.getNo())) {
+                section1.setAllocations(course, profId);
             }
-        });
+        }
     }
 }

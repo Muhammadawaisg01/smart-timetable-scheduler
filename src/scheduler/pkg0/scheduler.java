@@ -12,11 +12,11 @@ public class scheduler {
     public String section ; 
     public String room ; 
     public int slot ; 
-    public String day ; 
+    public int day ;
     public String course ; 
     public int lecture_no;
     
-    public scheduler( String room, int sem_no,String section ,String day,int slot, String course,int lec_no ) { 
+    public scheduler( String room, int sem_no,String section ,int day,int slot, String course,int lec_no ) {
         this.section = section;
         this.room = room;
         this.slot = slot;

@@ -8,7 +8,7 @@ public class Course {
     
     String course_code ; 
     String title ; 
-    String credit_hours ; 
+    int credit_hours ;
     boolean lab ;        // make it boolean
     
 //    int semester ;          // in which semester it is being offered
@@ -17,12 +17,17 @@ public class Course {
     
 //    ArrayList<String> program ; 
 //    ArrayList<String> semester; 
-    
-    public Course() { 
+
+
+    public Course(String title) {
+        this.title = title;
+    }
+
+    public Course() {
         
     } 
 
-    public Course(String course_code, String title, String credit_hours, boolean lab) {
+    public Course(String course_code, String title, int credit_hours, boolean lab) {
         this.course_code = course_code;
         this.title = title;
         this.credit_hours = credit_hours;
@@ -37,7 +42,7 @@ public class Course {
         return title;
     }
 
-    public String getCredit_hours() {
+    public int getCredit_hours() {
         return credit_hours;
     }
 
@@ -53,7 +58,7 @@ public class Course {
         this.title = title;
     }
 
-    public void setCredit_hours(String credit_hours) {
+    public void setCredit_hours(int credit_hours) {
         this.credit_hours = credit_hours;
     }
 

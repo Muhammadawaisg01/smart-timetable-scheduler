@@ -8,6 +8,8 @@ import Model.Semester;
 import Model.Day;
 import Model.TimeSlot;
 import Model.Room;
+
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -43,6 +45,10 @@ public class Scheduler0 {
 
     public static void main(String[] args) {
 
+
+        File file = new File("Semester.txt");
+        ArrayList<Semester> semesters = Semester.getSemesters(file);
+        System.out.println(semesters.size());
 //        Student.method1();
         
 //        StdUtility object = new StdUtility() ; 
@@ -105,7 +111,7 @@ public class Scheduler0 {
 
             }
             for (int j = 0; j < (int) (5 + Math.random() * 6); j++) {
-                course_temp.add(new Course((j + 1), course_name[j], 4, "y"));  
+                course_temp.add(new Course((j + 1) + "", course_name[j], 4, true));
             }
         }
     }
@@ -225,7 +231,7 @@ public class Scheduler0 {
 //            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
 //            String input6 = in.next() ; 
 
-            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), Integer.toString(4) , false )) ; 
+            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4 , false )) ;
             n++;
         }
 //        checkingLab() ; 
@@ -310,7 +316,7 @@ public class Scheduler0 {
                                     course_name = semesters.get(sem).getSections().get(k).getCourses().get(a).getTitle() ; 
                                     
                                     scheduler.add(new scheduler(rm.getName(), semesters.get(sem).getNo() , "" + (semesters.get(sem).getSections().get(k).getNo()),
-                                        day_name, rm.getDays().get(r).getTimeslots().get(l).getNo(), course_name, o+1) );
+                                            rm.getDays().get(r).no , rm.getDays().get(r).getTimeslots().get(l).getNo(), course_name, o+1) );
 
                                     check1 = true;
                                     break;
