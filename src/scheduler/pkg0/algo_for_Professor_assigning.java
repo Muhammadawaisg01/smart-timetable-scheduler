@@ -2,6 +2,7 @@
 
 package scheduler.pkg0 ; 
 
+import Model.Professor;
 import java.util.ArrayList;
 
 public class algo_for_Professor_assigning { 
@@ -10,13 +11,14 @@ public class algo_for_Professor_assigning {
     
     
 public void algorithm()         // algo  for Professor assigning
-{
+{   
+    
     for(int i = 0 ; i < professor_list.size() ; i++ ) { 
+        
 //        for(int j){   
 //        }     
     
     }   
-    
     
 } 
     

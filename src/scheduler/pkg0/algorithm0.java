@@ -1,8 +1,9 @@
 
 package scheduler.pkg0 ; 
 
+import Model.Room;
 import static scheduler.pkg0.Scheduler0.rooms ; 
-import scheduler.pkg0.Semester;
+import Model.Semester;
 public class algorithm0 { 
 
     public static void algorithm() {                    // algo

@@ -8,13 +8,13 @@ public class scheduler {
 //    String professor;
 //    String program ; 
     
-    int semester_no ; 
-    String section ; 
-    String room ; 
-    int slot ; 
-    String day ; 
-    String course ; 
-    int lecture_no;
+    public int semester_no ; 
+    public String section ; 
+    public String room ; 
+    public int slot ; 
+    public String day ; 
+    public String course ; 
+    public int lecture_no;
     
     public scheduler( String room, int sem_no,String section ,String day,int slot, String course,int lec_no ) { 
         this.section = section;
@@ -46,7 +46,7 @@ public class scheduler {
     public static void display(ArrayList<scheduler> sch) {
         int room_no = 0;
         while (room_no < Scheduler0.rooms.size()) {
-            String room = Scheduler0.rooms.get(room_no).name;
+            String room = Scheduler0.rooms.get(room_no).name ; 
             for (int i = 0; i < sch.size(); i++) {
                 if(room.equalsIgnoreCase(sch.get(i).room)) {
                     System.out.println(sch.get(i).toString());
