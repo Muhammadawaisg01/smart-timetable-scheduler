@@ -44,13 +44,14 @@ public class ProfessorUtility {
     @param Professor: Name of Professor to be assign
      */
 
-    public static void assignProfToSection (Semester semester, String section, String course, int profId) {
+    public static void assignProfToSection (Semester semester, Section section, String course, int profId) {
         // assign prof to section
-        ArrayList<Section> sec = semester.getSections();
-        for (Section section1: sec) {
-            if(section.equalsIgnoreCase(section1.getNo())) {
-                section1.setAllocations(course, profId);
+//        ArrayList<Section> sec = semester.getSections();
+//        for (Section section1: sec) {
+//            if(section.equalsIgnoreCase(section1.getNo())) {    
+                
+                section.setAllocations(profId, section.getNo(), semester.getNo(), course ) ; 
             }
         }
-    }
-}
+ 
+

@@ -1,6 +1,8 @@
 
 
 package Model;
+import static scheduler.pkg0.Runner.scheduler;
+import static scheduler.pkg0.Runner.semesters;
 
 
 import scheduler.pkg0.Scheduler;
@@ -9,24 +11,24 @@ import java.util.ArrayList;
 
 public class SectionUtility {   
     
-    public void assign_schedule_to_section(ArrayList<Scheduler> schedulers, ArrayList<Semester> semesters) {    
-        for (int i = 0; i < schedulers.size(); i++) {   
+    public static void assign_schedule_to_section() {    
+        for (int i = 0; i < scheduler.size(); i++) {   
             
-            String sec = schedulers.get(i).section  ;   
-            Scheduler scheduler = schedulers.get(i);
-            int sem = schedulers.get(i).semester_no;
+            String sec = scheduler.get(i).section;
+            Scheduler schedule= scheduler.get(i);
+            int sem = scheduler.get(i).semester_no;
             
             for (Semester smstr: semesters) {
                 if (smstr.no == sem) {
                     ArrayList<Section> sections = smstr.sections ;   
                     for (Section section: sections) {   
                         if (section.getNo().equalsIgnoreCase(sec)) {    
-                            System.out.println(""); 
-                            section.set_course(scheduler.day, scheduler.slot, scheduler.course);    
-                            section.set_slot_no(scheduler.day, scheduler.slot) ;    
-                            section.set_lecture_no(scheduler.day, scheduler.slot, scheduler.lecture_no);    
-                            section.setRoom(scheduler.day, scheduler.slot, scheduler.room) ;    
-                            section.set_check(scheduler.day, scheduler.slot, true) ;    
+//                            System.out.println(""); 
+                            section.set_course(schedule.day, schedule.slot, schedule.course);    
+                            section.set_slot_no(schedule.day, schedule.slot) ;    
+                            section.set_lecture_no(schedule.day, schedule.slot, schedule.lecture_no);    
+                            section.setRoom(schedule.day, schedule.slot, schedule.room) ;    
+                            section.set_check(schedule.day, schedule.slot, true) ;    
                         }
                     }
                 }

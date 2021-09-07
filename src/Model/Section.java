@@ -1,3 +1,4 @@
+
 package Model;
 
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ public class Section {
         schedule.days.get(day_index).timeslots.get(slot_no).slot_no = slot_no;
     }
 
-    public void setAllocations(String course, int profId) {
-        this.allocations.add(new Professor_Section_Allocation(profId, course));
+    public void setAllocations(int profId, String sec, int sem, String course) {
+        this.allocations.add(new Professor_Section_Allocation(profId, sec, sem, course));
     }
 
     public Section_Schedule getSchedule() {
@@ -114,5 +115,10 @@ public class Section {
             }
             System.out.println();
         }
+        
+//        for(int var=0; var<this.getAllocations().size(); var++){
+//            System.out.println(this.getAllocations().get(i).toString());
+//        }
     }
 }
+

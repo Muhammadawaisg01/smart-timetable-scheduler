@@ -107,19 +107,22 @@ public class Semester {
         for (Semester semester : semesters) {
             ArrayList<Section> sec = semester.getSections();
             int semNo = semester.getNo();
-            for (Section section : sec) {
-                System.out.println(semNo + "" + section.getNo());
-                ArrayList<Professor_Section_Allocation> allocations = section.getAllocations();
+            for ( Section section : sec ) { 
+//                System.out.println(semNo + "    " + section.getNo());
+                ArrayList<Professor_Section_Allocation> allocations = section.getAllocations()  ;   
+                  
+//                ArrayList<Section> sections = semester.getSections();
+                
+//                for (Section s: sections) { 
+//                    s.schedule.display();
+                    section.displaySection(semNo) ; 
+                    
+                int var=0;
                 for (Professor_Section_Allocation allocation: allocations) {
 //                    if (allocation.ge)
-//                    System.out.println(allocation.toString())   ;   
-                }   
-                ArrayList<Section> sections = semester.getSections();
-                
-                for (Section s: sections) { 
-//                    s.schedule.display();
-                    s.displaySection(semNo);
-                }
+                    System.out.println(allocation.toString()+"\t"+var) ;  var++;   
+                } 
+//                }
             }
         }
     }

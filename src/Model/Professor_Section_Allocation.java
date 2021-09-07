@@ -6,8 +6,18 @@ package Model;
 public class Professor_Section_Allocation {
     
     int prof_id ;   
+    String section;
+    int semester;
     String course_code ; 
 
+    public Professor_Section_Allocation(int prof_id, String section, int semester, String course_code) {
+        this.prof_id = prof_id;
+        this.section = section;
+        this.semester = semester;
+        this.course_code = course_code;
+    }
+
+    
     public Professor_Section_Allocation(int prof_id, String course_code) {
         this.prof_id = prof_id;
         this.course_code = course_code;

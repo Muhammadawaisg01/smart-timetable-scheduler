@@ -6,6 +6,7 @@ import Model.Student;
 import Model.Section;
 import Model.Semester;
 import Model.Day;
+import Model.ProfessorUtility;
 import Model.TimeSlot;
 import Model.Room;
 import Model.SectionUtility;
@@ -62,12 +63,22 @@ public class Runner {
         assignProfessorToSections();
 
 //        displaySlots();  
-//        for ( Scheduler sch : Scheduler ) { 
-//            System.out.println(sch.toString() ) ; 
-//        } 
-        SectionUtility obj = new SectionUtility();
-        obj.assign_schedule_to_section(scheduler, semesters);
+
+
+// uncomment 
+//        int i = 0;
+        for ( Scheduler sch : scheduler ) { 
+            System.out.println(sch.toString() ) ;  
+//            if (sch.semester_no == 2 && sch.section.equalsIgnoreCase("B")) {
+//                System.out.println(sch.toString() ) ; 
+//                System.out.println(sch.semester_no + "\t" + sch.section + "\t" + i);
+//            }
+//            i++;
+        } 
+//        
+        SectionUtility.assign_schedule_to_section();
         Semester.displayAllData()   ;   
+// uncomment this
 
 //        displayRoom() ; 
 //        StdUtility obj = new StdUtility()  ; 
@@ -110,7 +121,8 @@ public class Runner {
 //                    System.out.print("Enter Professor ID for above course: ");
                     profId = (int) (Math.random() * 26);
 //                    System.out.println("Professor_ID    "+profId);
-                    section.setAllocations(crs.getTitle(), profId);
+                    ProfessorUtility.assignProfToSection(semester, section, crs.getTitle(), profId);
+//                    section.setAllocations(crs.getTitle(), profId);
                 }
             }
         }
@@ -286,7 +298,7 @@ public class Runner {
 
     public static void algorithm(){
                 
-boolean check1 = false; 
+        boolean check1 = false; 
         boolean check2 = false; 
 
         int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, r = 0, c = 0;
@@ -308,8 +320,7 @@ boolean check1 = false;
                 if ( var == c ) { 
                     var = 0 ; 
                 } ;             
-                for ( o = 0; o < 2; o++) // for credit hours/timeslots = 2    
-                {
+                for ( o = 0; o < 2; o++) {// for credit hours/timeslots = 2
                     
                     for (int a = 0; a < semesters.get(sem).getSections().get(k).getCourses().size(); a++) {   
                     if( sem >= 4 ) {
