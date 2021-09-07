@@ -50,34 +50,36 @@ public class Runner {
     public static void main(String[] args) {
 
         course = CourseUtility.readCourseFile();
+        System.out.println(course.size() + "\tSize of courses");
 //        Section_Schedule obj1 = new Section_Schedule();   
 
-        File file = new File("Semester.txt");
+        File file = new File("Semesters.txt");
         // semester
         semesters = Semester.getSemesters(file);
+//        System.out.println(semesters.size());
+//        for (Semester semester : semesters) {
+//            System.out.println(semester.getSections().size());
+//            for (Section section : semester.getSections()) {
+//                System.out.println(section.getCourses().size());
+//            }
+//        }
+//        System.out.println(course.size() + "\tSize of courses");
 
-
+//        System.exit(0);
         inputForRooms_Labs(); // First Work  
 
         algorithm();
         assignProfessorToSections();
 
 //        displaySlots();  
-
-
 // uncomment 
 //        int i = 0;
-        for ( Scheduler sch : scheduler ) { 
-            System.out.println(sch.toString() ) ;  
-//            if (sch.semester_no == 2 && sch.section.equalsIgnoreCase("B")) {
-//                System.out.println(sch.toString() ) ; 
-//                System.out.println(sch.semester_no + "\t" + sch.section + "\t" + i);
-//            }
-//            i++;
-        } 
+//        for (Scheduler sch : scheduler) {
+//            System.out.println(sch.toString());
+//        }
 //        
         SectionUtility.assign_schedule_to_section();
-        Semester.displayAllData()   ;   
+        Semester.displayAllData();
 // uncomment this
 
 //        displayRoom() ; 
@@ -110,15 +112,19 @@ public class Runner {
     }
 
     private static void assignProfessorToSections() {
+        System.out.println(semesters.size());
         for (Semester semester : semesters) {
             ArrayList<Section> sec = semester.getSections();
+            System.out.println(sec.size());
             int semNo = semester.getNo();
             for (Section section : sec) {
                 int profId;
                 ArrayList<Course> courses = section.getCourses();
+                System.out.println(courses.size());
                 for (Course crs : courses) {
-//                    System.out.println("Semester: " + semNo + "\tSection: " + section.getNo() + "\tCourse: " + crs.getTitle() ) ;
+//                    System.out.println("Semester: " + semNo + "\tSection: " + section.getNo() + "\tCourse: " + crs.getTitle());
 //                    System.out.print("Enter Professor ID for above course: ");
+//                    profId = in.nextInt();
                     profId = (int) (Math.random() * 26);
 //                    System.out.println("Professor_ID    "+profId);
                     ProfessorUtility.assignProfToSection(semester, section, crs.getTitle(), profId);
@@ -296,51 +302,50 @@ public class Runner {
 
     static ArrayList<String> Labs = new ArrayList<>();
 
-    public static void algorithm(){
-                
-        boolean check1 = false; 
-        boolean check2 = false; 
+    public static void algorithm() {
+
+        boolean check1 = false;
+        boolean check2 = false;
 
         int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, r = 0, c = 0;
-        c = rooms.size() ; 
-        String course_name, day_name = "" ; 
-        int var = 0, slot = 0 ; 
-        
-        for (int sem = 0; sem < semesters.size(); sem++ ) {                // algo starts here  
+        c = rooms.size();
+        String course_name, day_name = "";
+        int var = 0, slot = 0;
 
-            if( sem >= 4 ) {    // for first 4 semesters lecture will be in first 4 slots, for last 4 it will be at last 4 slots
-                j = 2 ; 
-                } 
-            else {
-                j=0;
+        for (int sem = 0; sem < semesters.size(); sem++) {                // algo starts here  
+
+            if (sem >= 4) {    // for first 4 semesters lecture will be in first 4 slots, for last 4 it will be at last 4 slots
+                j = 2;
+            } else {
+                j = 0;
             }
-            for ( k = 0; k < semesters.get(sem).getSections().size(); k++ ) {   
-                Room rm = rooms.get(var) ; 
-                var++ ; 
-                if ( var == c ) { 
-                    var = 0 ; 
-                } ;             
-                for ( o = 0; o < 2; o++) {// for credit hours/timeslots = 2
-                    
-                    for (int a = 0; a < semesters.get(sem).getSections().get(k).getCourses().size(); a++) {   
-                    if( sem >= 4 ) {
-                        l = j; 
+            for (k = 0; k < semesters.get(sem).getSections().size(); k++) {
+                Room rm = rooms.get(var);
+                var++;
+                if (var == c) {
+                    var = 0;
+                };
+                for (o = 0; o < 2; o++) {// for credit hours/timeslots = 2
+
+                    for (int a = 0; a < semesters.get(sem).getSections().get(k).getCourses().size(); a++) {
+                        if (sem >= 4) {
+                            l = j;
                         } else {
-                        l = 0 ; 
-                    }
-                        for (l = j ; l < rm.getDays().get(0).getTimeslots().size(); l++) {
-                            
-                            for (r = 0 ; r < rm.getDays().size() ; r++) { 
-                                
-                                if (rm.getDays().get(r).getTimeslots().get(l).isCheck() == false) { 
+                            l = 0;
+                        }
+                        for (l = j; l < rm.getDays().get(0).getTimeslots().size(); l++) {
+
+                            for (r = 0; r < rm.getDays().size(); r++) {
+
+                                if (rm.getDays().get(r).getTimeslots().get(l).isCheck() == false) {
                                     day_name = WeekDays.names[r];
 
-                                    rm.getDays().get(r).getTimeslots().get(l).setCheck(true) ; 
-                                    
-                                    course_name = semesters.get(sem).getSections().get(k).getCourses().get(a).getTitle() ; 
-                                    
-                                    scheduler.add(new Scheduler(rm.getName(), semesters.get(sem).getNo() , "" + (semesters.get(sem).getSections().get(k).getNo()),
-                                            rm.getDays().get(r).no , rm.getDays().get(r).getTimeslots().get(l).getNo(), course_name, o+1) );
+                                    rm.getDays().get(r).getTimeslots().get(l).setCheck(true);
+
+                                    course_name = semesters.get(sem).getSections().get(k).getCourses().get(a).getTitle();
+
+                                    scheduler.add(new Scheduler(rm.getName(), semesters.get(sem).getNo(), "" + (semesters.get(sem).getSections().get(k).getNo()),
+                                            rm.getDays().get(r).no, rm.getDays().get(r).getTimeslots().get(l).getNo(), course_name, o + 1));
 
                                     check1 = true;
                                     break;
@@ -360,6 +365,7 @@ public class Runner {
             }
         }
     }
+
     public static void arrayCleaning() {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {

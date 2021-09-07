@@ -10,9 +10,9 @@ public class Section {
 //    int strength;           // student strength
 
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();
-
+    
     Section_Schedule schedule = new Section_Schedule();
-
+    ArrayList<Course> sectionCourses = new ArrayList<>();
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
@@ -44,6 +44,10 @@ public class Section {
     }
 
     public void setAllocations(int profId, String sec, int sem, String course) {
+//        System.out.println("Sectionnnnnnnn: \t\t"+sec);
+//        System.out.println("Semesterrrrrrrrr: \t\t"+sem);
+//        System.out.println("Professor ID:\t\t"+profId);
+//        System.out.println("Course    "+course);
         this.allocations.add(new Professor_Section_Allocation(profId, sec, sem, course));
     }
 
@@ -67,11 +71,11 @@ public class Section {
     }
 
     public ArrayList<Course> getCourses() {
-        return course;
+        return this.sectionCourses;
     }
 
     public void addCourse(Course crs) {
-        course.add(crs);
+        this.sectionCourses.add(crs);
     }
 
     @Override

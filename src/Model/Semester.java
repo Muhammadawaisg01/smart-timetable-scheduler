@@ -79,8 +79,10 @@ public class Semester {
                     }
                 }
                 semester.createSection(arr[1]);
+//                System.out.println(semNo + "" + semester.getSections().size() + "\t////////////");
                 for (int i = 2; i < arr.length; i++) {
                     Objects.requireNonNull(semester.getSection(arr[1])).addCourse(new Course(arr[i]));
+//                    System.out.println(semester.getSection(arr[1]).getCourses().size());
                 }
                 if (!duplicate) {
                     semesters.add(semester);
