@@ -2,7 +2,7 @@
 package scheduler.pkg0 ;
 
 import Model.Room;
-import static scheduler.pkg0.Scheduler0.rooms ;
+import static scheduler.pkg0.Runner.rooms ;
 import Model.Semester;
 public class algorithm0 {
 
@@ -50,7 +50,7 @@ public class algorithm0 {
                                     rm.days.get(r).timeslots.get(l).check = true ;
 
                                     course_name = semesters.get(sem).courses.get(a).title;
-                                    scheduler.add(new scheduler(rm.name, semesters.get(sem).no , "" + (semesters.get(sem).sections.get(k).no),
+                                    Scheduler.add(new Scheduler(rm.name, semesters.get(sem).no , "" + (semesters.get(sem).sections.get(k).no),
                                             day_name, rm.days.get(r).timeslots.get(l).duration, course_name));
 
                                     check1 = true;

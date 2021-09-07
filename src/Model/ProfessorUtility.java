@@ -13,12 +13,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ProfessorUtility {
+public class ProfessorUtility {     
 
     /*
     @param fileName: Name of text file to read
     @return ArrayList of professor class
      */
+    
     public static ArrayList<Professor> readProfFile(String fileName) {
         ArrayList<Professor> list = new ArrayList<>();
         File file = new File(fileName);
@@ -28,9 +29,9 @@ public class ProfessorUtility {
             while (read.hasNext()) {
                 line = read.nextLine().split(",");
                 list.add(new Professor(Integer.parseInt(line[0]), line[1]));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            }   
+        } catch (FileNotFoundException e) { 
+            e.printStackTrace() ;   
         }
         return list;
     }

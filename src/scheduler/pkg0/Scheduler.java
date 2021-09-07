@@ -3,7 +3,7 @@ package scheduler.pkg0 ;
 
 import java.util.ArrayList;
 
-public class scheduler { 
+public class Scheduler { 
     
 //    String professor;
 //    String program ; 
@@ -16,7 +16,7 @@ public class scheduler {
     public String course ; 
     public int lecture_no;
     
-    public scheduler( String room, int sem_no,String section ,int day,int slot, String course,int lec_no ) {
+    public Scheduler( String room, int sem_no,String section ,int day,int slot, String course,int lec_no ) {
         this.section = section;
         this.room = room;
         this.slot = slot;
@@ -26,7 +26,7 @@ public class scheduler {
         this.lecture_no=lec_no;
     }   
 
-    public scheduler() {
+    public Scheduler() {
     }
 
     @Override
@@ -40,13 +40,13 @@ public class scheduler {
 //    @Override 
 //    public String toString( ) 
 //    {
-//        return "scheduler{room=" + room + ", slot=" + slot + ", day=" + day + ", course=" + course + '}';
+//        return "Scheduler{room=" + room + ", slot=" + slot + ", day=" + day + ", course=" + course + '}';
 //    }
 
-    public static void display(ArrayList<scheduler> sch) {
+    public static void display(ArrayList<Scheduler> sch) {
         int room_no = 0;
-        while (room_no < Scheduler0.rooms.size()) {
-            String room = Scheduler0.rooms.get(room_no).name ; 
+        while (room_no < Runner.rooms.size()) {
+            String room = Runner.rooms.get(room_no).name ; 
             for (int i = 0; i < sch.size(); i++) {
                 if(room.equalsIgnoreCase(sch.get(i).room)) {
                     System.out.println(sch.get(i).toString());
@@ -72,14 +72,22 @@ public class scheduler {
 //
 //                System.out.println("") ; 
 //            }
-//            System.out.println(Scheduler0.days.get(i).name+"\t" ) ;
+//            System.out.println(Runner.days.get(i).name+"\t" ) ;
 //        }
 //        
-//        for( int i = 0 ; i < Scheduler0.days.size() ; i++ )
+//        for( int i = 0 ; i < Runner.days.size() ; i++ )
 //        {
-//            System.out.println(Scheduler0.days.get(i).name+"\t" ) ; 
+//            System.out.println(Runner.days.get(i).name+"\t" ) ; 
 //        } 
     }
     
     
-}   // class
+    
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    // Setters and Getters      
+    
+    
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    
+    
+}   // CLASS

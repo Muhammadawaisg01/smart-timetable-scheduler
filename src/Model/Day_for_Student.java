@@ -1,12 +1,12 @@
 
+
 package Model;
 
 import Model.Student_Timeslot;
 import java.util.ArrayList;
 
 public class Day_for_Student {
-//    String no ; 
-    String name ; 
+    int no ; 
     ArrayList<Student_Timeslot> timeslots ; 
 
     
@@ -14,10 +14,10 @@ public class Day_for_Student {
         
     }
 
-    public Day_for_Student(String name, ArrayList<Student_Timeslot> timeslots) {
-        this.name = name;
-        this.timeslots = timeslots;
-    }
+    public Day_for_Student(int no, ArrayList<Student_Timeslot> timeslots) {
+        this.no = no ; 
+        this.timeslots = timeslots  ;   
+    }   
     
     
     public void fillingStudentTimeslot()
@@ -26,7 +26,7 @@ public class Day_for_Student {
     
     @Override
     public String toString() {
-        return "Day_for_Student{" + "name=" + name + ", timeslots=" + timeslots + '}';
+        return "Day_for_Student{" + "no=" + no + ", timeslots=" + timeslots + '}';
     }
        
     

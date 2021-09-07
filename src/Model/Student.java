@@ -29,7 +29,7 @@ public class Student {
 
     public Student(String registration_no, String name, String semester, String section) {
         this.registration_no = registration_no;
-        this.name = name;
+        this.name = name    ;   
         this.semester = semester ;
         this.section = section ;
         this.initialize_Schedule() ;
@@ -54,12 +54,12 @@ public class Student {
     
     static String day_name[] = {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"} ; 
     //  add no. of days and timeslots dynamically   
-    public void initialize_Schedule() { // initializing student days and slots with null values 
+    public void initialize_Schedule() { // initializing student days and slots with null values     
         this.days = new ArrayList<>() ; 
         
         for(int i = 0 ; i < 5 ; i++ ){ 
             Day_for_Student obj1 = new Day_for_Student();
-            obj1.name= day_name[i];
+            obj1.no=  i ;
             obj1.timeslots =  new ArrayList<>() ; 
         
         int semester=0;
@@ -70,7 +70,7 @@ public class Student {
         boolean check=false;
         String room="";
         for(int j = 0; j < 6; j++) { // 6 timeslots 
-            Student_Timeslot obj = new Student_Timeslot( semester, section, j+1, course, lecture_no, check, room);
+            Student_Timeslot obj = new Student_Timeslot( semester, section, j, course, lecture_no, check, room);
             obj1.timeslots.add(obj) ;
         }
         this.days.add(obj1) ; 
@@ -89,7 +89,7 @@ public class Student {
         System.out.println("Section   " + this.section);
 
         for(int k = 0 ; k< this.days.size(); k++){
-            System.out.print(days.get(k).name + "\t\t\t") ; 
+            System.out.print(days.get(k).no + "\t\t\t") ; 
         } 
         System.out.println("");
         for( j = 0 ; j < this.days.get(0).timeslots.size(); j++) { 

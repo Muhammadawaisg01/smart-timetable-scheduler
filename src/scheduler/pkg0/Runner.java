@@ -1,13 +1,15 @@
-
 package scheduler.pkg0;
 
 import Model.Course;
+import Model.CourseUtility;
 import Model.Student;
 import Model.Section;
 import Model.Semester;
 import Model.Day;
 import Model.TimeSlot;
 import Model.Room;
+import Model.SectionUtility;
+import Model.Section_Schedule;
 
 import java.io.File;
 import java.sql.PreparedStatement;
@@ -18,7 +20,8 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import Model.StdUtility;
 import Model.WeekDays;
-public class Scheduler0 {
+
+public class Runner {
 
     static ArrayList<Student> students = new ArrayList<>();
 
@@ -26,61 +29,56 @@ public class Scheduler0 {
     static ArrayList<Room> labs = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
     static String[][] array = new String[6][6];
-    static ArrayList<Course> course = new ArrayList<>();
+    public static ArrayList<Course> course = new ArrayList<>();
     static int sections = 0;
     static ArrayList<Day> days = new ArrayList<>();
 
     static ArrayList<TimeSlot> slots = new ArrayList<>();
-    public static ArrayList<scheduler> scheduler = new ArrayList<>();  //public
+    public static ArrayList<Scheduler> scheduler = new ArrayList<>();  //public
 
-    static ArrayList<Semester> semesters = new ArrayList<>(); 
-    
+    public static ArrayList<Semester> semesters;
+
     static String course_name[] = {"ICT", "ISLAMIYAT", "CALCULUS", "English", " PF", "MULTICAL",
         "ECA", "Report", "Discrete Structures", "Pak Study", "Genetics",
-         "Data structures", "OOP", "Comm. Skills", "SE", "Stats", "DLD", "OS",
-         "OOSE", "ITM", "DB", "ppit", "dccn", "AI", "SRE", "WEB", "LA",
+        "Data structures", "OOP", "Comm. Skills", "SE", "Stats", "DLD", "OS",
+        "OOSE", "ITM", "DB", "ppit", "dccn", "AI", "SRE", "WEB", "LA",
         "VP", "HCI", "SQE", "SDA", "SPM",
         "MAD", "WEB", "DP", "Testing",
-        "Research", "French", "enterpreneurship", "CAL2"} ; 
+        "Research", "French", "enterpreneurship", "CAL2"};
 
     public static void main(String[] args) {
 
+        course = CourseUtility.readCourseFile();
+//        Section_Schedule obj1 = new Section_Schedule();   
 
         File file = new File("Semester.txt");
-        ArrayList<Semester> semesters = Semester.getSemesters(file);
-        System.out.println(semesters.size());
-//        Student.method1();
-        
-//        StdUtility object = new StdUtility() ; 
-//        ArrayList<Student> newarray=StdUtility.student_list;
-//        newarray.get(0).name="ALI";
-//        System.out.println(StdUtility.student_list.get(0).name ) ; 
+        // semester
+        semesters = Semester.getSemesters(file);
+
 
         inputForRooms_Labs(); // First Work  
-//        inputting();
-//        input_Validation_Method();
-//        method1();
 
         algorithm();
-//        displaySlots();
+        assignProfessorToSections();
 
-        for ( scheduler sch : scheduler ) { 
-            System.out.println(sch.toString() ) ; 
-        } 
+//        displaySlots();  
+//        for ( Scheduler sch : Scheduler ) { 
+//            System.out.println(sch.toString() ) ; 
+//        } 
+        SectionUtility obj = new SectionUtility();
+        obj.assign_schedule_to_section(scheduler, semesters);
+        Semester.displayAllData()   ;   
+
 //        displayRoom() ; 
-                
 //        StdUtility obj = new StdUtility()  ; 
 //        obj.assigning_Schedule_To_Student(); 
-        
-
-        for(Student s1 : StdUtility.student_list){
-//            s1.toString();
-            s1.displayStudent();
-        }
+//        for(Student s1 : StdUtility.student_list) { 
+////            s1.toString();
+//            s1.displayStudent() ; 
+//        }
 //        Student s1 = new Student();
 //        s1.initialize_Schedule();
 //        s1.displayStudent();
-
 //        boolean run = true;
 //        String sec;
 //        String sem;
@@ -91,23 +89,38 @@ public class Scheduler0 {
 //            sec = in.next() ; 
 //            displayInfo(sem, sec) ; 
 //        }
-
 //        int n=0 ; 
-
 //        permute(course) ; 
-//        viewModel() ; 
     } // MAIN METHOD 
 
     public static void mainMenu() {
-        System.out.println("SEMESTER WISE TIMETABLE") ; 
-        System.out.println("") ; 
+        System.out.println("SEMESTER WISE TIMETABLE");
+        System.out.println("");
+    }
+
+    private static void assignProfessorToSections() {
+        for (Semester semester : semesters) {
+            ArrayList<Section> sec = semester.getSections();
+            int semNo = semester.getNo();
+            for (Section section : sec) {
+                int profId;
+                ArrayList<Course> courses = section.getCourses();
+                for (Course crs : courses) {
+//                    System.out.println("Semester: " + semNo + "\tSection: " + section.getNo() + "\tCourse: " + crs.getTitle() ) ;
+//                    System.out.print("Enter Professor ID for above course: ");
+                    profId = (int) (Math.random() * 26);
+//                    System.out.println("Professor_ID    "+profId);
+                    section.setAllocations(crs.getTitle(), profId);
+                }
+            }
+        }
     }
 
     public static void insertingData() {
         ArrayList<Course> course_temp = new ArrayList<>();
         for (int i = 0; i < semesters.size(); i++) {
 //            for(int k = 0 ; k <   ; k++ ) 
-            { 
+            {
 
             }
             for (int j = 0; j < (int) (5 + Math.random() * 6); j++) {
@@ -115,36 +128,37 @@ public class Scheduler0 {
             }
         }
     }
-    static String day_name[] = {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"} ; 
-    static String slots_timing[] = {"08:30AM-10:00AM","10:00AM-11:30AM","11:30AM-01:00PM","01:00PM-02:30PM","2:30PM-04:00PM","04:00PM-05:30PM" } ;  
-    public static void slotting(int room, int day, int slot) { 
-        for (int r = 0; r < room; r++) { 
-            Room rm = new Room() ; 
-            rm.name = "10 " + (r + 1) ; 
-            rm.check = false ; 
+    static String day_name[] = {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
+    static String slots_timing[] = {"08:30AM-10:00AM", "10:00AM-11:30AM", "11:30AM-01:00PM", "01:00PM-02:30PM", "2:30PM-04:00PM", "04:00PM-05:30PM"};
+
+    public static void slotting(int room, int day, int slot) {
+        for (int r = 0; r < room; r++) {
+            Room rm = new Room();
+            rm.name = "10 " + (r + 1);
+            rm.check = false;
             for (int d = 0; d < day; d++) {
                 Day d1 = new Day();
-                d1.no = d + 1;
+                d1.no = d;
                 for (int i = 0; i < slot; i++) {
                     TimeSlot st = new TimeSlot();
                     st.setCheck(false);
-                    st.setNo(i + 1);  ; 
+                    st.setNo(i);
                     slots.add(st);
                 }
 
-                ArrayList<TimeSlot> newarray1 = new ArrayList<>() ; 
-                newarray1.addAll(slots) ; 
-                slots.clear() ; 
-                d1.timeslots = newarray1 ; 
-                days.add( d1 ) ; 
-            } 
-            ArrayList<Day> newarray2 = new ArrayList<>() ; 
-            newarray2.addAll(days) ; 
-            days.clear() ; 
-            rm.setDays( newarray2) ; 
-            rooms.add(rm) ; 
-        } 
-    } 
+                ArrayList<TimeSlot> newarray1 = new ArrayList<>();
+                newarray1.addAll(slots);
+                slots.clear();
+                d1.timeslots = newarray1;
+                days.add(d1);
+            }
+            ArrayList<Day> newarray2 = new ArrayList<>();
+            newarray2.addAll(days);
+            days.clear();
+            rm.setDays(newarray2);
+            rooms.add(rm);
+        }
+    }
 
 //    public static void inputting() {
 //        ArrayList<Section> secs = new ArrayList<>() ; 
@@ -190,25 +204,24 @@ public class Scheduler0 {
 //        }
 //        System.out.println("");
 //    }
-
-    public static void inputForRooms_Labs() { 
-        System.out.print("Enter number of rooms in department  :  ") ; 
-        int input1 = in.nextInt() ;
+    public static void inputForRooms_Labs() {
+        System.out.print("Enter number of rooms in department  :  ");
+        int input1 = in.nextInt();
 
 //        System.out.println("Enter No. of labs  :   ") ; 
 //        int input2 = in.nextInt() ; 
         System.out.print("Enter number of working days  ( < 7 ) :   ");
         int input3 = in.nextInt();
 
-        System.out.print("Enter number of Timeslots in each day   :   ") ; 
-        int input4 = in.nextInt() ; 
-        slotting(input1, input3, input4) ; 
+        System.out.print("Enter number of Timeslots in each day   :   ");
+        int input4 = in.nextInt();
+        slotting(input1, input3, input4);
 
 //        for(int i = 0 ; i < input2 ; i++ ) 
 //        { 
 //            labs.add("LAB "+(i+1) ) ; 
 //        } 
-    } 
+    }
 
     public static void method1() {
         System.out.println("Enter number of students  :  ");
@@ -223,7 +236,7 @@ public class Scheduler0 {
         int input3 = in.nextInt();
 
         int n = 0;
-        while (n < input3) { 
+        while (n < input3) {
 //            System.out.print("Enter Name  :  ") ; 
 //            String input4 = in.next() ; 
 //            System.out.print("Enter Credit Hours  :  ") ; 
@@ -231,36 +244,36 @@ public class Scheduler0 {
 //            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
 //            String input6 = in.next() ; 
 
-            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4 , false )) ;
+            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, false));
             n++;
         }
 //        checkingLab() ; 
         printCourse();
 //        algorithm() ; 
-    } 
+    }
 
-    static boolean[][] checks = new boolean[6][6] ;
+    static boolean[][] checks = new boolean[6][6];
 
-    public static void input_Validation_Method() { 
-        int var2 = rooms.size() ; 
+    public static void input_Validation_Method() {
+        int var2 = rooms.size();
         int var1 = rooms.get(0).getDays().size();
         int var3 = rooms.get(0).getDays().get(0).timeslots.size();            //timeslots     
 
         int total_slots = var1 * var2 * var3;
-        
-        int lectures = 0 ; 
-        int num1=0,num2, num3=0 ; 
-        for(int i = 0 ; i < semesters.size() ; i++ ) { 
+
+        int lectures = 0;
+        int num1 = 0, num2, num3 = 0;
+        for (int i = 0; i < semesters.size(); i++) {
 //            num1 = semesters.get(i).courses.size() ; 
-            num2 = semesters.get(i).getSections().size() ;  
-            num3 += num1 * num2 ; 
-        } 
-        System.out.println("I am Number 03          "+num3) ; 
-        lectures = num3 * 2 ; 
-        System.out.println("I am Number 03          "+lectures) ; 
+            num2 = semesters.get(i).getSections().size();
+            num3 += num1 * num2;
+        }
+        System.out.println("I am Number 03          " + num3);
+        lectures = num3 * 2;
+        System.out.println("I am Number 03          " + lectures);
 //        int diff = semesters
-        int difference = total_slots - lectures ; 
-        System.out.println("I am Differenece 02          "+difference) ; 
+        int difference = total_slots - lectures;
+        System.out.println("I am Differenece 02          " + difference);
 
         if (difference > 0) {
             System.out.println("ALL OK, SET TO GO FOR TIMETABLE \n\n\n");
@@ -268,12 +281,12 @@ public class Scheduler0 {
             System.out.println("ROOMS AND TIMESLOTS ARE LESS AND LECTURES ARE GREATER IN NUMBER , ");
         }
     }
-    
+
     static ArrayList<String> Labs = new ArrayList<>();
-    
-    public static void algorithm() {                    // Main algo
-        
-        boolean check1 = false; 
+
+    public static void algorithm(){
+                
+boolean check1 = false; 
         boolean check2 = false; 
 
         int i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0, r = 0, c = 0;
@@ -315,7 +328,7 @@ public class Scheduler0 {
                                     
                                     course_name = semesters.get(sem).getSections().get(k).getCourses().get(a).getTitle() ; 
                                     
-                                    scheduler.add(new scheduler(rm.getName(), semesters.get(sem).getNo() , "" + (semesters.get(sem).getSections().get(k).getNo()),
+                                    scheduler.add(new Scheduler(rm.getName(), semesters.get(sem).getNo() , "" + (semesters.get(sem).getSections().get(k).getNo()),
                                             rm.getDays().get(r).no , rm.getDays().get(r).getTimeslots().get(l).getNo(), course_name, o+1) );
 
                                     check1 = true;
@@ -335,8 +348,7 @@ public class Scheduler0 {
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 
             }
         }
-    } // algorithm 
-
+    }
     public static void arrayCleaning() {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -346,7 +358,6 @@ public class Scheduler0 {
         }
     }
 
-    
 //    public static int Highest_CreditHours() {
 //        int value = 0;
 //        for (int i = 0; i < course.size(); i++) {
@@ -356,13 +367,13 @@ public class Scheduler0 {
 //        }
 //        return value;
 //    }
-
     public static void roomChecking() {
     }
-    public static void isRoomFull()
-    {
-        
+
+    public static void isRoomFull() {
+
     }
+
     public static void methodRequired() {
         System.out.print("Enter the number of sections  :  (max 4) :  ");
         int input = in.nextInt();
@@ -441,11 +452,11 @@ public class Scheduler0 {
     }
 
     public static void displayInfo(int sem, String sec) {
-        System.out.println("Schedule for:\nSemester: " + sem + "\nSection: " + sec) ;
-        System.out.println("\n") ; 
-        for (scheduler s : scheduler) { 
-            if (s.section.equalsIgnoreCase(sec) && s.semester_no==sem ) { 
-                System.out.println(s.toString()) ; 
+        System.out.println("Schedule for:\nSemester: " + sem + "\nSection: " + sec);
+        System.out.println("\n");
+        for (Scheduler s : scheduler) {
+            if (s.section.equalsIgnoreCase(sec) && s.semester_no == sem) {
+                System.out.println(s.toString());
             }
         }
     }
@@ -463,18 +474,17 @@ public class Scheduler0 {
 //            }
 //        }
 //    }
-    
-    public static Room checkingFreeRoom(ArrayList<Room> rooms){
-        Room rm=null ; 
-        for(int i = 0 ; i < rooms.size(); i++){ 
-            if(rooms.get(i).check == false ){ 
-                rm = rooms.get(i); 
-                break ; 
-            } 
-        } 
-        return rm ; 
+    public static Room checkingFreeRoom(ArrayList<Room> rooms) {
+        Room rm = null;
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).check == false) {
+                rm = rooms.get(i);
+                break;
+            }
+        }
+        return rm;
     }
-    
+
 //    public static void displayRoom() { 
 //        String[][] array =new String [6][7] ; 
 //        String var="";
@@ -509,9 +519,5 @@ public class Scheduler0 {
 //            System.out.println("\n\n") ; 
 //        }
 //    } 
-
-    
-    
 }   // main class 
-
 

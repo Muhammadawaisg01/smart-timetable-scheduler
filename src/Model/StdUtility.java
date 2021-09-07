@@ -1,4 +1,6 @@
 
+
+
 package Model ; 
 
 import Model.Student;
@@ -6,12 +8,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import scheduler.pkg0.Scheduler0;
-import scheduler.pkg0.scheduler;
+import scheduler.pkg0.Runner;
+import scheduler.pkg0.Scheduler;
 
 
 public class StdUtility {
-    ArrayList<scheduler> scheduler = Scheduler0.scheduler;
+    ArrayList<Scheduler> scheduler = Runner.scheduler;
     public static ArrayList<Student> student_list = new ArrayList<>();
     ArrayList<String> array = new ArrayList<>();
     
@@ -27,7 +29,7 @@ public class StdUtility {
                 line = file.next() ;
                 arr = line.split(",");
                 while (i < arr.length) {
-                    student_list.get(j).registered_courses.add(arr[i]);
+                    student_list.get(j).registered_courses.add(new Course(arr[i]));
                     i++;
                 }
                 arr = null;
@@ -91,14 +93,13 @@ public class StdUtility {
 //        std.add(new Student("01","Ali","7",1, )  )  
     }
     
-    
     public void assigning_Schedule_To_Student() {   // assigning schedule to students   
         ArrayList<Student> new_std_array = new ArrayList<>();
         ArrayList<Integer> indexes = new ArrayList<>();
-        ArrayList<scheduler> new_schedule_array = new ArrayList<>() ; 
+        ArrayList<Scheduler> new_schedule_array = new ArrayList<>() ; 
         
-        String room, day, course, section ; 
-        int sem_no = 0, lec_no = 0, timeslot ; 
+        String room, course, section ; 
+        int sem_no = 0, lec_no = 0, timeslot,day ; 
         String[] sections = {"1", "2", "3", "4"} ; 
         
         for(int k = 0 ; k < scheduler.size(); k++) { 
@@ -131,7 +132,7 @@ public class StdUtility {
                             
                             if (timeslot == std.days.get(k).timeslots.get(m).slot_no && 
                                     std.days.get(k).timeslots.get(m).check==false &&
-                                    std.days.get(k).name.equalsIgnoreCase(day) )  { 
+                                    std.days.get(k).no ==day  )  { 
 //                                            System.out.println(student_list.get(j).days.get(k).timeslots.get(m));
                                             std.days.get(k).timeslots.get(m).check = true;
 //                                            System.out.println("I am the course \t\n"+course+"\n");

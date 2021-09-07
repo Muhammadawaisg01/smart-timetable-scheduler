@@ -14,7 +14,7 @@ public class TimeSlot {
 //    int lecture_no;
     
     public TimeSlot(int no, boolean check ) { 
-        this.no = no ; 
+        this.no = no; 
         this.check = check ; 
     } 
 

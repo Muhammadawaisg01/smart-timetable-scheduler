@@ -1,7 +1,40 @@
-static String course_name[] = {"ICT", "ISLAMIYAT", "CALCULUS", "English", " PF", "MULTICAL",
-        "ECA", "Report", "Discrete Structures", "Pak Study", "Genetics",
-         "Data structures", "OOP", "Comm. Skills", "SE", "Stats", "DLD", "OS",
-         "OOSE", "ITM", "DB", "ppit", "dccn", "AI", "SRE", "WEB", "LA",
-        "VP", "HCI", "SQE", "SDA", "SPM",
-        "MAD", "web", "DP", "Testing",
-        "Research", "French", "enterpreneurship", "CAL2"};
+1,ICT 
+2,ISLAMIYAT 
+3,CALCULUS 
+4,English 
+5,PF
+6,MULTICAL
+7,ECA 
+8,Report 
+9,Discrete Structures
+10,Pak Study
+11,Genetics
+12,Data structures
+13,OOP 
+14,Comm. Skills 
+15,SE
+16,Stats
+17,DLD 
+18,OS
+19,OOSE 
+20,ITM
+21,DB 
+22,ppit 
+23,dccn 
+24,AI
+25,SRE 
+26,WEB 
+27,LA
+28,VP 
+29,HCI 
+30,SQE 
+31,SDA 
+32,SPM        
+33,MAD
+34,web 
+35,DP 
+36,Testing        
+37,Research
+38,French 
+39,enterpreneurship
+40,CAL2

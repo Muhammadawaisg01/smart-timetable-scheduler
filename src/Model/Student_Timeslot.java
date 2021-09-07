@@ -1,21 +1,22 @@
 
+
 package Model ; 
 
-public class Student_Timeslot { 
+public class Student_Timeslot {     
     
 //    String program;
     int semester;
     String section;
+    String room;
     int slot_no;
     String course;
     int lecture_no ; 
     boolean check;
-    String room;
     
     public Student_Timeslot() {
         
     }
-
+    
     public Student_Timeslot(int semester, String section, int slot_no, String course, int lecture_no, boolean check, String room) {
         this.semester = semester;
         this.section = section;
