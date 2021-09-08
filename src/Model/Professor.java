@@ -70,26 +70,26 @@ public class Professor {
         
 //        System.out.println("Semester No:\t" + semesterNo);
 //        System.out.println("Section_no      " + sec_no);
-        for (int k = 0; k < schedule.days.size(); k++) {
+        for (int k = 0; k < schedule.getDays().size(); k++) {
 //            System.out.println(schedule.days.get(k).no);
 //            String d = "Days", r = "Room", cc = "Course Code", l = "Lec No", s ="Slot No" ;
 //            System.out.printf("%-7s%-7s%-25s%-7s%7s", d, r, cc, l, s);
 //            System.out.println("\n");
-            System.out.printf("%-7s", WeekDays.names[schedule.days.get(k).no]);
+            System.out.printf("%-7s", WeekDays.names[schedule.getDays().get(k).no]);
 //            System.out.println(schedule.days.get(k).timeslots.size() + "\t//////////////////////////////////////////////");
-            for (j = 0; j < schedule.days.get(k).timeslots.size(); j++) {
-                System.out.printf("%-7s", schedule.days.get(k).timeslots.get(j).room);
-                System.out.printf("%-15s", schedule.days.get(k).timeslots.get(j).course_code);
-                System.out.printf("%-15s", schedule.days.get(k).timeslots.get(j).semester);
-                System.out.printf("%-15s", schedule.days.get(k).timeslots.get(j).section);
+            for (j = 0; j < schedule.getDays().get(k).timeslots.size(); j++) {
+                System.out.printf("%-7s", schedule.getDays().get(k).timeslots.get(j).room);
+                System.out.printf("%-15s", schedule.getDays().get(k).timeslots.get(j).course_code);
+                System.out.printf("%-15s", schedule.getDays().get(k).timeslots.get(j).semester);
+                System.out.printf("%-15s", schedule.getDays().get(k).timeslots.get(j).section);
                 try {
-                    System.out.printf("%7d<----------->", schedule.days.get(k).timeslots.get(j).slot_no);
+                    System.out.printf("%7d<----------->", schedule.getDays().get(k).timeslots.get(j).slot_no);
                 } catch (IndexOutOfBoundsException ex) {
                     System.out.println(ex);
 //                        System.out.println(j + "\t" + k);
                     System.exit(0);
                 }
-                if (schedule.days.get(k).timeslots.get(j).check == false) {
+                if (schedule.getDays().get(k).timeslots.get(j).check == false) {
                     System.out.print("__");
                 } else {
 

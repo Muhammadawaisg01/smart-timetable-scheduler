@@ -6,6 +6,8 @@ import Model.Student;
 import Model.Section;
 import Model.Semester;
 import Model.Day;
+import Model.Entities_Main_Arrays;
+import Model.Professor;
 import Model.ProfessorUtility;
 import Model.TimeSlot;
 import Model.Room;
@@ -22,13 +24,11 @@ import javax.swing.JOptionPane;
 import Model.StdUtility;
 import Model.WeekDays;
 
-
-//                                                  replica of runner class in case we lost it
 public class algorithm0 {
 
     static ArrayList<Student> students = new ArrayList<>();
 
-    static ArrayList<Room> rooms = new ArrayList<>();
+    public static ArrayList<Room> rooms = new ArrayList<>();
     static ArrayList<Room> labs = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
     static String[][] array = new String[6][6];
@@ -58,6 +58,8 @@ public class algorithm0 {
         File file = new File("Semesters.txt");
         // semester
         semesters = Semester.getSemesters(file);
+        
+        Entities_Main_Arrays.add_Data_to_Professor_List();   
 //        System.out.println(semesters.size());
 //        for (Semester semester : semesters) {
 //            System.out.println(semester.getSections().size());
@@ -82,6 +84,15 @@ public class algorithm0 {
 //        
         SectionUtility.assign_schedule_to_section();
         Semester.displayAllData();
+        
+        algo_for_Professor_assigning.section_to_Professor_Scheduling();     // 
+        
+        for(Professor prof : Entities_Main_Arrays.professor_list){
+            prof.display_Professor() ; 
+        }
+        
+        System.out.println("I am the number of CLASHES VARIABLE\t\t" + algo_for_Professor_assigning.variable ) ; 
+        
 // uncomment this
 
 //        displayRoom() ; 
@@ -154,8 +165,8 @@ public class algorithm0 {
     public static void slotting(int room, int day, int slot) {
         for (int r = 0; r < room; r++) {
             Room rm = new Room();
-            rm.name = "10 " + (r + 1);
-            rm.check = false;
+            rm.setName("10 " + (r + 1));
+            rm.setCheck( false);
             for (int d = 0; d < day; d++) {
                 Day d1 = new Day();
                 d1.no = d;
@@ -387,7 +398,6 @@ public class algorithm0 {
 //        return value;
 //    }
     public static void roomChecking() {
-
     }
 
     public static void isRoomFull() {
@@ -497,7 +507,7 @@ public class algorithm0 {
     public static Room checkingFreeRoom(ArrayList<Room> rooms) {
         Room rm = null;
         for (int i = 0; i < rooms.size(); i++) {
-            if (rooms.get(i).check == false) {
+            if (rooms.get(i).isCheck() == false) {
                 rm = rooms.get(i);
                 break;
             }

@@ -7,7 +7,7 @@ import java.util.ArrayList  ;
 
 public class Professor_Schedule     {    
     
-    public ArrayList<Professor_Day> days = new ArrayList<>();
+    private ArrayList<Professor_Day> days = new ArrayList<>();
     
     public Professor_Schedule() {
         this.initialize_Professor_Schedule();
@@ -38,6 +38,14 @@ public class Professor_Schedule     {
 //            c++;
 //        }
     }   
+
+    public ArrayList<Professor_Day> getDays() {
+        return days;
+    }
+
+    public void setDays(ArrayList<Professor_Day> days) {
+        this.days = days;
+    }
     
 }
 

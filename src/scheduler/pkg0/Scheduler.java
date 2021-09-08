@@ -46,7 +46,7 @@ public class Scheduler {
     public static void display(ArrayList<Scheduler> sch) {
         int room_no = 0;
         while (room_no < Runner.rooms.size()) {
-            String room = Runner.rooms.get(room_no).name ; 
+            String room = Runner.rooms.get(room_no).getName() ; 
             for (int i = 0; i < sch.size(); i++) {
                 if(room.equalsIgnoreCase(sch.get(i).room)) {
                     System.out.println(sch.get(i).toString());

@@ -120,13 +120,14 @@ public class algo_for_Professor_assigning {
         String crs_code = course_code;
         String room = slot.getRoom();
         
-        if (prof_sch.days.get(day_no).getTimeslots().get(slot_no).getCheck() == false) {    
-            prof_sch.days.get(day_no).getTimeslots().get(slot_no).setCheck(true);
-            prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSlot_No(slot_no);
-            prof_sch.days.get(day_no).getTimeslots().get(slot_no).setCourse_code(crs_code);
-            prof_sch.days.get(day_no).getTimeslots().get(slot_no).setRoom(room);
-            prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSection(section_no);
-            prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSemester(sem_no);
+        if (prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).getCheck() == false) {  
+            
+            prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).setCheck(true);
+            prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).setSlot_No(slot_no);
+            prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).setCourse_code(crs_code);
+            prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).setRoom(room);
+            prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).setSection(section_no);
+            prof_sch.getDays().get(day_no).getTimeslots().get(slot_no).setSemester(sem_no);
         } else {                
                 Professor_Lecture_Clash  clash_obj = new Professor_Lecture_Clash()  ;   
                 clash_obj.setProfessor_id(prof.getId()) ; 

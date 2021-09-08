@@ -23,12 +23,14 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import Model.StdUtility;
 import Model.WeekDays;
+import clashe_resolving.ProfessorClashes;
+import static clashe_resolving.ProfessorClashes.clashesResolved;
 
 public class Runner {
 
     static ArrayList<Student> students = new ArrayList<>();
 
-    static ArrayList<Room> rooms = new ArrayList<>();
+    public static ArrayList<Room> rooms = new ArrayList<>();
     static ArrayList<Room> labs = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
     static String[][] array = new String[6][6];
@@ -58,8 +60,8 @@ public class Runner {
         File file = new File("Semesters.txt");
         // semester
         semesters = Semester.getSemesters(file);
-        
-        Entities_Main_Arrays.add_Data_to_Professor_List();   
+
+        Entities_Main_Arrays.add_Data_to_Professor_List();
 //        System.out.println(semesters.size());
 //        for (Semester semester : semesters) {
 //            System.out.println(semester.getSections().size());
@@ -73,7 +75,6 @@ public class Runner {
         inputForRooms_Labs(); // First Work  
 
         algorithm();
-        assignProfessorToSections();
 
 //        displaySlots();  
 // uncomment 
@@ -82,19 +83,31 @@ public class Runner {
 //            System.out.println(sch.toString());
 //        }
 //        
+        assignProfessorToSections();
         SectionUtility.assign_schedule_to_section();
-        Semester.displayAllData();
-        
-        algo_for_Professor_assigning.section_to_Professor_Scheduling();     // 
-        
-        for(Professor prof : Entities_Main_Arrays.professor_list){
-            prof.display_Professor() ; 
+        algo_for_Professor_assigning.section_to_Professor_Scheduling();
+//        Semester.displayAllData();
+
+             // 
+
+        for (Professor prof : Entities_Main_Arrays.professor_list) {
+            prof.display_Professor();
+        }
+        System.out.println("I am the number of CLASHES VARIABLE\t\t" + algo_for_Professor_assigning.variable);
+        algo_for_Professor_assigning.variable = 0;
+        ProfessorClashes.resolveClashes();
+        System.out.println("_____________________________________________________________________________");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("_____________________________________________________________________________");
+//        Semester.displayAllData();
+        for (Professor prof : Entities_Main_Arrays.professor_list) {
+            prof.display_Professor();
         }
         
-        System.out.println("I am the number of CLASHES VARIABLE\t\t" + algo_for_Professor_assigning.variable ) ; 
-        
-// uncomment this
+        System.out.println("I am the number of CLASHES VARIABLE\t\t" + algo_for_Professor_assigning.variable);
+        System.out.println("Clashes Resolved: " + clashesResolved);
 
+// uncomment this
 //        displayRoom() ; 
 //        StdUtility obj = new StdUtility()  ; 
 //        obj.assigning_Schedule_To_Student(); 
@@ -138,7 +151,7 @@ public class Runner {
 //                    System.out.println("Semester: " + semNo + "\tSection: " + section.getNo() + "\tCourse: " + crs.getTitle());
 //                    System.out.print("Enter Professor ID for above course: ");
 //                    profId = in.nextInt();
-                    profId = (int) (Math.random() * 26);
+                    profId = (int) (1 + Math.random() * 26);
 //                    System.out.println("Professor_ID    "+profId);
                     ProfessorUtility.assignProfToSection(semester, section, crs.getTitle(), profId);
 //                    section.setAllocations(crs.getTitle(), profId);
@@ -165,8 +178,8 @@ public class Runner {
     public static void slotting(int room, int day, int slot) {
         for (int r = 0; r < room; r++) {
             Room rm = new Room();
-            rm.name = "10 " + (r + 1);
-            rm.check = false;
+            rm.setName("10 " + (r + 1));
+            rm.setCheck(false);
             for (int d = 0; d < day; d++) {
                 Day d1 = new Day();
                 d1.no = d;
@@ -507,7 +520,7 @@ public class Runner {
     public static Room checkingFreeRoom(ArrayList<Room> rooms) {
         Room rm = null;
         for (int i = 0; i < rooms.size(); i++) {
-            if (rooms.get(i).check == false) {
+            if (rooms.get(i).isCheck() == false) {
                 rm = rooms.get(i);
                 break;
             }

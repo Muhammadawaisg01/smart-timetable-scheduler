@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 public class Room { 
     
-public String name ; 
-public boolean check ; 
-        
+ String name ; 
+ boolean check ; 
+    ArrayList<Day> days ;     
 //    String isLab;
 //    int capacity;
 
-ArrayList<Day> days ; 
+
     
     public Room( String name, boolean check, ArrayList<Day> days ) { 
         this.name = name ; 
