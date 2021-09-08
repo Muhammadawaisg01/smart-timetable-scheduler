@@ -1,6 +1,6 @@
 
 
-package Model ; 
+package Model ;     
 
 public class Section_Timeslot {
     

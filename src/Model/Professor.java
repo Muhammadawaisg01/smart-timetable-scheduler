@@ -5,12 +5,12 @@ package Model ;
 import java.util.ArrayList ; 
 
 public class Professor { 
-    int id ;        
+    int id ;    
     String name ;   
     
     Professor_Schedule schedule ; 
+    ArrayList<Professor_Lecture_Clash> clash_array =  new ArrayList<>();     
     
-
     
     public Professor( int id, String name ) { 
         this.id = id ; 

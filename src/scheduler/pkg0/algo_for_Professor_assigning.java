@@ -15,49 +15,53 @@ import Model.Section_Timeslot;
 import Model.Semester;
 import java.util.ArrayList  ;   
 import scheduler.pkg0.Runner ; 
-
+import Model.Entities_Main_Arrays;
 
 public class algo_for_Professor_assigning { 
     
-//    ArrayList<Course> courses  =  CourseUtility.readCourseFile();    // read data
+//    ArrayList<Course> courses  =  CourseUtility.readCourseFile();    // read data 
+    
+    public ArrayList<Professor> professor_list = Entities_Main_Arrays.professor_list;  
     
     
-    public ArrayList<Professor> professor_list = ProfessorUtility.readProfFile("Faculty.txt")   ;  
+    public void section_to_Professor_Scheduling()  {    // algo for Professor assigning     
     
-    
-    
-public void professor_Scheduling_Algorithm()  {    // algo  for Professor assigning
-
-    ArrayList<Semester> semesters = Runner.semesters    ;   
-    Professor prof;
+    ArrayList<Semester> semesters = Runner.semesters ; 
+    Professor prof =null ;   
     String course_code;
+    int sem_no;
+    String section_no;
+    
 //    for(int i = 0 ; i < professor_list.size() ; i++ ) {       
 //        System.out.println(professor_list.get(i).toString())    ;   
 //    }
         
-        for(int j = 0 ; j < semesters.size(); j++)  {   
-            Semester smstr = semesters.get(j) ; 
-            for( int k = 0 ; k < smstr.getSections().size(); k++ ) {    
+        for(int var1 = 0 ; var1 < semesters.size(); var1++)  {   
+            Semester smstr = semesters.get(var1) ; 
+            sem_no = smstr.getNo()  ;   
+            for( int var2 = 0 ; var2 < smstr.getSections().size(); var2++ ) {   
                 
                 ArrayList<Section> sections = smstr.getSections() ; 
-                for(int var = 0; var < sections.size(); var++ ) { 
-                    ArrayList<Professor_Section_Allocation> allocations = sections.get(var).getAllocations() ; 
+                for(int var3 = 0; var3 < sections.size(); var3++ ) { 
+                    ArrayList<Professor_Section_Allocation> allocations = sections.get(var3).getAllocations() ; 
                     
-                    for(int l = 0 ; l < allocations.size(); l++ ) { 
-                    int prof_id = allocations.get(l).getProf_id() , m=0 ;   
-                    course_code = allocations.get(l).getCourse_code() ; 
-                    boolean check = false ;       
-                    for( m = 0; m < professor_list.size(); m++ ) {  
-                        if(prof_id == professor_list.get(m).getId() )    {   
-                            prof = professor_list.get(m);
+                    section_no = sections.get(var3).getNo() ;   
+                    
+                    for(int var4 = 0 ; var4 < allocations.size(); var4++ ) { 
+                    int prof_id = allocations.get(var4).getProf_id() , var5=0 ; 
+                    course_code = allocations.get(var4).getCourse_code() ; 
+                    boolean check = false ;     
+                    for( var5 = 0; var5 < professor_list.size(); var5++ ) {     
+                        if(prof_id == professor_list.get(var5).getId() )    {   
+                            prof = professor_list.get(var5);
                             check = true    ;   
                             break   ;
-                        }           
+                        }   
                     }
-                    if(check){
-                        Section_Schedule sec_schedule =  sections.get(var).getSchedule();
-                        Professor_Schedule prof_schedule =professor_list.get(m).getSchedule();
-                        section_to_Professor_Scheduling(sec_schedule,prof_schedule) ; 
+                    if(check)   {   
+                        Section_Schedule sec_schedule =  sections.get(var3).getSchedule();
+                        Professor_Schedule prof_schedule = prof.getSchedule();
+                        section_to_Professor_Timeslotting(sem_no, section_no, sec_schedule, prof_schedule) ;   // int sem_no , String section
                     }
                 }
             }
@@ -84,7 +88,7 @@ public void professor_Scheduling_Algorithm()  {    // algo  for Professor assign
             for(int j = 0 ; j < sec.getSchedule().getDays().get(i).getTimeslots().size(); j++){ 
             ArrayList<Section_Timeslot> timeslots= sec.getSchedule().getDays().get(i).getTimeslots();   
                 if( timeslots.get(j).isCheck() )    {
-                    String crs_code = get_Course_Code( courses, timeslots.get(j).getCourse() ) ; 
+//                    String crs_code = get_Course_Code( courses, timeslots.get(j).getCourse() ) ; 
                     if(crs_code.equalsIgnoreCase(course_code) )     {   
                     days[var] =  sec.getSchedule().getDays().get(i) ;   var++;
                     }
@@ -110,26 +114,32 @@ public void professor_Scheduling_Algorithm()  {    // algo  for Professor assign
         return slots ;
     }
     
-    public void add_Data_to_Professor_Timeslot(Section_Timeslot slot, Section_Day day,  Professor_Schedule prof_sch) {  
+    public void add_Data_to_Professor_Timeslot(int sem_no, String section_no, Section_Timeslot slot, Section_Day day,  Professor_Schedule prof_sch) {  
         int day_no= day.getNo();    
         int slot_no = slot.getSlot_no() ;   
-
+        String crs_code=slot.getCourse() ;
+        String room= slot.getRoom(); 
+//        boolean check = false;
+//        if(){}
+        
         prof_sch.days.get(day_no).getTimeslots().get(slot_no).setCheck(true)  ; 
         prof_sch.days.get(day_no).getTimeslots().get(slot_no).setNo(slot_no)  ; 
-        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setRoom(slot.getRoom() ) ;    
-        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSection(slot.)  ; 
-        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setCheck(true)  ; 
-        
+        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setCourse_code(crs_code) ; 
+        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setRoom(room) ; 
+        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSection(section_no) ; 
+        prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSemester(sem_no) ; 
+                
     }
     
-    public void section_to_Professor_Scheduling(Section_Schedule sec_sch , Professor_Schedule prof_sch ) {
+    public void section_to_Professor_Timeslotting
+        (int sem_no, String sec_no, Section_Schedule sec_sch , Professor_Schedule prof_sch ) {
         
         for(int i = 0 ; i < sec_sch.getDays().size() ; i++) {             //
             for(int j = 0 ; j < sec_sch.getDays().get(i).getTimeslots().size() ; j++) { 
-                ArrayList<Section_Timeslot> timeslots = sec_sch.getDays().get(i).getTimeslots() ;                  
+                ArrayList<Section_Timeslot> timeslots = sec_sch.getDays().get(i).getTimeslots() ;   
                 
                 if( timeslots.get(j).isCheck() )  {   
-                    add_Data_to_Professor_Timeslot(timeslots.get(j), sec_sch.getDays().get(i), prof_sch ) ; 
+                    add_Data_to_Professor_Timeslot(sem_no, sec_no,  timeslots.get(j), sec_sch.getDays().get(i), prof_sch ) ; 
                 }
             }   
 //            sec_sch.getDays().get(i)

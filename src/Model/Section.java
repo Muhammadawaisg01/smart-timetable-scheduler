@@ -9,10 +9,12 @@ public class Section {
     String no;
 //    int strength;           // student strength
 
+    ArrayList<Course> sectionCourses = new ArrayList<>();
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();
     
     Section_Schedule schedule = new Section_Schedule();
-    ArrayList<Course> sectionCourses = new ArrayList<>();
+    
+    
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
