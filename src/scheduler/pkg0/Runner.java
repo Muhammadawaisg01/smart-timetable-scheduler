@@ -6,6 +6,8 @@ import Model.Student;
 import Model.Section;
 import Model.Semester;
 import Model.Day;
+import Model.Entities_Main_Arrays;
+import Model.Professor;
 import Model.ProfessorUtility;
 import Model.TimeSlot;
 import Model.Room;
@@ -56,6 +58,8 @@ public class Runner {
         File file = new File("Semesters.txt");
         // semester
         semesters = Semester.getSemesters(file);
+        
+        Entities_Main_Arrays.add_Data_to_Professor_List();   
 //        System.out.println(semesters.size());
 //        for (Semester semester : semesters) {
 //            System.out.println(semester.getSections().size());
@@ -80,6 +84,15 @@ public class Runner {
 //        
         SectionUtility.assign_schedule_to_section();
         Semester.displayAllData();
+        
+        algo_for_Professor_assigning.section_to_Professor_Scheduling();     // 
+        
+        for(Professor prof : Entities_Main_Arrays.professor_list){
+            prof.display_Professor() ; 
+        }
+        
+        System.out.println("I am the number of CLASHES VARIABLE\t\t" + algo_for_Professor_assigning.variable ) ; 
+        
 // uncomment this
 
 //        displayRoom() ; 

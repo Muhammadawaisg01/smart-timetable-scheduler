@@ -20,7 +20,7 @@ public class ProfessorUtility {
     @return ArrayList of professor class
      */
     
-    public static ArrayList<Professor> readProfFile(String fileName) {
+    public static ArrayList<Professor> readProfFile(String fileName) {  
         ArrayList<Professor> list = new ArrayList<>();
         File file = new File(fileName);
         try {

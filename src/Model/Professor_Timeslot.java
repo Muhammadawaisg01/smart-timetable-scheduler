@@ -4,7 +4,7 @@ package Model;
 
 public class Professor_Timeslot {
 
-    int no ; 
+    int slot_no ; 
 //    String program ;
     int semester ;
     String section;
@@ -12,8 +12,10 @@ public class Professor_Timeslot {
     String course_code; 
     Boolean check;
     
+//    int lecture_no;
+
     public Professor_Timeslot(int no, int semester, String section, String room, String course_code, Boolean check) {
-        this.no = no;
+        this.slot_no = no;
         this.section = section;
         this.room = room;
         this.course_code = course_code;
@@ -23,7 +25,7 @@ public class Professor_Timeslot {
     } 
 
     public Professor_Timeslot() {
-        no = 0;
+        slot_no = 0;
 //        program = "";
         semester = 0;
         room = "";
@@ -31,8 +33,8 @@ public class Professor_Timeslot {
         check = false;
     }
 
-    public int getNo() {
-        return no;
+    public int getSlot_No() {
+        return slot_no;
     }
 
     public int getSemester() {
@@ -55,8 +57,8 @@ public class Professor_Timeslot {
         return check;
     }
 
-    public void setNo(int no) {
-        this.no = no;
+    public void setSlot_No(int no) {
+        this.slot_no = no;
     }
 
     public void setSemester(int semester) {

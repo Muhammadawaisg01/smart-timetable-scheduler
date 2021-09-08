@@ -1,6 +1,5 @@
 
 
-
 package Model   ;   
 
 import java.util.ArrayList  ;   
@@ -15,8 +14,6 @@ public class Professor_Lecture_Clash    {
     int slot_no;
     String course;
     boolean isresolved; 
-    
-    
     
 //    boolean check;
 
