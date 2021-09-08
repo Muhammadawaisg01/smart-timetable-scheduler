@@ -9,6 +9,7 @@ public class Professor {
     String name ;   
     
     Professor_Schedule schedule ; 
+    
     ArrayList<Professor_Lecture_Clash> clash_array =  new ArrayList<>();     
     
     public Professor( int id, String name ) { 
@@ -48,14 +49,23 @@ public class Professor {
     public void setSchedule(Professor_Schedule schedule) {
         this.schedule = schedule;
     }
+
+    public ArrayList<Professor_Lecture_Clash> getClash_array() {
+        return clash_array;
+    }
+
+    public void setClash_array(ArrayList<Professor_Lecture_Clash> clash_array) {
+        this.clash_array = clash_array;
+    }
+        
     
     public void display_Professor() {  // display tabular data
 
         System.out.println("________________________________________");
         int i = 0, j = 0;
         Professor_Schedule schedule = this.getSchedule();
-        System.out.println("Professor ID    "+this.id)  ;   
-        System.out.println("Professor Name    "+this.name)  ;   
+        System.out.println("Professor ID :   "+this.id)  ;   
+        System.out.println("Professor Name :   "+this.name)  ;   
         
         
 //        System.out.println("Semester No:\t" + semesterNo);
@@ -88,7 +98,18 @@ public class Professor {
             }
             System.out.println();
         }
-        
+        System.out.println("_________________________My Clashes_____________________________________");
+        for(int var = 0 ; var < this.getClash_array().size() ; var++) { 
+            System.out.print("ID  : "+getClash_array().get(var).getProfessor_id()+"\t")  ; 
+            System.out.print("Semester  : "+getClash_array().get(var).getSemester()+"\t" )  ; 
+            System.out.print("Section  : "+getClash_array().get(var).getSection()+"\t")  ; 
+            System.out.print("Room  : "+getClash_array().get(var).getRoom()+"\t")  ; 
+            System.out.print("Day  : "+getClash_array().get(var).getDay_no()+"\t")  ; 
+            System.out.print("Slot No  : "+getClash_array().get(var).getSlot_no()+"\t")  ; 
+            System.out.print("Course  : "+getClash_array().get(var).getCourse()+"\t")  ; 
+            System.out.print("isResolved  : "+getClash_array().get(var).isIsresolved()+"\t")  ; 
+            System.out.println("");
+        }         
 //        for(int var=0; var<this.getAllocations().size(); var++){
 //            System.out.println(this.getAllocations().get(i).toString());
 //        }

@@ -12,6 +12,7 @@ import Model.Section_Timeslot;
 import Model.Semester;
 import java.util.ArrayList;
 import Model.Entities_Main_Arrays;
+import Model.Professor_Lecture_Clash;
 import static scheduler.pkg0.Runner.semesters;
 
 public class algo_for_Professor_assigning {
@@ -50,8 +51,7 @@ public class algo_for_Professor_assigning {
                         }
                         if (check) {
                             Section_Schedule sec_schedule = section.getSchedule();
-                            Professor_Schedule prof_schedule = prof.getSchedule();
-                            section_to_Professor_Timeslotting(sem_no, section_no, course_code, sec_schedule, prof_schedule);   // int sem_no , String section
+                            section_to_Professor_Timeslotting(sem_no, section_no, course_code, sec_schedule, prof ) ;    // int sem_no , String section
                         }
                     }
             }
@@ -100,25 +100,26 @@ public class algo_for_Professor_assigning {
 //        }
 //        return slots ;
 //    }
-        public static void section_to_Professor_Timeslotting(int sem_no, String sec_no, String course_code, Section_Schedule sec_sch, Professor_Schedule prof_sch) {
-
+    //  This Method will take every slot of the section and assign them to the professor respective timeslot 
+        public static void section_to_Professor_Timeslotting(int sem_no, String sec_no, String course_code, Section_Schedule sec_sch, Professor prof ) {
         for (int i = 0; i < sec_sch.getDays().size(); i++) {             //
             ArrayList<Section_Timeslot> timeslots = sec_sch.getDays().get(i).getTimeslots();
             for (int j = 0; j < timeslots.size(); j++) {
                 if (timeslots.get(j).getCourse().equalsIgnoreCase(course_code)) { 
-                    add_Data_to_Professor_Timeslot(sem_no, sec_no, timeslots.get(j), course_code, sec_sch.getDays().get(i), prof_sch);
+                    add_Data_to_Professor_Timeslot(sem_no, sec_no, timeslots.get(j), course_code, sec_sch.getDays().get(i), prof ) ; 
                 }
             }
 //            sec_sch.getDays().get(i)
         }
     }
-
-    public static void add_Data_to_Professor_Timeslot(int sem_no, String section_no ,Section_Timeslot slot, String course_code, Section_Day day, Professor_Schedule prof_sch) {
+        // add data to one Timeslot 
+    public static void add_Data_to_Professor_Timeslot(int sem_no, String section_no ,Section_Timeslot slot, String course_code, Section_Day day, Professor prof) {
+        Professor_Schedule prof_sch = prof.getSchedule();
         int day_no = day.getNo();
         int slot_no = slot.getSlot_no();
         String crs_code = course_code;
         String room = slot.getRoom();
-//        boolean check = false;
+        
         if (prof_sch.days.get(day_no).getTimeslots().get(slot_no).getCheck() == false) {    
             prof_sch.days.get(day_no).getTimeslots().get(slot_no).setCheck(true);
             prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSlot_No(slot_no);
@@ -126,13 +127,24 @@ public class algo_for_Professor_assigning {
             prof_sch.days.get(day_no).getTimeslots().get(slot_no).setRoom(room);
             prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSection(section_no);
             prof_sch.days.get(day_no).getTimeslots().get(slot_no).setSemester(sem_no);
-        } else {
-            variable++;
+        } else {                
+                Professor_Lecture_Clash  clash_obj = new Professor_Lecture_Clash()  ;   
+                clash_obj.setProfessor_id(prof.getId()) ; 
+                clash_obj.setSemester(sem_no); 
+                clash_obj.setSection(section_no) ;
+                clash_obj.setCourse(course_code);
+                clash_obj.setDay_no(day_no);
+                clash_obj.setSlot_no(slot_no);
+                clash_obj.setRoom(room);
+                clash_obj.setIsresolved(false); 
+                prof.getClash_array().add(clash_obj) ;
+                variable++;
         }
 
     }
-
-
+//public finding_Professor_Having_Clashes(){    
+//}
+        
 //    public static void main( String[] args ) {    
 //        algo_for_Professor_assigning obj  = new algo_for_Professor_assigning() ;   
 //        obj.professor_Scheduling_Algorithm();

@@ -6,10 +6,11 @@ import java.util.ArrayList  ;
 
 public class Professor_Lecture_Clash    {   
     
+    // program 
     int professor_id ; 
-    String room ;   
-    String semester;
+    int semester;
     String section;
+    String room ;
     int day_no;
     int slot_no;
     String course;
@@ -19,6 +20,87 @@ public class Professor_Lecture_Clash    {
 
     public Professor_Lecture_Clash() {
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // setters and getters section
+
+    public int getProfessor_id() {
+        return professor_id;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public int getDay_no() {
+        return day_no;
+    }
+
+    public int getSlot_no() {
+        return slot_no;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public boolean isIsresolved() {
+        return isresolved;
+    }
+
+    public void setProfessor_id(int professor_id) {
+        this.professor_id = professor_id;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public void setDay_no(int day_no) {
+        this.day_no = day_no;
+    }
+
+    public void setSlot_no(int slot_no) {
+        this.slot_no = slot_no;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setIsresolved(boolean isresolved) {
+        this.isresolved = isresolved;
+    }
+    
+    
+    
+    
+    
     
     
 }   // Main Class 
