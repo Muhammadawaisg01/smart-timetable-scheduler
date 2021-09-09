@@ -11,7 +11,6 @@ public class Professor_Timeslot {
     String room ; 
     String course_code; 
     Boolean check;
-    
 //    int lecture_no;
 
     public Professor_Timeslot(int no, int semester, String section, String room, String course_code, Boolean check) {
