@@ -11,14 +11,14 @@ import java.util.ArrayList;
 
 public class SectionUtility {   
     
-    public static void assign_schedule_to_section() {    
-        for (int i = 0; i < scheduler.size(); i++) {   
+    public static void assign_schedule_to_section() {           // assigns generated schedule to all the respective sections    
+        for (int i = 0; i < scheduler.size(); i++) {    
             
             String sec = scheduler.get(i).section;
             Scheduler schedule= scheduler.get(i);
             int sem = scheduler.get(i).semester_no;
             
-            for (Semester smstr: semesters) {
+            for (Semester smstr: semesters  ) {     
                 if (smstr.no == sem) {
                     ArrayList<Section> sections = smstr.sections ;   
                     for (Section section: sections) {   

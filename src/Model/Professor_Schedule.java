@@ -9,25 +9,25 @@ public class Professor_Schedule     {
     
     private ArrayList<Professor_Day> days = new ArrayList<>();
     
-    public Professor_Schedule() {
-        this.initialize_Professor_Schedule();
+    public Professor_Schedule(int days, int slots) {
+        this.initialize_Professor_Schedule(days, slots);
     }
     
     // days and timeslots must be user input based 
-    public void initialize_Professor_Schedule() {   
+    public void initialize_Professor_Schedule(int days, int slots) {   
 //        this.days = new ArrayList<>() ;     
-        for (int i = 0; i < 5; i++) {   
+        for (int i = 0; i < days; i++) {   
             Professor_Day obj1 = new Professor_Day() ; 
             obj1.timeslots = new ArrayList<>();
-            int slot_no = 0;
+//            int slot_no = 0;
             String course = "";
 //            int lecture_no = 0;
             boolean check = false   ;   
             String room = "" ;  
             int semester = 0 ;  
             String section=""   ;   
-            for (int j = 0; j < 6; j++  ) { // 6 timeslots    
-                Professor_Timeslot obj = new Professor_Timeslot(slot_no, semester, section, room, course, check )    ;   
+            for (int j = 0; j < slots; j++  ) { // 6 timeslots    
+                Professor_Timeslot obj = new Professor_Timeslot(j, semester, section, room, course, check )    ;   
                 obj1.timeslots.add(obj) ;   
             }   
             obj1.no = i ;   

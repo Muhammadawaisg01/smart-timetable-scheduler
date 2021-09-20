@@ -1,6 +1,5 @@
 
 
-
 package Model ; 
 
 import Model.Student;
@@ -14,86 +13,90 @@ import scheduler.pkg0.Scheduler;
 
 public class StdUtility {
     ArrayList<Scheduler> scheduler = Runner.scheduler;
-    public static ArrayList<Student> student_list = new ArrayList<>();
+    public static ArrayList<Student> student_list = Entities_Main_Arrays.student_list;
     ArrayList<String> array = new ArrayList<>();
+
+public void reading_Student_From_DB() { 
     
-    public void readingCourseRegistration() {
-        String line = "", arr[];
-        int i = 1;
-        int j = 0;
-        File f = new File("Course_registration.txt");
-        try {
-            Scanner file = new Scanner(f);
-            while (file.hasNext() ) {
-                i = 1 ;
-                line = file.next() ;
-                arr = line.split(",");
-                while (i < arr.length) {
-                    student_list.get(j).registered_courses.add(new Course(arr[i]));
-                    i++;
-                }
-                arr = null;
-                i = 1;
-                j++;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-//        for (String str : array) {
-//            System.out.println(str);
+}
+    
+//    public void readingCourseRegistration() {   
+//        String line = "", arr[];
+//        int i = 1;
+//        int j = 0;
+//        File f = new File("Course_registration.txt");
+//        try {
+//            Scanner file = new Scanner(f);
+//            while (file.hasNext() ) {
+//                i = 1 ;
+//                line = file.next() ;
+//                arr = line.split(",");
+//                while (i < arr.length) {
+//                    student_list.get(j).registered_courses.add(new Course(arr[i] ) ) ; 
+//                    i++;
+//                }
+//                arr = null;
+//                i = 1;
+//                j++;
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
 //        }
-    }
-
-    public StdUtility() {
-        int i = 1;
-        String sec = "1";
-        String[] arr;
-        String line;
-        File f = new File("Students.txt");
-        try {
-            Scanner file = new Scanner(f);
-            while (file.hasNext()) {
-                line = file.nextLine();
-                arr = line.split(", ");
-                if (i <= 10) {
-                    sec = "1";
-                }
-                if (i <= 20 && i > 10) {
-                    sec = "2";
-                }
-                if (i <= 30 && i > 20) {
-                    sec = "3";
-                }
-                if (i <= 40 && i > 30) {
-                    sec = "4";
-                }
-
-                student_list.add(new Student(arr[0], arr[1], "7", sec)) ; 
-                i++ ; 
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
-        }
-        readingCourseRegistration();
-
-        for (int j = 0; j < student_list.size(); j++) { 
-            System.out.println(student_list.get(j).toString() ) ; 
-        } 
-
-//        Student_Timeslot std_slot = new Student_Timeslot();
-//        std_slot.semester = "";
-//        std_slot.section = "";
-//        std_slot.slot_no = 0;
-//        std_slot.check = false;
-//        std_slot.course = "";
-//        std_slot.lecture_no = 0;
-//        std_slot.room = "";
-//        Day_for_Student std_day = new Day_for_Student();
-//        std_day.name = "Mon";
-//        std.add(new Student("01","Ali","7",1, )  )  
-    }
+////        for (String str : array) {
+////            System.out.println(str);
+////        }
+//    }
+//    public StdUtility() {
+//        int i = 1;
+//        String sec = "1";
+//        String[] arr;
+//        String line;
+//        File f = new File("Students.txt");
+//        try {
+//            Scanner file = new Scanner(f);
+//            while (file.hasNext()) {
+//                line = file.nextLine();
+//                arr = line.split(", ");
+//                if (i <= 10) {
+//                    sec = "1";
+//                }
+//                if (i <= 20 && i > 10) {
+//                    sec = "2";
+//                }
+//                if (i <= 30 && i > 20) {
+//                    sec = "3";
+//                }
+//                if (i <= 40 && i > 30) {
+//                    sec = "4";
+//                }
+//
+////                student_list.add(new Student(arr[0], arr[1], 7, sec)) ; 
+//                i++ ; 
+//            }
+//        } catch (FileNotFoundException ex) {
+//            System.out.println(ex);
+//        }
+//        readingCourseRegistration();
+//
+//        for (int j = 0; j < student_list.size(); j++) { 
+//            System.out.println(student_list.get(j).toString() ) ; 
+//        } 
+//
+////        Student_Timeslot std_slot = new Student_Timeslot();
+////        std_slot.semester = "";
+////        std_slot.section = "";
+////        std_slot.slot_no = 0;
+////        std_slot.check = false;
+////        std_slot.course = "";
+////        std_slot.lecture_no = 0;
+////        std_slot.room = "";
+////        Day_for_Student std_day = new Day_for_Student();
+////        std_day.name = "Mon";
+////        std.add(new Student("01","Ali","7",1, )  )  
+//    }
     
-    public void assigning_Schedule_To_Student() {   // assigning schedule to students   
+    public void section_to_Student_Scheduling() {   // assigning schedule to students   
+
         ArrayList<Student> new_std_array = new ArrayList<>();
         ArrayList<Integer> indexes = new ArrayList<>();
         ArrayList<Scheduler> new_schedule_array = new ArrayList<>() ; 
@@ -107,7 +110,7 @@ public class StdUtility {
         }
         
         for ( int i = 0; i < scheduler.size(); i++ ) { 
-            if (scheduler.get(i).semester_no == 7 ) { 
+//            if (scheduler.get(i).semester_no == 7 ) {   
                 
                 for (int sec = 0; sec < sections.length; sec++ ) { 
                     if (scheduler.get(i).section.equalsIgnoreCase(sections[sec] ) ) { 
@@ -121,26 +124,26 @@ public class StdUtility {
                         sem_no = scheduler.get(i).semester_no;
                         lec_no = scheduler.get(i).lecture_no;
                         for (int var = 0; var < student_list.size(); var++) {
-                            if (student_list.get(var).section.equalsIgnoreCase(sections[sec])) {
+                            if (student_list.get(var).section_id.equalsIgnoreCase(sections[sec])) {
                                 Student std = student_list.get(var);
-
+                                Student_Schedule std_sch = std.getSchedule();
                                 System.out.println(std.toString());
 //                                indexes.add(var);
-                                for (int k = 0; k < std.days.size(); k++) {
+                                for (int k = 0; k < std_sch.days.size(); k++) {
 //                            student_list.get(j).days.get(k).name = day;
-                                    for (int m = 0; m < std.days.get(k).timeslots.size(); m++) {
+                                    for (int m = 0; m < std_sch.days.get(k).timeslots.size(); m++) {
                             
-                            if (timeslot == std.days.get(k).timeslots.get(m).slot_no && 
-                                    std.days.get(k).timeslots.get(m).check==false &&
-                                    std.days.get(k).no ==day  )  { 
+                            if (timeslot == std_sch.days.get(k).timeslots.get(m).slot_no && 
+                                    std_sch.days.get(k).timeslots.get(m).check==false &&
+                                    std_sch.days.get(k).no ==day  )  { 
 //                                            System.out.println(student_list.get(j).days.get(k).timeslots.get(m));
-                                            std.days.get(k).timeslots.get(m).check = true;
+                                            std_sch.days.get(k).timeslots.get(m).check = true;
 //                                            System.out.println("I am the course \t\n"+course+"\n");
-                                            std.days.get(k).timeslots.get(m).lecture_no = lec_no;
-                                            std.days.get(k).timeslots.get(m).room = room;
-                                            std.days.get(k).timeslots.get(m).course = course;
-                                            std.days.get(k).timeslots.get(m).semester = sem_no;
-                                            std.days.get(k).timeslots.get(m).section = section;
+                                            std_sch.days.get(k).timeslots.get(m).lecture_no = lec_no;
+                                            std_sch.days.get(k).timeslots.get(m).room = room;
+                                            std_sch.days.get(k).timeslots.get(m).course_code = course;
+                                            std_sch.days.get(k).timeslots.get(m).semester = sem_no;
+                                            std_sch.days.get(k).timeslots.get(m).section = section;
 //                                            System.out.println(student_list.get(j).days.get(k).timeslots.get(m));
 //                                            System.out.println(std.toString());
                                         }
@@ -173,9 +176,9 @@ public class StdUtility {
 //                        }
 //                    }
 //                }
-            } else {
-                continue;
-            }
+//            } else {
+//                continue;
+//            }
         }
     }
 

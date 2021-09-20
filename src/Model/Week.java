@@ -1,10 +1,10 @@
 package Model ; 
 
-import Model.Day;
+import Model.Room_Day;
 import java.util.ArrayList;
 
 public class Week { 
     
-    ArrayList<Day> days ; 
+    ArrayList<Room_Day> days ; 
     
 }

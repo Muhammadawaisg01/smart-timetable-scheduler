@@ -1,4 +1,6 @@
+
 package Model;
+
 
 import static scheduler.pkg0.Runner.semesters;
 import java.io.File;
@@ -57,7 +59,7 @@ public class Semester {
     public void createSection(String name) { 
         sections.add(new Section(name) ) ; 
     } 
-
+    
     public static ArrayList<Semester> getSemesters(File file) {
         ArrayList<Semester> semesters = new ArrayList<>();
         try {

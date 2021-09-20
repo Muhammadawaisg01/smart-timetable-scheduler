@@ -1,20 +1,25 @@
-
 package Model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import static scheduler.pkg0.Runner.course;
+import static db.DBConnection.getConnection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Section {
 
     String no;
-//    int strength;           // student strength
+    int student_strength;           // student strength
 
-    ArrayList<Course> sectionCourses = new ArrayList<>();
-    ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();
-    
+    ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
+    ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
+
     Section_Schedule schedule = new Section_Schedule();
-    
-    
+
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
@@ -33,7 +38,6 @@ public class Section {
 
     public void set_course(int day_index, int slot_no, String course) {
 //        System.out.println(schedule.days.get(day_index).timeslots.size() + "\tSlot Number: " + slot_no);
-
         schedule.days.get(day_index).timeslots.get(slot_no).course_code = course;
     }
 
@@ -71,6 +75,31 @@ public class Section {
     public String getNo() {
         return no;
     }
+
+    public int getStrength() {
+        return student_strength;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
+
+    public void setStudent_strength(int student_strength) {
+        this.student_strength = student_strength;
+    }
+
+    public void setSectionCourses(ArrayList<Course> sectionCourses) {
+        this.sectionCourses = sectionCourses;
+    }
+
+    public void setAllocations(ArrayList<Professor_Section_Allocation> allocations) {
+        this.allocations = allocations;
+    }
+    
+    public ArrayList<Course> getSectionCourses() {
+        return sectionCourses;
+    }
+    
 
     public ArrayList<Course> getCourses() {
         return this.sectionCourses;
@@ -121,10 +150,62 @@ public class Section {
             }
             System.out.println();
         }
-        
+
 //        for(int var=0; var<this.getAllocations().size(); var++){
 //            System.out.println(this.getAllocations().get(i).toString());
 //        }
     }
+
+    public static ResultSet sectionIsFree(int day, int slot) {
+        String q = "select section_id, course_code, room_name from lectures where "
+                + "day_no = " + day + " and "
+                + "timeslot_no = " + slot;
+        Connection conn = getConnection();
+        PreparedStatement stmt;
+        try {
+            stmt = conn.prepareStatement(q);
+            return stmt.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(Section.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static int get_Semester_of_Section(String section){
+        String q = "select semester_no from section where section_id  = '" + section + "'";
+        System.out.println(q);
+        int semester_no = 0;
+        Connection conn = getConnection();
+        PreparedStatement stmt;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs =stmt.executeQuery();
+            rs.next();
+            semester_no = rs.getInt(1)  ; 
+        } catch (SQLException ex) {
+            System.out.println("error in getting semester no of the section in the section details  ") ;    
+            ex.printStackTrace();
+        }
+        return semester_no;
+    }
+            
+    public static int get_Strength_of_Section(String section){
+        String q = "select student_strength from section where section_id  = "+section ; 
+        int strength = 0;
+        Connection conn = getConnection();
+        PreparedStatement stmt;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs=stmt.executeQuery();
+            strength = rs.getInt("semester_no")  ; 
+        } catch (SQLException ex) {
+            System.out.println("error in getting semester no of the section in the section details  ") ;    
+            ex.printStackTrace();
+        }
+        return strength;
+    }
+    
+    
 }
+
 

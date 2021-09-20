@@ -1,6 +1,6 @@
 
 
-package Model   ;   
+package Model;
 
 import java.util.ArrayList  ;   
 
@@ -15,14 +15,12 @@ public class Professor_Lecture_Clash    {
     int slot_no;
     String course;
     boolean isresolved; 
-    
-//    boolean check;
+//    int clash_no;
+    int lecture_no ; 
 
     public Professor_Lecture_Clash() {
+        
     }
-    
-    
-    
     
     
     
@@ -95,6 +93,14 @@ public class Professor_Lecture_Clash    {
 
     public void setIsresolved(boolean isresolved) {
         this.isresolved = isresolved;
+    }
+
+    public int getLecture_no() {
+        return lecture_no;
+    }
+
+    public void setLecture_no(int lecture_no) {
+        this.lecture_no = lecture_no;
     }
     
     

@@ -2,7 +2,7 @@
 
 package Model ; 
 
-public class TimeSlot { 
+public class Room_Timeslot { 
     int no ; 
     boolean check ; 
     
@@ -13,12 +13,12 @@ public class TimeSlot {
 //    String course;
 //    int lecture_no;
     
-    public TimeSlot(int no, boolean check ) { 
+    public Room_Timeslot(int no, boolean check ) { 
         this.no = no; 
         this.check = check ; 
     } 
 
-    public TimeSlot() { 
+    public Room_Timeslot() { 
     } 
 
     @Override

@@ -3,23 +3,24 @@
 package Model ; 
 
 import java.util.ArrayList ; 
+import static db.DBConnection.getConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
     
 public class Course {   
     
     String course_code ; 
     String title ; 
     int credit_hours ;  
-    boolean lab ;        // make it boolean
+    boolean lab ;       
     
-//    int semester ;          // in which semester it is being offered
-//    String program;
-//     maximum enrollment variable  
-    
-//    ArrayList<String> program ; 
-//    ArrayList<String> semester; 
+//     maximum enrollment variable          how msny students have enrolled in this course      
 
-
-//    static ArrayList<Course> courses  =  CourseUtility.readCourseFile();    // read data
+//    static ArrayList<Course> courses  =  CourseUtility.readCourseFile();    // read data          
     
     public Course(String title) {
         this.title = title;
@@ -90,7 +91,29 @@ public class Course {
         return "Course{" + "course_code=" + course_code + ", title=" + title + ", credit_hours=" + credit_hours + ", lab=" + lab + '}';
     }
     
-    
+    /*
+    @param course_code 
+    @return Course Object
+    */
+    public static Course getCourse(String code) {
+        Connection conn = getConnection();
+        Course course = new Course();
+        String q = "select * from course where course_code = '" + code + "'";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                course.setCourse_code(rs.getString("course_code"));
+                course.setTitle(rs.getString("title"));
+                course.setCredit_hours(rs.getInt("credit_hours"));
+                course.setLab(rs.getString("hasLab").equalsIgnoreCase("true"));
+                return course;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Course.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
  
 }
 

@@ -1,20 +1,20 @@
 
 package Model;
 
-import Model.TimeSlot;
+import Model.Room_Timeslot;
 import java.util.ArrayList;
-
-public class Day {  
+import static db.DBConnection.getConnection;
+public class Room_Day {  
     
     public int no  ; 
-    public ArrayList<TimeSlot> timeslots ; 
+    public ArrayList<Room_Timeslot> timeslots ; 
     
-    public Day( int no, ArrayList<TimeSlot> timeslots ) { 
+    public Room_Day( int no, ArrayList<Room_Timeslot> timeslots ) { 
         this.no = no ; 
         this.timeslots = timeslots ; 
     } 
 
-    public Day() {
+    public Room_Day() {
     }
     
     @Override
@@ -26,7 +26,7 @@ public class Day {
         return no;
     }
 
-    public ArrayList<TimeSlot> getTimeslots() {
+    public ArrayList<Room_Timeslot> getTimeslots() {
         return timeslots;
     }
 
@@ -34,10 +34,11 @@ public class Day {
         this.no = no;
     }
 
-    public void setTimeslots(ArrayList<TimeSlot> timeslots) {
+    public void setTimeslots(ArrayList<Room_Timeslot> timeslots) {
         this.timeslots = timeslots;
     }
     
+//    public static 
     
 } 
 

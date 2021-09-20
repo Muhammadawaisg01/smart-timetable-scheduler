@@ -1,3 +1,4 @@
+
 package scheduler.pkg0;
 
 import Model.Course;
@@ -15,18 +16,16 @@ import Model.Entities_Main_Arrays;
 import Model.Professor_Lecture_Clash;
 import static scheduler.pkg0.Runner.semesters;
 
-public class algo_for_Professor_assigning {
-
-//    ArrayList<Course> courses  =  CourseUtility.readCourseFile();    // read data 
-    static int variable = 0;
+public class Algo_for_Professor_assigning {
+    
+    static int clashes_variable = 0;
     public static ArrayList<Professor> professor_list = Entities_Main_Arrays.professor_list;
-
+//  this method will add data (lecture's data) to the professor which are assigned to the section means day timeslot..s
     public static void section_to_Professor_Scheduling() {    // algo for Professor assigning     
         Professor prof = null;
         String course_code;
         int sem_no;
         String section_no;
-
         
         for (int var1 = 0; var1 < semesters.size(); var1++) {
             Semester smstr = semesters.get(var1);
@@ -138,19 +137,20 @@ public class algo_for_Professor_assigning {
                 clash_obj.setSlot_no(slot_no);
                 clash_obj.setRoom(room);
                 clash_obj.setIsresolved(false); 
+                clash_obj.setLecture_no(slot.getLecture_no()); // lecture No
                 prof.getClash_array().add(clash_obj) ;
-                variable++;
+                clashes_variable++  ;   
         }
-
     }
+    
 //public finding_Professor_Having_Clashes(){    
 //}
         
 //    public static void main( String[] args ) {    
-//        algo_for_Professor_assigning obj  = new algo_for_Professor_assigning() ;   
+//        Algo_for_Professor_assigning obj  = new Algo_for_Professor_assigning() ;   
 //        obj.professor_Scheduling_Algorithm();
 //    }
-    public algo_for_Professor_assigning() {
+    public Algo_for_Professor_assigning() { 
     }
 
 }   // Main Class

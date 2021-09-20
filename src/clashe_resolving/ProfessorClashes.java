@@ -1,6 +1,6 @@
 package clashe_resolving;
 
-import Model.Day;
+import Model.Room_Day;
 import static Model.Entities_Main_Arrays.professor_list;
 import static scheduler.pkg0.Runner.semesters;
 import Model.Professor;
@@ -11,7 +11,7 @@ import Model.Professor_Timeslot;
 import Model.Room;
 import Model.Section_Day;
 import Model.Section_Timeslot;
-import Model.TimeSlot;
+import Model.Room_Timeslot;
 import java.util.ArrayList;
 import static scheduler.pkg0.Runner.rooms;
 

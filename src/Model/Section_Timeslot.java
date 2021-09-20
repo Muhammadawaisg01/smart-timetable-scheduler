@@ -1,14 +1,16 @@
 
 
-package Model ;     
+package Model ; 
 
-public class Section_Timeslot {
-    
+public class Section_Timeslot { 
+ 
+    int slot_no;    
     String room;
-    int slot_no;
     String course_code;
-    int lecture_no;
-    boolean check; 
+    int lecture_no;    
+    boolean isLab   ;   
+    boolean check;          // this check is for checking that is this slot is available or not 
+    
     
     public Section_Timeslot() { 
         

@@ -1,110 +1,256 @@
 
-package Model ;    
 
+package Model ;    
+import static db.DBConnection.getConnection;
+import static Model.Entities_Main_Arrays.student_list;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList; 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Student {  
     
     String registration_no ; 
     String name;
-
-//    String program ;
-    String semester;    // make it int 
-    String section;
     
-    ArrayList<Day_for_Student> days ; 
+//  int program ;
+//    int semester;
+    String section_id  ;   
+    private static Connection conn;
+    Student_Schedule schedule;
+
+    ArrayList<Course> registered_courses = new ArrayList<>() ; 
     
-//    Student_Schedule schedule;
-
-    ArrayList<Course> registered_courses= new ArrayList<>() ; 
-
-    public Student(String registration_no, String name, String semester, String section, ArrayList<Day_for_Student> days, ArrayList<Course> courses) {
+    ArrayList<Student_lecture_clash> clash_array = new ArrayList<>() ; 
+    
+    ArrayList<Student_Section_Allocation> allocations = new ArrayList<>() ; 
+    
+    
+    public Student(String registration_no, String name, String section, ArrayList<Course> courses) {
         this.registration_no = registration_no;
         this.name = name;
-        this.semester = semester;
-        this.section = section;
-        this.days = days;   
+        this.section_id = section;
         this.registered_courses = courses;
-    }
-
-    public Student(String registration_no, String name, String semester, String section) {
-        this.registration_no = registration_no;
-        this.name = name    ;   
-        this.semester = semester ;
-        this.section = section ;
-        this.initialize_Schedule() ;
+        schedule = new Student_Schedule(5, 6);        
     }
     
+//    public Student(String registration_no, String name, int semester, String section) {
+//        this.registration_no = registration_no;
+//        this.name = name    ;   
+//        this.semester = semester ;
+//        this.section_id = section ;
+//        schedule = new Student_Schedule(5,6);       // get days and slots from the admin
+//    }   
+    
     public Student() {
+        
     }
-
-//    public void regCourses(String[] arr) {
-//        for (String str : arr) {
-//            System.out.print(str + " ");
-//            this.courses.add(str);
-//        }
-//        System.out.print("\"");
-//        System.out.println("");
-//    }
 
     @Override
     public String toString() {
-        return "Student{" + "registration_no=" + registration_no + ", name=" + name + ", semester=" + semester + ", section=" + section + ", days=" + days + ", courses=" + registered_courses + '}';
+        return "Student{" + "registration_no=" + registration_no + ", name=" + name + ", section_id=" + section_id + '}';
     }
-    
-    static String day_name[] = {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"} ; 
-    //  add no. of days and timeslots dynamically   
-    public void initialize_Schedule() { // initializing student days and slots with null values     
-        this.days = new ArrayList<>() ; 
-        
-        for(int i = 0 ; i < 5 ; i++ ){ 
-            Day_for_Student obj1 = new Day_for_Student();
-            obj1.no=  i ;
-            obj1.timeslots =  new ArrayList<>() ; 
-        
-        int semester=0;
-        String section="";
-        int slot_no=0;
-        String course="";
-        int lecture_no=0 ; 
-        boolean check=false;
-        String room="";
-        for(int j = 0; j < 6; j++) { // 6 timeslots 
-            Student_Timeslot obj = new Student_Timeslot( semester, section, j, course, lecture_no, check, room);
-            obj1.timeslots.add(obj) ;
-        }
-        this.days.add(obj1) ; 
-        }
-//        for(Day_for_Student day: days){
-//            System.out.println(day.toString()) ; 
-//        }
-    } 
     
     
     public void displayStudent(){
-        int i = 0 , j = 0 ;
         System.out.println("Name   " + this.name);
         System.out.println("Registration No   " + this.registration_no);
-        System.out.println("Semester   " + this.semester);
-        System.out.println("Section   " + this.section);
-
-        for(int k = 0 ; k< this.days.size(); k++){
-            System.out.print(days.get(k).no + "\t\t\t") ; 
+//        System.out.println("Semester   " + this.semester);  
+        System.out.println("Section   " + this.section_id);
+        
+        Student_Schedule schedule = this.getSchedule(); 
+        
+        for(int k = 0 ; k< schedule.getDays().size(); k++){
+            System.out.print(schedule.getDays().get(k).no + "\t\t\t") ; 
         } 
-        System.out.println("");
-        for( j = 0 ; j < this.days.get(0).timeslots.size(); j++) { 
-    
-        for( i = 0 ; i < this.days.size() ; i++ ) { 
-            System.out.print(days.get(i).timeslots.get(j).room+" ") ;
-            System.out.print(days.get(i).timeslots.get(j).semester+" " ) ;
-            System.out.print(days.get(i).timeslots.get(j).section+" " );
-            System.out.print(days.get(i).timeslots.get(j).course +" ") ;
-            System.out.print(days.get(i).timeslots.get(j).lecture_no+" " ) ;
-            System.out.print(days.get(i).timeslots.get(j).slot_no +" ") ;
-            System.out.print(days.get(i).timeslots.get(j).check +" ") ;
-            } 
-            System.out.println() ; 
-        } 
+        
     }
+    
+        public void display_Student() {  // display tabular data
+        
+        System.out.println("________________________________________")  ; 
+        int i = 0, j = 0    ;   
+        Student_Schedule schedule = this.getSchedule() ; 
+        System.out.println("Student Name   " + this.name);
+        System.out.println("Registration No  " + this.registration_no);
+//        System.out.println("Semester   " + this.semester);  
+        System.out.println("Section   " + this.getSection_id() ) ; 
+        
+        for (int k = 0; k < schedule.getDays().size(); k++) {
+//            System.out.println(schedule.days.get(k).no);
+//            String d = "Days", r = "Room", cc = "Course Code", l = "Lec No", s ="Slot No" ;
+//            System.out.printf("%-7s%-7s%-25s%-7s%7s", d, r, cc, l, s);
+//            System.out.println("\n");
+            System.out.printf("%-7s", WeekDays.names[schedule.getDays().get(k).getNo()]);
+//            System.out.println(schedule.days.get(k).timeslots.size() + "\t//////////////////////////////////////////////");
+            for (j = 0; j < schedule.getDays().get(k).getTimeslots().size(); j++) {
+                System.out.printf("%-7s", schedule.getDays().get(k).getTimeslots().get(j).room);
+                System.out.printf("%-15s", schedule.getDays().get(k).getTimeslots().get(j).course_code);
+                System.out.printf("%-15s", schedule.getDays().get(k).getTimeslots().get(j).semester);
+                System.out.printf("%-15s", schedule.getDays().get(k).getTimeslots().get(j).section);
+                try {
+                    System.out.printf("%7d<----------->", schedule.getDays().get(k).getTimeslots().get(j).slot_no);
+                } catch (IndexOutOfBoundsException ex) {
+                    System.out.println(ex);
+//                        System.out.println(j + "\t" + k);
+                    System.exit(0);
+                }
+                if (schedule.getDays().get(k).getTimeslots().get(j).check == false) {   
+                    System.out.print("__")  ;   
+                } else {    
+//                        System.out.print( Course.getCourse(course,schedule.days.get(k).timeslots.get(j).course_code) + " ") ; 
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("_________________________My Clashes_____________________________________");
+        for(int var = 0 ; var < this.getClash_array().size() ; var++) { 
+            System.out.print("Registration_No  : "+getClash_array().get(var).getReg_no()+"\t")  ; 
+            System.out.print("Clash_No  : "+getClash_array().get(var).getClash_no()+"\t")  ;  
+            System.out.print("Semester  : "+getClash_array().get(var).getSemester()+"\t" )  ; 
+            System.out.print("Section  : "+getClash_array().get(var).getSection()+"\t")  ; 
+            System.out.print("Room  : "+getClash_array().get(var).getRoom()+"\t")  ; 
+            System.out.print("Day  : "+getClash_array().get(var).getDay_no()+"\t")  ; 
+            System.out.print("Slot No  : "+getClash_array().get(var).getSlot_no()+"\t")  ; 
+            System.out.print("Course  : "+getClash_array().get(var).getCourse()+"\t")  ;
+            System.out.print("isLab  : "+getClash_array().get(var).isIsLab()+"\t")  ;
+            System.out.print("Lecture No  : "+getClash_array().get(var).getLecture_no()+"\t")  ;
+            System.out.print("isResolved  : "+getClash_array().get(var).isIsresolved()+"\t")  ; 
+            System.out.println("")  ;   
+        }         
+//        for(int var=0; var<this.getAllocations().size(); var++){
+//            System.out.println(this.getAllocations().get(i).toString());
+//        }
+    }
+    
+    
+
+    // setters and getters section        
+
+    public String getRegistration_no() {
+        return registration_no;
+    }
+
+    public void setRegistration_no(String registration_no) {
+        this.registration_no = registration_no;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+//    public int getSemester(String section) {    
+//        return semester;
+//    }
+//
+//    public void setSemester(int semester) {
+//        this.semester = semester;
+//    }
+
+    public String getSection_id() {
+        return section_id;
+    }
+
+    public void setSection(String section_id) {
+        this.section_id = section_id;
+    }
+
+    public Student_Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Student_Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    public ArrayList<Course> getRegistered_courses() {
+        return registered_courses;
+    }
+
+    public void setRegistered_courses(ArrayList<Course> registered_courses) {
+        this.registered_courses = registered_courses;
+    }
+
+    public ArrayList<Student_lecture_clash> getClash_array() {
+        return clash_array;
+    }
+
+    public void setClash_array(ArrayList<Student_lecture_clash> clash_array) {
+        this.clash_array = clash_array;
+    }
+
+    public ArrayList<Student_Section_Allocation> getAllocations() {
+        return allocations;
+    }
+
+    public void setAllocations(ArrayList<Student_Section_Allocation> allocations) {
+        this.allocations = allocations;
+    }
+    
+    // querries
+    private static ResultSet getStudents() {
+        String q = "select * from students";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(q);
+            return stmt.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+    }
+    
+    /*
+    @param registration number of student
+    @return List of courses registered by student
+    */
+    
+    private static ArrayList<Course> getCourses(String stdRegNo) { 
+        ArrayList<Course> courses = new ArrayList<>();
+        String q = "select * from registered_courses where student_registration_no = '" + stdRegNo + "'";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                Course course = Course.getCourse(rs.getString("course_code"));
+                courses.add(course);
+            }
+            return courses;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static ArrayList<Student> getData() {
+        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<Course> courses;
+        conn = getConnection();
+        ResultSet studentsRS = getStudents();
+        String regNo, name, sectionID;
+        try {
+            while (studentsRS.next()) {
+                regNo = studentsRS.getString("registration_no");
+                name = studentsRS.getString("name");
+                sectionID = studentsRS.getString("section_ID");
+                courses = getCourses(regNo);
+                students.add(new Student(regNo, name, sectionID, courses));
+            }
+            return students;
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
 }   // Main Student Class
 

@@ -1,17 +1,17 @@
 
 
-package Model;
+package Model   ;   
 
-public class Professor_Timeslot {
+public class Professor_Timeslot {   
 
     int slot_no ; 
-//    String program ;
+    String program ;
     int semester ;
     String section;
     String room ; 
     String course_code; 
     Boolean check;
-//    int lecture_no;
+    int lecture_no;
 
     public Professor_Timeslot(int no, int semester, String section, String room, String course_code, Boolean check) {
         this.slot_no = no;
