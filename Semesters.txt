@@ -1,29 +1,29 @@
-1,A,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
-1,B,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
-1,C,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
-1,D,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
-2,A,Report,Discrete Structures,Pak Study,Genetics
-2,B,Report,Discrete Structures,Pak Study,Genetics
-2,C,Report,Discrete Structures,Pak Study,Genetics
-2,D,Report,Discrete Structures,Pak Study,Genetics
-3,A,OOP,Comm. Skills,SE,Stats,DLD
-3,B,OOP,Comm. Skills,SE,Stats,DLD
-3,C,OOP,Comm. Skills,SE,Stats,DLD
-4,A,OOSE,ITM,DB,ppit,dccn,AI
-4,B,OOSE,ITM,DB,ppit,dccn,AI
-4,C,OOSE,ITM,DB,ppit,dccn,AI
-5,A,VP,HCI,SQE,SDA,SPM
-5,B,VP,HCI,SQE,SDA,SPM
-5,C,VP,HCI,SQE,SDA,SPM
-5,D,VP,HCI,SQE,SDA,SPM
-6,A,MAD,WEB,DP,Testing
-6,B,MAD,WEB,DP,Testing
-6,C,MAD,WEB,DP,Testing
-6,D,MAD,WEB,DP,Testing
-7,A,Research,French,enterpreneurship,CAL2
-7,B,Research,French,enterpreneurship,CAL2
-7,C,Research,French,enterpreneurship,CAL2
-8,A,HCI,SQE,ECA,Report,CALCULUS
-8,B,HCI,SQE,ECA,Report,CALCULUS
-8,C,SQE,SE,Stats,DLD,ITM
+1,1A,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+1,1B,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+1,1C,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+1,1D,ICT,ISLAMIYAT,CALCULUS,English,PF,MULTICAL
+2,2A,Report,Discrete Structures,Pak Study,Genetics
+2,2B,Report,Discrete Structures,Pak Study,Genetics
+2,2C,Report,Discrete Structures,Pak Study,Genetics
+2,2D,Report,Discrete Structures,Pak Study,Genetics
+3,3A,OOP,Comm. Skills,SE,Stats,DLD
+3,3B,OOP,Comm. Skills,SE,Stats,DLD
+3,3C,OOP,Comm. Skills,SE,Stats,DLD
+4,4A,OOSE,ITM,DB,ppit,dccn,AI
+4,4B,OOSE,ITM,DB,ppit,dccn,AI
+4,4C,OOSE,ITM,DB,ppit,dccn,AI
+5,5A,VP,HCI,SQE,SDA,SPM
+5,5B,VP,HCI,SQE,SDA,SPM
+5,5C,VP,HCI,SQE,SDA,SPM
+5,5D,VP,HCI,SQE,SDA,SPM
+6,6A,MAD,WEB,DP,Testing,LA
+6,6B,MAD,WEB,DP,Testing,LA
+6,6C,MAD,WEB,DP,Testing,LA
+6,6D,MAD,WEB,DP,Testing,LA
+7,7A,Research,French,Enterpreneurship,CAL2
+7,7B,Research,French,Enterpreneurship,CAL2
+7,7C,Research,French,Enterpreneurship,CAL2
+8,8A,HCI,SQE,ECA,Report,CALCULUS
+8,8B,HCI,SQE,ECA,Report,CALCULUS
+8,8C,SQE,SE,Stats,DLD,ITM
 

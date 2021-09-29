@@ -5,16 +5,16 @@ package Model;
 import Model.Student_Timeslot;
 import java.util.ArrayList;
 
-public class Day_for_Student {
+public class Student_Day {
     int no ; 
     ArrayList<Student_Timeslot> timeslots ; 
 
     
-    public Day_for_Student() {
+    public Student_Day() {
         
     }
 
-    public Day_for_Student(int no, ArrayList<Student_Timeslot> timeslots) {
+    public Student_Day(int no, ArrayList<Student_Timeslot> timeslots) {
         this.no = no ; 
         this.timeslots = timeslots  ;   
     }   

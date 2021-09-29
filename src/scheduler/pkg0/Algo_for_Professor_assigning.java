@@ -33,7 +33,7 @@ public class Algo_for_Professor_assigning {
             for (int var2 = 0; var2 < smstr.getSections().size(); var2++) {     
                 
                 Section section = smstr.getSections().get(var2) ; 
-                section_no = section.getNo();
+                section_no = section.getId();
                 
                 ArrayList<Professor_Section_Allocation> allocations = section.getAllocations();
                     

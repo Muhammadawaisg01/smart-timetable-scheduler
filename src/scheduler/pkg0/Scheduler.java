@@ -8,13 +8,13 @@ public class Scheduler {
 //    String professor;
 //    String program ; 
     
-    public int semester_no ; 
-    public String section ; 
-    public String room ; 
-    public int slot ; 
-    public int day ;
-    public String course ; 
-    public int lecture_no;
+    int semester_no ; 
+    String section ; 
+    String room ; 
+    int slot ; 
+    int day ;
+    String course ; 
+    int lecture_no;
     
     public Scheduler( String room, int sem_no,String section ,int day,int slot, String course,int lec_no ) {
         this.section = section;
@@ -86,9 +86,6 @@ public class Scheduler {
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     // Setters and Getters      
     
-    
-    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
     public int getSemester_no() {
         return semester_no;
     }
@@ -144,6 +141,8 @@ public class Scheduler {
     public void setLecture_no(int lecture_no) {
         this.lecture_no = lecture_no;
     }
+    
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     
     
 }   // CLASS

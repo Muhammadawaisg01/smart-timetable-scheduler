@@ -1,4 +1,3 @@
-
 package scheduler.pkg0;
 
 import static db.DBConnection.getConnection;
@@ -35,8 +34,6 @@ import static db.DBConnection.createConnection;
 
 public class Runner {
 
-    static ArrayList<Student> students = new ArrayList<>();
-
     public static ArrayList<Room> rooms = Entities_Main_Arrays.rooms;
     static ArrayList<Room> labs = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
@@ -50,33 +47,23 @@ public class Runner {
 
     public static ArrayList<Semester> semesters;
 
-    static String course_name[] = {"ICT", "ISLAMIYAT", "CALCULUS", "English", " PF", "MULTICAL",
-        "ECA", "Report", "Discrete Structures", "Pak Study", "Genetics",
-        "Data structures", "OOP", "Comm. Skills", "SE", "Stats", "DLD", "OS",
-        "OOSE", "ITM", "DB", "ppit", "dccn", "AI", "SRE", "WEB", "LA",
-        "VP", "HCI", "SQE", "SDA", "SPM",
-        "MAD", "WEB", "DP", "Testing",
-        "Research", "French", "enterpreneurship", "CAL2"}   ;   
+    public static void main(String[] args) {                                    // MAIN METHOD  
+        createConnection(); // creating connection with database    
 
-    public static void main(String[] args) {    
-        createConnection(); // creating connection with database
-        
-        Entities_Main_Arrays.add_Data_to_Student_List() ;   
-        
+        Entities_Main_Arrays.add_Data_to_Student_List();
+
+        Entities_Main_Arrays.add_Data_to_Semester_List();
+        semesters = Entities_Main_Arrays.semesters;
+        System.out.println(semesters.get(3));
 //        System.out.println(Entities_Main_Arrays.student_list.size() ) ; 
 //        System.out.println(Entities_Main_Arrays.student_list.get(0).toString());
-//        
 //        System.exit(0); 
-        
+
         course = CourseUtility.readCourseFile();
         System.out.println(course.size() + "\tSize of courses");
 //        Section_Schedule obj1 = new Section_Schedule();   
 
-        File file = new File("Semesters.txt");
-        // semester
-        semesters = Semester.getSemesters(file);
-
-//        Entities_Main_Arrays.add_Data_to_Professor_List();
+        Entities_Main_Arrays.add_Data_to_Professor_List();
 
 //        System.out.println(semesters.size());
 //        for (Semester semester : semesters) {
@@ -92,26 +79,26 @@ public class Runner {
         System.out.println(is_scheduling_possible());
 
         main_algorithm();
-
         System.out.println("Scheduler        SIze      " + scheduler.size());
         for (Scheduler sch : scheduler) {
             System.out.println(sch.toString());
         }
-
         assignProfessorToSections();
+//        System.out.println(semesters.size() + "\tsize");
+//        System.exit(0);
         SectionUtility.assign_schedule_to_section();
         Algo_for_Professor_assigning.section_to_Professor_Scheduling();
         Semester.displayAllData();
-        
-        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule(); 
-        for (Student std  : Entities_Main_Arrays.student_list) {
+
+        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+
+        for (Student std : Entities_Main_Arrays.student_list) {
             std.display_Student();
         }
-        
+
 //        for (Professor prof : Entities_Main_Arrays.professor_list) {
 //            prof.display_Professor();
 //        }
-
 //        System.out.println("I am the number of CLASHES VARIABLE\t\t" + Algo_for_Professor_assigning.clashes_variable);
 //        Algo_for_Professor_assigning.clashes_variable = 0;
 //        ProfessorClashes.resolveClashes();
@@ -156,7 +143,7 @@ public class Runner {
 
     public static void assignProfessorToSections() {
         File file = new File("Semesters.txt");
-        semesters = Semester.getSemesters(file);
+//        semesters = Semester.getSemesters(file);
         Connection conn = getConnection();
         System.out.println(semesters.size());
         for (Semester semester : semesters) {
@@ -194,18 +181,6 @@ public class Runner {
         }
     }
 
-    public static void insertingData() {
-        ArrayList<Course> course_temp = new ArrayList<>();
-        for (int i = 0; i < semesters.size(); i++) {
-//            for(int k = 0 ; k <   ; k++ ) 
-            {
-
-            }
-            for (int j = 0; j < (int) (5 + Math.random() * 6); j++) {
-                course_temp.add(new Course((j + 1) + "", course_name[j], 4, true));
-            }
-        }
-    }
     static String day_name[] = {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
     static String slots_timing[] = {"08:30AM-10:00AM", "10:00AM-11:30AM", "11:30AM-01:00PM", "01:00PM-02:30PM", "2:30PM-04:00PM", "04:00PM-05:30PM"};
 
@@ -347,7 +322,7 @@ public class Runner {
             } else {
                 j = 0;
             }
-            
+
             for (sec = 0; sec < semesters.get(sem).getSections().size(); sec++) {
                 // check here the room size at (var) position
                 // check here the section size
@@ -362,7 +337,6 @@ public class Runner {
 
                 for (o = 0; o < 2; o++) {// for credit hours/timeslots = 2      
                     Section section = semesters.get(sem).getSections().get(sec);
-
 
                     for (int a = 0; a < section.getCourses().size(); a++) {
 
@@ -381,7 +355,7 @@ public class Runner {
                                     course_name = semesters.get(sem).getSections().get(sec).getCourses().get(a).getTitle();
 
                                     scheduler.add(new Scheduler(rm.getName(), semesters.get(sem).getNo(),
-                                            "" + (semesters.get(sem).getSections().get(sec).getNo()),
+                                            "" + (semesters.get(sem).getSections().get(sec).getId()),
                                             rm.getDays().get(day_no).getNo(), rm.getDays().get(day_no).getTimeslots().get(slot_no).getNo(), course_name, o + 1));
 
                                     check1 = true;
@@ -393,7 +367,7 @@ public class Runner {
                                 break;
                             }
                         }
-                        permute(semesters.get(sem).getSections().get(sec).getCourses());
+                        permute(semesters.get(sem).getSections().get(sec).getCourses()) ;   
                     } //slot=0 ; 
                 }
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 
@@ -447,33 +421,32 @@ public class Runner {
         }
     }
 
-    public static void addingStudent() {
-        String query1 = " select * from scheduler01 ";
-        int id = 0;
-        String name = "";
-        double marks = 0;
-        try {
-            System.out.println("hello-00");
-            PreparedStatement stmt1 = getConnection().prepareStatement(query1);
-            System.out.println("hello1");
-            ResultSet rs = stmt1.executeQuery();
-            System.out.println("hello2");
-            while (rs.next()) {
-                System.out.println(rs.getInt(1) + "   " + rs.getString(2));
-//                id = rs.getInt(1) ; 
-//                name = rs.getString(2); 
-//                marks= rs.getDouble(3); 
-//                students.add(new Student(id,name,marks) ) ; 
-            }
-            for (int i = 0; i < students.size(); i++) {
-                System.out.println(students.get(i).toString());
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error in Fetching data from Students Table", "Student Table", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
+//    public static void addingStudent() {
+//        String query1 = " select * from scheduler01 ";
+//        int id = 0;
+//        String name = "";
+//        double marks = 0;
+//        try {
+//            System.out.println("hello-00");
+//            PreparedStatement stmt1 = getConnection().prepareStatement(query1);
+//            System.out.println("hello1");
+//            ResultSet rs = stmt1.executeQuery();
+//            System.out.println("hello2");
+//            while (rs.next()) {
+//                System.out.println(rs.getInt(1) + "   " + rs.getString(2));
+////                id = rs.getInt(1) ; 
+////                name = rs.getString(2); 
+////                marks= rs.getDouble(3); 
+////                students.add(new Student(id,name,marks) ) ; 
+//            }
+//            for (int i = 0; i < students.size(); i++) {
+//                System.out.println(students.get(i).toString());
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "Error in Fetching data from Students Table", "Student Table", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
     public static void viewModel() {
         for (int i = 0; i < scheduler.size(); i++) {
             System.out.print(scheduler.get(i).toString());

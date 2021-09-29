@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 public class Student_Schedule {
     
-    ArrayList<Day_for_Student> days ; 
+    ArrayList<Student_Day> days ; 
 
     public Student_Schedule(int days, int slots) {
         this.initialize_Schedule(days, slots);
     }
     
-    public ArrayList<Day_for_Student> getDays() {
+    public ArrayList<Student_Day> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<Day_for_Student> days) {
+    public void setDays(ArrayList<Student_Day> days) {
         this.days = days;
     }
         
@@ -24,7 +24,7 @@ public class Student_Schedule {
         this.days = new ArrayList<>() ; 
         
         for(int i = 0 ; i < days ; i++ ){ 
-        Day_for_Student obj1 = new Day_for_Student();
+        Student_Day obj1 = new Student_Day();
         obj1.no=  i ;
         obj1.timeslots =  new ArrayList<>() ; 
         

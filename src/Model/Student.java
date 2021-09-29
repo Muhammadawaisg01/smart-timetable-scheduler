@@ -13,19 +13,18 @@ import java.util.logging.Logger;
 
 public class Student {  
     
-    String registration_no ; 
+    String registration_no ;
     String name;
     
-//  int program ;
+//    int program ;
 //    int semester;
     String section_id  ;   
-    private static Connection conn;
+    private static Connection conn; 
     Student_Schedule schedule;
-
-    ArrayList<Course> registered_courses = new ArrayList<>() ; 
+    
+    ArrayList<Course> registered_courses = new ArrayList<>() ;  
     
     ArrayList<Student_lecture_clash> clash_array = new ArrayList<>() ; 
-    
     ArrayList<Student_Section_Allocation> allocations = new ArrayList<>() ; 
     
     
@@ -77,8 +76,9 @@ public class Student {
         System.out.println("Student Name   " + this.name);
         System.out.println("Registration No  " + this.registration_no);
 //        System.out.println("Semester   " + this.semester);  
-        System.out.println("Section   " + this.getSection_id() ) ; 
+        System.out.println("Section ID  :   " + this.getSection_id() ) ; 
         
+        display_registered_courses();
         for (int k = 0; k < schedule.getDays().size(); k++) {
 //            System.out.println(schedule.days.get(k).no);
 //            String d = "Days", r = "Room", cc = "Course Code", l = "Lec No", s ="Slot No" ;
@@ -126,7 +126,11 @@ public class Student {
 //        }
     }
     
-    
+    public void display_registered_courses(){
+    for(Course crs : registered_courses){
+        System.out.println(crs.toString());
+    }
+    }
 
     // setters and getters section        
 

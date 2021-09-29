@@ -90,7 +90,7 @@ public void reading_Student_From_DB() {
 ////        std_slot.course = "";
 ////        std_slot.lecture_no = 0;
 ////        std_slot.room = "";
-////        Day_for_Student std_day = new Day_for_Student();
+////        Student_Day std_day = new Student_Day();
 ////        std_day.name = "Mon";
 ////        std.add(new Student("01","Ali","7",1, )  )  
 //    }

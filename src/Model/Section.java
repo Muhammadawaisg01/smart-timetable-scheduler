@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 
 public class Section {
 
-    String no;
-    int student_strength;           // student strength
+    private String id;
+    private int student_strength;           // student strength
 
     ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
@@ -24,6 +24,7 @@ public class Section {
         return this.allocations;
     }
 
+    
     public void setDay(int index, int day_no) {
         schedule.days.get(index).no = day_no;
     }
@@ -65,23 +66,23 @@ public class Section {
         this.schedule = schedule;
     }
 
-    public Section(String no) {
-        this.no = no;
+    public Section(String id) {
+        this.id = id;
     }
 
     public Section() {
     }
 
-    public String getNo() {
-        return no;
+    public String getId() {
+        return id;
     }
 
     public int getStrength() {
         return student_strength;
     }
 
-    public void setNo(String no) {
-        this.no = no;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setStudent_strength(int student_strength) {
@@ -95,11 +96,10 @@ public class Section {
     public void setAllocations(ArrayList<Professor_Section_Allocation> allocations) {
         this.allocations = allocations;
     }
-    
+
     public ArrayList<Course> getSectionCourses() {
         return sectionCourses;
     }
-    
 
     public ArrayList<Course> getCourses() {
         return this.sectionCourses;
@@ -111,7 +111,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "Section{" + "no=" + no + '}';
+        return "Section{" + "ID=" + id + '}';
     }
 
     public void displaySection(int semesterNo) {  // display tabular data
@@ -120,7 +120,7 @@ public class Section {
         int i = 0, j = 0;
         Section_Schedule schedule = this.getSchedule();
         System.out.println("Semester No:\t" + semesterNo);
-        System.out.println("Section_no      " + this.no);
+        System.out.println("Section_no      " + this.id);
         for (int k = 0; k < schedule.days.size(); k++) {
 //            System.out.println(schedule.days.get(k).no);
 //            String d = "Days", r = "Room", cc = "Course Code", l = "Lec No", s ="Slot No" ;
@@ -170,8 +170,8 @@ public class Section {
         }
         return null;
     }
-    
-    public static int get_Semester_of_Section(String section){
+
+    public static int get_Semester_of_Section(String section) {
         String q = "select semester_no from section where section_id  = '" + section + "'";
         System.out.println(q);
         int semester_no = 0;
@@ -179,33 +179,55 @@ public class Section {
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement(q);
-            ResultSet rs =stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
             rs.next();
-            semester_no = rs.getInt(1)  ; 
+            semester_no = rs.getInt(1);
         } catch (SQLException ex) {
-            System.out.println("error in getting semester no of the section in the section details  ") ;    
+            System.out.println("error in getting semester no of the section in the section details  ");
             ex.printStackTrace();
         }
+        System.out.println("i am the semester no  :  " + semester_no);
         return semester_no;
     }
-            
-    public static int get_Strength_of_Section(String section){
-        String q = "select student_strength from section where section_id  = "+section ; 
+
+    public static int get_Strength_of_Section(String section) {
+        String q = "select student_strength from section where section_id  = " + section;
         int strength = 0;
         Connection conn = getConnection();
         PreparedStatement stmt;
         try {
             stmt = conn.prepareStatement(q);
-            ResultSet rs=stmt.executeQuery();
-            strength = rs.getInt("semester_no")  ; 
+            ResultSet rs = stmt.executeQuery();
+            strength = rs.getInt("semester_no");
         } catch (SQLException ex) {
-            System.out.println("error in getting semester no of the section in the section details  ") ;    
+            System.out.println("error in getting semester no of the section in the section details  ");
             ex.printStackTrace();
         }
         return strength;
     }
-    
-    
+
+    /*
+    @param semNo
+    @return section of semNo
+     */
+    public static ArrayList<Section> getSections(int semNo) {
+        Connection conn = getConnection();
+        String q = "select section_id from section where semester_no = " + semNo;
+        System.out.println(q);
+        ArrayList<Section> sections = new ArrayList<>();
+        PreparedStatement stmt;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String secId = rs.getString(1);
+                sections.add(new Section(secId));
+            }
+            return sections;
+        } catch (SQLException ex) {
+            Logger.getLogger(Semester.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }
-
-

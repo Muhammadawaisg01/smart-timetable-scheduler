@@ -114,7 +114,25 @@ public class Course {
         }
         return null;
     }
- 
+    
+    public static ArrayList<Course> getCourses(String secId) {
+        Connection conn = getConnection();
+        ArrayList<Course> courses = new ArrayList<>();
+        String q = "select course_code from section_courses where section_id = '" + secId + "'";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                String course_code = rs.getString(1);
+                courses.add(getCourse(course_code));
+            }
+            return courses;
+        } catch (SQLException ex) {
+            Logger.getLogger(Course.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }
 
 
