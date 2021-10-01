@@ -17,14 +17,17 @@ public class Room {
     boolean isFull;
     boolean isLab;
 
+//    ArrayList<Course> specific_courses =  new ArrayList<>() ; 
+    
+    
     ArrayList<Room_Day> days;
-
+    
     public Room( String name, boolean isFull, ArrayList<Room_Day> days ) {
         this.name = name;
         this.isFull = isFull;
         this.days = days;   
     }   
-
+    
     public Room() {     
 
     }

@@ -8,11 +8,11 @@ public class Section_Timeslot {
     String room;
     String course_code;
     int lecture_no;    
-    boolean isLab   ;   
+    boolean isLab;
     boolean check;          // this check is for checking that is this slot is available or not 
     
     
-    public Section_Timeslot() { 
+    public Section_Timeslot() {
         
     }
 

@@ -109,7 +109,6 @@ public class Student {
         System.out.println("_________________________My Clashes_____________________________________");
         for(int var = 0 ; var < this.getClash_array().size() ; var++) { 
             System.out.print("Registration_No  : "+getClash_array().get(var).getReg_no()+"\t")  ; 
-            System.out.print("Clash_No  : "+getClash_array().get(var).getClash_no()+"\t")  ;  
             System.out.print("Semester  : "+getClash_array().get(var).getSemester()+"\t" )  ; 
             System.out.print("Section  : "+getClash_array().get(var).getSection()+"\t")  ; 
             System.out.print("Room  : "+getClash_array().get(var).getRoom()+"\t")  ; 

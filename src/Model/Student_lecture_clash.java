@@ -7,38 +7,33 @@ package Model;
 public class Student_lecture_clash {
     
     String reg_no;
-//    int program_id ; 
+//    int program_id ;
     int semester;
     String section;
     String room ;
     int day_no;
     int slot_no;
     String course;
-    int lecture_no ; 
-    int clash_no;
-    boolean isLab;      
+    int lecture_no ;
+    boolean isLab;    
     boolean isresolved; 
+
+    public Student_lecture_clash(String reg_no, int semester, String section, String room, int day_no, int slot_no, String course, int lecture_no, boolean isLab) {
+        this.reg_no = reg_no;
+        this.semester = semester;
+        this.section = section;
+        this.room = room;
+        this.day_no = day_no;
+        this.slot_no = slot_no;
+        this.course = course;
+        this.lecture_no = lecture_no;
+        this.isLab = isLab;
+        this.isresolved = false;
+    }
     
     public Student_lecture_clash()  {   
     
-    }
-    
-    
-    
-    
-    
-    
-    
-    // getters and setters section
-
-//    public int getProgram_id() {
-//        return program_id;
-//    }
-//
-//    public void setProgram_id(int program_id) {
-//        this.program_id = program_id;
-//    }
-
+    }   
     public int getSemester() {
         return semester;
     }
@@ -94,15 +89,6 @@ public class Student_lecture_clash {
     public void setLecture_no(int lecture_no) {
         this.lecture_no = lecture_no;
     }
-
-    public int getClash_no() {
-        return clash_no;
-    }
-
-    public void setClash_no(int clash_no) {
-        this.clash_no = clash_no;
-    }
-
     public boolean isIsresolved() {
         return isresolved;
     }

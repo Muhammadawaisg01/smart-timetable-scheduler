@@ -113,9 +113,9 @@ public void reading_Student_From_DB() {
 //            if (scheduler.get(i).semester_no == 7 ) {   
                 
                 for (int sec = 0; sec < sections.length; sec++ ) { 
-                    if (scheduler.get(i).section.equalsIgnoreCase(sections[sec] ) ) { 
+                    if (scheduler.get(i).getSection().equalsIgnoreCase(sections[sec] ) ) { 
                         
-                        section = scheduler.get(i).section;
+                        section = scheduler.get(i).getSection();
 //                                   getting data from schedule array
                         room = scheduler.get(i).room; 
                         day = scheduler.get(i).day;
