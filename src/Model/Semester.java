@@ -1,6 +1,4 @@
-
 package Model;
-
 
 import static Controller.Runner.semesters;
 import java.io.File;
@@ -18,6 +16,7 @@ import java.util.logging.Logger;
 
 public class Semester {
 
+    private int fittness = 0;
     int no;
     ArrayList<Section> sections = new ArrayList<>();
 
@@ -63,10 +62,10 @@ public class Semester {
         return null;
     }
 
-    public void createSection(String name) { 
-        sections.add(new Section(name) ) ; 
-    } 
-    
+    public void createSection(String name) {
+        sections.add(new Section(name));
+    }
+
 //    public static ArrayList<Semester> getSemesters(File file) {
 //        ArrayList<Semester> semesters = new ArrayList<>();
 //        try {
@@ -104,7 +103,6 @@ public class Semester {
 //        }
 //        return semesters;
 //    }
-    
     public static ArrayList<Semester> getSemesters() {
         Connection conn = getConnection();
         ArrayList<Semester> semesters = new ArrayList<>();
@@ -117,7 +115,7 @@ public class Semester {
                 int semNo = rs.getInt("semester_no");
                 ArrayList<Section> sections = Section.getSections(semNo);
                 System.out.println(semNo + "\t" + sections.size());
-                for (Section section: sections) {
+                for (Section section : sections) {
                     ArrayList<Course> courses = Course.getCourses(section.getId());
                     section.setSectionCourses(courses);
                 }
@@ -143,23 +141,41 @@ public class Semester {
         for (Semester semester : semesters) {
             ArrayList<Section> sec = semester.getSections();
             int semNo = semester.getNo();
-            for ( Section section : sec ) { 
+            for (Section section : sec) {
 //                System.out.println(semNo + "    " + section.getNo());
-                ArrayList<Professor_Section_Allocation> allocations = section.getAllocations()  ;   
-                  
+                ArrayList<Professor_Section_Allocation> allocations = section.getAllocations();
+
 //                ArrayList<Section> sections = semester.getSections();
-                
 //                for (Section s: sections) { 
 //                    s.schedule.display();
-                    section.displaySection(semNo) ; 
-                    
-                int var=0;
-                for (Professor_Section_Allocation allocation: allocations) {
+                section.displaySection(semNo);
+
+                int var = 0;
+                for (Professor_Section_Allocation allocation : allocations) {
 //                    if (allocation.ge)
-                    System.out.println(allocation.toString()+"\t"+var) ;  var++;   
-                } 
+                    System.out.println(allocation.toString() + "\t" + var);
+                    var++;
+                }
 //                }
             }
         }
     }
+
+    //Get the fittest individual
+    public Section getFittest(int semesterNumber) {
+        int maxFit = Integer.MIN_VALUE;
+        int maxFitIndex = 0;
+        ArrayList<Section> sections = semesters.get(semesterNumber).getSections();
+        for (int i = 0; i < sections.size(); i++) {
+            if (maxFit <= sections.get(i)) {
+                maxFit = sections.get(i).fitness;
+                maxFitIndex = i;
+            }
+        }
+        fittest = individuals[maxFitIndex].fitness;
+        return individuals[maxFitIndex];
+    }
+    //Get the second most fittest individual
+    //Get index of least fittest individual
+    //Calculate fitness of each individual
 }

@@ -3,7 +3,8 @@ package Model;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import static Controller.Runner.course;
+import static Model.Entities_Main_Arrays.student_list;
+import static Controller.Runner.semesters;
 import static db.DBConnection.getConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.logging.Logger;
 
 public class Section {
 
+    private int fittness;   // number of clashes
     private String id;
     private int student_strength;           // student strength
 
@@ -24,7 +26,6 @@ public class Section {
         return this.allocations;
     }
 
-    
     public void setDay(int index, int day_no) {
         schedule.days.get(index).no = day_no;
     }
@@ -68,9 +69,7 @@ public class Section {
 
     public Section(String id) {
         this.id = id;
-    }
-
-    public Section() {
+        this.fittness = 0;
     }
 
     public String getId() {
@@ -228,6 +227,36 @@ public class Section {
             Logger.getLogger(Semester.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public static void calFittness() {
+        for (Semester semester : semesters) {
+            ArrayList<Section> sections = semester.getSections();
+            for (Section section : sections) {
+                ArrayList<Course> courses = section.getCourses();
+                for (Course course : courses) {
+                    for (Student student : student_list) {
+                        ArrayList<Student_lecture_clash> student_lecture_clashs = student.getClash_array();
+                        for (Student_lecture_clash student_lecture_clash : student_lecture_clashs) {
+                            if (course.getTitle().equalsIgnoreCase(student_lecture_clash.getCourse())
+                                    && student_lecture_clash.getSection().equalsIgnoreCase(section.getId())
+                                    && student_lecture_clash.getSemester() == semester.getNo()) {
+                                section.fittness++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static void printFittness() {
+        for (Semester semester : semesters) {
+            ArrayList<Section> sections = semester.getSections();
+            for (Section section : sections) {
+                System.out.println(section.getId() + "\t" +section.fittness);
+            }
+        }
     }
 
 }
