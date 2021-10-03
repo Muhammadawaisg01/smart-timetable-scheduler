@@ -16,8 +16,9 @@ public class Room {
     int capacity;
     boolean isFull;
     boolean isLab;
-
-//    ArrayList<Course> specific_courses =  new ArrayList<>() ; 
+    
+//    Array of specified courses, it means that only these courses will be taught in these rooms
+//    ArrayList<Course> specified_courses =  new ArrayList<>() ;    
     
     
     ArrayList<Room_Day> days;

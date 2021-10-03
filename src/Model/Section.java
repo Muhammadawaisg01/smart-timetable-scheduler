@@ -3,7 +3,7 @@ package Model;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import static scheduler.pkg0.Runner.course;
+import static Controller.Runner.course;
 import static db.DBConnection.getConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

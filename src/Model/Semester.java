@@ -2,7 +2,7 @@
 package Model;
 
 
-import static scheduler.pkg0.Runner.semesters;
+import static Controller.Runner.semesters;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

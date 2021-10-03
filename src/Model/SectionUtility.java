@@ -1,11 +1,11 @@
 
 
 package Model;
-import static scheduler.pkg0.Runner.scheduler;
-import static scheduler.pkg0.Runner.semesters;
+import static Controller.Runner.scheduler;
+import static Controller.Runner.semesters;
 
 
-import scheduler.pkg0.Scheduler;
+import Controller.Scheduler;
 
 import java.util.ArrayList;
 

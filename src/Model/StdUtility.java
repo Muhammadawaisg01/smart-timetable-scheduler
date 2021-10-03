@@ -7,8 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import scheduler.pkg0.Runner;
-import scheduler.pkg0.Scheduler;
+import Controller.Runner;
+import Controller.Scheduler;
 
 
 public class StdUtility {

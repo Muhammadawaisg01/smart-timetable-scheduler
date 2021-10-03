@@ -4,7 +4,6 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-import scheduler.pkg0.*;
 public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();   
