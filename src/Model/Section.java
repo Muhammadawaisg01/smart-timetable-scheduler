@@ -29,7 +29,11 @@ public class Section {
     public int getFittness() {
         return fittness;
     }
-    
+
+    private void setFittness(int fittness) {
+        this.fittness = fittness;
+    }
+
     public void setDay(int index, int day_no) {
         schedule.days.get(index).no = day_no;
     }
@@ -234,6 +238,9 @@ public class Section {
     }
 
     public void calFittness() {
+        resetFitnes();
+//        System.out.println("RESET FITTNESS");
+//        printFittness();
         for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
             for (Section section : sections) {
@@ -252,13 +259,24 @@ public class Section {
                 }
             }
         }
+        System.out.println("After calculations");
+        printFittness();
     }
 
-    public static void printFittness() {
+    public void printFittness() {
         for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
             for (Section section : sections) {
-                System.out.println(section.getId() + "\t" +section.fittness);
+                System.out.println(section.getId() + "\t" + section.fittness);
+            }
+        }
+    }
+
+    public void resetFitnes() {
+        for (Semester semester : semesters) {
+            ArrayList<Section> sections = semester.getSections();
+            for (Section section : sections) {
+                section.setFittness(0);
             }
         }
     }

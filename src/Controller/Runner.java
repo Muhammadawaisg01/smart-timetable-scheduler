@@ -134,6 +134,10 @@ public class Runner {
 //        }
 //        int n=0 ; 
 //        permute(course) ; 
+//        Section.calFittness();
+//        Section.printFittness();
+        clash_resolving.Student student = new clash_resolving.Student();
+        student.runGA();
     } // MAIN METHOD 
 
     public static void mainMenu() {
@@ -367,7 +371,7 @@ public class Runner {
                                 break;
                             }
                         }
-                        permute(semesters.get(sem).getSections().get(sec).getCourses()) ;   
+                        permute(semesters.get(sem).getSections().get(sec).getCourses());
                     } //slot=0 ; 
                 }
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 
