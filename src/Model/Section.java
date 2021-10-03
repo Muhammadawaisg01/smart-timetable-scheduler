@@ -26,6 +26,10 @@ public class Section {
         return this.allocations;
     }
 
+    public int getFittness() {
+        return fittness;
+    }
+    
     public void setDay(int index, int day_no) {
         schedule.days.get(index).no = day_no;
     }
@@ -229,7 +233,7 @@ public class Section {
         return null;
     }
 
-    public static void calFittness() {
+    public void calFittness() {
         for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
             for (Section section : sections) {

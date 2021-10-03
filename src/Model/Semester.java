@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class Semester {
 
-    private int fittness = 0;
+    private int fittest = 0;
     int no;
     ArrayList<Section> sections = new ArrayList<>();
 
@@ -165,17 +165,53 @@ public class Semester {
     public Section getFittest(int semesterNumber) {
         int maxFit = Integer.MIN_VALUE;
         int maxFitIndex = 0;
-        ArrayList<Section> sections = semesters.get(semesterNumber).getSections();
-        for (int i = 0; i < sections.size(); i++) {
-            if (maxFit <= sections.get(i)) {
-                maxFit = sections.get(i).fitness;
+        ArrayList<Section> sectionsFitness = semesters.get(semesterNumber).getSections();
+        for (int i = 0; i < sectionsFitness.size(); i++) {
+            if (maxFit <= sectionsFitness.get(i).getFittness()) {
+                maxFit = sectionsFitness.get(i).getFittness();
                 maxFitIndex = i;
             }
         }
-        fittest = individuals[maxFitIndex].fitness;
-        return individuals[maxFitIndex];
+        fittest = sectionsFitness.get(maxFitIndex).getFittness();
+        return sectionsFitness.get(maxFitIndex);
     }
+
     //Get the second most fittest individual
+    public Section getSecondFittest(int semesterNumber) {
+        int maxFit1 = 0;
+        int maxFit2 = 0;
+        ArrayList<Section> sectionsFitness = semesters.get(semesterNumber).getSections();
+        for (int i = 0; i < sectionsFitness.size(); i++) {
+            if (sectionsFitness.get(i).getFittness() > sectionsFitness.get(maxFit1).getFittness()) {
+                maxFit2 = maxFit1;
+                maxFit1 = i;
+            } else if (sectionsFitness.get(i).getFittness() > sectionsFitness.get(maxFit2).getFittness()) {
+                maxFit2 = i;
+            }
+        }
+        return sectionsFitness.get(maxFit2);
+    }
+
     //Get index of least fittest individual
+    public int getLeastFittestIndex(int semesterNumber) {
+        int minFitVal = Integer.MAX_VALUE;
+        int minFitIndex = 0;
+        ArrayList<Section> sectionsFitness = semesters.get(semesterNumber).getSections();
+        for (int i = 0; i < sectionsFitness.size(); i++) {
+            if (minFitVal >= sectionsFitness.get(i).getFittness()) {
+                minFitVal = sectionsFitness.get(i).getFittness();
+                minFitIndex = i;
+            }
+        }
+        return minFitIndex;
+    }
+
     //Calculate fitness of each individual
+    public void calculateFitness(int semesterNumber) {
+        ArrayList<Section> sectionsFitness = semesters.get(semesterNumber).getSections();
+        for (int i = 0; i < sectionsFitness.size(); i++) {
+            sectionsFitness.get(i).calFittness();
+        }
+        getFittest(semesterNumber);
+    }
 }

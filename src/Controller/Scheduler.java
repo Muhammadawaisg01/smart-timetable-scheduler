@@ -8,7 +8,7 @@ public class Scheduler {
 //    String professor;
 //    String program ; 
     
-    int semester_no ; 
+    int semester_no ;
     String section ; 
     String room ; 
     int slot ; 
@@ -37,11 +37,6 @@ public class Scheduler {
 
     
     
-//    @Override 
-//    public String toString( ) 
-//    {
-//        return "Scheduler{room=" + room + ", slot=" + slot + ", day=" + day + ", course=" + course + '}';
-//    }
 
     public static void display(ArrayList<Scheduler> sch) {
         int room_no = 0;

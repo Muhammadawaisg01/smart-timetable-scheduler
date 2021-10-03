@@ -24,11 +24,11 @@ public class DBConnection {
 
     public static void createConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/schedulerdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/server1?", "root", "tariq143");
             System.out.println("connection is successfull");
         } catch (Exception ex) {
-            ex.printStackTrace();
-//        System.out.println("");
+//            ex.printStackTrace();
+            System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Error in Connecting to Database", "Error", JOptionPane.ERROR_MESSAGE);
 //        return null ; 
         }
@@ -40,20 +40,20 @@ public class DBConnection {
         try {
             PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query1);  // searching Club ID Query 
             stmt1.setString(1, club_name);
-            ResultSet rs = stmt1.executeQuery() ;
+            ResultSet rs = stmt1.executeQuery();
             if (rs.next()) {
                 clubID = rs.getInt(1);
             }
-        } catch (Exception ex) {    
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error in FInding Key of Club", "Connection", JOptionPane.ERROR_MESSAGE);
-        }   
+        }
         return clubID;
     }
-    
-    static ResultSet searching_City( String city_name ) {   
-        ResultSet rs = null ;   
-        String query4 = "select City_id from league.city where name = ? "   ;  
-        try {   
+
+    static ResultSet searching_City(String city_name) {
+        ResultSet rs = null;
+        String query4 = "select City_id from league.city where name = ? ";
+        try {
             PreparedStatement stmt;
             stmt = DBConnection.getConnection().prepareStatement(query4);
             stmt.setString(1, city_name);
@@ -65,5 +65,4 @@ public class DBConnection {
     }
 
 } // main class
-
 
