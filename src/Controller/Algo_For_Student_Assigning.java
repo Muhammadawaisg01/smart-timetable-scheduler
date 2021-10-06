@@ -5,7 +5,6 @@ import Model.Entities_Main_Arrays;
 import Model.Section;
 import Model.Section_Schedule;
 import Model.Semester;
-import static Model.StdUtility.student_list;
 import Model.Student;
 import Model.Student_Day;
 import Model.Student_Schedule;
@@ -29,12 +28,14 @@ public class Algo_For_Student_Assigning {
 //    ArrayList<Scheduler> schedule_array2 = new ArrayList<>() ;        
         for (int var1 = 0; var1 < student_list.size(); var1++) {          //start from picking from first student  
             std = student_list.get(var1);
-
+            std.resetStudentClashArray();   // empty clash array
+            std.resetStudentScheduleArray(5, 6);    // empty schedule   (change 5 days,6 slots to veriables)
+            std.resetStudentAllocationArray();  // empty allocations
             String std_sec_id = std.getSection_id();
 
-            ArrayList<Course> registered_courses = std.getRegistered_courses();          // it will contain all the courses that atudent has registered 
+            ArrayList<Course> registered_courses = std.getRegistered_courses();          // it will contain all the courses that student has registered 
             ArrayList<Course> extra_courses = new ArrayList<>();   // in this array those courses will be stored which student has picked and offered in different semesters and sections not in his semester     
-
+//            System.out.println("/////////////////////////////////////////////////////////////");
             section_to_Student_Timeslotting(std, std_sec_id);       // method to assign regular courses to the student
 // if his registered courses are completed then loop ends but if he has registered more courses then 
             // logic will be implemented 
@@ -42,8 +43,8 @@ public class Algo_For_Student_Assigning {
             if (extra_courses.size() > 0) {
                 // call the main algorithm method   
                 find_compatible_section_for_student_extra_courses(std, extra_courses, semesters);
-                System.out.println("/////////////////////////////////////////////////////////////");
-                System.out.println("No courses registered" + std.getName());
+//                System.out.println("/////////////////////////////////////////////////////////////");
+//                System.out.println("No courses registered" + std.getName());
 //                System.exit(1);
             } else {
                 System.out.println("No courses registered" + std.getName());
@@ -167,7 +168,7 @@ public class Algo_For_Student_Assigning {
     }
 
     public static void find_compatible_section_for_student_extra_courses(Student std, ArrayList<Course> extra_courses, ArrayList<Semester> semesters) {
-        
+
         for (Course crs : extra_courses) {  // extra courses
             ArrayList<Section> sections = getSections(crs, semesters);  // section offering course
             ArrayList<StudentClash> clashes = new ArrayList<>();    // store student course clash with sections
@@ -218,6 +219,71 @@ public class Algo_For_Student_Assigning {
                 }
                 for (StudentClash clashh : clashes) {
                     if (clashh.getClashes() == 1) {
+//                        System.out.println("One clash");
+                        newClash(clashh.getStudent(), clashh.getSection(), clashh.getCourse(), clash_with_section.get(0), clash_with_section.get(1));
+                        oneClash = true;
+                        break;
+                    }
+                }
+
+                if (!oneClash) {
+                    for (StudentClash clashh : clashes) {
+                        if (clashh.getClashes() == 2) {
+//                            System.out.println("Two clashes");
+                            newClash(clashh.getStudent(), clashh.getSection(), clashh.getCourse(), clash_with_section.get(0), clash_with_section.get(1));
+                            newClash(clashh.getStudent(), clashh.getSection(), clashh.getCourse(), clash_with_section.get(2), clash_with_section.get(3));
+                            break;
+                        }
+                    }
+                }
+//                });
+
+            }
+        }
+    }
+
+    /////////////////////////////////////////// WORKING ON CLASH RESOLVING //////////////////////////////////////////
+    public static void updateStudentClashes() {   // assigning schedule to students 
+        ArrayList<Student> student_list = Entities_Main_Arrays.student_list;
+        for (Student std : student_list) {          //start from picking from first student
+            ArrayList<Course> registered_courses = std.getRegistered_courses();          // it will contain all the courses that student has registered
+            std.resetStudentClashArray();
+            studentClashes(std, registered_courses);
+        }
+    }
+
+    private static void studentClashes(Student std, ArrayList<Course> registeredCourses) {
+        for (Course crs : registeredCourses) {  // registered courses
+            ArrayList<Section> sections = getSections(crs, semesters);  // section offering course
+            ArrayList<StudentClash> clashes = new ArrayList<>();    // store student course clash with sections
+            ArrayList<Integer> clash_with_section = null;
+            boolean allocated = false;
+            boolean clash = false;
+            for (Section section : sections) {
+                ArrayList<Course> courses = section.getCourses();
+                clash_with_section = has_student_clash_with_this_section(std, section, crs);
+                for (Course course : courses) {
+                    if (crs.getTitle().equalsIgnoreCase(course.getTitle())) {
+                        int noOfClashes = clash_with_section.size() / 2;
+                        if (noOfClashes == 1) {
+                            clashes.add(new StudentClash(section, crs, std, noOfClashes)); // store clash with count
+                            clash = true;
+                        }
+                        if (noOfClashes == 2) {
+                            clash = true;
+                            clashes.add(new StudentClash(section, crs, std, noOfClashes)); // store clash with count
+                        }
+                    }
+                }
+                if (allocated) {
+                    break;
+                }
+            }
+            if (!allocated && clash) {   // student has clash with all sections
+                // find section with minimum clashes
+                boolean oneClash = false;
+                for (StudentClash clashh : clashes) {
+                    if (clashh.getClashes() == 1) {
                         System.out.println("One clash");
                         newClash(clashh.getStudent(), clashh.getSection(), clashh.getCourse(), clash_with_section.get(0), clash_with_section.get(1));
                         oneClash = true;
@@ -235,12 +301,24 @@ public class Algo_For_Student_Assigning {
                         }
                     }
                 }
-//                });
-
             }
         }
     }
 
+    public static int printStudentClashes() {
+        int total = 0;
+        ArrayList<Student> students = Entities_Main_Arrays.student_list;
+        for (Student student : students) {
+            ArrayList<Student_lecture_clash> clashes = student.getClash_array();
+            total += clashes.size();
+            clashes.forEach(clash -> {
+                System.out.println(clash.toString());
+            });
+        }
+        return total;
+    }
+
+/////////////////////////////////////////////////////////////// END OF WORKING ON CLASH RESOLVING /////////////////////////////////////
 
     /*
     @param student student has clash
@@ -258,20 +336,6 @@ public class Algo_For_Student_Assigning {
         String course = sec.getSchedule().getDays().get(day).getTimeslots().get(slot).getCourse();
         int lecture_no = sec.getSchedule().getDays().get(day).getTimeslots().get(slot).getLecture_no();
         boolean isLab = false;
-//        ArrayList<Section_Day> days = sec.getSchedule().getDays();
-//        for (Section_Day day : days) {
-//            ArrayList<Section_Timeslot> section_Timeslots = day.getTimeslots();
-//            for (Section_Timeslot timeslot : section_Timeslots) {
-//                System.out.println(timeslot.getCourse() + "\t" + crs.getTitle());
-//                if (timeslot.getCourse().equalsIgnoreCase(crs.getTitle())) {
-//                    day_no = day.getNo();
-//                    slot_no = timeslot.getSlot_no();
-//                    lecture_no = timeslot.getLecture_no();
-//                    room = timeslot.getRoom();
-//                    isLab = false;
-//                }
-//            }
-//        }
         std.getClash_array().add(new Student_lecture_clash(reg_no, semester, section, room, day_no, slot_no, course, lecture_no, isLab));
     }
 
@@ -338,7 +402,7 @@ public class Algo_For_Student_Assigning {
     public static Section get_section(String section_id, int semester_no) {
 
 //        for (Semester sem : semesters) {
-        System.out.println(semesters.size());
+//        System.out.println(semesters.size());
         ArrayList<Section> sections = semesters.get(semester_no - 1).getSections();
 //        Semester.displayAllData();
         for (Section sec : sections) {

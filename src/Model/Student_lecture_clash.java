@@ -120,6 +120,11 @@ public class Student_lecture_clash {
     public void setIsLab(boolean isLab) {
         this.isLab = isLab;
     }
+
+    @Override
+    public String toString() {
+        return "Student_lecture_clash{" + "reg_no=" + reg_no + ", semester=" + semester + ", section=" + section + ", room=" + room + ", day_no=" + day_no + ", slot_no=" + slot_no + ", course=" + course + ", lecture_no=" + lecture_no + ", isLab=" + isLab + ", isresolved=" + isresolved + '}';
+    }
     
     
     

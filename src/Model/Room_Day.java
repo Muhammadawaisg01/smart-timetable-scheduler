@@ -1,9 +1,7 @@
 
 package Model;
 
-import Model.Room_Timeslot;
 import java.util.ArrayList;
-import static db.DBConnection.getConnection;
 public class Room_Day {  
     
     public int no  ; 

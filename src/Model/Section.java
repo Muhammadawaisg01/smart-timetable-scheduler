@@ -11,9 +11,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Section {
-
-    private int fittness;   // number of clashes
+public class Section {  // GA POPULATION
+    private int clashes;   // number of clashes
     private String id;
     private int student_strength;           // student strength
 
@@ -22,16 +21,25 @@ public class Section {
 
     Section_Schedule schedule = new Section_Schedule();
 
+    ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS
+
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
 
-    public int getFittness() {
-        return fittness;
+    public int getTotalClashes() {
+        return clashes;
+    }
+    public void incClash() {
+        this.clashes++;
+    }
+
+    public Section_Schedule createNewSchedule() {
+        return new Section_Schedule();
     }
 
     private void setFittness(int fittness) {
-        this.fittness = fittness;
+        this.clashes = fittness;
     }
 
     public void setDay(int index, int day_no) {
@@ -77,7 +85,7 @@ public class Section {
 
     public Section(String id) {
         this.id = id;
-        this.fittness = 0;
+//        this.fittness = 0;
     }
 
     public String getId() {
@@ -116,6 +124,7 @@ public class Section {
         this.sectionCourses.add(crs);
     }
 
+    
     @Override
     public String toString() {
         return "Section{" + "ID=" + id + '}';
@@ -180,7 +189,7 @@ public class Section {
 
     public static int get_Semester_of_Section(String section) {
         String q = "select semester_no from section where section_id  = '" + section + "'";
-        System.out.println(q);
+//        System.out.println(q);
         int semester_no = 0;
         Connection conn = getConnection();
         PreparedStatement stmt;
@@ -193,7 +202,7 @@ public class Section {
             System.out.println("error in getting semester no of the section in the section details  ");
             ex.printStackTrace();
         }
-        System.out.println("i am the semester no  :  " + semester_no);
+//        System.out.println("i am the semester no  :  " + semester_no);
         return semester_no;
     }
 
@@ -237,48 +246,32 @@ public class Section {
         return null;
     }
 
-    public void calFittness() {
-        resetFitnes();
-//        System.out.println("RESET FITTNESS");
-//        printFittness();
-        for (Semester semester : semesters) {
-            ArrayList<Section> sections = semester.getSections();
-            for (Section section : sections) {
-                ArrayList<Course> courses = section.getCourses();
-                for (Course course : courses) {
-                    for (Student student : student_list) {
-                        ArrayList<Student_lecture_clash> student_lecture_clashs = student.getClash_array();
-                        for (Student_lecture_clash student_lecture_clash : student_lecture_clashs) {
-                            if (course.getTitle().equalsIgnoreCase(student_lecture_clash.getCourse())
-                                    && student_lecture_clash.getSection().equalsIgnoreCase(section.getId())
-                                    && student_lecture_clash.getSemester() == semester.getNo()) {
-                                section.fittness++;
-                            }
-                        }
-                    }
-                }
-            }
+    
+
+    public void initializePopulation() {
+        for (int i = 0; i < 10; i++) {
+            randomSchedules.add(new Section_Schedule());
         }
-        System.out.println("After calculations");
-        printFittness();
     }
+
+    
 
     public void printFittness() {
         for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
             for (Section section : sections) {
-                System.out.println(section.getId() + "\t" + section.fittness);
+//                System.out.println(section.getId() + "\t" + section.fittness);
             }
         }
     }
 
     public void resetFitnes() {
-        for (Semester semester : semesters) {
-            ArrayList<Section> sections = semester.getSections();
-            for (Section section : sections) {
-                section.setFittness(0);
-            }
-        }
+//        for (Semester semester : semesters) {
+//            ArrayList<Section> sections = semester.getSections();
+//            for (Section section : sections) {
+//                section.setFittness(0);
+//            }
+//        }
     }
 
 }

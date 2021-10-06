@@ -4,8 +4,7 @@ package Model ;
 
 public class Room_Timeslot { 
     int no ; 
-    boolean check ; 
-    
+    boolean check ;
 //    String program;
 //    int semester;
 //    String section;

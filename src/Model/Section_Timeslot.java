@@ -23,7 +23,16 @@ public class Section_Timeslot {
         this.lecture_no = lecture_no;
         this.check = check;
     }
-
+    
+    
+    public void setSlotFree() {
+        this.room = "";
+//        this.slot_no = 0;
+        this.course_code = "";
+        this.lecture_no = 0;
+        this.check = false;
+    }
+    
     @Override
     public String toString() {
         return "Section_Timeslot{" + "room=" + room + ", slot_no=" + slot_no + ", course=" + course_code + ", lecture_no=" + lecture_no + ",check=" + check + '}';     

@@ -4,16 +4,44 @@ import java.util.ArrayList;
 
 public class Section_Schedule {
 
-    ArrayList<Section_Day> days = new ArrayList<>() ; 
+    ArrayList<Section_Day> days = new ArrayList<>();
 
     public Section_Schedule() {
         this.initialize_Section_Schedule();
     }
-
-    public Section_Schedule(ArrayList<Section_Day> days) {
-        this.days = days;
-//        this.initialize_Section_Schedule();
+    
+    public Section_Schedule(ArrayList<Course> sectionCourses) {
+        
     }
+    public void freeDaySlot(int day, int slot) {
+        // set free day slot
+        days.forEach(d -> {
+            if (d.getNo() == day) {
+                d.getTimeslots().forEach(sl -> {
+                    if (sl.getSlot_no() == slot) {
+                        sl.setCheck(false);
+                    }
+                });
+            }
+        });
+    }
+    public void consumeDaySlot(int day, int slot) {
+        // free day slot
+        days.forEach(d -> {
+            if (d.getNo() == day) {
+                d.getTimeslots().forEach(sl -> {
+                    if (sl.getSlot_no() == slot) {
+                        sl.setCheck(true);
+                    }
+                });
+            }
+        });
+    }
+
+//    public Section_Schedule(ArrayList<Section_Day> days) {
+//        this.days = days;
+////        this.initialize_Section_Schedule();
+//    }
 
     public void display() {
         for (Section_Day section_Day : days) {
@@ -28,8 +56,6 @@ public class Section_Schedule {
     public void setDays(ArrayList<Section_Day> days) {
         this.days = days;
     }
-    
-    
 
     public void initialize_Section_Schedule() {
         int c = 0;
@@ -49,9 +75,5 @@ public class Section_Schedule {
             obj1.no = i;
             this.days.add(obj1);
         }
-//        for (Section_Day day : days) {
-//            System.out.println(c + "        " + day.toString());
-//            c++;
-//        }
     }
 }

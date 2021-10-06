@@ -8,28 +8,14 @@ import Model.Section;
 import Model.Semester;
 import Model.Room_Day;
 import Model.Entities_Main_Arrays;
-import Model.Professor;
-import Model.ProfessorUtility;
 import Model.Room_Timeslot;
 import Model.Room;
 import Model.SectionUtility;
-import Model.Section_Schedule;
 
 import java.io.File;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
-import Model.StdUtility;
-import Model.WeekDays;
-import clash_resolving.ProfessorClashes;
-import static clash_resolving.ProfessorClashes.clashesResolved;
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import static db.DBConnection.createConnection;
 
 public class Runner {
@@ -40,7 +26,7 @@ public class Runner {
     static String[][] array = new String[6][6];
     public static ArrayList<Course> course = new ArrayList<>();
     static int sections = 0;
-    static ArrayList<Room_Day> days = new ArrayList<>();
+    public static ArrayList<Room_Day> days = new ArrayList<>();
 
     static ArrayList<Room_Timeslot> slots = new ArrayList<>();
     public static ArrayList<Scheduler> scheduler = new ArrayList<>();  //public
@@ -49,12 +35,10 @@ public class Runner {
 
     public static void main(String[] args) {                                    // MAIN METHOD  
         createConnection(); // creating connection with database    
-
         Entities_Main_Arrays.add_Data_to_Student_List();
-
         Entities_Main_Arrays.add_Data_to_Semester_List();
         semesters = Entities_Main_Arrays.semesters;
-        System.out.println(semesters.get(3));
+        clash_resolving.Student student = new clash_resolving.Student();
 //        System.out.println(Entities_Main_Arrays.student_list.size() ) ; 
 //        System.out.println(Entities_Main_Arrays.student_list.get(0).toString());
 //        System.exit(0); 
@@ -67,7 +51,7 @@ public class Runner {
 
 //        System.out.println(semesters.size());
 //        for (Semester semester : semesters) {
-//            System.out.println(semester.getSections().size());
+//            System.out.println(semester.getSections().size() + "\t number of section");
 //            for (Section section : semester.getSections()) {
 //                System.out.println(section.getCourses().size());
 //            }
@@ -77,25 +61,26 @@ public class Runner {
         inputForRooms_Labs(); // First Work  
         is_all_slots_available_for_slotting();          // ask user if he want to close any timeslot for lecture scheduling     
         System.out.println(is_scheduling_possible());
-
         main_algorithm();
         System.out.println("Scheduler        SIze      " + scheduler.size());
         for (Scheduler sch : scheduler) {
             System.out.println(sch.toString());
         }
         assignProfessorToSections();
-//        System.out.println(semesters.size() + "\tsize");
-//        System.exit(0);
         SectionUtility.assign_schedule_to_section();
         Algo_for_Professor_assigning.section_to_Professor_Scheduling();
-        Semester.displayAllData();
-
         Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
-
-        for (Student std : Entities_Main_Arrays.student_list) {
-            std.display_Student();
-        }
-
+        student.handleStudentClashes();
+//        student.handleStudentClashes(2);
+//        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+//        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+//        for (Student std : Entities_Main_Arrays.student_list) {
+//            std.display_Student();
+//        }
+//        student.handleStudentClashes(2);
+//        for (Student std : Entities_Main_Arrays.student_list) {
+//            std.display_Student();
+//        }
 //        for (Professor prof : Entities_Main_Arrays.professor_list) {
 //            prof.display_Professor();
 //        }
@@ -135,9 +120,6 @@ public class Runner {
 //        int n=0 ; 
 //        permute(course) ; 
 //        Section.calFittness();
-//        Section.printFittness();
-        clash_resolving.Student student = new clash_resolving.Student();
-        student.runGA();
     } // MAIN METHOD 
 
     public static void mainMenu() {
@@ -350,14 +332,13 @@ public class Runner {
                         for (slot_no = j; slot_no < rm.getDays().get(0).getTimeslots().size(); slot_no++) {
 
                             for (day_no = 0; day_no < rm.getDays().size(); day_no++) {
-
                                 if (rm.getDays().get(day_no).getTimeslots().get(slot_no).isCheck() == false) {
 //                                    day_name = WeekDays.names[day_no];   
 
                                     rm.getDays().get(day_no).getTimeslots().get(slot_no).setCheck(true);
 
                                     course_name = semesters.get(sem).getSections().get(sec).getCourses().get(a).getTitle();
-
+                                    System.out.println("main alog");
                                     scheduler.add(new Scheduler(rm.getName(), semesters.get(sem).getNo(),
                                             "" + (semesters.get(sem).getSections().get(sec).getId()),
                                             rm.getDays().get(day_no).getNo(), rm.getDays().get(day_no).getTimeslots().get(slot_no).getNo(), course_name, o + 1));
