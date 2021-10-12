@@ -47,7 +47,7 @@ public class Algo_For_Student_Assigning {
 //                System.out.println("No courses registered" + std.getName());
 //                System.exit(1);
             } else {
-                System.out.println("No courses registered" + std.getName());
+//                System.out.println("No courses registered" + std.getName());
 //                System.exit(1);
             }
         }
@@ -317,6 +317,15 @@ public class Algo_For_Student_Assigning {
         }
         return total;
     }
+    public static int calculateStudentClashes() {
+        int total = 0;
+        ArrayList<Student> students = Entities_Main_Arrays.student_list;
+        for (Student student : students) {
+            ArrayList<Student_lecture_clash> clashes = student.getClash_array();
+            total += clashes.size();
+        }
+        return total;
+    }
 
 /////////////////////////////////////////////////////////////// END OF WORKING ON CLASH RESOLVING /////////////////////////////////////
 
@@ -411,7 +420,6 @@ public class Algo_For_Student_Assigning {
                 return sec;
             }
         }
-        System.exit(1);
 //        }
         return null;
     }

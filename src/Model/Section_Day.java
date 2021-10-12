@@ -1,28 +1,28 @@
-
-
 package Model;
 
 import java.util.ArrayList;
 
 public class Section_Day {
-    
+
     int no;
-    ArrayList<Section_Timeslot> timeslots = new ArrayList<>() ; 
+    ArrayList<Section_Timeslot> timeslots = new ArrayList<>();
 
     public Section_Day() {
-        
+
     }
-    
-    public void display() {     
-        for (Section_Timeslot section_Timeslot: timeslots) {    
-            System.out.println(section_Timeslot.toString() ) ; 
+
+    public void display() {
+        for (Section_Timeslot section_Timeslot : timeslots) {
+            System.out.println(section_Timeslot.toString());
         }
     }
 
+    
+
     @Override
-    public String toString() {  
-        return "Section_Day{" + "no=" + no + ", timeslots=" + timeslots + '}' ; 
-    }   
+    public String toString() {
+        return "Section_Day{" + "no=" + no + ", timeslots=" + timeslots + '}';
+    }
 
     public int getNo() {
         return no;
@@ -39,5 +39,5 @@ public class Section_Day {
     public void setTimeslots(ArrayList<Section_Timeslot> timeslots) {
         this.timeslots = timeslots;
     }
-    
+
 }
