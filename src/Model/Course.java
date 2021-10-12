@@ -91,14 +91,14 @@ public class Course {
         return "Course{" + "course_code=" + course_code + ", title=" + title + ", credit_hours=" + credit_hours + ", lab=" + lab + '}';
     }
     
-    /*
+    /**
     @param course_code 
     @return Course Object
     */
-    public static Course getCourse(String code) {
+    public static Course getCourse(String course_code) {
         Connection conn = getConnection();
         Course course = new Course();
-        String q = "select * from course where course_code = '" + code + "'";
+        String q = "select * from course where course_code = '" + course_code + "'";
         try {
             PreparedStatement stmt = conn.prepareStatement(q);
             ResultSet rs = stmt.executeQuery();

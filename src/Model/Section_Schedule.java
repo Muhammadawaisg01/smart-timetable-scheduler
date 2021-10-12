@@ -20,18 +20,24 @@ public class Section_Schedule {
                 d.getTimeslots().forEach(sl -> {
                     if (sl.getSlot_no() == slot) {
                         sl.setCheck(false);
+                        sl.setCourse("");
+                        sl.setLecture_no(0);
+                        sl.setRoom("");
                     }
                 });
             }
         });
     }
-    public void consumeDaySlot(int day, int slot) {
+    public void consumeDaySlot(int day, int slot, String room, String course, int lecture) {
         // free day slot
         days.forEach(d -> {
             if (d.getNo() == day) {
                 d.getTimeslots().forEach(sl -> {
                     if (sl.getSlot_no() == slot) {
                         sl.setCheck(true);
+                        sl.setCourse(course);
+                        sl.setLecture_no(lecture);
+                        sl.setRoom(room);
                     }
                 });
             }
