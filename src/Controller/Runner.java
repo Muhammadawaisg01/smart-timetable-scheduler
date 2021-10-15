@@ -1,3 +1,4 @@
+
 package Controller;
 
 import static db.DBConnection.getConnection;
@@ -17,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.Connection;
 import static db.DBConnection.createConnection;
+import javax.swing.JOptionPane;
+
+
+// JOptionPane.showMessageDialog(null, "Error in Fetching Data of Player", "Table", JOptionPane.ERROR_MESSAGE) ; 
 
 public class Runner {
 
@@ -35,6 +40,7 @@ public class Runner {
 
     public static void main(String[] args) {                                    // MAIN METHOD  
         createConnection(); // creating connection with database    
+        System.out.println("I AM CONNECTION        "+getConnection() ) ; 
         Entities_Main_Arrays.add_Data_to_Student_List();
         Entities_Main_Arrays.add_Data_to_Semester_List();
         semesters = Entities_Main_Arrays.semesters;
@@ -352,7 +358,13 @@ public class Runner {
                                 break;
                             }
                         }
+//                        if(){
+//                            
+//                        }
                         permute(semesters.get(sem).getSections().get(sec).getCourses());
+//                        else{
+//                            
+//                        }
                     } //slot=0 ; 
                 }
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 

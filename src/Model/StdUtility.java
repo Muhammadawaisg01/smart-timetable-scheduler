@@ -118,11 +118,11 @@ public void reading_Student_From_DB() {
                         section = scheduler.get(i).getSection();
 //                                   getting data from schedule array
                         room = scheduler.get(i).room; 
-                        day = scheduler.get(i).day;
+                        day = scheduler.get(i).getDay();
                         timeslot = scheduler.get(i).slot;
                         course = scheduler.get(i).course;
                         sem_no = scheduler.get(i).semester_no;
-                        lec_no = scheduler.get(i).lecture_no;
+                        lec_no = scheduler.get(i).getLecture_no();
                         for (int var = 0; var < student_list.size(); var++) {
                             if (student_list.get(var).section_id.equalsIgnoreCase(sections[sec])) {
                                 Student std = student_list.get(var);

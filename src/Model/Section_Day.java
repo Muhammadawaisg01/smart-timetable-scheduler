@@ -8,7 +8,8 @@ public class Section_Day {
     
     int no;
     ArrayList<Section_Timeslot> timeslots = new ArrayList<>() ; 
-
+//  variable for favorite day or not
+    
     public Section_Day() {
         
     }

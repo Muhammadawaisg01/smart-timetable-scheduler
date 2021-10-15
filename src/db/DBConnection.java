@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+
 public class DBConnection {
 
     private static Connection conn;
@@ -24,7 +25,7 @@ public class DBConnection {
 
     public static void createConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/server1?", "root", "tariq143");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/schedulerdb?", "newuser", "password");
             System.out.println("connection is successfull");
         } catch (Exception ex) {
 //            ex.printStackTrace();
