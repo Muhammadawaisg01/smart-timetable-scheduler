@@ -10,8 +10,10 @@ import static db.DBConnection.getConnection;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 public class MainFrame extends javax.swing.JFrame {
@@ -26,13 +28,52 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        welcome_window = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        dept_name_panel = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        nxt_lbl_1 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        working_days_panel = new javax.swing.JPanel();
+        back_lbl_1 = new javax.swing.JLabel();
+        nxt_lbl_2 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel32 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jLabel33 = new javax.swing.JLabel();
+        timeslots_panel = new javax.swing.JPanel();
+        back_lbl_02 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jTextField18 = new javax.swing.JTextField();
+        jTextField19 = new javax.swing.JTextField();
+        jTextField20 = new javax.swing.JTextField();
+        jTextField21 = new javax.swing.JTextField();
+        jButton9 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        sv_btn1 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        Dept = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        MainPanel_ScrollPane = new javax.swing.JScrollPane();
+        jPanel9 = new javax.swing.JPanel();
         program = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
@@ -51,10 +92,12 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        course = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         students = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        Dept = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        course = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         scheduler_generation = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         datesheet_generation = new javax.swing.JPanel();
@@ -66,14 +109,25 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel45 = new javax.swing.JPanel();
         Dashboard_Dept = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        view_all_roomslbl = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jPanel12 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
+        view_all_roomslbl = new javax.swing.JLabel();
+        add_roomlbl1 = new javax.swing.JLabel();
+        add_roomlbl2 = new javax.swing.JLabel();
         add_roomlbl = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        add_roomlbl3 = new javax.swing.JLabel();
+        add_roomlbl4 = new javax.swing.JLabel();
+        add_roomlbl6 = new javax.swing.JLabel();
+        view_all_roomslbl1 = new javax.swing.JLabel();
+        view_all_roomslbl2 = new javax.swing.JLabel();
+        view_all_roomslbl3 = new javax.swing.JLabel();
+        view_all_roomslbl4 = new javax.swing.JLabel();
+        add_roomlbl5 = new javax.swing.JLabel();
+        add_roomlbl8 = new javax.swing.JLabel();
+        add_roomlbl7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         dept_details_panel = new javax.swing.JPanel();
         jLabel46 = new javax.swing.JLabel();
@@ -93,31 +147,23 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel105 = new javax.swing.JLabel();
         courseslbl = new javax.swing.JLabel();
         view_coursesbtn = new javax.swing.JButton();
-        add_room = new javax.swing.JPanel();
-        jLabel59 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        labcheckBox1 = new javax.swing.JCheckBox();
-        roomname = new javax.swing.JTextField();
-        capacity = new javax.swing.JTextField();
-        jLabel94 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel96 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        labcheckBox2 = new javax.swing.JCheckBox();
-        add_roombtn = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        labcheckBox3 = new javax.swing.JCheckBox();
         viewData = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         display_table = new javax.swing.JTable();
         available_datalbl = new javax.swing.JLabel();
-        delete_room = new javax.swing.JPanel();
+        room_details = new javax.swing.JPanel();
         jLabel97 = new javax.swing.JLabel();
-        room_name1 = new javax.swing.JTextField();
         jLabel93 = new javax.swing.JLabel();
-        find_del_panelbtn = new javax.swing.JButton();
         delbtn = new javax.swing.JButton();
+        jLabel101 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel98 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
         Programs = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         Dashboard_Programs = new javax.swing.JPanel();
@@ -197,6 +243,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         addCourse = new javax.swing.JPanel();
         jLabel89 = new javax.swing.JLabel();
@@ -261,6 +309,313 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
+        welcome_window.setLayout(new java.awt.CardLayout());
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.CardLayout());
+
+        dept_name_panel.setBackground(new java.awt.Color(255, 255, 255));
+        dept_name_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel11.setText("Enter name of your department:");
+        jLabel11.setToolTipText("Logo");
+        jLabel11.setAlignmentX(0.5F);
+        jLabel11.setAutoscrolls(true);
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel11MouseEntered(evt);
+            }
+        });
+        dept_name_panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 340, 70));
+
+        nxt_lbl_1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        nxt_lbl_1.setForeground(new java.awt.Color(0, 102, 153));
+        nxt_lbl_1.setText("-->");
+        nxt_lbl_1.setToolTipText("Logo");
+        nxt_lbl_1.setAlignmentX(0.5F);
+        nxt_lbl_1.setAutoscrolls(true);
+        nxt_lbl_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nxt_lbl_1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nxt_lbl_1MouseEntered(evt);
+            }
+        });
+        dept_name_panel.add(nxt_lbl_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 480, 70, 70));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel13.setText("Department Details:");
+        jLabel13.setToolTipText("Logo");
+        jLabel13.setAlignmentX(0.5F);
+        jLabel13.setAutoscrolls(true);
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel13MouseEntered(evt);
+            }
+        });
+        dept_name_panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 270, 70));
+
+        jTextField17.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jTextField17.setForeground(new java.awt.Color(0, 102, 153));
+        dept_name_panel.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 660, 60));
+
+        jPanel8.add(dept_name_panel, "card2");
+
+        working_days_panel.setBackground(new java.awt.Color(255, 255, 255));
+        working_days_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        back_lbl_1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        back_lbl_1.setForeground(new java.awt.Color(0, 102, 153));
+        back_lbl_1.setText("<--");
+        back_lbl_1.setToolTipText("Logo");
+        back_lbl_1.setAlignmentX(0.5F);
+        back_lbl_1.setAutoscrolls(true);
+        back_lbl_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_lbl_1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                back_lbl_1MouseEntered(evt);
+            }
+        });
+        working_days_panel.add(back_lbl_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 70, 60));
+
+        nxt_lbl_2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        nxt_lbl_2.setForeground(new java.awt.Color(0, 102, 153));
+        nxt_lbl_2.setText("-->");
+        nxt_lbl_2.setToolTipText("Logo");
+        nxt_lbl_2.setAlignmentX(0.5F);
+        nxt_lbl_2.setAutoscrolls(true);
+        nxt_lbl_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nxt_lbl_2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nxt_lbl_2MouseEntered(evt);
+            }
+        });
+        working_days_panel.add(nxt_lbl_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 70, 60));
+
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox1.setText("Tuesday");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 40));
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel32.setText("Select the days in which lectures will be conducted");
+        jLabel32.setToolTipText("Logo");
+        jLabel32.setAlignmentX(0.5F);
+        jLabel32.setAutoscrolls(true);
+        jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel32MouseEntered(evt);
+            }
+        });
+        jPanel10.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 560, 70));
+
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox2.setText("Wednesday");
+        jPanel10.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 40));
+
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox3.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox3.setText("Thursday");
+        jPanel10.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 40));
+
+        jCheckBox4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox4.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox4.setText("Friday");
+        jPanel10.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 40));
+
+        jCheckBox5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox5.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox5.setText("Saturday");
+        jPanel10.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, 40));
+
+        jCheckBox6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox6.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox6.setText("Sunday");
+        jPanel10.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, 40));
+
+        jCheckBox7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jCheckBox7.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox7.setText("Monday");
+        jPanel10.add(jCheckBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 40));
+
+        working_days_panel.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 610, 360));
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel33.setText("Working Days Panel");
+        jLabel33.setToolTipText("Logo");
+        jLabel33.setAlignmentX(0.5F);
+        jLabel33.setAutoscrolls(true);
+        jLabel33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel33MouseEntered(evt);
+            }
+        });
+        working_days_panel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 270, 70));
+
+        jPanel8.add(working_days_panel, "card3");
+
+        timeslots_panel.setBackground(new java.awt.Color(255, 255, 255));
+        timeslots_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        back_lbl_02.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        back_lbl_02.setForeground(new java.awt.Color(0, 102, 153));
+        back_lbl_02.setText("<--");
+        back_lbl_02.setToolTipText("Logo");
+        back_lbl_02.setAlignmentX(0.5F);
+        back_lbl_02.setAutoscrolls(true);
+        back_lbl_02.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_lbl_02MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                back_lbl_02MouseEntered(evt);
+            }
+        });
+        timeslots_panel.add(back_lbl_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 70, 70));
+
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel34.setText("create timeslots for timetable in which classes will be conducted");
+        jLabel34.setToolTipText("Logo");
+        jLabel34.setAlignmentX(0.5F);
+        jLabel34.setAutoscrolls(true);
+        jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel34MouseEntered(evt);
+            }
+        });
+        jPanel11.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 660, 50));
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel37.setText("End Duration:");
+        jLabel37.setToolTipText("Logo");
+        jLabel37.setAlignmentX(0.5F);
+        jLabel37.setAutoscrolls(true);
+        jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel37MouseEntered(evt);
+            }
+        });
+        jPanel11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 160, 50));
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel39.setText("Slot no 02:");
+        jLabel39.setToolTipText("Logo");
+        jLabel39.setAlignmentX(0.5F);
+        jLabel39.setAutoscrolls(true);
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel39MouseEntered(evt);
+            }
+        });
+        jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 120, 60));
+
+        jLabel40.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel40.setText("Start Duration:");
+        jLabel40.setToolTipText("Logo");
+        jLabel40.setAlignmentX(0.5F);
+        jLabel40.setAutoscrolls(true);
+        jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel40MouseEntered(evt);
+            }
+        });
+        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 160, 50));
+
+        jLabel43.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel43.setText("Slot no 01:");
+        jLabel43.setToolTipText("Logo");
+        jLabel43.setAlignmentX(0.5F);
+        jLabel43.setAutoscrolls(true);
+        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel43MouseEntered(evt);
+            }
+        });
+        jPanel11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 120, 60));
+        jPanel11.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 150, 40));
+        jPanel11.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 40));
+        jPanel11.add(jTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 150, 40));
+        jPanel11.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 150, 40));
+
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton9.setText(".");
+        jPanel11.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 30, 40));
+
+        jButton12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(0, 102, 153));
+        jButton12.setText("+");
+        jPanel11.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 90, -1, 40));
+
+        jButton11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton11.setText(".");
+        jPanel11.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 30, 40));
+
+        jButton13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton13.setText(".");
+        jPanel11.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 30, 40));
+
+        jButton14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton14.setText(".");
+        jPanel11.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 30, 40));
+
+        jScrollPane7.setViewportView(jPanel11);
+
+        timeslots_panel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 680, 400));
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel38.setText("Timeslots instruction Panel");
+        jLabel38.setToolTipText("Logo");
+        jLabel38.setAlignmentX(0.5F);
+        jLabel38.setAutoscrolls(true);
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel38MouseEntered(evt);
+            }
+        });
+        timeslots_panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 300, 60));
+
+        sv_btn1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        sv_btn1.setForeground(new java.awt.Color(0, 102, 153));
+        sv_btn1.setText("save all data");
+        sv_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sv_btn1ActionPerformed(evt);
+            }
+        });
+        timeslots_panel.add(sv_btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 520, 150, 40));
+
+        jPanel8.add(timeslots_panel, "card4");
+
+        welcome_window.add(jPanel8, "card2");
+
+        getContentPane().add(welcome_window, "card8");
+
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -275,20 +630,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel2MouseEntered(evt);
             }
         });
-        MainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 230, 50));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel10.setText(" THE FIRST Panel(Main)");
-        jLabel10.setToolTipText("Logo");
-        jLabel10.setAlignmentX(0.5F);
-        jLabel10.setAutoscrolls(true);
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel10MouseEntered(evt);
-            }
-        });
-        MainPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 270, 40));
+        MainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 230, 50));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
@@ -301,29 +643,12 @@ public class MainFrame extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        MainPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 330, 30));
+        MainPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 330, 30));
 
-        Dept.setBackground(new java.awt.Color(255, 255, 255));
-        Dept.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
-        Dept.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DeptMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                DeptMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                DeptMouseExited(evt);
-            }
-        });
-        Dept.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        MainPanel_ScrollPane.setBorder(null);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel6.setText("Department");
-        Dept.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
-
-        MainPanel.add(Dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 260, 130));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         program.setBackground(new java.awt.Color(255, 255, 255));
         program.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
@@ -497,7 +822,48 @@ public class MainFrame extends javax.swing.JFrame {
 
         program.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 260, 130));
 
-        MainPanel.add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, 240, 130));
+        jPanel9.add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 240, 130));
+
+        students.setBackground(new java.awt.Color(255, 255, 255));
+        students.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
+        students.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                studentsMouseEntered(evt);
+            }
+        });
+        students.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel9.setText("Students");
+        students.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
+
+        jPanel9.add(students, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, 130));
+
+        Dept.setBackground(new java.awt.Color(255, 255, 255));
+        Dept.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
+        Dept.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeptMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DeptMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                DeptMouseExited(evt);
+            }
+        });
+        Dept.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel6.setText("Department");
+        Dept.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
+
+        jPanel9.add(Dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 260, 130));
 
         course.setBackground(new java.awt.Color(255, 255, 255));
         course.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
@@ -519,26 +885,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8.setText("Courses");
         course.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
 
-        MainPanel.add(course, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 260, 130));
-
-        students.setBackground(new java.awt.Color(255, 255, 255));
-        students.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
-        students.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                studentsMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                studentsMouseEntered(evt);
-            }
-        });
-        students.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel9.setText("Students");
-        students.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, 246, -1));
-
-        MainPanel.add(students, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, 130));
+        jPanel9.add(course, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 260, 130));
 
         scheduler_generation.setBackground(new java.awt.Color(255, 255, 255));
         scheduler_generation.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
@@ -560,7 +907,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setText("Schedule Generation");
         scheduler_generation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 380, -1));
 
-        MainPanel.add(scheduler_generation, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 400, 130));
+        jPanel9.add(scheduler_generation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 400, 130));
 
         datesheet_generation.setBackground(new java.awt.Color(255, 255, 255));
         datesheet_generation.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 2, true));
@@ -576,10 +923,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel26.setText("Datesheet");
-        datesheet_generation.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, -1));
+        jLabel26.setText("View Timetable");
+        datesheet_generation.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, -1));
 
-        MainPanel.add(datesheet_generation, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 260, 130));
+        jPanel9.add(datesheet_generation, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, 130));
+
+        MainPanel_ScrollPane.setViewportView(jPanel9);
+
+        MainPanel.add(MainPanel_ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1010, 440));
 
         getContentPane().add(MainPanel, "card2");
 
@@ -625,7 +976,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
                 .addComponent(jLabel3)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, "card2");
@@ -640,11 +991,6 @@ public class MainFrame extends javax.swing.JFrame {
         jTextField2.setText("Search");
         Dashboard_Dept.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, 210, 30));
 
-        jLabel41.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("view free slots in a room");
-        Dashboard_Dept.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 240, 30));
-
         jLabel42.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("   Home");
@@ -653,64 +999,176 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel42MouseClicked(evt);
             }
         });
-        Dashboard_Dept.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 80, 30));
+        Dashboard_Dept.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 90, 50));
 
-        view_all_roomslbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        view_all_roomslbl.setForeground(new java.awt.Color(255, 255, 255));
-        view_all_roomslbl.setText("View all rooms");
-        view_all_roomslbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                view_all_roomslblMouseClicked(evt);
-            }
-        });
-        Dashboard_Dept.add(view_all_roomslbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 160, 40));
-
-        jLabel44.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel44.setText("//update room details");
-        Dashboard_Dept.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 210, 40));
-
-        jLabel45.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setText("View schedule of a room");
-        jLabel45.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel45MouseClicked(evt);
-            }
-        });
-        Dashboard_Dept.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 230, 30));
+        jPanel12.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel47.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel47.setText("view department details");
+        jLabel47.setText("Department");
         jLabel47.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel47MouseClicked(evt);
             }
         });
-        Dashboard_Dept.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 250, 40));
+        jPanel12.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 40));
 
-        jLabel48.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel48.setText("remove room");
-        jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
+        view_all_roomslbl.setBackground(new java.awt.Color(0, 102, 153));
+        view_all_roomslbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        view_all_roomslbl.setForeground(new java.awt.Color(255, 255, 255));
+        view_all_roomslbl.setText("update");
+        view_all_roomslbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel48MouseClicked(evt);
+                view_all_roomslblMouseClicked(evt);
             }
         });
-        Dashboard_Dept.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 150, 30));
+        jPanel12.add(view_all_roomslbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 160, 30));
+
+        add_roomlbl1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl1.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl1.setText("Rooms                             -");
+        add_roomlbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl1MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 230, 30));
+
+        add_roomlbl2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl2.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl2.setText("All rooms");
+        add_roomlbl2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl2MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 30));
 
         add_roomlbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl.setForeground(new java.awt.Color(255, 255, 255));
-        add_roomlbl.setText("add room");
+        add_roomlbl.setText("Create new room");
         add_roomlbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 add_roomlblMouseClicked(evt);
             }
         });
-        Dashboard_Dept.add(add_roomlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 150, 30));
+        jPanel12.add(add_roomlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 180, 30));
 
-        jPanel45.add(Dashboard_Dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 560));
+        jLabel44.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel44.setText("Labs                                  -");
+        jPanel12.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 230, 40));
+
+        add_roomlbl3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl3.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl3.setText("search free slot");
+        add_roomlbl3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl3MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 160, 30));
+
+        add_roomlbl4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl4.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl4.setText("update");
+        add_roomlbl4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl4MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 150, 30));
+
+        add_roomlbl6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl6.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl6.setText("All labs");
+        add_roomlbl6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl6MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 150, 30));
+
+        view_all_roomslbl1.setBackground(new java.awt.Color(0, 102, 153));
+        view_all_roomslbl1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        view_all_roomslbl1.setForeground(new java.awt.Color(255, 255, 255));
+        view_all_roomslbl1.setText("Faculty                           -");
+        view_all_roomslbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                view_all_roomslbl1MouseClicked(evt);
+            }
+        });
+        jPanel12.add(view_all_roomslbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, 40));
+
+        view_all_roomslbl2.setBackground(new java.awt.Color(0, 102, 153));
+        view_all_roomslbl2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        view_all_roomslbl2.setForeground(new java.awt.Color(255, 255, 255));
+        view_all_roomslbl2.setText("All members");
+        view_all_roomslbl2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                view_all_roomslbl2MouseClicked(evt);
+            }
+        });
+        jPanel12.add(view_all_roomslbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, 30));
+
+        view_all_roomslbl3.setBackground(new java.awt.Color(0, 102, 153));
+        view_all_roomslbl3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        view_all_roomslbl3.setForeground(new java.awt.Color(255, 255, 255));
+        view_all_roomslbl3.setText("All members");
+        view_all_roomslbl3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                view_all_roomslbl3MouseClicked(evt);
+            }
+        });
+        jPanel12.add(view_all_roomslbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, 30));
+
+        view_all_roomslbl4.setBackground(new java.awt.Color(0, 102, 153));
+        view_all_roomslbl4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        view_all_roomslbl4.setForeground(new java.awt.Color(255, 255, 255));
+        view_all_roomslbl4.setText("add new member");
+        view_all_roomslbl4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                view_all_roomslbl4MouseClicked(evt);
+            }
+        });
+        jPanel12.add(view_all_roomslbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 170, 30));
+
+        add_roomlbl5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl5.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl5.setText("view Schedule");
+        add_roomlbl5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl5MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, 150, 30));
+
+        add_roomlbl8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl8.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl8.setText("update");
+        add_roomlbl8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl8MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 150, 30));
+
+        add_roomlbl7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_roomlbl7.setForeground(new java.awt.Color(255, 255, 255));
+        add_roomlbl7.setText("view Schedule");
+        add_roomlbl7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_roomlbl7MouseClicked(evt);
+            }
+        });
+        jPanel12.add(add_roomlbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 150, 30));
+
+        jScrollPane10.setViewportView(jPanel12);
+
+        Dashboard_Dept.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 410));
+
+        jPanel45.add(Dashboard_Dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 570));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.CardLayout());
@@ -826,81 +1284,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel3.add(dept_details_panel, "card3");
 
-        add_room.setBackground(new java.awt.Color(255, 255, 255));
-        add_room.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel59.setText("Room specification for course:");
-        add_room.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 320, -1));
-
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 102, 153));
-        jButton7.setText("specify");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        add_room.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 80, 30));
-
-        labcheckBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox1.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox1.setText("Lecture");
-        add_room.add(labcheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 80, 30));
-
-        roomname.setForeground(new java.awt.Color(0, 102, 153));
-        add_room.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 360, 30));
-
-        capacity.setForeground(new java.awt.Color(0, 102, 153));
-        add_room.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 360, 30));
-
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel94.setText("Room capacity:");
-        add_room.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 210, 30));
-
-        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel95.setText("Course:");
-        add_room.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 160, 30));
-
-        jLabel69.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel69.setText("Room Details:");
-        add_room.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, -1));
-
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Room name:");
-        add_room.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, 30));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        add_room.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 380, 30));
-
-        labcheckBox2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox2.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox2.setText(" is Lab");
-        add_room.add(labcheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 110, 40));
-
-        add_roombtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        add_roombtn.setForeground(new java.awt.Color(0, 102, 153));
-        add_roombtn.setText("add room");
-        add_roombtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_roombtnActionPerformed(evt);
-            }
-        });
-        add_room.add(add_roombtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 180, 60));
-        add_room.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 690, -1));
-
-        labcheckBox3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox3.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox3.setText("Lab");
-        add_room.add(labcheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, 30));
-
-        jPanel3.add(add_room, "card2");
-
         viewData.setBackground(new java.awt.Color(255, 255, 255));
         viewData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -926,47 +1309,96 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel3.add(viewData, "card4");
 
-        delete_room.setBackground(new java.awt.Color(255, 255, 255));
-        delete_room.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        room_details.setBackground(new java.awt.Color(255, 255, 255));
+        room_details.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Room name:");
-        delete_room.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, 30));
-
-        room_name1.setForeground(new java.awt.Color(0, 102, 153));
-        delete_room.add(room_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 360, 30));
+        jLabel97.setText("Room capacity:");
+        room_details.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 210, 30));
 
         jLabel93.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel93.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel93.setText("Enter Room Details:");
-        delete_room.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, -1));
-
-        find_del_panelbtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        find_del_panelbtn.setForeground(new java.awt.Color(0, 102, 153));
-        find_del_panelbtn.setText("find");
-        find_del_panelbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                find_del_panelbtnActionPerformed(evt);
-            }
-        });
-        delete_room.add(find_del_panelbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 80, 30));
+        jLabel93.setText("101");
+        room_details.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 100, 30));
 
         delbtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         delbtn.setForeground(new java.awt.Color(0, 102, 153));
-        delbtn.setText("delete room");
+        delbtn.setText("//");
         delbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delbtnActionPerformed(evt);
             }
         });
-        delete_room.add(delbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 180, 60));
+        room_details.add(delbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 180, 60));
 
-        jPanel3.add(delete_room, "card5");
+        jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel101.setText("Room name:");
+        room_details.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 210, 30));
 
-        jPanel45.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 560));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Room Specification:");
+        jScrollPane8.setViewportView(jTextArea1);
 
-        Department.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 560));
+        room_details.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 240, 150));
+
+        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setText("Note:double click on row to open details");
+        room_details.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 450, 30));
+
+        jLabel104.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel104.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel104.setText("101");
+        room_details.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 100, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "", "", "", ""
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setFocusable(false);
+        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        jTable1.setRowHeight(25);
+        jTable1.setSelectionBackground(new java.awt.Color(0, 102, 153));
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane9.setViewportView(jTable1);
+
+        room_details.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 740, 150));
+
+        jLabel106.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel106.setText("Room Details:");
+        room_details.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, 30));
+
+        jLabel107.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel107.setText("Room Schedule:");
+        room_details.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 210, 30));
+
+        jPanel3.add(room_details, "card5");
+
+        jPanel45.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
+
+        Department.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, -1));
 
         getContentPane().add(Department, "card5");
 
@@ -1035,7 +1467,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel79.setText("Sections");
         Dashboard_Programs.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 160, 30));
 
-        jPanel2.add(Dashboard_Programs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 560));
+        jPanel2.add(Dashboard_Programs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 570));
 
         jPanel47.setBackground(new java.awt.Color(255, 255, 255));
         jPanel47.setLayout(new java.awt.CardLayout());
@@ -1324,9 +1756,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel47.add(jPanel54, "card3");
 
-        jPanel2.add(jPanel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 790, 560));
+        jPanel2.add(jPanel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 790, 570));
 
-        Programs.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 1060, -1));
+        Programs.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 1060, 570));
 
         getContentPane().add(Programs, "card5");
 
@@ -1337,7 +1769,7 @@ public class MainFrame extends javax.swing.JFrame {
         Dashboard_Courses.setBackground(new java.awt.Color(0, 102, 153));
         Dashboard_Courses.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField13.setText("Search");
+        jTextField13.setText("Courses Panel");
         Dashboard_Courses.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, 210, 30));
 
         jLabel55.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1348,7 +1780,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel55MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 30));
+        Dashboard_Courses.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 30));
 
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
@@ -1368,7 +1800,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel63MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 30));
+        Dashboard_Courses.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, 30));
 
         jLabel65.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel65.setForeground(new java.awt.Color(255, 255, 255));
@@ -1378,7 +1810,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel65MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 190, 30));
+        Dashboard_Courses.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 190, 30));
 
         jLabel88.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel88.setForeground(new java.awt.Color(255, 255, 255));
@@ -1388,9 +1820,29 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel88MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, 30));
+        Dashboard_Courses.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, 30));
 
-        jPanel49.add(Dashboard_Courses, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 560));
+        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel94.setText("op 1");
+        jLabel94.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel94MouseClicked(evt);
+            }
+        });
+        Dashboard_Courses.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 70, 30));
+
+        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel95.setText("Course                           -");
+        jLabel95.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel95MouseClicked(evt);
+            }
+        });
+        Dashboard_Courses.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, 30));
+
+        jPanel49.add(Dashboard_Courses, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 570));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1579,9 +2031,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel6.add(updateCourse, "card5");
 
-        jPanel49.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 560));
+        jPanel49.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
 
-        Courses.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 550));
+        Courses.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 570));
 
         getContentPane().add(Courses, "card5");
 
@@ -1702,7 +2154,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         jPanel24.add(jPanel23, "card5");
@@ -1717,12 +2169,12 @@ public class MainFrame extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         jPanel24.add(jPanel7, "card3");
 
-        jPanel23container.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, -1));
+        jPanel23container.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
 
         schedule_generation.add(jPanel23container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -1776,10 +2228,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseEntered
-
-    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
 //        this.jTextField1.
@@ -1952,17 +2400,6 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel42MouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void add_roombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_roombtnActionPerformed
-        String rm_name = roomname.getText().trim() ; 
-        int rm_capacity = Integer.parseInt( capacity.getText().trim() ) ; 
-        boolean isLab = labcheckBox2.isSelected();
-        Room.add_room(rm_name,rm_capacity,isLab) ;
-    }//GEN-LAST:event_add_roombtnActionPerformed
-
     private void view_labsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_labsbtnActionPerformed
         // TODO add your handling code here:
         dept_details_panel.setVisible(false);
@@ -2127,51 +2564,18 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_courseMouseExited
 
     private void add_roomlblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlblMouseClicked
-        add_room.setVisible(true) ;
+//        add_room.setVisible(true) ;
         dept_details_panel.setVisible(false); 
         viewData.setVisible(false);
-        delete_room.setVisible(false); 
+        room_details.setVisible(false); 
     }//GEN-LAST:event_add_roomlblMouseClicked
 
     private void view_all_roomslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslblMouseClicked
-        add_room.setVisible(false) ;
+//        add_room.setVisible(false) ;
         dept_details_panel.setVisible(false); 
         viewData.setVisible(true); 
         display_table.setModel(TableViewUtility.resultSetToTableModel(Room.get_every_room() )) ; 
     }//GEN-LAST:event_view_all_roomslblMouseClicked
-
-    private void find_del_panelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_find_del_panelbtnActionPerformed
-        String room_name = room_name1.getText().trim() ; 
-        String req_name = Room.search_room(room_name) ;
-        if(req_name !=null ) {  
-            JOptionPane.showMessageDialog(null, "Room found"); 
-        }
-//        else{ 
-//            JOptionPane.showMessageDialog(null, "Room did not found"); 
-//        }
-    }//GEN-LAST:event_find_del_panelbtnActionPerformed
-
-    private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
-        String room_name = room_name1.getText().trim() ; 
-        if(Room.remove_room(room_name)){ 
-            JOptionPane.showMessageDialog(null, "Room removed successfully"); 
-            room_name1.setText(null);
-        }
-    }//GEN-LAST:event_delbtnActionPerformed
-
-    private void jLabel48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel48MouseClicked
-        delete_room.setVisible(true); 
-        add_room.setVisible(false) ;
-        dept_details_panel.setVisible(false); 
-        viewData.setVisible(false);
-    }//GEN-LAST:event_jLabel48MouseClicked
-
-    private void jLabel45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel45MouseClicked
-        // query for viewing scheduling of a room accordingly
-        
-//        viewData.setVisible(true); 
-//        display_table.setModel(TableViewUtility.resultSetToTableModel(Room.get_every_room()) ) ; 
-    }//GEN-LAST:event_jLabel45MouseClicked
 
     private void jLabel68MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel68MouseClicked
         this.MainPanel.setVisible(true);  
@@ -2188,6 +2592,157 @@ public class MainFrame extends javax.swing.JFrame {
         scheduler_generation.setBackground(new Color(255,255,255) );  
         jLabel5.setForeground(new Color(0,102,153) ) ; 
     }//GEN-LAST:event_scheduler_generationMouseExited
+
+    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseEntered
+
+    private void nxt_lbl_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxt_lbl_1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nxt_lbl_1MouseEntered
+
+    private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseEntered
+
+    private void back_lbl_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_back_lbl_1MouseEntered
+
+    private void nxt_lbl_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxt_lbl_2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nxt_lbl_2MouseEntered
+
+    private void jLabel32MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel32MouseEntered
+
+    private void jLabel33MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel33MouseEntered
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jLabel34MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel34MouseEntered
+
+    private void back_lbl_02MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_back_lbl_02MouseEntered
+
+    private void jLabel37MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel37MouseEntered
+
+    private void jLabel38MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel38MouseEntered
+
+    private void jLabel39MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel39MouseEntered
+
+    private void jLabel40MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel40MouseEntered
+
+    private void jLabel43MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel43MouseEntered
+    
+//    ArrayList<JPanel> welcome_window_panels= new ArrayList<>();
+
+    private void nxt_lbl_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxt_lbl_1MouseClicked
+        dept_name_panel.setVisible(false);
+        working_days_panel.setVisible(true) ; 
+    }//GEN-LAST:event_nxt_lbl_1MouseClicked
+
+    private void back_lbl_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_1MouseClicked
+        dept_name_panel.setVisible(true);
+        working_days_panel.setVisible(false) ;        
+    }//GEN-LAST:event_back_lbl_1MouseClicked
+
+    private void nxt_lbl_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxt_lbl_2MouseClicked
+        working_days_panel.setVisible(false) ;
+        timeslots_panel.setVisible(true); 
+    }//GEN-LAST:event_nxt_lbl_2MouseClicked
+
+    private void back_lbl_02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseClicked
+        working_days_panel.setVisible(true) ;
+        timeslots_panel.setVisible(false) ;         
+    }//GEN-LAST:event_back_lbl_02MouseClicked
+
+    private void sv_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sv_btn1ActionPerformed
+        MainPanel.setVisible(true); 
+        welcome_window.setVisible(false); 
+    }//GEN-LAST:event_sv_btn1ActionPerformed
+
+    private void add_roomlbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl1MouseClicked
+
+    private void add_roomlbl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl2MouseClicked
+
+    private void add_roomlbl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl3MouseClicked
+
+    private void add_roomlbl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl4MouseClicked
+
+    private void add_roomlbl6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl6MouseClicked
+
+    private void view_all_roomslbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslbl1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_view_all_roomslbl1MouseClicked
+
+    private void view_all_roomslbl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslbl2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_view_all_roomslbl2MouseClicked
+
+    private void view_all_roomslbl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslbl3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_view_all_roomslbl3MouseClicked
+
+    private void view_all_roomslbl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslbl4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_view_all_roomslbl4MouseClicked
+
+    private void add_roomlbl5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl5MouseClicked
+
+    private void add_roomlbl8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl8MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl8MouseClicked
+
+    private void delbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delbtnActionPerformed
+        //        String room_name = room_name1.getText().trim() ;
+        //        if(Room.remove_room(room_name)){
+            //            JOptionPane.showMessageDialog(null, "Room removed successfully");
+            //            room_name1.setText(null);
+            //        }
+    }//GEN-LAST:event_delbtnActionPerformed
+
+    private void add_roomlbl7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_roomlbl7MouseClicked
+
+    private void jLabel94MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel94MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel94MouseClicked
+
+    private void jLabel95MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel95MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel95MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2233,14 +2788,22 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel Department;
     private javax.swing.JPanel Dept;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JScrollPane MainPanel_ScrollPane;
     private javax.swing.JPanel Programs;
     private javax.swing.JPanel addCourse;
-    private javax.swing.JPanel add_room;
-    private javax.swing.JButton add_roombtn;
     private javax.swing.JLabel add_roomlbl;
+    private javax.swing.JLabel add_roomlbl1;
+    private javax.swing.JLabel add_roomlbl2;
+    private javax.swing.JLabel add_roomlbl3;
+    private javax.swing.JLabel add_roomlbl4;
+    private javax.swing.JLabel add_roomlbl5;
+    private javax.swing.JLabel add_roomlbl6;
+    private javax.swing.JLabel add_roomlbl7;
+    private javax.swing.JLabel add_roomlbl8;
     private javax.swing.JPanel all_programs_panel;
     private javax.swing.JLabel available_datalbl;
-    private javax.swing.JTextField capacity;
+    private javax.swing.JLabel back_lbl_02;
+    private javax.swing.JLabel back_lbl_1;
     private javax.swing.JPanel course;
     private javax.swing.JTable coursesTable;
     private javax.swing.JLabel courseslbl;
@@ -2252,13 +2815,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel datesheet_generation;
     private javax.swing.JPanel delCourse;
     private javax.swing.JButton delbtn;
-    private javax.swing.JPanel delete_room;
     private javax.swing.JPanel dept_details_panel;
     private javax.swing.JLabel dept_name;
+    private javax.swing.JPanel dept_name_panel;
     private javax.swing.JTable display_table;
-    private javax.swing.JButton find_del_panelbtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
@@ -2266,7 +2832,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -2274,20 +2847,24 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2305,14 +2882,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
@@ -2324,7 +2906,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -2335,7 +2916,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
@@ -2364,10 +2944,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -2395,14 +2978,21 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -2411,7 +3001,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -2420,11 +3015,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JCheckBox labcheckBox;
-    private javax.swing.JCheckBox labcheckBox1;
     private javax.swing.JCheckBox labcheckBox10;
     private javax.swing.JCheckBox labcheckBox11;
-    private javax.swing.JCheckBox labcheckBox2;
-    private javax.swing.JCheckBox labcheckBox3;
     private javax.swing.JCheckBox labcheckBox4;
     private javax.swing.JCheckBox labcheckBox5;
     private javax.swing.JCheckBox labcheckBox6;
@@ -2432,16 +3024,19 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox labcheckBox8;
     private javax.swing.JCheckBox labcheckBox9;
     private javax.swing.JLabel labslbl;
+    private javax.swing.JLabel nxt_lbl_1;
+    private javax.swing.JLabel nxt_lbl_2;
     private javax.swing.JLabel professorslbl;
     private javax.swing.JPanel program;
     private javax.swing.JTable programs_table;
     private javax.swing.JLabel programslbl;
-    private javax.swing.JTextField room_name1;
-    private javax.swing.JTextField roomname;
+    private javax.swing.JPanel room_details;
     private javax.swing.JLabel roomslbl;
     private javax.swing.JPanel schedule_generation;
     private javax.swing.JPanel scheduler_generation;
     private javax.swing.JPanel students;
+    private javax.swing.JButton sv_btn1;
+    private javax.swing.JPanel timeslots_panel;
     private javax.swing.JTextField title;
     private javax.swing.JTextField title1;
     private javax.swing.JTextField title2;
@@ -2450,10 +3045,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel viewAllCourses;
     private javax.swing.JPanel viewData;
     private javax.swing.JLabel view_all_roomslbl;
+    private javax.swing.JLabel view_all_roomslbl1;
+    private javax.swing.JLabel view_all_roomslbl2;
+    private javax.swing.JLabel view_all_roomslbl3;
+    private javax.swing.JLabel view_all_roomslbl4;
     private javax.swing.JButton view_coursesbtn;
     private javax.swing.JButton view_facultybtn;
     private javax.swing.JButton view_labsbtn;
     private javax.swing.JButton view_programsbtn;
     private javax.swing.JButton view_roomsbtn;
+    private javax.swing.JPanel welcome_window;
+    private javax.swing.JPanel working_days_panel;
     // End of variables declaration//GEN-END:variables
 }
