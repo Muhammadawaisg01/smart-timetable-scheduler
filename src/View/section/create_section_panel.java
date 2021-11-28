@@ -27,19 +27,168 @@ public class create_section_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel95 = new javax.swing.JLabel();
+        roomname = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel97 = new javax.swing.JLabel();
+        roomname1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox<>();
+        jButton8 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel99 = new javax.swing.JLabel();
+        jComboBox10 = new javax.swing.JComboBox<>();
+        jButton9 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel96.setText("Program:");
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 40));
+
+        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel94.setText("Section ID:");
+        jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, 40));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 450, 40));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 450, 40));
+
+        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel95.setText("Semester:");
+        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 40));
+
+        roomname.setForeground(new java.awt.Color(0, 102, 153));
+        jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 450, 40));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 760, -1));
+
+        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setText("Section Name:");
+        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
+
+        roomname1.setForeground(new java.awt.Color(0, 102, 153));
+        jPanel1.add(roomname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 450, 40));
+
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("next");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 940, 160, 60));
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel60.setText("Assign courses to section:");
+        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 320, -1));
+
+        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setText("Course:");
+        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 30));
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
+        jPanel1.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 380, 40));
+
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(0, 102, 153));
+        jButton8.setText("specify");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 80, 30));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 750, -1));
+
+        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel61.setText("Assign specific room to section:");
+        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 720, 320, -1));
+
+        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel99.setText("Room:");
+        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, 160, 30));
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
+        jPanel1.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, 380, 40));
+
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(0, 102, 153));
+        jButton9.setText("specify");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 870, 80, 30));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Courses that are assigned to the section will be printed here\n");
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 100));
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 510));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox10;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    static javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField roomname;
+    private javax.swing.JTextField roomname1;
     // End of variables declaration//GEN-END:variables
 }

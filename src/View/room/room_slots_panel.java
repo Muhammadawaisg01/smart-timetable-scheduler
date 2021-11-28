@@ -27,7 +27,6 @@ public class room_slots_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jLabel97 = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -42,8 +41,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jLabel102 = new javax.swing.JLabel();
         jCheckBox10 = new javax.swing.JCheckBox();
         jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        jCheckBox15 = new javax.swing.JCheckBox();
         jCheckBox16 = new javax.swing.JCheckBox();
         jCheckBox17 = new javax.swing.JCheckBox();
         jCheckBox18 = new javax.swing.JCheckBox();
@@ -53,12 +50,9 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox22 = new javax.swing.JCheckBox();
         jCheckBox24 = new javax.swing.JCheckBox();
         jCheckBox25 = new javax.swing.JCheckBox();
-        jCheckBox28 = new javax.swing.JCheckBox();
         jCheckBox29 = new javax.swing.JCheckBox();
         jCheckBox30 = new javax.swing.JCheckBox();
-        jCheckBox32 = new javax.swing.JCheckBox();
         jCheckBox33 = new javax.swing.JCheckBox();
-        jCheckBox34 = new javax.swing.JCheckBox();
         jCheckBox35 = new javax.swing.JCheckBox();
         jCheckBox36 = new javax.swing.JCheckBox();
         jCheckBox37 = new javax.swing.JCheckBox();
@@ -68,35 +62,29 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox43 = new javax.swing.JCheckBox();
         jCheckBox44 = new javax.swing.JCheckBox();
         jCheckBox46 = new javax.swing.JCheckBox();
-        jCheckBox47 = new javax.swing.JCheckBox();
         jCheckBox48 = new javax.swing.JCheckBox();
         jCheckBox49 = new javax.swing.JCheckBox();
         jCheckBox51 = new javax.swing.JCheckBox();
         jCheckBox52 = new javax.swing.JCheckBox();
         jCheckBox53 = new javax.swing.JCheckBox();
-        jCheckBox55 = new javax.swing.JCheckBox();
         jCheckBox56 = new javax.swing.JCheckBox();
         jCheckBox61 = new javax.swing.JCheckBox();
         jCheckBox62 = new javax.swing.JCheckBox();
         jCheckBox64 = new javax.swing.JCheckBox();
-        jCheckBox65 = new javax.swing.JCheckBox();
         jCheckBox66 = new javax.swing.JCheckBox();
         jCheckBox67 = new javax.swing.JCheckBox();
         jCheckBox69 = new javax.swing.JCheckBox();
         jCheckBox70 = new javax.swing.JCheckBox();
         jCheckBox71 = new javax.swing.JCheckBox();
-        jCheckBox73 = new javax.swing.JCheckBox();
         jCheckBox74 = new javax.swing.JCheckBox();
         jCheckBox77 = new javax.swing.JCheckBox();
         jCheckBox78 = new javax.swing.JCheckBox();
         jCheckBox80 = new javax.swing.JCheckBox();
-        jCheckBox81 = new javax.swing.JCheckBox();
         jCheckBox82 = new javax.swing.JCheckBox();
         jCheckBox83 = new javax.swing.JCheckBox();
         jCheckBox85 = new javax.swing.JCheckBox();
         jCheckBox86 = new javax.swing.JCheckBox();
         jCheckBox87 = new javax.swing.JCheckBox();
-        jCheckBox89 = new javax.swing.JCheckBox();
         jCheckBox90 = new javax.swing.JCheckBox();
         jLabel103 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
@@ -104,14 +92,10 @@ public class room_slots_panel extends javax.swing.JPanel {
         jLabel105 = new javax.swing.JLabel();
         labcheckBox4 = new javax.swing.JCheckBox();
         jLabel59 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox1.setText("8:30-10:00 AM");
-        add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 710, 160, 40));
 
         jCheckBox2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(0, 102, 153));
@@ -151,6 +135,11 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox8.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox8.setText("8:30-10:00 AM");
+        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox8ActionPerformed(evt);
+            }
+        });
         add(jCheckBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 160, 40));
 
         jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -182,16 +171,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox11.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox11.setText("8:30-10:00 AM");
         add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 160, 40));
-
-        jCheckBox14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox14.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox14.setText("8:30-10:00 AM");
-        add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 770, 160, 40));
-
-        jCheckBox15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox15.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox15.setText("8:30-10:00 AM");
-        add(jCheckBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 710, 160, 40));
 
         jCheckBox16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox16.setForeground(new java.awt.Color(0, 102, 153));
@@ -238,11 +217,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox25.setText("8:30-10:00 AM");
         add(jCheckBox25, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 160, 40));
 
-        jCheckBox28.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox28.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox28.setText("8:30-10:00 AM");
-        add(jCheckBox28, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 770, 160, 40));
-
         jCheckBox29.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox29.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox29.setText("8:30-10:00 AM");
@@ -253,20 +227,10 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox30.setText("8:30-10:00 AM");
         add(jCheckBox30, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 590, 160, 40));
 
-        jCheckBox32.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox32.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox32.setText("8:30-10:00 AM");
-        add(jCheckBox32, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 710, 160, 40));
-
         jCheckBox33.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox33.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox33.setText("8:30-10:00 AM");
         add(jCheckBox33, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 160, 40));
-
-        jCheckBox34.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox34.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox34.setText("8:30-10:00 AM");
-        add(jCheckBox34, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 770, 160, 40));
 
         jCheckBox35.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox35.setForeground(new java.awt.Color(0, 102, 153));
@@ -313,11 +277,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox46.setText("8:30-10:00 AM");
         add(jCheckBox46, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 650, 160, 40));
 
-        jCheckBox47.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox47.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox47.setText("8:30-10:00 AM");
-        add(jCheckBox47, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 710, 160, 40));
-
         jCheckBox48.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox48.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox48.setText("8:30-10:00 AM");
@@ -343,11 +302,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox53.setText("8:30-10:00 AM");
         add(jCheckBox53, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 160, 40));
 
-        jCheckBox55.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox55.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox55.setText("8:30-10:00 AM");
-        add(jCheckBox55, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 770, 160, 40));
-
         jCheckBox56.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox56.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox56.setText("8:30-10:00 AM");
@@ -367,11 +321,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox64.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox64.setText("8:30-10:00 AM");
         add(jCheckBox64, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 650, 160, 40));
-
-        jCheckBox65.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox65.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox65.setText("8:30-10:00 AM");
-        add(jCheckBox65, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 710, 160, 40));
 
         jCheckBox66.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox66.setForeground(new java.awt.Color(0, 102, 153));
@@ -398,11 +347,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox71.setText("8:30-10:00 AM");
         add(jCheckBox71, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 350, 160, 40));
 
-        jCheckBox73.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox73.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox73.setText("8:30-10:00 AM");
-        add(jCheckBox73, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 770, 160, 40));
-
         jCheckBox74.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox74.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox74.setText("8:30-10:00 AM");
@@ -422,11 +366,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox80.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox80.setText("8:30-10:00 AM");
         add(jCheckBox80, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 650, 160, 40));
-
-        jCheckBox81.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox81.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox81.setText("8:30-10:00 AM");
-        add(jCheckBox81, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 710, 160, 40));
 
         jCheckBox82.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox82.setForeground(new java.awt.Color(0, 102, 153));
@@ -453,11 +392,6 @@ public class room_slots_panel extends javax.swing.JPanel {
         jCheckBox87.setText("8:30-10:00 AM");
         add(jCheckBox87, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 350, 160, 40));
 
-        jCheckBox89.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jCheckBox89.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox89.setText("8:30-10:00 AM");
-        add(jCheckBox89, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 770, 160, 40));
-
         jCheckBox90.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jCheckBox90.setForeground(new java.awt.Color(0, 102, 153));
         jCheckBox90.setText("8:30-10:00 AM");
@@ -477,7 +411,7 @@ public class room_slots_panel extends javax.swing.JPanel {
                 jButton10ActionPerformed(evt);
             }
         });
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 1120, 200, 60));
+        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 1120, 200, 60));
 
         jLabel104.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel104.setForeground(new java.awt.Color(0, 102, 153));
@@ -503,6 +437,7 @@ public class room_slots_panel extends javax.swing.JPanel {
         jLabel59.setForeground(new java.awt.Color(0, 102, 153));
         jLabel59.setText("Room availability specification:");
         add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 320, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 1110, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -513,14 +448,15 @@ public class room_slots_panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_labcheckBox4ActionPerformed
 
+    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox8ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox15;
     private javax.swing.JCheckBox jCheckBox16;
     private javax.swing.JCheckBox jCheckBox17;
     private javax.swing.JCheckBox jCheckBox18;
@@ -531,13 +467,10 @@ public class room_slots_panel extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox22;
     private javax.swing.JCheckBox jCheckBox24;
     private javax.swing.JCheckBox jCheckBox25;
-    private javax.swing.JCheckBox jCheckBox28;
     private javax.swing.JCheckBox jCheckBox29;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox30;
-    private javax.swing.JCheckBox jCheckBox32;
     private javax.swing.JCheckBox jCheckBox33;
-    private javax.swing.JCheckBox jCheckBox34;
     private javax.swing.JCheckBox jCheckBox35;
     private javax.swing.JCheckBox jCheckBox36;
     private javax.swing.JCheckBox jCheckBox37;
@@ -548,39 +481,33 @@ public class room_slots_panel extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox43;
     private javax.swing.JCheckBox jCheckBox44;
     private javax.swing.JCheckBox jCheckBox46;
-    private javax.swing.JCheckBox jCheckBox47;
     private javax.swing.JCheckBox jCheckBox48;
     private javax.swing.JCheckBox jCheckBox49;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox51;
     private javax.swing.JCheckBox jCheckBox52;
     private javax.swing.JCheckBox jCheckBox53;
-    private javax.swing.JCheckBox jCheckBox55;
     private javax.swing.JCheckBox jCheckBox56;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox61;
     private javax.swing.JCheckBox jCheckBox62;
     private javax.swing.JCheckBox jCheckBox64;
-    private javax.swing.JCheckBox jCheckBox65;
     private javax.swing.JCheckBox jCheckBox66;
     private javax.swing.JCheckBox jCheckBox67;
     private javax.swing.JCheckBox jCheckBox69;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox70;
     private javax.swing.JCheckBox jCheckBox71;
-    private javax.swing.JCheckBox jCheckBox73;
     private javax.swing.JCheckBox jCheckBox74;
     private javax.swing.JCheckBox jCheckBox77;
     private javax.swing.JCheckBox jCheckBox78;
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox80;
-    private javax.swing.JCheckBox jCheckBox81;
     private javax.swing.JCheckBox jCheckBox82;
     private javax.swing.JCheckBox jCheckBox83;
     private javax.swing.JCheckBox jCheckBox85;
     private javax.swing.JCheckBox jCheckBox86;
     private javax.swing.JCheckBox jCheckBox87;
-    private javax.swing.JCheckBox jCheckBox89;
     private javax.swing.JCheckBox jCheckBox90;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel102;
@@ -591,6 +518,7 @@ public class room_slots_panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JCheckBox labcheckBox4;
     // End of variables declaration//GEN-END:variables
 }

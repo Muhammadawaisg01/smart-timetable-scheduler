@@ -27,19 +27,41 @@ public class excel_file_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jButton1 = new javax.swing.JButton();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("upload excel file");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 260, 70));
+
+        jLabel106.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel106.setText("file name (when uploaded) ");
+        add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 200, 50));
+
+        jLabel107.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel107.setText("upload excel file for student registration:");
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 330, 40));
+
+        jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel108.setText("Student Course Registration Panel:");
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 350, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
     // End of variables declaration//GEN-END:variables
 }

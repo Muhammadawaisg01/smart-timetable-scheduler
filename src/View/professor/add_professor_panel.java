@@ -60,7 +60,7 @@ public class add_professor_panel extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(0, 102, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Add Professor");
+        jButton1.setText("next");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 220, 60));
     }// </editor-fold>//GEN-END:initComponents
 
