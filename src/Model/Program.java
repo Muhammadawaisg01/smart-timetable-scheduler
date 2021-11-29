@@ -1,15 +1,12 @@
 
 package Model ; 
 
-<<<<<<< HEAD
 import Model.semester.Semester;
-=======
 import db.DBConnection;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
 import java.util.ArrayList ; 
 import javax.swing.JOptionPane;
 

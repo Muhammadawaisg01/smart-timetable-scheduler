@@ -14,23 +14,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Section {
+
     private int clashes;   // number of clashes
     private String id;
     private int student_strength;           // student strength
-<<<<<<< HEAD:src/Model/semester/Section.java
-    private ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
-    private ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
-    private Section_Schedule schedule = new Section_Schedule();
-    private ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS
-=======
-
     ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
-    
     Section_Schedule schedule = new Section_Schedule();
-    
     ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS   
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f:src/Model/Section.java
 
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
@@ -39,6 +30,7 @@ public class Section {
     public int getTotalClashes() {
         return clashes;
     }
+
     public void incClash() {
         this.clashes++;
     }
@@ -133,7 +125,6 @@ public class Section {
         this.sectionCourses.add(crs);
     }
 
-    
     @Override
     public String toString() {
         return "Section{" + "ID=" + id + '}';
@@ -255,14 +246,14 @@ public class Section {
     }
 
     /**
-     * 
+     *
      * @param secID search for secID in semester list
      * @return Section with secID
      */
     public static Section getSection(String secID) {
-        for (Semester semester: semesters) {
+        for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
-            for (Section sec: sections) {
+            for (Section sec : sections) {
                 if (sec.getId().equalsIgnoreCase(secID)) {
                     return sec;
                 }
@@ -270,14 +261,12 @@ public class Section {
         }
         return null;
     }
-    
+
     public void initializePopulation() {
         for (int i = 0; i < 10; i++) {
             randomSchedules.add(new Section_Schedule());
         }
     }
-
-    
 
     public void printFittness() {
         for (Semester semester : semesters) {

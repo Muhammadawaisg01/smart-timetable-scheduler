@@ -1,16 +1,13 @@
-
 package Controller;
 
 import Model.Scheduler;
-import static db.DBConnection.createConnection;
 import static Model.Entities_Main_Arrays.rooms;
 import static Model.Entities_Main_Arrays.semesters;
-import static Model.Entities_Main_Arrays.add_Data_to_Student_List;
-import static Model.Entities_Main_Arrays.add_Data_to_Semester_List;
 import static Model.Entities_Main_Arrays.add_Data_to_Professor_List;
 import static Model.Entities_Main_Arrays.student_list;
 
 import Model.Course;
+import Model.Entities_Main_Arrays;
 import Model.semester.Section;
 import Model.semester.Semester;
 import Model.room.Room_Day;
@@ -18,26 +15,17 @@ import Model.room.Room_Timeslot;
 import Model.room.Room;
 import Model.semester.SectionUtility;
 import Model.student.Student;
-import static clash_resolving.Student.addRegisteredCourses;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-<<<<<<< HEAD
-
-=======
-import java.sql.Connection;
 import static db.DBConnection.createConnection;
-import javax.swing.JOptionPane;
-
-
-// JOptionPane.showMessageDialog(null, "Error in Fetching Data of Player", "Table", JOptionPane.ERROR_MESSAGE) ; 
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
+import static db.DBConnection.getConnection;
 
 public class Runner {
 
     static Scanner in = new Scanner(System.in);
     static String[][] array = new String[6][6];
-    
+
     static ArrayList<Room> labs = new ArrayList<>();
 //    static ArrayList<Course> course = new ArrayList<>();
     static int sections = 0;
@@ -46,22 +34,21 @@ public class Runner {
     public static ArrayList<Scheduler> scheduler = new ArrayList<>();  //public
 
     public static void main(String[] args) {                                    // MAIN METHOD  
-<<<<<<< HEAD
-        createConnection(); // creating connection with database  
-//        addRegisteredCourses();
-//        System.exit(1);
-        // fill student_list ArrayList
-        add_Data_to_Student_List(); // read all student from database
-        // fill the semesters ArrayList
-        add_Data_to_Semester_List();    // read semester and sections
-        
-=======
+//<<<<<<< HEAD
+//        createConnection(); // creating connection with database  
+////        addRegisteredCourses();
+////        System.exit(1);
+//        // fill student_list ArrayList
+//        add_Data_to_Student_List(); // read all student from database
+//        // fill the semesters ArrayList
+//        add_Data_to_Semester_List();    // read semester and sections
+//        
+//=======
         createConnection(); // creating connection with database    
-        System.out.println("I AM CONNECTION        "+getConnection() ) ; 
+        System.out.println("I AM CONNECTION        " + getConnection());
         Entities_Main_Arrays.add_Data_to_Student_List();
         Entities_Main_Arrays.add_Data_to_Semester_List();
-        semesters = Entities_Main_Arrays.semesters;
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
+//        semesters = Entities_Main_Arrays.semesters;
         clash_resolving.Student student = new clash_resolving.Student();
 
         // 
@@ -303,7 +290,6 @@ public class Runner {
 //        }
 ////        algorithm() ; 
 //    }
-
 //    public static void fittness_function()  {   
 //        //      
 //    }   

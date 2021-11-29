@@ -2,9 +2,9 @@ package View;
 
 import Model.Course;
 import Model.Entities_Main_Arrays;
-import Model.Professor;
+import Model.professor.Professor;
 import Model.Program;
-import Model.Room;
+import Model.room.Room;
 import View.section.create_section_panel;
 import View.viewtimetable_panel.view_generated_timetable_panel;
 import db.DBConnection;

@@ -2,11 +2,9 @@
 
 package Model.professor ; 
 
-<<<<<<< HEAD:src/Model/professor/Professor.java
+
 import Model.WeekDays;
-=======
 import db.DBConnection;
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f:src/Model/Professor.java
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList ; 

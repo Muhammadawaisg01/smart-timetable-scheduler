@@ -13,18 +13,18 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
     
 public class Course {   
-<<<<<<< HEAD
-    
-    private String course_code ; 
-    private String title ; 
-    private int credit_hours ;  
-    private boolean lab ;       
-=======
+//<<<<<<< HEAD
+//    
+//    private String course_code ; 
+//    private String title ; 
+//    private int credit_hours ;  
+//    private boolean lab ;       
+//=======
     String course_code ; 
     String title ; 
     int credit_hours ;  
     boolean lab ;       
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
+//>>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
     
 //     maximum enrollment variable          how msny students have enrolled in this course      
 
@@ -104,15 +104,15 @@ public class Course {
     @param course_code 
     @return Course Object
     */
-<<<<<<< HEAD
-    public static Course getCourse(String course_code) {
-        Connection conn = getConnection();
-=======
+//<<<<<<< HEAD
+//    public static Course getCourse(String course_code) {
+//        Connection conn = getConnection();
+//=======
     public static Course getCourse(String code) {
         conn= db.DBConnection.getConnection();
->>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
+//>>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
         Course course = new Course();
-        String q = "select * from course where course_code = '" + course_code + "'";
+        String q = "select * from course where course_code = '" + code + "'";
         try {
             PreparedStatement stmt = conn.prepareStatement(q);
             ResultSet rs = stmt.executeQuery();
