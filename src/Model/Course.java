@@ -92,7 +92,7 @@ public class Course {
         return "Course{" + "course_code=" + course_code + ", title=" + title + ", credit_hours=" + credit_hours + ", lab=" + lab + '}';
     }
     
-    /*
+    /**
     @param course_code 
     @return Course Object
     */

@@ -245,6 +245,22 @@ public class Section {  // GA POPULATION
         return null;
     }
 
+    /**
+     * 
+     * @param secID search for secID in semester list
+     * @return Section with secID
+     */
+    public static Section getSection(String secID) {
+        for (Semester semester: semesters) {
+            ArrayList<Section> sections = semester.getSections();
+            for (Section sec: sections) {
+                if (sec.getId().equalsIgnoreCase(secID)) {
+                    return sec;
+                }
+            }
+        }
+        return null;
+    }
     
     public void initializePopulation() {
         for (int i = 0; i < 10; i++) {
