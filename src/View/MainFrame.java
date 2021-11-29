@@ -87,14 +87,14 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     @Override
     public void add_all_panels_of_view_timetable_to_list() {
         view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
     }
     @Override
     public void add_all_panels_of_schedule_generation_to_list() {
-        schedule_generation_panels_list.add(create_section_panel1);
+        schedule_generation_panels_list.add(first_panel1);
+        schedule_generation_panels_list.add(first_panel_part21);
+        schedule_generation_panels_list.add(second_panel1);
+        schedule_generation_panels_list.add(third_panel1);
+        schedule_generation_panels_list.add(final_panel1);
     }
     
     @Override
@@ -396,22 +396,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         second_panel1 = new View.schedule_generation.second_panel();
         third_panel1 = new View.schedule_generation.third_panel();
         final_panel1 = new View.schedule_generation.final_panel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        labcheckBox4 = new javax.swing.JCheckBox();
-        labcheckBox6 = new javax.swing.JCheckBox();
-        labcheckBox7 = new javax.swing.JCheckBox();
-        labcheckBox8 = new javax.swing.JCheckBox();
-        labcheckBox9 = new javax.swing.JCheckBox();
-        labcheckBox10 = new javax.swing.JCheckBox();
-        labcheckBox11 = new javax.swing.JCheckBox();
         timetable_management = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         Dashboard_timetable = new javax.swing.JPanel();
@@ -2032,13 +2016,13 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
 
         jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel102.setText("Room");
+        jLabel102.setText("Panel 1");
         jLabel102.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel102MouseClicked(evt);
             }
         });
-        Dashboard_Dept1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 250, 40));
+        Dashboard_Dept1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 180, 40));
 
         jPanel23container.add(Dashboard_Dept1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 580));
 
@@ -2049,77 +2033,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         jPanel24.add(second_panel1, "card5");
         jPanel24.add(third_panel1, "card6");
         jPanel24.add(final_panel1, "card7");
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel27.setText("-->");
-        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 500, 50, 40));
-
-        jTextField14.setText("jTextField14");
-        jPanel4.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 280, 40));
-        jPanel4.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 280, 40));
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel28.setText("Schedule Generation  Inputs");
-        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 280, 70));
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel29.setText("Working Days Information Panel: ");
-        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 340, 50));
-
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel30.setText("No. of Working days:");
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 260, 30));
-
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel31.setText("Timeslot:");
-        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 260, 30));
-
-        labcheckBox4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox4.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox4.setText("Monday");
-        jPanel5.add(labcheckBox4);
-
-        labcheckBox6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox6.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox6.setText("Tuesday");
-        jPanel5.add(labcheckBox6);
-
-        labcheckBox7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox7.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox7.setText("Wednesday");
-        jPanel5.add(labcheckBox7);
-
-        labcheckBox8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox8.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox8.setText("Thursday");
-        jPanel5.add(labcheckBox8);
-
-        labcheckBox9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox9.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox9.setText("Friday");
-        jPanel5.add(labcheckBox9);
-
-        labcheckBox10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox10.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox10.setText("Saturday");
-        jPanel5.add(labcheckBox10);
-
-        labcheckBox11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox11.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox11.setText("Sunday");
-        jPanel5.add(labcheckBox11);
-
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 520, 110));
-
-        jPanel24.add(jPanel4, "card2");
 
         jPanel23container.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
 
@@ -3240,12 +3153,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -3310,11 +3218,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel49;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
@@ -3338,8 +3244,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
@@ -3350,14 +3254,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lab_view_schedule_lbl;
     private javax.swing.JCheckBox labcheckBox;
-    private javax.swing.JCheckBox labcheckBox10;
-    private javax.swing.JCheckBox labcheckBox11;
-    private javax.swing.JCheckBox labcheckBox4;
     private javax.swing.JCheckBox labcheckBox5;
-    private javax.swing.JCheckBox labcheckBox6;
-    private javax.swing.JCheckBox labcheckBox7;
-    private javax.swing.JCheckBox labcheckBox8;
-    private javax.swing.JCheckBox labcheckBox9;
     private javax.swing.JLabel labslbl;
     private javax.swing.JLabel nxt_lbl_1;
     private javax.swing.JLabel nxt_lbl_2;
