@@ -36,7 +36,7 @@ public class search_free_slot_panel extends javax.swing.JPanel {
 
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton1.setText("search for specific room");
+        jRadioButton1.setText("search in specific room");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);

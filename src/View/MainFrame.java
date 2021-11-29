@@ -26,7 +26,8 @@ import cambodia.raven.Time;
 import java.awt.Font;
 import javax.swing.JLabel;
 
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements Panels_Management 
+{
 
     public MainFrame() {
         initComponents();
@@ -34,7 +35,133 @@ public class MainFrame extends javax.swing.JFrame {
         createConnection();
         System.out.println("I am connection      " + getConnection());
         add_all_panels_of_programs_to_list();
+        add_all_panels_of_department_to_list();
+        add_all_panels_of_students_to_list();
+        add_all_panels_of_courses_to_list();
+        add_all_panels_of_view_timetable_to_list();
+        add_all_panels_of_schedule_generation_to_list();
+        
     }
+    
+    // These array consists of all panels in the different option on the MainPanel 
+    ArrayList<JPanel> programs_panels_list = new ArrayList<>();
+    ArrayList<JPanel> department_panels_list = new ArrayList<>();
+    ArrayList<JPanel> view_timetable_panels_list = new ArrayList<>();
+    ArrayList<JPanel> students_panels_list = new ArrayList<>();
+    ArrayList<JPanel> courses_panels_list = new ArrayList<>();
+    ArrayList<JPanel> schedule_generation_panels_list = new ArrayList<>();
+    
+    // Implementing Methods of Panels Management section
+    @Override
+    public void add_all_panels_of_programs_to_list() {
+        programs_panels_list.add(create_section_panel1);
+        programs_panels_list.add(view_section_details_option_panel1);
+        programs_panels_list.add(view_section_details_panel1);
+        programs_panels_list.add(add_new_semester_panel1);
+        programs_panels_list.add(update_section_panel1);
+        programs_panels_list.add(all_programs_details_panel);
+        programs_panels_list.add(remove_section_panel1);
+        programs_panels_list.add(add_new_program1);
+        programs_panels_list.add(view_schedule_of_section1);
+        programs_panels_list.add(professor_course_allocation1);
+    }
+    @Override
+    public void add_all_panels_of_department_to_list() {
+        department_panels_list.add(room_input_panel1);
+        department_panels_list.add(search_free_slot_panel1);
+        department_panels_list.add(add_professor_panel1);
+        department_panels_list.add(view_schedule_panel1);
+        department_panels_list.add(view_schedule_panel2);
+        department_panels_list.add(dept_details_panel);
+        department_panels_list.add(viewData);
+        department_panels_list.add(room_details) ; 
+    }
+    @Override
+    public void add_all_panels_of_students_to_list() {
+        students_panels_list.add(create_section_panel1);
+    }
+    @Override
+    public void add_all_panels_of_courses_to_list() {
+        courses_panels_list.add(create_section_panel1);
+    }
+    @Override
+    public void add_all_panels_of_view_timetable_to_list() {
+        view_timetable_panels_list.add(create_section_panel1);
+        view_timetable_panels_list.add(create_section_panel1);
+        view_timetable_panels_list.add(create_section_panel1);
+        view_timetable_panels_list.add(create_section_panel1);
+        view_timetable_panels_list.add(create_section_panel1);
+    }
+    @Override
+    public void add_all_panels_of_schedule_generation_to_list() {
+        schedule_generation_panels_list.add(create_section_panel1);
+    }
+    
+    @Override
+    public void programs_panel_visibility(JPanel panel) {   
+        for (int i = 0; i < programs_panels_list.size(); i++) {
+            if (programs_panels_list.get(i) == panel) {
+                programs_panels_list.get(i).setVisible(true);
+            } else {
+                programs_panels_list.get(i).setVisible(false);
+            }
+        }
+    }
+    @Override
+    public void department_panel_visibility(JPanel panel) {   
+        for (int i = 0; i < department_panels_list.size(); i++) {   
+            if (department_panels_list.get(i) == panel) {
+                department_panels_list.get(i).setVisible(true);
+            } else {
+                department_panels_list.get(i).setVisible(false);
+            }
+        }
+    }
+    @Override
+    public void students_panel_visibility(JPanel panel) {   
+        for (int i = 0; i < students_panels_list.size(); i++) {
+            if (students_panels_list.get(i) == panel) {
+                students_panels_list.get(i).setVisible(true);
+            } else {
+                students_panels_list.get(i).setVisible(false);
+            }
+        }
+    }
+    @Override
+    public void courses_panel_visibility(JPanel panel) {   
+        for (int i = 0; i < courses_panels_list.size(); i++) {
+            if (courses_panels_list.get(i) == panel) {
+                courses_panels_list.get(i).setVisible(true);
+            } else {
+                courses_panels_list.get(i).setVisible(false);
+            }
+        }
+    }
+    @Override
+    public void view_timetable_panel_visibility(JPanel panel) {   
+        for (int i = 0; i < view_timetable_panels_list.size(); i++) {
+            if (view_timetable_panels_list.get(i) == panel) {
+                view_timetable_panels_list.get(i).setVisible(true);
+            } else {
+                view_timetable_panels_list.get(i).setVisible(false);
+            }
+        }
+    }
+    @Override
+    public void schedule_generation_panel_visibility(JPanel panel) {   
+        for (int i = 0; i < schedule_generation_panels_list.size(); i++) {
+            if (schedule_generation_panels_list.get(i) == panel) {
+                schedule_generation_panels_list.get(i).setVisible(true);
+            } else {
+                schedule_generation_panels_list.get(i).setVisible(false);
+            }
+        }
+    }
+
+    
+    
+    //      PANELS MANAGEMENT Ends Here, all methods of the interface panels management are implemented in above section
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -70,13 +197,13 @@ public class MainFrame extends javax.swing.JFrame {
         slot_1_lbl = new javax.swing.JLabel();
         jTextField18 = new javax.swing.JTextField();
         jTextField19 = new javax.swing.JTextField();
-        remove_btn = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
         add_button = new javax.swing.JButton();
         time1 = new cambodia.raven.Time();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        add_button1 = new javax.swing.JButton();
+        slot_1_lbl1 = new javax.swing.JLabel();
+        time2 = new cambodia.raven.Time();
         jLabel38 = new javax.swing.JLabel();
         sv_btn1 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
@@ -134,14 +261,15 @@ public class MainFrame extends javax.swing.JFrame {
         add_roomlbl6 = new javax.swing.JLabel();
         view_all_roomslbl1 = new javax.swing.JLabel();
         view_all_roomslbl2 = new javax.swing.JLabel();
-        view_all_roomslbl3 = new javax.swing.JLabel();
-        add_new_room = new javax.swing.JLabel();
+        add_new_professor = new javax.swing.JLabel();
         lab_view_schedule_lbl = new javax.swing.JLabel();
         add_roomlbl8 = new javax.swing.JLabel();
         view_schedule_lbl = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         room_input_panel1 = new View.room.room_input_panel();
         view_schedule_panel1 = new View.room.view_schedule_panel();
+        view_schedule_panel2 = new View.professor.view_schedule_of_professor_panel();
+        add_professor_panel1 = new View.professor.add_professor_panel();
         search_free_slot_panel1 = new View.room.search_free_slot_panel();
         dept_details_panel = new javax.swing.JPanel();
         jLabel46 = new javax.swing.JLabel();
@@ -263,6 +391,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel68 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
+        first_panel1 = new View.schedule_generation.first_panel();
+        first_panel_part21 = new View.schedule_generation.first_panel_part2();
+        second_panel1 = new View.schedule_generation.second_panel();
+        third_panel1 = new View.schedule_generation.third_panel();
+        final_panel1 = new View.schedule_generation.final_panel();
         jPanel4 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
@@ -279,8 +412,6 @@ public class MainFrame extends javax.swing.JFrame {
         labcheckBox9 = new javax.swing.JCheckBox();
         labcheckBox10 = new javax.swing.JCheckBox();
         labcheckBox11 = new javax.swing.JCheckBox();
-        jPanel23 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
         timetable_management = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         Dashboard_timetable = new javax.swing.JPanel();
@@ -530,7 +661,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel37MouseEntered(evt);
             }
         });
-        jPanel11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 160, 50));
+        jPanel11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 160, 50));
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 102, 153));
@@ -543,11 +674,11 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel40MouseEntered(evt);
             }
         });
-        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 160, 50));
+        jPanel11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 160, 50));
 
         slot_1_lbl.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         slot_1_lbl.setForeground(new java.awt.Color(0, 102, 153));
-        slot_1_lbl.setText("Slot no 01:");
+        slot_1_lbl.setText("01");
         slot_1_lbl.setToolTipText("Logo");
         slot_1_lbl.setAlignmentX(0.5F);
         slot_1_lbl.setAutoscrolls(true);
@@ -556,51 +687,57 @@ public class MainFrame extends javax.swing.JFrame {
                 slot_1_lblMouseEntered(evt);
             }
         });
-        jPanel11.add(slot_1_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 120, 60));
-        jPanel11.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 150, 40));
-        jPanel11.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 150, 40));
+        jPanel11.add(slot_1_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 50, 60));
+        jPanel11.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 160, 40));
+        jPanel11.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 160, 40));
 
-        remove_btn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        remove_btn.setForeground(new java.awt.Color(0, 102, 153));
-        remove_btn.setText("-");
-        jPanel11.add(remove_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 90, 60, 40));
-
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton11.setText(".");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel11.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 30, 40));
-
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton13.setText(".");
-        jPanel11.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 30, 40));
-
-        add_button.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        add_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         add_button.setForeground(new java.awt.Color(0, 102, 153));
-        add_button.setText("+");
+        add_button.setText("add another");
         add_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_buttonActionPerformed(evt);
             }
         });
-        jPanel11.add(add_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(611, 90, 60, 40));
-        jPanel11.add(time1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 120, 70));
+        jPanel11.add(add_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 130, 40));
+        jPanel11.add(time1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 120, 70));
 
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jTextArea3.setForeground(new java.awt.Color(0, 102, 153));
         jTextArea3.setRows(5);
-        jTextArea3.setText("Display Slots Data\n\n");
+        jTextArea3.setText("Display Slots Data that is saved by admin on save button\n\n");
         jScrollPane4.setViewportView(jTextArea3);
 
-        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 640, 80));
+        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 640, 120));
+
+        add_button1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        add_button1.setForeground(new java.awt.Color(0, 102, 153));
+        add_button1.setText("save");
+        add_button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_button1ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(add_button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 100, 40));
+
+        slot_1_lbl1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        slot_1_lbl1.setForeground(new java.awt.Color(0, 102, 153));
+        slot_1_lbl1.setText("Slot no");
+        slot_1_lbl1.setToolTipText("Logo");
+        slot_1_lbl1.setAlignmentX(0.5F);
+        slot_1_lbl1.setAutoscrolls(true);
+        slot_1_lbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                slot_1_lbl1MouseEntered(evt);
+            }
+        });
+        jPanel11.add(slot_1_lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 80, 60));
+        jPanel11.add(time2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
 
         jScrollPane7.setViewportView(jPanel11);
 
-        timeslots_panel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 680, 400));
+        timeslots_panel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 680, 400));
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 102, 153));
@@ -613,7 +750,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jLabel38MouseEntered(evt);
             }
         });
-        timeslots_panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 300, 60));
+        timeslots_panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 300, 60));
 
         sv_btn1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         sv_btn1.setForeground(new java.awt.Color(0, 102, 153));
@@ -1009,7 +1146,7 @@ public class MainFrame extends javax.swing.JFrame {
         Dashboard_Dept.setBackground(new java.awt.Color(0, 102, 153));
         Dashboard_Dept.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setText("Search");
+        jTextField2.setText("Department");
         Dashboard_Dept.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, 210, 30));
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1025,7 +1162,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(0, 102, 153));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel47.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel47.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setText("Department");
         jLabel47.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1093,7 +1230,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         add_roomlbl4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl4.setForeground(new java.awt.Color(255, 255, 255));
-        add_roomlbl4.setText("update");
+        add_roomlbl4.setText("//update");
         add_roomlbl4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 add_roomlbl4MouseClicked(evt);
@@ -1131,29 +1268,18 @@ public class MainFrame extends javax.swing.JFrame {
                 view_all_roomslbl2MouseClicked(evt);
             }
         });
-        jPanel12.add(view_all_roomslbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, 30));
+        jPanel12.add(view_all_roomslbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 30));
 
-        view_all_roomslbl3.setBackground(new java.awt.Color(0, 102, 153));
-        view_all_roomslbl3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        view_all_roomslbl3.setForeground(new java.awt.Color(255, 255, 255));
-        view_all_roomslbl3.setText("All members");
-        view_all_roomslbl3.addMouseListener(new java.awt.event.MouseAdapter() {
+        add_new_professor.setBackground(new java.awt.Color(0, 102, 153));
+        add_new_professor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        add_new_professor.setForeground(new java.awt.Color(255, 255, 255));
+        add_new_professor.setText("add new");
+        add_new_professor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                view_all_roomslbl3MouseClicked(evt);
+                add_new_professorMouseClicked(evt);
             }
         });
-        jPanel12.add(view_all_roomslbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, 30));
-
-        add_new_room.setBackground(new java.awt.Color(0, 102, 153));
-        add_new_room.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        add_new_room.setForeground(new java.awt.Color(255, 255, 255));
-        add_new_room.setText("add new");
-        add_new_room.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                add_new_roomMouseClicked(evt);
-            }
-        });
-        jPanel12.add(add_new_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 170, 30));
+        jPanel12.add(add_new_professor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 170, 30));
 
         lab_view_schedule_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lab_view_schedule_lbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -1163,7 +1289,7 @@ public class MainFrame extends javax.swing.JFrame {
                 lab_view_schedule_lblMouseClicked(evt);
             }
         });
-        jPanel12.add(lab_view_schedule_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 150, 30));
+        jPanel12.add(lab_view_schedule_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, 150, 30));
 
         add_roomlbl8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl8.setForeground(new java.awt.Color(255, 255, 255));
@@ -1195,6 +1321,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.setLayout(new java.awt.CardLayout());
         jPanel3.add(room_input_panel1, "card5");
         jPanel3.add(view_schedule_panel1, "card6");
+        jPanel3.add(view_schedule_panel2, "card9");
+        jPanel3.add(add_professor_panel1, "card8");
         jPanel3.add(search_free_slot_panel1, "card7");
 
         dept_details_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -1344,7 +1472,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel93.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel93.setForeground(new java.awt.Color(0, 102, 153));
         jLabel93.setText("101");
-        room_details.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 100, 30));
+        room_details.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 70, 30));
 
         delbtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         delbtn.setForeground(new java.awt.Color(0, 102, 153));
@@ -1378,7 +1506,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel104.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel104.setForeground(new java.awt.Color(0, 102, 153));
         jLabel104.setText("101");
-        room_details.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 100, 30));
+        room_details.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 70, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1433,7 +1561,7 @@ public class MainFrame extends javax.swing.JFrame {
         Dashboard_Programs.setBackground(new java.awt.Color(0, 102, 153));
         Dashboard_Programs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField3.setText("Search");
+        jTextField3.setText("Programs");
         Dashboard_Programs.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, 210, 30));
 
         jLabel50.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1558,8 +1686,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel54.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel54.setText("Current available Programs");
-        all_programs_details_panel.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 290, 30));
+        jLabel54.setText("All Programs:");
+        all_programs_details_panel.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, 30));
 
         programs_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1889,7 +2017,7 @@ public class MainFrame extends javax.swing.JFrame {
         Dashboard_Dept1.setBackground(new java.awt.Color(0, 102, 153));
         Dashboard_Dept1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField16.setText("Search");
+        jTextField16.setText("Schedule Generation");
         Dashboard_Dept1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, 210, 30));
 
         jLabel68.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1912,10 +2040,15 @@ public class MainFrame extends javax.swing.JFrame {
         });
         Dashboard_Dept1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 250, 40));
 
-        jPanel23container.add(Dashboard_Dept1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 560));
+        jPanel23container.add(Dashboard_Dept1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 580));
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 255));
         jPanel24.setLayout(new java.awt.CardLayout());
+        jPanel24.add(first_panel1, "card3");
+        jPanel24.add(first_panel_part21, "card4");
+        jPanel24.add(second_panel1, "card5");
+        jPanel24.add(third_panel1, "card6");
+        jPanel24.add(final_panel1, "card7");
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1987,36 +2120,6 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 520, 110));
 
         jPanel24.add(jPanel4, "card2");
-
-        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
-
-        jPanel24.add(jPanel23, "card5");
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
-
-        jPanel24.add(jPanel7, "card3");
 
         jPanel23container.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
 
@@ -2154,7 +2257,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jScrollPane11.setViewportView(jPanel22);
 
-        Dashboard_timetable.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 470));
+        Dashboard_timetable.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 280, 430));
 
         jPanel13.add(Dashboard_timetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 570));
 
@@ -2309,7 +2412,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         // TODO add your handling code here:
         jLabel1.setForeground(Color.red);
-
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
@@ -2436,7 +2538,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void DeptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeptMouseClicked
         this.Department.setVisible(true);
         this.MainPanel.setVisible(false);
-
+        department_panel_visibility(viewData); 
         String name = Model.Department.get_department_name();
         dept_name.setText(name);
 
@@ -2452,33 +2554,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.MainPanel.setVisible(true);
         this.Programs.setVisible(false);
     }//GEN-LAST:event_jLabel50MouseClicked
-    
-    ArrayList<JPanel> programs_panels_list = new ArrayList<>();
-    
-    public void add_all_panels_of_programs_to_list() {
-        programs_panels_list.add(create_section_panel1);
-        programs_panels_list.add(view_section_details_option_panel1);
-        programs_panels_list.add(view_section_details_panel1);
-        programs_panels_list.add(add_new_semester_panel1);
-        programs_panels_list.add(update_section_panel1);
-        programs_panels_list.add(all_programs_details_panel);
-        programs_panels_list.add(remove_section_panel1);
-        programs_panels_list.add(add_new_program1);
-        programs_panels_list.add(view_schedule_of_section1);
-        programs_panels_list.add(professor_course_allocation1);
-    }
-    
-    public void programs_panel_Visibility(JPanel panel) {   
-        System.out.println(panel);
-//        panel.setVisible(true);
-        for (int i = 0; i < programs_panels_list.size(); i++) {
-            if (programs_panels_list.get(i) == panel) {
-                programs_panels_list.get(i).setVisible(true);
-            } else {
-                programs_panels_list.get(i).setVisible(false);
-            }
-        }
-    }
 
     private void jLabel51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel51MouseClicked
         this.all_programs_details_panel.setVisible(true);
@@ -2685,10 +2760,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_courseMouseExited
 
     private void add_roomlblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlblMouseClicked
-//        add_room.setVisible(true) ;
-        dept_details_panel.setVisible(false);
-        viewData.setVisible(false);
-        room_details.setVisible(false);
+        department_panel_visibility(room_input_panel1); 
     }//GEN-LAST:event_add_roomlblMouseClicked
 
     private void view_all_roomslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslblMouseClicked
@@ -2810,8 +2882,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void search_slot_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search_slot_lblMouseClicked
         // TODO add your handling code here:
-        search_free_slot_panel1.setVisible(true);
-        room_input_panel1.setVisible(false);
+        department_panel_visibility(search_free_slot_panel1) ;
     }//GEN-LAST:event_search_slot_lblMouseClicked
 
     private void add_roomlbl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl4MouseClicked
@@ -2830,14 +2901,9 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_view_all_roomslbl2MouseClicked
 
-    private void view_all_roomslbl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslbl3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_view_all_roomslbl3MouseClicked
-
-    private void add_new_roomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_new_roomMouseClicked
-        jPanel3.getComponents();
-        room_input_panel1.setVisible(true);
-    }//GEN-LAST:event_add_new_roomMouseClicked
+    private void add_new_professorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_new_professorMouseClicked
+        department_panel_visibility(add_professor_panel1); 
+    }//GEN-LAST:event_add_new_professorMouseClicked
 
     private void lab_view_schedule_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lab_view_schedule_lblMouseClicked
         view_schedule_panel1.setVisible(true);
@@ -2881,6 +2947,7 @@ public class MainFrame extends javax.swing.JFrame {
         view_generated_timetable_panel.entity_name_lbl.setText("Room-wise");
         search_for_specific_entity.entity_name_lbl.setText("Room  :  ");
         view_schedule.entity_name_lbl.setText("Room  : ");
+        view_timetable_panel_visibility(view_generated_timetable_panel1) ; 
     }//GEN-LAST:event_room_wise_lblMouseClicked
 
     private void add_roomlbl9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl9MouseClicked
@@ -2899,18 +2966,21 @@ public class MainFrame extends javax.swing.JFrame {
         view_generated_timetable_panel.entity_name_lbl.setText("Section-wise");
         search_for_specific_entity.entity_name_lbl.setText("Section :  ");
         view_schedule.entity_name_lbl.setText("Section : ");
+        view_timetable_panel_visibility(view_generated_timetable_panel1) ; 
     }//GEN-LAST:event_section_wise_lblMouseClicked
 
     private void professor_wise_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_professor_wise_lblMouseClicked
         view_generated_timetable_panel.entity_name_lbl.setText("Professor-wise");
         search_for_specific_entity.entity_name_lbl.setText("Professor  :  ");
         view_schedule.entity_name_lbl.setText("Professor : ");
+        view_timetable_panel_visibility(view_generated_timetable_panel1) ; 
     }//GEN-LAST:event_professor_wise_lblMouseClicked
 
     private void std_wise_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_std_wise_lblMouseClicked
         view_generated_timetable_panel.entity_name_lbl.setText("Student-wise");
         search_for_specific_entity.entity_name_lbl.setText("Student  :  ");
         view_schedule.entity_name_lbl.setText("Student : ");
+        view_timetable_panel_visibility(view_generated_timetable_panel1) ;         
     }//GEN-LAST:event_std_wise_lblMouseClicked
 
     private void add_roomlbl17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl17MouseClicked
@@ -2977,28 +3047,20 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jLabel49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel49MouseClicked
 //        add_new_semester_panel1.setVisible(true);
-        programs_panel_Visibility(add_new_semester_panel1);
+        programs_panel_visibility(add_new_semester_panel1);
     }//GEN-LAST:event_jLabel49MouseClicked
 
     private void jLabel119MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel119MouseClicked
-        programs_panel_Visibility(add_new_program1);
+        programs_panel_visibility(add_new_program1);
     }//GEN-LAST:event_jLabel119MouseClicked
 
     private void jLabel125MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel125MouseClicked
-        programs_panel_Visibility(view_section_details_option_panel1);
+        programs_panel_visibility(view_section_details_option_panel1);
     }//GEN-LAST:event_jLabel125MouseClicked
 
     private void jLabel121MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel121MouseClicked
-        programs_panel_Visibility(all_programs_details_panel);
+        programs_panel_visibility(all_programs_details_panel);
     }//GEN-LAST:event_jLabel121MouseClicked
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        Time time = new cambodia.raven.Time();
-        time.setVisible(true);
-        time.setAlignmentX(TOP_ALIGNMENT);
-        time.setLocation(1000, 1000);
-//        time.getSelectedTime();
-    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
         int var1 = slot_1_lbl.getX();
@@ -3012,22 +3074,30 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void jLabel120MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel120MouseClicked
-        programs_panel_Visibility(create_section_panel1);
+        programs_panel_visibility(create_section_panel1);
     }//GEN-LAST:event_jLabel120MouseClicked
 
     private void jLabel126MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel126MouseClicked
         // TODO add your handling code here:
-        programs_panel_Visibility(update_section_panel1);
+        programs_panel_visibility(update_section_panel1);
     }//GEN-LAST:event_jLabel126MouseClicked
 
     private void jLabel122MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel122MouseClicked
         // TODO add your handling code here:
-        programs_panel_Visibility(remove_section_panel1);
+        programs_panel_visibility(remove_section_panel1);
     }//GEN-LAST:event_jLabel122MouseClicked
 
     private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
-        programs_panel_Visibility(view_schedule_of_section1);
+        programs_panel_visibility(view_schedule_of_section1);
     }//GEN-LAST:event_jLabel53MouseClicked
+
+    private void add_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_button1ActionPerformed
+
+    private void slot_1_lbl1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slot_1_lbl1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_slot_1_lbl1MouseEntered
 
     /**
      * @param args the command line arguments
@@ -3079,9 +3149,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel Programs;
     private javax.swing.JPanel addCourse;
     private javax.swing.JButton add_button;
+    private javax.swing.JButton add_button1;
+    private javax.swing.JLabel add_new_professor;
     private View.section.add_new_program add_new_program1;
-    private javax.swing.JLabel add_new_room;
     private View.section.add_new_semester_panel add_new_semester_panel1;
+    private View.professor.add_professor_panel add_professor_panel1;
     private javax.swing.JLabel add_roomlbl;
     private javax.swing.JLabel add_roomlbl1;
     private javax.swing.JLabel add_roomlbl10;
@@ -3113,10 +3185,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel dept_name_panel;
     private javax.swing.JTable display_table;
     private View.student.excel_file_panel excel_file_panel1;
+    private View.schedule_generation.final_panel final_panel1;
+    private View.schedule_generation.first_panel first_panel1;
+    private View.schedule_generation.first_panel_part2 first_panel_part21;
     private javax.swing.JLabel home_std_lbl;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton6;
@@ -3230,7 +3303,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel23container;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
@@ -3245,7 +3317,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -3296,7 +3367,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel program;
     private javax.swing.JTable programs_table;
     private javax.swing.JLabel programslbl;
-    private javax.swing.JButton remove_btn;
     private View.section.remove_section_panel remove_section_panel1;
     private javax.swing.JPanel room_details;
     private View.room.room_input_panel room_input_panel1;
@@ -3306,13 +3376,17 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel scheduler_generation;
     private View.room.search_free_slot_panel search_free_slot_panel1;
     private javax.swing.JLabel search_slot_lbl;
+    private View.schedule_generation.second_panel second_panel1;
     private javax.swing.JLabel section_wise_lbl;
     private javax.swing.JLabel slot_1_lbl;
+    private javax.swing.JLabel slot_1_lbl1;
     private javax.swing.JLabel std_wise_lbl;
     private javax.swing.JPanel students;
     private javax.swing.JPanel students_management;
     private javax.swing.JButton sv_btn1;
+    private View.schedule_generation.third_panel third_panel1;
     private cambodia.raven.Time time1;
+    private cambodia.raven.Time time2;
     private javax.swing.JPanel timeslots_panel;
     private javax.swing.JPanel timetable_management;
     private javax.swing.JTextField title;
@@ -3326,7 +3400,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel view_all_roomslbl;
     private javax.swing.JLabel view_all_roomslbl1;
     private javax.swing.JLabel view_all_roomslbl2;
-    private javax.swing.JLabel view_all_roomslbl3;
     private View.student.view_all_students_panel view_all_students_panel1;
     private javax.swing.JButton view_coursesbtn;
     private javax.swing.JButton view_facultybtn;
@@ -3337,6 +3410,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel view_schedule_lbl;
     private View.section.view_schedule_of_section view_schedule_of_section1;
     private View.room.view_schedule_panel view_schedule_panel1;
+    private View.professor.view_schedule_of_professor_panel view_schedule_panel2;
     private View.section.view_section_details_option_panel view_section_details_option_panel1;
     private View.section.view_section_details_panel view_section_details_panel1;
     private javax.swing.JPanel view_timetable;

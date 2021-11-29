@@ -9,12 +9,12 @@ package View.professor;
  *
  * @author muhammad awais 1
  */
-public class view_schedule_panel extends javax.swing.JPanel {
+public class view_schedule_of_professor_panel extends javax.swing.JPanel {
 
     /**
      * Creates new form view_schedule_panel
      */
-    public view_schedule_panel() {
+    public view_schedule_of_professor_panel() {
         initComponents();
     }
 

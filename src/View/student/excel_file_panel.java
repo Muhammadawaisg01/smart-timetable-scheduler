@@ -44,12 +44,12 @@ public class excel_file_panel extends javax.swing.JPanel {
         jLabel106.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 102, 153));
         jLabel106.setText("file name (when uploaded) ");
-        add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 200, 50));
+        add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 240, 50));
 
         jLabel107.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel107.setForeground(new java.awt.Color(0, 102, 153));
         jLabel107.setText("upload excel file for student registration:");
-        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 330, 40));
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 340, 40));
 
         jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel108.setForeground(new java.awt.Color(0, 102, 153));

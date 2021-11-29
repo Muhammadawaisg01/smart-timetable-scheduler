@@ -29,25 +29,97 @@ public class professor_slots_panel extends javax.swing.JPanel {
 
         jLabel96 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jLabel105 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        labcheckBox4 = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Specify slots for (Professor Name):");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 350, 30));
+        jLabel96.setText("Add Priority of (Professor Name):");
+        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 340, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Add Professor");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 220, 60));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 220, 60));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jCheckBox11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jCheckBox11.setForeground(new java.awt.Color(0, 102, 153));
+        jCheckBox11.setText("---");
+        jPanel1.add(jCheckBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, 40));
+
+        jLabel105.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel105.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel105.setText("1st slot duration:");
+        jPanel1.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 160, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1100, 10));
+
+        jLabel106.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel106.setText("Tuesday");
+        jPanel1.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 30));
+
+        jLabel107.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel107.setText("Wednesday");
+        jPanel1.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 120, 30));
+
+        jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel108.setText("Thursday");
+        jPanel1.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 100, 30));
+
+        jLabel109.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel109.setText("Monday");
+        jPanel1.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 100, 30));
+
+        labcheckBox4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labcheckBox4.setForeground(new java.awt.Color(0, 102, 153));
+        labcheckBox4.setText("fully available");
+        labcheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                labcheckBox4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(labcheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 160, 30));
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 120, 670, 310));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void labcheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labcheckBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_labcheckBox4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel96;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JCheckBox labcheckBox4;
     // End of variables declaration//GEN-END:variables
 }
