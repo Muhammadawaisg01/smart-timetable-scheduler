@@ -18,10 +18,10 @@ public class Section {  // GA POPULATION
 
     ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
-
+    
     Section_Schedule schedule = new Section_Schedule();
-
-    ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS
+    
+    ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS   
 
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
@@ -229,7 +229,6 @@ public class Section {  // GA POPULATION
     public static ArrayList<Section> getSections(int semNo) {
         Connection conn = getConnection();
         String q = "select section_id from section where semester_no = " + semNo;
-        System.out.println(q);
         ArrayList<Section> sections = new ArrayList<>();
         PreparedStatement stmt;
         try {
@@ -263,7 +262,6 @@ public class Section {  // GA POPULATION
         return null;
     }
     
-
     public void initializePopulation() {
         for (int i = 0; i < 10; i++) {
             randomSchedules.add(new Section_Schedule());

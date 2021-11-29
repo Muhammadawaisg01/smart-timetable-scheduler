@@ -113,7 +113,6 @@ public class Semester {
             while (rs.next()) {
                 int semNo = rs.getInt("semester_no");
                 ArrayList<Section> sections = Section.getSections(semNo);
-                System.out.println(semNo + "\t" + sections.size());
                 for (Section section : sections) {
                     ArrayList<Course> courses = Course.getCourses(section.getId());
                     section.setSectionCourses(courses);

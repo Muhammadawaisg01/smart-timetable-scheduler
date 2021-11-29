@@ -2,6 +2,7 @@
 
 package Model ; 
 
+import db.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList ; 
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 public class Professor { 
     
     int id ;    
@@ -136,7 +138,37 @@ public class Professor {
         return null;
     }
     
-    
+        public static int get_total_no_of_professors() { 
+        Connection conn = db.DBConnection.getConnection();
+        int total_professors = 0 ;
+        String query = "select COUNT(*) from schedulerdb.professor " ; 
+        try{
+        PreparedStatement stmt= conn.prepareStatement(query);
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next() ) {
+            total_professors=rs.getInt(1) ;
+            }
+        }
+        catch (Exception ex){
+            
+        }
+        return total_professors;
+    }
+        public static ResultSet get_all_professors(){
+        ResultSet rs=null;
+        String query ="select * from schedulerdb.professor" ; 
+        try
+        {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
+            rs = stmt1.executeQuery() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error in Fetching Data of Professors", "Professor", JOptionPane.ERROR_MESSAGE) ; 
+        }
+        return rs;
+    }
+
 }
 
 

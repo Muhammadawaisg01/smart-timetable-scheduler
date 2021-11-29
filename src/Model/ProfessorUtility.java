@@ -45,7 +45,7 @@ public class ProfessorUtility {
      */
 
     public static void assignProfToSection (Semester semester, Section section, String course, int profId) {
-                section.setAllocations(profId, section.getNo(), semester.getNo(), course ) ; 
+                section.setAllocations(profId, section.getId(), semester.getNo(), course ) ; 
             }
         }
  

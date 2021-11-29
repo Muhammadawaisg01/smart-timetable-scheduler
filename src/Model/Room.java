@@ -1,6 +1,7 @@
 
 package Model;
 
+import db.DBConnection;
 import java.util.ArrayList;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Room {     
 
@@ -18,7 +20,7 @@ public class Room {
     boolean isLab;
     
 //    Array of specified courses, it means that only these courses will be taught in these rooms
-//    ArrayList<Course> specified_courses =  new ArrayList<>() ;    
+//    ArrayList<Course> specified_courses =  new ArrayList<>() ;    // a hard Constraint
     
     
     ArrayList<Room_Day> days;
@@ -194,6 +196,40 @@ public static int get_freeslots( Room rm ) {
     }
     return free_slots ; 
 }   
+    public static int get_total_no_of_rooms() { 
+        Connection conn = db.DBConnection.getConnection();
+        int total_rooms = 0 ;
+        String query = "select COUNT(*) from schedulerdb.room where isLab=? " ; 
+        try{
+        PreparedStatement stmt= conn.prepareStatement(query);
+        stmt.setString(1, false+"");
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next() ) {
+            total_rooms=rs.getInt(1) ;
+            }
+        }
+        catch (Exception ex){
+            
+        }
+        return total_rooms;
+    }
+    public static int get_total_no_of_labs() { 
+        Connection conn = db.DBConnection.getConnection();
+        int total_labs = 0 ;
+        String query = "select COUNT(*) from schedulerdb.room where isLab=?" ; 
+        try{
+        PreparedStatement stmt= conn.prepareStatement(query);
+        stmt.setString(1, true+"");
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next() ) {
+            total_labs=rs.getInt(1) ;
+            }
+        }
+        catch (Exception ex){
+            
+        }
+        return total_labs;
+    }
 
 //public static Room_Day get_Day()    {   
 //    
@@ -205,8 +241,106 @@ public static int get_freeslots( Room rm ) {
 //    
 //    return 
 //}
-
-
+    public static ResultSet get_all_rooms(){
+        ResultSet rs=null;
+        String query ="select * from schedulerdb.room where isLab=?" ; 
+        try
+        {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
+            stmt1.setString(1, false+"");
+            rs = stmt1.executeQuery() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error in Fetching Data of Rooms", "Room", JOptionPane.ERROR_MESSAGE) ; 
+        }
+        return rs;
+    }
+    public static ResultSet get_every_room(){
+        ResultSet rs=null;
+        String query ="select * from schedulerdb.room" ; 
+        try
+        {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
+            rs = stmt1.executeQuery() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error in Fetching Data of Every Room", "Room", JOptionPane.ERROR_MESSAGE) ; 
+        }
+        return rs;
+    }
+    
+        public static ResultSet get_all_labs(){
+        ResultSet rs=null;
+        String query ="select * from schedulerdb.room where isLab=?" ; 
+        try
+        {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
+            stmt1.setString(1, true+"");
+            rs = stmt1.executeQuery() ;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error in Fetching Data of Labs", "Room", JOptionPane.ERROR_MESSAGE) ; 
+        }
+        return rs;
+    }
+    public static boolean remove_room(String name) {
+        boolean check=false;
+        int no=0;
+        String query = "delete from schedulerdb.room where name = ?"  ;
+        try
+        {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
+            stmt1.setString(1, name);
+            no = stmt1.executeUpdate();
+            if(no != 0 ) { 
+                check=true ; 
+            }
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error in removing a room ", "Room", JOptionPane.ERROR_MESSAGE) ; 
+        }
+        return check;
+    }
+    public static String search_room(String name) {
+        boolean check=false;
+        ResultSet rs =null;
+        String rm_name = null ;
+        int no=0;
+        String query = "select name from room where name =?"  ;
+        try
+        {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
+            stmt1.setString(1, name); 
+            rs = stmt1.executeQuery(); 
+            rs.next();
+            rm_name = rs.getString(1);
+        } 
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Didn't find a room with this name", "Room", JOptionPane.ERROR_MESSAGE) ; 
+        }
+        return rm_name;
+    }
+    
+    public static void add_room(String room_name, int capacity, boolean isLab) {    
+        String query = "Insert into schedulerdb.room values (?,?,?)" ; 
+        try{
+            PreparedStatement stmt= db.DBConnection.getConnection().prepareStatement(query);
+            stmt.setString(1, room_name);
+            stmt.setInt(2, capacity);
+            stmt.setString(3, isLab+"");
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "New Room added Successfully");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error in adding Room in database ");
+            ex.printStackTrace();
+        }
+    }
 }// main class room
 
 
