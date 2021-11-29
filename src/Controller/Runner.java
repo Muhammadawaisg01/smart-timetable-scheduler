@@ -1,53 +1,56 @@
 package Controller;
 
-import static db.DBConnection.getConnection;
-import Model.Course;
-import Model.CourseUtility;
-import Model.Student;
-import Model.Section;
-import Model.Semester;
-import Model.Room_Day;
-import Model.Entities_Main_Arrays;
-import Model.Room_Timeslot;
-import Model.Room;
-import Model.SectionUtility;
+import Model.Scheduler;
+import static db.DBConnection.createConnection;
+import static Model.Entities_Main_Arrays.rooms;
+import static Model.Entities_Main_Arrays.semesters;
+import static Model.Entities_Main_Arrays.add_Data_to_Student_List;
+import static Model.Entities_Main_Arrays.add_Data_to_Semester_List;
+import static Model.Entities_Main_Arrays.add_Data_to_Professor_List;
+import static Model.Entities_Main_Arrays.student_list;
 
-import java.io.File;
+import Model.Course;
+import Model.semester.Section;
+import Model.semester.Semester;
+import Model.room.Room_Day;
+import Model.room.Room_Timeslot;
+import Model.room.Room;
+import Model.semester.SectionUtility;
+import Model.student.Student;
+import static clash_resolving.Student.addRegisteredCourses;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.sql.Connection;
-import static db.DBConnection.createConnection;
+
 
 public class Runner {
 
-    public static ArrayList<Room> rooms = Entities_Main_Arrays.rooms;
-    static ArrayList<Room> labs = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
     static String[][] array = new String[6][6];
-    public static ArrayList<Course> course = new ArrayList<>();
+    
+    static ArrayList<Room> labs = new ArrayList<>();
+//    static ArrayList<Course> course = new ArrayList<>();
     static int sections = 0;
     public static ArrayList<Room_Day> days = new ArrayList<>();
-
     static ArrayList<Room_Timeslot> slots = new ArrayList<>();
     public static ArrayList<Scheduler> scheduler = new ArrayList<>();  //public
 
-    public static ArrayList<Semester> semesters;
-
     public static void main(String[] args) {                                    // MAIN METHOD  
-        createConnection(); // creating connection with database    
-        Entities_Main_Arrays.add_Data_to_Student_List();
-        Entities_Main_Arrays.add_Data_to_Semester_List();
-        semesters = Entities_Main_Arrays.semesters;
+        createConnection(); // creating connection with database  
+//        addRegisteredCourses();
+//        System.exit(1);
+        // fill student_list ArrayList
+        add_Data_to_Student_List(); // read all student from database
+        // fill the semesters ArrayList
+        add_Data_to_Semester_List();    // read semester and sections
+        
         clash_resolving.Student student = new clash_resolving.Student();
-//        System.out.println(Entities_Main_Arrays.student_list.size() ) ; 
-//        System.out.println(Entities_Main_Arrays.student_list.get(0).toString());
-//        System.exit(0); 
 
-        course = CourseUtility.readCourseFile();
-        System.out.println(course.size() + "\tSize of courses");
+        // 
+//        readCourseFile();
 //        Section_Schedule obj1 = new Section_Schedule();   
-
-        Entities_Main_Arrays.add_Data_to_Professor_List();
+        // fill professor_list ArrayList
+        add_Data_to_Professor_List();   // contains all professors
 
 //        System.out.println(semesters.size());
 //        for (Semester semester : semesters) {
@@ -56,16 +59,14 @@ public class Runner {
 //                System.out.println(section.getCourses().size());
 //            }
 //        }
-//        System.out.println(course.size() + "\tSize of courses");
-//        System.exit(0);
-        inputForRooms_Labs(); // First Work  
+        inputForRooms_Labs();   // console input for rooms and others
         is_all_slots_available_for_slotting();          // ask user if he want to close any timeslot for lecture scheduling     
         System.out.println(is_scheduling_possible());
         main_algorithm();
         System.out.println("Scheduler        SIze      " + scheduler.size());
-        for (Scheduler sch : scheduler) {
-            System.out.println(sch.toString());
-        }
+//        for (Scheduler sch : scheduler) {
+//            System.out.println(sch.toString());
+//        }
         assignProfessorToSections();
         SectionUtility.assign_schedule_to_section();
         Algo_for_Professor_assigning.section_to_Professor_Scheduling();
@@ -74,9 +75,9 @@ public class Runner {
 //        student.handleStudentClashes(2);
 //        System.out.println("\n\n\n\n\n\n\n\n\n\n");
 //        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
-//        for (Student std : Entities_Main_Arrays.student_list) {
-//            std.display_Student();
-//        }
+        for (Student std : student_list) {
+            std.display_Student();
+        }
 //        student.handleStudentClashes(2);
 //        for (Student std : Entities_Main_Arrays.student_list) {
 //            std.display_Student();
@@ -128,10 +129,6 @@ public class Runner {
     }
 
     public static void assignProfessorToSections() {
-        File file = new File("Semesters.txt");
-//        semesters = Semester.getSemesters(file);
-        Connection conn = getConnection();
-        System.out.println(semesters.size());
         for (Semester semester : semesters) {
             ArrayList<Section> sec = semester.getSections();
             System.out.println(sec.size());
@@ -177,7 +174,7 @@ public class Runner {
             rm.setCheck(false);
             for (int d = 0; d < day; d++) {
                 Room_Day d1 = new Room_Day();
-                d1.no = d;
+                d1.setNo(d);
                 for (int i = 0; i < slot; i++) {
                     Room_Timeslot st = new Room_Timeslot();
                     st.setCheck(false);
@@ -188,7 +185,7 @@ public class Runner {
                 ArrayList<Room_Timeslot> newarray1 = new ArrayList<>();
                 newarray1.addAll(slots);
                 slots.clear();
-                d1.timeslots = newarray1;
+                d1.setTimeslots(newarray1);
                 days.add(d1);
             }
             ArrayList<Room_Day> newarray2 = new ArrayList<>();
@@ -262,32 +259,32 @@ public class Runner {
 //        } 
     }
 
-    public static void method1() {
-        System.out.println("Enter number of students  :  ");
-        int input1 = in.nextInt();
-        System.out.println("Enter No. of Sections you want to make  :   ");
-        sections = in.nextInt();
-
-        System.out.println("Number of sections are  :    " + sections + "\tapproximately number of students in each section  are   " + (input1 / sections));
-
-        System.out.println("    Enter Courses Details  :   \n\n");
-        System.out.print("Enter No. of courses  being taught in each section  :   ");
-        int input3 = in.nextInt();
-
-        int n = 0;
-        while (n < input3) {
-//            System.out.print("Enter Name  :  ") ; 
-//            String input4 = in.next() ; 
-//            System.out.print("Enter Credit Hours  :  ") ; 
-//            int input5 = in.nextInt() ; 
-//            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
-//            String input6 = in.next() ; 
-
-            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, false));
-            n++;
-        }
-//        algorithm() ; 
-    }
+//    public static void method1() {
+//        System.out.println("Enter number of students  :  ");
+//        int input1 = in.nextInt();
+//        System.out.println("Enter No. of Sections you want to make  :   ");
+//        sections = in.nextInt();
+//
+//        System.out.println("Number of sections are  :    " + sections + "\tapproximately number of students in each section  are   " + (input1 / sections));
+//
+//        System.out.println("    Enter Courses Details  :   \n\n");
+//        System.out.print("Enter No. of courses  being taught in each section  :   ");
+//        int input3 = in.nextInt();
+//
+//        int n = 0;
+//        while (n < input3) {
+////            System.out.print("Enter Name  :  ") ; 
+////            String input4 = in.next() ; 
+////            System.out.print("Enter Credit Hours  :  ") ; 
+////            int input5 = in.nextInt() ; 
+////            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
+////            String input6 = in.next() ; 
+//
+//            courses.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, false));
+//            n++;
+//        }
+////        algorithm() ; 
+//    }
 
 //    public static void fittness_function()  {   
 //        //      
@@ -457,7 +454,7 @@ public class Runner {
         System.out.println("Schedule for:\nSemester: " + sem + "\nSection: " + sec);
         System.out.println("\n");
         for (Scheduler s : scheduler) {
-            if (s.section.equalsIgnoreCase(sec) && s.semester_no == sem) {
+            if (s.getSection().equalsIgnoreCase(sec) && s.getSemester_no() == sem) {
                 System.out.println(s.toString());
             }
         }

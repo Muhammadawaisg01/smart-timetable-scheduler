@@ -1,6 +1,7 @@
 
 package Model ; 
 
+import Model.semester.Semester;
 import java.util.ArrayList ; 
 
 public class Program {

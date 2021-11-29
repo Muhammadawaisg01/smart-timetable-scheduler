@@ -13,10 +13,10 @@ import java.util.logging.Logger;
     
 public class Course {   
     
-    String course_code ; 
-    String title ; 
-    int credit_hours ;  
-    boolean lab ;       
+    private String course_code ; 
+    private String title ; 
+    private int credit_hours ;  
+    private boolean lab ;       
     
 //     maximum enrollment variable          how msny students have enrolled in this course      
 

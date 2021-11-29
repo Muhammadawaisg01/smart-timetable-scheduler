@@ -2,36 +2,58 @@ package clash_resolving;
 
 import Controller.Algo_For_Student_Assigning;
 import static Controller.Runner.days;
-import static Controller.Runner.semesters;
+import static Model.Entities_Main_Arrays.semesters;
+import static Model.Entities_Main_Arrays.student_list;
+import static Model.Entities_Main_Arrays.rooms;
+
 import Model.Clash;
 import Model.Course;
-import static Model.Entities_Main_Arrays.student_list;
-import Model.Room;
-import Model.Room_Day;
-import Model.Room_Timeslot;
-import static Model.Entities_Main_Arrays.rooms;
-import Model.Section;
-import Model.Section_Day;
-import Model.Section_Schedule;
-import Model.Section_Timeslot;
-import Model.Semester;
-import Model.Student_lecture_clash;
+
+import Model.room.Room;
+import Model.room.Room_Day;
+import Model.room.Room_Timeslot;
+import Model.semester.Section;
+import Model.semester.Section_Day;
+import Model.semester.Section_Schedule;
+import Model.semester.Section_Timeslot;
+import Model.semester.Semester;
+import Model.student.Student_lecture_clash;
+import static db.DBConnection.getConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Student {
 
-    public static ArrayList<Clash> clashes = new ArrayList<>();
-
+//    public static ArrayList<Clash> clashes = new ArrayList<>();
     public void handleStudentClashes() {
         Semester.displayAllData();
-        Model.Student.printAllStudents();
+        Model.student.Student.printAllStudents();
         Algo_For_Student_Assigning.printStudentClashes();
 //        findClashes();
         System.out.println("/////////////////////////////////////// REMOVING CLAHSHES ///////////////////////////////////");
-        while (true) {
-            move();
+//        for ()
+//        while (true) {
+//            move();
+//        }
+        Scanner in = new Scanner(System.in);
+        System.out.println("Resolve all clashes:");
+        in.next();
+        System.out.println("Resolve Clashes!");
+
+        for (Model.student.Student student : student_list) {
+            ArrayList<Student_lecture_clash> clashes = student.getClash_array();
+            for (Student_lecture_clash clash : clashes) {
+                if (!clash.isIsresolved()) {
+                    circulateCourse(clash.getSection(), clash.getSemester(), clash.getCourse(), clash.getLecture_no());
+                }
+            }
         }
+
 //        moveLecture(section, semNo, course, day, room, slot, lecture);
 //        moveLecture("3A", 3, "PPIT", 3, "102", 2, 1);
 //        moveLecture("3A", 3, "PPIT", 3, "102", 1, 2);
@@ -85,13 +107,13 @@ public class Student {
             for (Section section : sections) {
                 ArrayList<Course> courses = section.getCourses();
                 for (Course course : courses) {
-                    for (Model.Student student : student_list) {
+                    for (Model.student.Student student : student_list) {
                         ArrayList<Student_lecture_clash> student_lecture_clashs = student.getClash_array();
                         for (Student_lecture_clash student_lecture_clash : student_lecture_clashs) {
                             if (course.getTitle().equalsIgnoreCase(student_lecture_clash.getCourse())
                                     && student_lecture_clash.getSection().equalsIgnoreCase(section.getId())
                                     && student_lecture_clash.getSemester() == semester.getNo()) {
-                                clashes.add(new Clash(section, course, student));
+//                                clashes.add(new Clash(section, course, student));
                                 section.incClash();
                             }
                         }
@@ -107,7 +129,7 @@ public class Student {
      * @param crs
      * @param sem
      */
-    private void circulateCourse(String section, int semNo, String course, int lecture) {
+    private boolean circulateCourse(String section, int semNo, String course, int lecture) {
         boolean resolved = false;
         for (Semester semester : semesters) {
             if (semester.getNo() == semNo) {
@@ -116,77 +138,169 @@ public class Student {
                     if (sec.getId().equalsIgnoreCase(section)) {
                         Section_Schedule section_Schedule = sec.getSchedule();
                         ArrayList<Section_Day> section_Days = section_Schedule.getDays();
-                        // SET OLD TIME SLOT FALSE
-//                        System.out.println(lecture + "\t Lecture Number" + "\tCourse: " + course + "\touter ");
-//                        section_Days.forEach(d -> 
                         for (Section_Day d : section_Days) {
-//                            System.out.println(lecture + "\t Lecture Number" + "\tCourse: " + course + "\tInner");
                             ArrayList<Section_Timeslot> section_Timeslots = d.getTimeslots();
                             for (Section_Timeslot section_Timeslot : section_Timeslots) {
                                 // find lecture to move
                                 if (section_Timeslot.getLecture_no() == lecture && section_Timeslot.getCourse().equalsIgnoreCase(course)) {
-                                    int currentClashes = Algo_For_Student_Assigning.calculateStudentClashes();
-                                    System.out.println(currentClashes);
-                                    int dayWithMinClashes = d.getNo();
-                                    int slotWithMinClashes = section_Timeslot.getSlot_no();
-                                    String roomWithMinClashes = section_Timeslot.getRoom();
-
+//                                    int currentClashes = Algo_For_Student_Assigning.calculateStudentClashes();
+//                                    int dayWithMinClashes = d.getNo();
+//                                    int slotWithMinClashes = section_Timeslot.getSlot_no();
+//                                    String roomWithMinClashes = section_Timeslot.getRoom();
+                                    System.out.println("Lecture Found!!!");
                                     // while 
                                     for (Room room : rooms) {
                                         for (Room_Day dayy : room.getDays()) {
                                             ArrayList<Room_Timeslot> room_Timeslots = dayy.getTimeslots();
                                             for (Room_Timeslot room_Timeslot : room_Timeslots) {
+                                                // check room is free
                                                 if (!room_Timeslot.isCheck()) {
-                                                    // move lecture to empty slot
-                                                    // i) free slot in section schedule
-                                                    section_Schedule.freeDaySlot(d.getNo(), section_Timeslot.getSlot_no());
-                                                    // ii) consume slot in section schedule
-                                                    // (day, slot, room, course, lecture)
-                                                    section_Schedule.consumeDaySlot(dayy.getNo(), room_Timeslot.getNo(), room.getName(), course, lecture);
-                                                    // free day slot in days schedule
-                                                    freeDaySlot(section_Timeslot.getRoom(), d.getNo(), section_Timeslot.getSlot_no());
-                                                    // consume slot in days schedule
-                                                    consumeDaySlot(room.getName(), dayy.getNo(), room_Timeslot.getNo());
-                                                    // map student to section schedules
-                                                    Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
-                                                    // calculate clashes of students of that section
-                                                    int newClashes = Algo_For_Student_Assigning.calculateStudentClashes();
-                                                    System.out.println(newClashes);
-                                                    // if clashes are zero terminate further search
-                                                    if (newClashes == 0) {
-                                                        resolved = true;
-                                                        break;
-                                                    } else if (newClashes < currentClashes) {   // if clahes are less then current less clashes store day slot
-                                                        currentClashes = newClashes;
-                                                        dayWithMinClashes = dayy.getNo();
-                                                        slotWithMinClashes = room_Timeslot.getNo();
-                                                        roomWithMinClashes = room.getName();
+                                                    // check section is free
+                                                    if (!section_Schedule.getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).isCheck()) {
+                                                        // check students are free
+                                                        boolean freeStudents = true;
+                                                        for (Model.student.Student student : student_list) {
+                                                            if (student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).isCheck()) {
+                                                                freeStudents = false;
+                                                                break;
+                                                            }
+                                                        }
+                                                        if (freeStudents) {
+                                                            System.out.println("All found///////////////////////////////////////");
+//                                                            moveLecture(section, semNo, course, dayy.getNo(), room.getName(), room_Timeslot.getNo(), lecture);
+                                                            // move lecture in section schedule
+                                                            // free section time slot
+                                                            section_Timeslot.setCheck(false);
+                                                            section_Timeslot.setCourse("");
+                                                            section_Timeslot.setLecture_no(0);
+                                                            section_Timeslot.setRoom("");
+                                                            // assign new slot to lecture
+                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCheck(true);
+                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCourse(course);
+                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setLecture_no(lecture);
+                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setRoom(room.getName());
+//                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).set(true);
+//                                                            resolved = true;
+                                                            // change student schedule
+                                                            for (Model.student.Student student : student_list) {
+//                                                                if (student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).isCheck()) {
+//                                                                    freeStudents = false;
+//                                                                    break;
+//                                                                }
+                                                                String stdSection = student.getSection_id();
+                                                                ArrayList<Course> regCourses = student.getRegistered_courses();
+                                                                for (Course c : regCourses) {
+                                                                    // regular students of that section
+                                                                    if (stdSection.equalsIgnoreCase(section) && c.getCourse_code().equalsIgnoreCase(course)) {
+                                                                        // free slot
+
+                                                                        // assign slot
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCheck(true);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCourse_code(course);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setLecture_no(lecture);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setRoom(room.getName());
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setSemester(semNo);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setIsLab(false);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setSection(section);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setSlot_no(room_Timeslot.getNo());
+
+                                                                    }
+                                                                }
+                                                                // other students
+                                                                ArrayList<Student_lecture_clash> student_lecture_clashs = student.getClash_array();
+                                                                for (Student_lecture_clash slc : student_lecture_clashs) {
+                                                                    if (slc.getCourse().equalsIgnoreCase(course)
+                                                                            && slc.getSection().equalsIgnoreCase(section)
+                                                                            && slc.getSemester() == semNo
+                                                                            && slc.getLecture_no() == lecture) {
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCheck(true);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCourse_code(course);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setLecture_no(lecture);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setRoom(room.getName());
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setSemester(semNo);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setIsLab(false);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setSection(section);
+                                                                        student.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setSlot_no(room_Timeslot.getNo());
+                                                                        slc.setIsresolved(true);
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            return true;
+//                                                            break;
+                                                        }
                                                     }
+//                                                    // move lecture to empty slot
+//                                                    // i) free slot in section schedule
+//                                                    // section_Schedule.freeDaySlot(d.getNo(), section_Timeslot.getSlot_no());
+//                                                    // SET OLD TIME SLOT FALSE
+//                                                    section_Timeslot.setCheck(false);
+//                                                    section_Timeslot.setCourse("");
+//                                                    section_Timeslot.setLecture_no(0);
+//                                                    section_Timeslot.setRoom("");
+//                                                    // set old room check to false
+//                                                    room.getDays().get(d.getNo()).getTimeslots().get(section_Timeslot.getSlot_no()).setCheck(false);
+//                                                    // ii) consume slot in section schedule
+//                                                    // (day, slot, room, course, lecture)
+//                                                    section_Schedule.consumeDaySlot(dayy.getNo(), room_Timeslot.getNo(), room.getName(), course, lecture);
+//                                                    // free day slot in days schedule
+//                                                    freeDaySlot(section_Timeslot.getRoom(), d.getNo(), section_Timeslot.getSlot_no());
+//                                                    // consume slot in days schedule
+////                                                    consumeDaySlot(room.getName(), dayy.getNo(), room_Timeslot.getNo());
+//                                                    // map student to section schedules
+//                                                    Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+//                                                    // calculate clashes of students of that section
+//                                                    int newClashes = Algo_For_Student_Assigning.calculateStudentClashes();
+//                                                    System.out.println(newClashes);
+//                                                    // if clashes are zero terminate further search
+                                                    if (resolved) {
+//                                                        resolved = true;
+//                                                        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+                                                        // calculate clashes of students of that section
+//                                                        Semester.displayAllData();
+//                                                        Model.student.Student.printAllStudents();
+//                                                        int newClashes = Algo_For_Student_Assigning.printStudentClashes();
+//                                                        System.out.println(newClashes);
+//                                                        return;
+                                                    }
+//                                                    else if (newClashes < currentClashes) {   // if clahes are less then current less clashes store day slot
+//                                                        currentClashes = newClashes;
+//                                                        dayWithMinClashes = dayy.getNo();
+//                                                        slotWithMinClashes = room_Timeslot.getNo();
+//                                                        roomWithMinClashes = room.getName();
+//                                                    }
                                                 }
                                             }
                                         }
                                     }
-                                    if (!resolved) {
-                                        // move lecture to empty slot
-                                        // i) free slot in section schedule
-                                        section_Schedule.freeDaySlot(d.getNo(), section_Timeslot.getSlot_no());
-                                        // ii) consume slot in section schedule
-                                        // (day, slot, room, course, lecture)
-                                        section_Schedule.consumeDaySlot(dayWithMinClashes, slotWithMinClashes, roomWithMinClashes, course, lecture);
-                                        // free day slot in days schedule
-                                        freeDaySlot(section_Timeslot.getRoom(), d.getNo(), section_Timeslot.getSlot_no());
-                                        // consume slot in days schedule
-                                        consumeDaySlot(roomWithMinClashes, dayWithMinClashes, slotWithMinClashes);
-                                        // map student to section schedules
-                                        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
-                                        // calculate clashes of students of that section
-                                        Semester.displayAllData();
-                                        Model.Student.printAllStudents();
-                                        int newClashes = Algo_For_Student_Assigning.printStudentClashes();
-                                        System.out.println(newClashes);
-                                        resolved = true;
-                                        return;
-                                    }
+//                                    if (!resolved) {
+//                                        // move lecture to empty slot
+//                                        // i) free slot in section schedule
+//                                        section_Schedule.freeDaySlot(d.getNo(), section_Timeslot.getSlot_no());
+//                                        // ii) consume slot in section schedule
+//                                        // (day, slot, room, course, lecture)
+//                                        section_Schedule.consumeDaySlot(dayWithMinClashes, slotWithMinClashes, roomWithMinClashes, course, lecture);
+//                                        // free day slot in days schedule
+//                                        freeDaySlot(section_Timeslot.getRoom(), d.getNo(), section_Timeslot.getSlot_no());
+//                                        // consume slot in days schedule
+//                                        consumeDaySlot(roomWithMinClashes, dayWithMinClashes, slotWithMinClashes);
+//                                        // map student to section schedules
+//                                        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+//                                        // calculate clashes of students of that section
+//                                        Semester.displayAllData();
+//                                        Model.student.Student.printAllStudents();
+//                                        int newClashes = Algo_For_Student_Assigning.printStudentClashes();
+//                                        System.out.println(newClashes);
+//                                        resolved = true;
+//                                        return;
+//                                    }
+                                    // map student to section schedules
+//                                    Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+//                                    // calculate clashes of students of that section
+//                                    Semester.displayAllData();
+//                                    Model.student.Student.printAllStudents();
+//                                    int newClashes = Algo_For_Student_Assigning.printStudentClashes();
+//                                    System.out.println(newClashes);
                                     break;
                                 }
                             }
@@ -207,6 +321,7 @@ public class Student {
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -227,13 +342,10 @@ public class Student {
                         Section_Schedule section_Schedules = sec.getSchedule();
                         ArrayList<Section_Day> section_Days = section_Schedules.getDays();
                         // SET OLD TIME SLOT FALSE
-                        System.out.println(lecture + "\t Lecture Number" + "\tCourse: " + course + "\touter ");
                         section_Days.forEach(d -> {
-                            System.out.println(lecture + "\t Lecture Number" + "\tCourse: " + course + "\tInner");
                             ArrayList<Section_Timeslot> section_Timeslots = d.getTimeslots();
                             for (Section_Timeslot section_Timeslot : section_Timeslots) {
                                 if (section_Timeslot.getLecture_no() == lecture && section_Timeslot.getCourse().equalsIgnoreCase(course)) {
-                                    System.out.println(course + "\t" + lecture + "t\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                                     section_Schedules.freeDaySlot(day, slot);
                                     break;
                                 }
@@ -276,6 +388,8 @@ public class Student {
         int lec = in.nextInt();
         circulateCourse(section, sem, crs, lec);
 //        moveLecture(section, sem, crs, day, room, slot, lec);
+        Semester.displayAllData();
+        Model.student.Student.printAllStudents();
     }
 
     /**
@@ -356,7 +470,7 @@ public class Student {
      */
     private ArrayList<Clash> getStudentClashesOfASection(Section section, Course course) {
         ArrayList<Clash> studentsClashes = new ArrayList<>();
-        for (Model.Student student : student_list) {
+        for (Model.student.Student student : student_list) {
             ArrayList<Course> studentCourses = student.getRegistered_courses();
             for (Course c : studentCourses) {
                 if (c.getTitle().equalsIgnoreCase(course.getTitle())) {
@@ -376,5 +490,122 @@ public class Student {
             });
         });
         System.out.println("///////////////// END ///////////////////////////");
+    }
+
+    // temprary method to add data in database. Nothing to do with schedule or clashes
+    public static void addStudentsToDb() {
+        Connection connection = getConnection();
+        String querry;
+        int regNo = 851;
+        for (int i = 1; i < 26; i++) {
+            querry = "INSERT INTO students"
+                    + "(registration_no,"
+                    + "name,"
+                    + "section_id) "
+                    + "VALUES"
+                    + "(?, ?, ?)";
+            System.out.println(querry);
+            try {
+                PreparedStatement stmt = connection.prepareStatement(querry);
+                stmt.setInt(1, regNo);
+                stmt.setString(2, "Student" + regNo);
+                stmt.setString(3, "8C");
+                stmt.execute();
+                regNo++;
+            } catch (SQLException ex) {
+                Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                System.exit(1);
+            }
+        }
+    }
+
+    public static void addRegisteredCourses() {
+//        PrintWriter pr = null;
+//        File file = new File("Course Registration.txt");
+        try {
+//            pr = new PrintWriter(new FileOutputStream(file));
+            int regNo;
+//            String newLine;
+            String q;
+            Connection conn = getConnection();
+            PreparedStatement stmt;
+            regNo = 401;
+            while (regNo <= 475) {
+                for (int i = 16; i <= 20; i++) {
+                    q = "INSERT into registered_courses (student_registration_no, course_code)"
+                            + " VALUES "
+                            + "(?, ?)";
+                    stmt = conn.prepareStatement(q);
+                    stmt.setInt(1, regNo);
+                    stmt.setString(2, "cs" + i);
+                    stmt.execute();
+                }
+//                newLine = regNo + ",ITM,PPIT,DCCN,AI,SRE\n";
+//                pr.append(newLine);
+                regNo++;
+            }
+            regNo = 501;
+            while (regNo <= 575) {
+                for (int i = 21; i <= 25; i++) {
+                    q = "INSERT into registered_courses (student_registration_no, course_code)"
+                            + " VALUES "
+                            + "(?, ?)";
+                    stmt = conn.prepareStatement(q);
+                    stmt.setInt(1, regNo);
+                    stmt.setString(2, "cs" + i);
+                    stmt.execute();
+                }
+//                newLine = regNo + ",WEB,LA,VP,HCI,SQE\n";
+//                pr.append(newLine);
+                regNo++;
+            }
+            regNo = 601;
+            while (regNo <= 675) {
+                for (int i = 26; i <= 30; i++) {
+                    q = "INSERT into registered_courses (student_registration_no, course_code)"
+                            + " VALUES "
+                            + "(?, ?)";
+                    stmt = conn.prepareStatement(q);
+                    stmt.setInt(1, regNo);
+                    stmt.setString(2, "cs" + i);
+                    stmt.execute();
+                }
+//                newLine = regNo + ",SDA,SPM,MAD,WEB Tech,DP\n";
+//                pr.append(newLine);
+                regNo++;
+            }
+            regNo = 701;
+            while (regNo <= 775) {
+                for (int i = 31; i <= 35; i++) {
+                    q = "INSERT into registered_courses (student_registration_no, course_code)"
+                            + " VALUES "
+                            + "(?, ?)";
+                    stmt = conn.prepareStatement(q);
+                    stmt.setInt(1, regNo);
+                    stmt.setString(2, "cs" + i);
+                    stmt.execute();
+                }
+//                newLine = regNo + ",Testing,Research,French,Enterpreneurship,Calculus 2\n";
+//                pr.append(newLine);
+                regNo++;
+            }
+            regNo = 801;
+            while (regNo <= 875) {
+                for (int i = 36; i <= 40; i++) {
+                    q = "INSERT into registered_courses (student_registration_no, course_code)"
+                            + " VALUES "
+                            + "(?, ?)";
+                    stmt = conn.prepareStatement(q);
+                    stmt.setInt(1, regNo);
+                    stmt.setString(2, "cs" + i);
+                    stmt.execute();
+                }
+//                newLine = regNo + ",ICT,ECA,Calculus,Course39,Course40\n";
+//                pr.append(newLine);
+                regNo++;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -2,18 +2,14 @@
 
 package Model ; 
 
-import Model.Student;
-import java.io.File;
-import java.io.FileNotFoundException;
+import Model.student.Student_Schedule;
+import Model.student.Student;
 import java.util.ArrayList;
-import java.util.Scanner;
-import Controller.Runner;
-import Controller.Scheduler;
+import static Controller.Runner.scheduler;
+import static Model.Entities_Main_Arrays.student_list;
 
 
 public class StdUtility {
-    ArrayList<Scheduler> scheduler = Runner.scheduler;
-    public static ArrayList<Student> student_list = Entities_Main_Arrays.student_list;
     ArrayList<String> array = new ArrayList<>();
 
 public void reading_Student_From_DB() { 
@@ -117,33 +113,33 @@ public void reading_Student_From_DB() {
                         
                         section = scheduler.get(i).getSection();
 //                                   getting data from schedule array
-                        room = scheduler.get(i).room; 
-                        day = scheduler.get(i).day;
-                        timeslot = scheduler.get(i).slot;
-                        course = scheduler.get(i).course;
-                        sem_no = scheduler.get(i).semester_no;
-                        lec_no = scheduler.get(i).lecture_no;
+                        room = scheduler.get(i).getRoom(); 
+                        day = scheduler.get(i).getDay();
+                        timeslot = scheduler.get(i).getSlot();
+                        course = scheduler.get(i).getCourse();
+                        sem_no = scheduler.get(i).getSemester_no();
+                        lec_no = scheduler.get(i).getLecture_no();
                         for (int var = 0; var < student_list.size(); var++) {
-                            if (student_list.get(var).section_id.equalsIgnoreCase(sections[sec])) {
+                            if (student_list.get(var).getSection_id().equalsIgnoreCase(sections[sec])) {
                                 Student std = student_list.get(var);
                                 Student_Schedule std_sch = std.getSchedule();
                                 System.out.println(std.toString());
 //                                indexes.add(var);
-                                for (int k = 0; k < std_sch.days.size(); k++) {
+                                for (int k = 0; k < std_sch.getDays().size(); k++) {
 //                            student_list.get(j).days.get(k).name = day;
-                                    for (int m = 0; m < std_sch.days.get(k).timeslots.size(); m++) {
+                                    for (int m = 0; m < std_sch.getDays().get(k).getTimeslots().size(); m++) {
                             
-                            if (timeslot == std_sch.days.get(k).timeslots.get(m).slot_no && 
-                                    std_sch.days.get(k).timeslots.get(m).check==false &&
-                                    std_sch.days.get(k).no ==day  )  { 
+                            if (timeslot == std_sch.getDays().get(k).getTimeslots().get(m).getSlot_no() && 
+                                    std_sch.getDays().get(k).getTimeslots().get(m).isCheck()==false &&
+                                    std_sch.getDays().get(k).getNo() ==day  )  { 
 //                                            System.out.println(student_list.get(j).days.get(k).timeslots.get(m));
-                                            std_sch.days.get(k).timeslots.get(m).check = true;
+                                            std_sch.getDays().get(k).getTimeslots().get(m).setCheck(true);
 //                                            System.out.println("I am the course \t\n"+course+"\n");
-                                            std_sch.days.get(k).timeslots.get(m).lecture_no = lec_no;
-                                            std_sch.days.get(k).timeslots.get(m).room = room;
-                                            std_sch.days.get(k).timeslots.get(m).course_code = course;
-                                            std_sch.days.get(k).timeslots.get(m).semester = sem_no;
-                                            std_sch.days.get(k).timeslots.get(m).section = section;
+                                            std_sch.getDays().get(k).getTimeslots().get(m).setLecture_no(lec_no);
+                                            std_sch.getDays().get(k).getTimeslots().get(m).setRoom(room);
+                                            std_sch.getDays().get(k).getTimeslots().get(m).setCourse_code(course);
+                                            std_sch.getDays().get(k).getTimeslots().get(m).setSemester(timeslot);
+                                            std_sch.getDays().get(k).getTimeslots().get(m).setSection(section);
 //                                            System.out.println(student_list.get(j).days.get(k).timeslots.get(m));
 //                                            System.out.println(std.toString());
                                         }

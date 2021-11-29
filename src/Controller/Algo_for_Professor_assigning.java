@@ -2,24 +2,24 @@
 package Controller;
 
 import Model.Course;
-import Model.Professor;
-import Model.ProfessorUtility;
-import Model.Professor_Schedule;
-import Model.Professor_Section_Allocation;
-import Model.Section;
-import Model.Section_Schedule;
-import Model.Section_Day;
-import Model.Section_Timeslot;
-import Model.Semester;
+import Model.professor.Professor;
+import Model.professor.ProfessorUtility;
+import Model.professor.Professor_Schedule;
+import Model.professor.Professor_Section_Allocation;
+import Model.semester.Section;
+import Model.semester.Section_Schedule;
+import Model.semester.Section_Day;
+import Model.semester.Section_Timeslot;
+import Model.semester.Semester;
 import java.util.ArrayList;
-import Model.Entities_Main_Arrays;
-import Model.Professor_Lecture_Clash;
-import static Controller.Runner.semesters;
+import static Model.Entities_Main_Arrays.professor_list;
+import Model.professor.Professor_Lecture_Clash;
+import static Model.Entities_Main_Arrays.semesters;
 
 public class Algo_for_Professor_assigning {
     
     static int clashes_variable = 0;
-    public static ArrayList<Professor> professor_list = Entities_Main_Arrays.professor_list;
+//    public static ArrayList<Professor> professor_list = Entities_Main_Arrays.professor_list;
 //  this method will add data (lecture's data) to the professor which are assigned to the section means day timeslot..s
     public static void section_to_Professor_Scheduling() {    // algo for Professor assigning     
         Professor prof = null;

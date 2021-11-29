@@ -1,0 +1,600 @@
+101,English,MULTICAL,Discrete structures,Report,Islamiyat
+102,English,MULTICAL,Discrete structures,Report,Islamiyat
+103,English,MULTICAL,Discrete structures,Report,Islamiyat
+104,English,MULTICAL,Discrete structures,Report,Islamiyat
+105,English,MULTICAL,Discrete structures,Report,Islamiyat
+106,English,MULTICAL,Discrete structures,Report,Islamiyat
+107,English,MULTICAL,Discrete structures,Report,Islamiyat
+108,English,MULTICAL,Discrete structures,Report,Islamiyat
+109,English,MULTICAL,Discrete structures,Report,Islamiyat
+110,English,MULTICAL,Discrete structures,Report,Islamiyat
+111,English,MULTICAL,Discrete structures,Report,Islamiyat
+112,English,MULTICAL,Discrete structures,Report,Islamiyat
+113,English,MULTICAL,Discrete structures,Report,Islamiyat
+114,English,MULTICAL,Discrete structures,Report,Islamiyat
+115,English,MULTICAL,Discrete structures,Report,Islamiyat
+116,English,MULTICAL,Discrete structures,Report,Islamiyat
+117,English,MULTICAL,Discrete structures,Report,Islamiyat
+118,English,MULTICAL,Discrete structures,Report,Islamiyat
+119,English,MULTICAL,Discrete structures,Report,Islamiyat
+120,English,MULTICAL,Discrete structures,Report,Islamiyat
+121,English,MULTICAL,Discrete structures,Report,Islamiyat
+122,English,MULTICAL,Discrete structures,Report,Islamiyat
+123,English,MULTICAL,Discrete structures,Report,Islamiyat
+124,English,MULTICAL,Discrete structures,Report,Islamiyat
+125,English,MULTICAL,Discrete structures,Report,Islamiyat
+126,English,MULTICAL,Discrete structures,Report,Islamiyat
+127,English,MULTICAL,Discrete structures,Report,Islamiyat
+128,English,MULTICAL,Discrete structures,Report,Islamiyat
+129,English,MULTICAL,Discrete structures,Report,Islamiyat
+130,English,MULTICAL,Discrete structures,Report,Islamiyat
+131,English,MULTICAL,Discrete structures,Report,Islamiyat
+132,English,MULTICAL,Discrete structures,Report,Islamiyat
+133,English,MULTICAL,Discrete structures,Report,Islamiyat
+134,English,MULTICAL,Discrete structures,Report,Islamiyat
+135,English,MULTICAL,Discrete structures,Report,Islamiyat
+136,English,MULTICAL,Discrete structures,Report,Islamiyat
+137,English,MULTICAL,Discrete structures,Report,Islamiyat
+138,English,MULTICAL,Discrete structures,Report,Islamiyat
+139,English,MULTICAL,Discrete structures,Report,Islamiyat
+140,English,MULTICAL,Discrete structures,Report,Islamiyat
+141,English,MULTICAL,Discrete structures,Report,Islamiyat
+142,English,MULTICAL,Discrete structures,Report,Islamiyat
+143,English,MULTICAL,Discrete structures,Report,Islamiyat
+144,English,MULTICAL,Discrete structures,Report,Islamiyat
+145,English,MULTICAL,Discrete structures,Report,Islamiyat
+146,English,MULTICAL,Discrete structures,Report,Islamiyat
+147,English,MULTICAL,Discrete structures,Report,Islamiyat
+148,English,MULTICAL,Discrete structures,Report,Islamiyat
+149,English,MULTICAL,Discrete structures,Report,Islamiyat
+150,English,MULTICAL,Discrete structures,Report,Islamiyat
+151,English,MULTICAL,Discrete structures,Report,Islamiyat
+152,English,MULTICAL,Discrete structures,Report,Islamiyat
+153,English,MULTICAL,Discrete structures,Report,Islamiyat
+154,English,MULTICAL,Discrete structures,Report,Islamiyat
+155,English,MULTICAL,Discrete structures,Report,Islamiyat
+156,English,MULTICAL,Discrete structures,Report,Islamiyat
+157,English,MULTICAL,Discrete structures,Report,Islamiyat
+158,English,MULTICAL,Discrete structures,Report,Islamiyat
+159,English,MULTICAL,Discrete structures,Report,Islamiyat
+160,English,MULTICAL,Discrete structures,Report,Islamiyat
+161,English,MULTICAL,Discrete structures,Report,Islamiyat
+162,English,MULTICAL,Discrete structures,Report,Islamiyat
+163,English,MULTICAL,Discrete structures,Report,Islamiyat
+164,English,MULTICAL,Discrete structures,Report,Islamiyat
+165,English,MULTICAL,Discrete structures,Report,Islamiyat
+166,English,MULTICAL,Discrete structures,Report,Islamiyat
+167,English,MULTICAL,Discrete structures,Report,Islamiyat
+168,English,MULTICAL,Discrete structures,Report,Islamiyat
+169,English,MULTICAL,Discrete structures,Report,Islamiyat
+170,English,MULTICAL,Discrete structures,Report,Islamiyat
+171,English,MULTICAL,Discrete structures,Report,Islamiyat
+172,English,MULTICAL,Discrete structures,Report,Islamiyat
+173,English,MULTICAL,Discrete structures,Report,Islamiyat
+174,English,MULTICAL,Discrete structures,Report,Islamiyat
+175,English,MULTICAL,Discrete structures,Report,Islamiyat
+201,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+202,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+203,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+204,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+205,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+206,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+207,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+208,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+209,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+210,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+211,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+212,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+213,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+214,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+215,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+216,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+217,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+218,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+219,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+220,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+221,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+222,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+223,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+224,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+225,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+226,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+227,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+228,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+229,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+230,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+231,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+232,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+233,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+234,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+235,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+236,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+237,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+238,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+239,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+240,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+241,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+242,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+243,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+244,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+245,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+246,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+247,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+248,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+249,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+250,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+251,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+252,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+253,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+254,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+255,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+256,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+257,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+258,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+259,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+260,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+261,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+262,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+263,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+264,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+265,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+266,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+267,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+268,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+269,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+270,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+271,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+272,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+273,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+274,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+275,Pak Study,Genetics,Data Structures,OOP,Comm. Skills
+301,Intro to SE,Stats,DLD,OS,OOSE
+302,Intro to SE,Stats,DLD,OS,OOSE
+303,Intro to SE,Stats,DLD,OS,OOSE
+304,Intro to SE,Stats,DLD,OS,OOSE
+305,Intro to SE,Stats,DLD,OS,OOSE
+306,Intro to SE,Stats,DLD,OS,OOSE
+307,Intro to SE,Stats,DLD,OS,OOSE
+308,Intro to SE,Stats,DLD,OS,OOSE
+309,Intro to SE,Stats,DLD,OS,OOSE
+310,Intro to SE,Stats,DLD,OS,OOSE
+311,Intro to SE,Stats,DLD,OS,OOSE
+312,Intro to SE,Stats,DLD,OS,OOSE
+313,Intro to SE,Stats,DLD,OS,OOSE
+314,Intro to SE,Stats,DLD,OS,OOSE
+315,Intro to SE,Stats,DLD,OS,OOSE
+316,Intro to SE,Stats,DLD,OS,OOSE
+317,Intro to SE,Stats,DLD,OS,OOSE
+318,Intro to SE,Stats,DLD,OS,OOSE
+319,Intro to SE,Stats,DLD,OS,OOSE
+320,Intro to SE,Stats,DLD,OS,OOSE
+321,Intro to SE,Stats,DLD,OS,OOSE
+322,Intro to SE,Stats,DLD,OS,OOSE
+323,Intro to SE,Stats,DLD,OS,OOSE
+324,Intro to SE,Stats,DLD,OS,OOSE
+325,Intro to SE,Stats,DLD,OS,OOSE
+326,Intro to SE,Stats,DLD,OS,OOSE
+327,Intro to SE,Stats,DLD,OS,OOSE
+328,Intro to SE,Stats,DLD,OS,OOSE
+329,Intro to SE,Stats,DLD,OS,OOSE
+330,Intro to SE,Stats,DLD,OS,OOSE
+331,Intro to SE,Stats,DLD,OS,OOSE
+332,Intro to SE,Stats,DLD,OS,OOSE
+333,Intro to SE,Stats,DLD,OS,OOSE
+334,Intro to SE,Stats,DLD,OS,OOSE
+335,Intro to SE,Stats,DLD,OS,OOSE
+336,Intro to SE,Stats,DLD,OS,OOSE
+337,Intro to SE,Stats,DLD,OS,OOSE
+338,Intro to SE,Stats,DLD,OS,OOSE
+339,Intro to SE,Stats,DLD,OS,OOSE
+340,Intro to SE,Stats,DLD,OS,OOSE
+341,Intro to SE,Stats,DLD,OS,OOSE
+342,Intro to SE,Stats,DLD,OS,OOSE
+343,Intro to SE,Stats,DLD,OS,OOSE
+344,Intro to SE,Stats,DLD,OS,OOSE
+345,Intro to SE,Stats,DLD,OS,OOSE
+346,Intro to SE,Stats,DLD,OS,OOSE
+347,Intro to SE,Stats,DLD,OS,OOSE
+348,Intro to SE,Stats,DLD,OS,OOSE
+349,Intro to SE,Stats,DLD,OS,OOSE
+350,Intro to SE,Stats,DLD,OS,OOSE
+351,Intro to SE,Stats,DLD,OS,OOSE
+352,Intro to SE,Stats,DLD,OS,OOSE
+353,Intro to SE,Stats,DLD,OS,OOSE
+354,Intro to SE,Stats,DLD,OS,OOSE
+355,Intro to SE,Stats,DLD,OS,OOSE
+356,Intro to SE,Stats,DLD,OS,OOSE
+357,Intro to SE,Stats,DLD,OS,OOSE
+358,Intro to SE,Stats,DLD,OS,OOSE
+359,Intro to SE,Stats,DLD,OS,OOSE
+360,Intro to SE,Stats,DLD,OS,OOSE
+361,Intro to SE,Stats,DLD,OS,OOSE
+362,Intro to SE,Stats,DLD,OS,OOSE
+363,Intro to SE,Stats,DLD,OS,OOSE
+364,Intro to SE,Stats,DLD,OS,OOSE
+365,Intro to SE,Stats,DLD,OS,OOSE
+366,Intro to SE,Stats,DLD,OS,OOSE
+367,Intro to SE,Stats,DLD,OS,OOSE
+368,Intro to SE,Stats,DLD,OS,OOSE
+369,Intro to SE,Stats,DLD,OS,OOSE
+370,Intro to SE,Stats,DLD,OS,OOSE
+371,Intro to SE,Stats,DLD,OS,OOSE
+372,Intro to SE,Stats,DLD,OS,OOSE
+373,Intro to SE,Stats,DLD,OS,OOSE
+374,Intro to SE,Stats,DLD,OS,OOSE
+375,Intro to SE,Stats,DLD,OS,OOSE
+401,ITM,PPIT,DCCN,AI,SRE
+402,ITM,PPIT,DCCN,AI,SRE
+403,ITM,PPIT,DCCN,AI,SRE
+404,ITM,PPIT,DCCN,AI,SRE
+405,ITM,PPIT,DCCN,AI,SRE
+406,ITM,PPIT,DCCN,AI,SRE
+407,ITM,PPIT,DCCN,AI,SRE
+408,ITM,PPIT,DCCN,AI,SRE
+409,ITM,PPIT,DCCN,AI,SRE
+410,ITM,PPIT,DCCN,AI,SRE
+411,ITM,PPIT,DCCN,AI,SRE
+412,ITM,PPIT,DCCN,AI,SRE
+413,ITM,PPIT,DCCN,AI,SRE
+414,ITM,PPIT,DCCN,AI,SRE
+415,ITM,PPIT,DCCN,AI,SRE
+416,ITM,PPIT,DCCN,AI,SRE
+417,ITM,PPIT,DCCN,AI,SRE
+418,ITM,PPIT,DCCN,AI,SRE
+419,ITM,PPIT,DCCN,AI,SRE
+420,ITM,PPIT,DCCN,AI,SRE
+421,ITM,PPIT,DCCN,AI,SRE
+422,ITM,PPIT,DCCN,AI,SRE
+423,ITM,PPIT,DCCN,AI,SRE
+424,ITM,PPIT,DCCN,AI,SRE
+425,ITM,PPIT,DCCN,AI,SRE
+426,ITM,PPIT,DCCN,AI,SRE
+427,ITM,PPIT,DCCN,AI,SRE
+428,ITM,PPIT,DCCN,AI,SRE
+429,ITM,PPIT,DCCN,AI,SRE
+430,ITM,PPIT,DCCN,AI,SRE
+431,ITM,PPIT,DCCN,AI,SRE
+432,ITM,PPIT,DCCN,AI,SRE
+433,ITM,PPIT,DCCN,AI,SRE
+434,ITM,PPIT,DCCN,AI,SRE
+435,ITM,PPIT,DCCN,AI,SRE
+436,ITM,PPIT,DCCN,AI,SRE
+437,ITM,PPIT,DCCN,AI,SRE
+438,ITM,PPIT,DCCN,AI,SRE
+439,ITM,PPIT,DCCN,AI,SRE
+440,ITM,PPIT,DCCN,AI,SRE
+441,ITM,PPIT,DCCN,AI,SRE
+442,ITM,PPIT,DCCN,AI,SRE
+443,ITM,PPIT,DCCN,AI,SRE
+444,ITM,PPIT,DCCN,AI,SRE
+445,ITM,PPIT,DCCN,AI,SRE
+446,ITM,PPIT,DCCN,AI,SRE
+447,ITM,PPIT,DCCN,AI,SRE
+448,ITM,PPIT,DCCN,AI,SRE
+449,ITM,PPIT,DCCN,AI,SRE
+450,ITM,PPIT,DCCN,AI,SRE
+451,ITM,PPIT,DCCN,AI,SRE
+452,ITM,PPIT,DCCN,AI,SRE
+453,ITM,PPIT,DCCN,AI,SRE
+454,ITM,PPIT,DCCN,AI,SRE
+455,ITM,PPIT,DCCN,AI,SRE
+456,ITM,PPIT,DCCN,AI,SRE
+457,ITM,PPIT,DCCN,AI,SRE
+458,ITM,PPIT,DCCN,AI,SRE
+459,ITM,PPIT,DCCN,AI,SRE
+460,ITM,PPIT,DCCN,AI,SRE
+461,ITM,PPIT,DCCN,AI,SRE
+462,ITM,PPIT,DCCN,AI,SRE
+463,ITM,PPIT,DCCN,AI,SRE
+464,ITM,PPIT,DCCN,AI,SRE
+465,ITM,PPIT,DCCN,AI,SRE
+466,ITM,PPIT,DCCN,AI,SRE
+467,ITM,PPIT,DCCN,AI,SRE
+468,ITM,PPIT,DCCN,AI,SRE
+469,ITM,PPIT,DCCN,AI,SRE
+470,ITM,PPIT,DCCN,AI,SRE
+471,ITM,PPIT,DCCN,AI,SRE
+472,ITM,PPIT,DCCN,AI,SRE
+473,ITM,PPIT,DCCN,AI,SRE
+474,ITM,PPIT,DCCN,AI,SRE
+475,ITM,PPIT,DCCN,AI,SRE
+501,WEB,LA,VP,HCI,SQE
+502,WEB,LA,VP,HCI,SQE
+503,WEB,LA,VP,HCI,SQE
+504,WEB,LA,VP,HCI,SQE
+505,WEB,LA,VP,HCI,SQE
+506,WEB,LA,VP,HCI,SQE
+507,WEB,LA,VP,HCI,SQE
+508,WEB,LA,VP,HCI,SQE
+509,WEB,LA,VP,HCI,SQE
+510,WEB,LA,VP,HCI,SQE
+511,WEB,LA,VP,HCI,SQE
+512,WEB,LA,VP,HCI,SQE
+513,WEB,LA,VP,HCI,SQE
+514,WEB,LA,VP,HCI,SQE
+515,WEB,LA,VP,HCI,SQE
+516,WEB,LA,VP,HCI,SQE
+517,WEB,LA,VP,HCI,SQE
+518,WEB,LA,VP,HCI,SQE
+519,WEB,LA,VP,HCI,SQE
+520,WEB,LA,VP,HCI,SQE
+521,WEB,LA,VP,HCI,SQE
+522,WEB,LA,VP,HCI,SQE
+523,WEB,LA,VP,HCI,SQE
+524,WEB,LA,VP,HCI,SQE
+525,WEB,LA,VP,HCI,SQE
+526,WEB,LA,VP,HCI,SQE
+527,WEB,LA,VP,HCI,SQE
+528,WEB,LA,VP,HCI,SQE
+529,WEB,LA,VP,HCI,SQE
+530,WEB,LA,VP,HCI,SQE
+531,WEB,LA,VP,HCI,SQE
+532,WEB,LA,VP,HCI,SQE
+533,WEB,LA,VP,HCI,SQE
+534,WEB,LA,VP,HCI,SQE
+535,WEB,LA,VP,HCI,SQE
+536,WEB,LA,VP,HCI,SQE
+537,WEB,LA,VP,HCI,SQE
+538,WEB,LA,VP,HCI,SQE
+539,WEB,LA,VP,HCI,SQE
+540,WEB,LA,VP,HCI,SQE
+541,WEB,LA,VP,HCI,SQE
+542,WEB,LA,VP,HCI,SQE
+543,WEB,LA,VP,HCI,SQE
+544,WEB,LA,VP,HCI,SQE
+545,WEB,LA,VP,HCI,SQE
+546,WEB,LA,VP,HCI,SQE
+547,WEB,LA,VP,HCI,SQE
+548,WEB,LA,VP,HCI,SQE
+549,WEB,LA,VP,HCI,SQE
+550,WEB,LA,VP,HCI,SQE
+551,WEB,LA,VP,HCI,SQE
+552,WEB,LA,VP,HCI,SQE
+553,WEB,LA,VP,HCI,SQE
+554,WEB,LA,VP,HCI,SQE
+555,WEB,LA,VP,HCI,SQE
+556,WEB,LA,VP,HCI,SQE
+557,WEB,LA,VP,HCI,SQE
+558,WEB,LA,VP,HCI,SQE
+559,WEB,LA,VP,HCI,SQE
+560,WEB,LA,VP,HCI,SQE
+561,WEB,LA,VP,HCI,SQE
+562,WEB,LA,VP,HCI,SQE
+563,WEB,LA,VP,HCI,SQE
+564,WEB,LA,VP,HCI,SQE
+565,WEB,LA,VP,HCI,SQE
+566,WEB,LA,VP,HCI,SQE
+567,WEB,LA,VP,HCI,SQE
+568,WEB,LA,VP,HCI,SQE
+569,WEB,LA,VP,HCI,SQE
+570,WEB,LA,VP,HCI,SQE
+571,WEB,LA,VP,HCI,SQE
+572,WEB,LA,VP,HCI,SQE
+573,WEB,LA,VP,HCI,SQE
+574,WEB,LA,VP,HCI,SQE
+575,WEB,LA,VP,HCI,SQE
+601,SDA,SPM,MAD,WEB Tech,DP
+602,SDA,SPM,MAD,WEB Tech,DP
+603,SDA,SPM,MAD,WEB Tech,DP
+604,SDA,SPM,MAD,WEB Tech,DP
+605,SDA,SPM,MAD,WEB Tech,DP
+606,SDA,SPM,MAD,WEB Tech,DP
+607,SDA,SPM,MAD,WEB Tech,DP
+608,SDA,SPM,MAD,WEB Tech,DP
+609,SDA,SPM,MAD,WEB Tech,DP
+610,SDA,SPM,MAD,WEB Tech,DP
+611,SDA,SPM,MAD,WEB Tech,DP
+612,SDA,SPM,MAD,WEB Tech,DP
+613,SDA,SPM,MAD,WEB Tech,DP
+614,SDA,SPM,MAD,WEB Tech,DP
+615,SDA,SPM,MAD,WEB Tech,DP
+616,SDA,SPM,MAD,WEB Tech,DP
+617,SDA,SPM,MAD,WEB Tech,DP
+618,SDA,SPM,MAD,WEB Tech,DP
+619,SDA,SPM,MAD,WEB Tech,DP
+620,SDA,SPM,MAD,WEB Tech,DP
+621,SDA,SPM,MAD,WEB Tech,DP
+622,SDA,SPM,MAD,WEB Tech,DP
+623,SDA,SPM,MAD,WEB Tech,DP
+624,SDA,SPM,MAD,WEB Tech,DP
+625,SDA,SPM,MAD,WEB Tech,DP
+626,SDA,SPM,MAD,WEB Tech,DP
+627,SDA,SPM,MAD,WEB Tech,DP
+628,SDA,SPM,MAD,WEB Tech,DP
+629,SDA,SPM,MAD,WEB Tech,DP
+630,SDA,SPM,MAD,WEB Tech,DP
+631,SDA,SPM,MAD,WEB Tech,DP
+632,SDA,SPM,MAD,WEB Tech,DP
+633,SDA,SPM,MAD,WEB Tech,DP
+634,SDA,SPM,MAD,WEB Tech,DP
+635,SDA,SPM,MAD,WEB Tech,DP
+636,SDA,SPM,MAD,WEB Tech,DP
+637,SDA,SPM,MAD,WEB Tech,DP
+638,SDA,SPM,MAD,WEB Tech,DP
+639,SDA,SPM,MAD,WEB Tech,DP
+640,SDA,SPM,MAD,WEB Tech,DP
+641,SDA,SPM,MAD,WEB Tech,DP
+642,SDA,SPM,MAD,WEB Tech,DP
+643,SDA,SPM,MAD,WEB Tech,DP
+644,SDA,SPM,MAD,WEB Tech,DP
+645,SDA,SPM,MAD,WEB Tech,DP
+646,SDA,SPM,MAD,WEB Tech,DP
+647,SDA,SPM,MAD,WEB Tech,DP
+648,SDA,SPM,MAD,WEB Tech,DP
+649,SDA,SPM,MAD,WEB Tech,DP
+650,SDA,SPM,MAD,WEB Tech,DP
+651,SDA,SPM,MAD,WEB Tech,DP
+652,SDA,SPM,MAD,WEB Tech,DP
+653,SDA,SPM,MAD,WEB Tech,DP
+654,SDA,SPM,MAD,WEB Tech,DP
+655,SDA,SPM,MAD,WEB Tech,DP
+656,SDA,SPM,MAD,WEB Tech,DP
+657,SDA,SPM,MAD,WEB Tech,DP
+658,SDA,SPM,MAD,WEB Tech,DP
+659,SDA,SPM,MAD,WEB Tech,DP
+660,SDA,SPM,MAD,WEB Tech,DP
+661,SDA,SPM,MAD,WEB Tech,DP
+662,SDA,SPM,MAD,WEB Tech,DP
+663,SDA,SPM,MAD,WEB Tech,DP
+664,SDA,SPM,MAD,WEB Tech,DP
+665,SDA,SPM,MAD,WEB Tech,DP
+666,SDA,SPM,MAD,WEB Tech,DP
+667,SDA,SPM,MAD,WEB Tech,DP
+668,SDA,SPM,MAD,WEB Tech,DP
+669,SDA,SPM,MAD,WEB Tech,DP
+670,SDA,SPM,MAD,WEB Tech,DP
+671,SDA,SPM,MAD,WEB Tech,DP
+672,SDA,SPM,MAD,WEB Tech,DP
+673,SDA,SPM,MAD,WEB Tech,DP
+674,SDA,SPM,MAD,WEB Tech,DP
+675,SDA,SPM,MAD,WEB Tech,DP
+701,Testing,Research,French,Enterpreneurship,Calculus 2
+702,Testing,Research,French,Enterpreneurship,Calculus 2
+703,Testing,Research,French,Enterpreneurship,Calculus 2
+704,Testing,Research,French,Enterpreneurship,Calculus 2
+705,Testing,Research,French,Enterpreneurship,Calculus 2
+706,Testing,Research,French,Enterpreneurship,Calculus 2
+707,Testing,Research,French,Enterpreneurship,Calculus 2
+708,Testing,Research,French,Enterpreneurship,Calculus 2
+709,Testing,Research,French,Enterpreneurship,Calculus 2
+710,Testing,Research,French,Enterpreneurship,Calculus 2
+711,Testing,Research,French,Enterpreneurship,Calculus 2
+712,Testing,Research,French,Enterpreneurship,Calculus 2
+713,Testing,Research,French,Enterpreneurship,Calculus 2
+714,Testing,Research,French,Enterpreneurship,Calculus 2
+715,Testing,Research,French,Enterpreneurship,Calculus 2
+716,Testing,Research,French,Enterpreneurship,Calculus 2
+717,Testing,Research,French,Enterpreneurship,Calculus 2
+718,Testing,Research,French,Enterpreneurship,Calculus 2
+719,Testing,Research,French,Enterpreneurship,Calculus 2
+720,Testing,Research,French,Enterpreneurship,Calculus 2
+721,Testing,Research,French,Enterpreneurship,Calculus 2
+722,Testing,Research,French,Enterpreneurship,Calculus 2
+723,Testing,Research,French,Enterpreneurship,Calculus 2
+724,Testing,Research,French,Enterpreneurship,Calculus 2
+725,Testing,Research,French,Enterpreneurship,Calculus 2
+726,Testing,Research,French,Enterpreneurship,Calculus 2
+727,Testing,Research,French,Enterpreneurship,Calculus 2
+728,Testing,Research,French,Enterpreneurship,Calculus 2
+729,Testing,Research,French,Enterpreneurship,Calculus 2
+730,Testing,Research,French,Enterpreneurship,Calculus 2
+731,Testing,Research,French,Enterpreneurship,Calculus 2
+732,Testing,Research,French,Enterpreneurship,Calculus 2
+733,Testing,Research,French,Enterpreneurship,Calculus 2
+734,Testing,Research,French,Enterpreneurship,Calculus 2
+735,Testing,Research,French,Enterpreneurship,Calculus 2
+736,Testing,Research,French,Enterpreneurship,Calculus 2
+737,Testing,Research,French,Enterpreneurship,Calculus 2
+738,Testing,Research,French,Enterpreneurship,Calculus 2
+739,Testing,Research,French,Enterpreneurship,Calculus 2
+740,Testing,Research,French,Enterpreneurship,Calculus 2
+741,Testing,Research,French,Enterpreneurship,Calculus 2
+742,Testing,Research,French,Enterpreneurship,Calculus 2
+743,Testing,Research,French,Enterpreneurship,Calculus 2
+744,Testing,Research,French,Enterpreneurship,Calculus 2
+745,Testing,Research,French,Enterpreneurship,Calculus 2
+746,Testing,Research,French,Enterpreneurship,Calculus 2
+747,Testing,Research,French,Enterpreneurship,Calculus 2
+748,Testing,Research,French,Enterpreneurship,Calculus 2
+749,Testing,Research,French,Enterpreneurship,Calculus 2
+750,Testing,Research,French,Enterpreneurship,Calculus 2
+751,Testing,Research,French,Enterpreneurship,Calculus 2
+752,Testing,Research,French,Enterpreneurship,Calculus 2
+753,Testing,Research,French,Enterpreneurship,Calculus 2
+754,Testing,Research,French,Enterpreneurship,Calculus 2
+755,Testing,Research,French,Enterpreneurship,Calculus 2
+756,Testing,Research,French,Enterpreneurship,Calculus 2
+757,Testing,Research,French,Enterpreneurship,Calculus 2
+758,Testing,Research,French,Enterpreneurship,Calculus 2
+759,Testing,Research,French,Enterpreneurship,Calculus 2
+760,Testing,Research,French,Enterpreneurship,Calculus 2
+761,Testing,Research,French,Enterpreneurship,Calculus 2
+762,Testing,Research,French,Enterpreneurship,Calculus 2
+763,Testing,Research,French,Enterpreneurship,Calculus 2
+764,Testing,Research,French,Enterpreneurship,Calculus 2
+765,Testing,Research,French,Enterpreneurship,Calculus 2
+766,Testing,Research,French,Enterpreneurship,Calculus 2
+767,Testing,Research,French,Enterpreneurship,Calculus 2
+768,Testing,Research,French,Enterpreneurship,Calculus 2
+769,Testing,Research,French,Enterpreneurship,Calculus 2
+770,Testing,Research,French,Enterpreneurship,Calculus 2
+771,Testing,Research,French,Enterpreneurship,Calculus 2
+772,Testing,Research,French,Enterpreneurship,Calculus 2
+773,Testing,Research,French,Enterpreneurship,Calculus 2
+774,Testing,Research,French,Enterpreneurship,Calculus 2
+775,Testing,Research,French,Enterpreneurship,Calculus 2
+801,ICT,ECA,Calculus,Course39,Course40
+802,ICT,ECA,Calculus,Course39,Course40
+803,ICT,ECA,Calculus,Course39,Course40
+804,ICT,ECA,Calculus,Course39,Course40
+805,ICT,ECA,Calculus,Course39,Course40
+806,ICT,ECA,Calculus,Course39,Course40
+807,ICT,ECA,Calculus,Course39,Course40
+808,ICT,ECA,Calculus,Course39,Course40
+809,ICT,ECA,Calculus,Course39,Course40
+810,ICT,ECA,Calculus,Course39,Course40
+811,ICT,ECA,Calculus,Course39,Course40
+812,ICT,ECA,Calculus,Course39,Course40
+813,ICT,ECA,Calculus,Course39,Course40
+814,ICT,ECA,Calculus,Course39,Course40
+815,ICT,ECA,Calculus,Course39,Course40
+816,ICT,ECA,Calculus,Course39,Course40
+817,ICT,ECA,Calculus,Course39,Course40
+818,ICT,ECA,Calculus,Course39,Course40
+819,ICT,ECA,Calculus,Course39,Course40
+820,ICT,ECA,Calculus,Course39,Course40
+821,ICT,ECA,Calculus,Course39,Course40
+822,ICT,ECA,Calculus,Course39,Course40
+823,ICT,ECA,Calculus,Course39,Course40
+824,ICT,ECA,Calculus,Course39,Course40
+825,ICT,ECA,Calculus,Course39,Course40
+826,ICT,ECA,Calculus,Course39,Course40
+827,ICT,ECA,Calculus,Course39,Course40
+828,ICT,ECA,Calculus,Course39,Course40
+829,ICT,ECA,Calculus,Course39,Course40
+830,ICT,ECA,Calculus,Course39,Course40
+831,ICT,ECA,Calculus,Course39,Course40
+832,ICT,ECA,Calculus,Course39,Course40
+833,ICT,ECA,Calculus,Course39,Course40
+834,ICT,ECA,Calculus,Course39,Course40
+835,ICT,ECA,Calculus,Course39,Course40
+836,ICT,ECA,Calculus,Course39,Course40
+837,ICT,ECA,Calculus,Course39,Course40
+838,ICT,ECA,Calculus,Course39,Course40
+839,ICT,ECA,Calculus,Course39,Course40
+840,ICT,ECA,Calculus,Course39,Course40
+841,ICT,ECA,Calculus,Course39,Course40
+842,ICT,ECA,Calculus,Course39,Course40
+843,ICT,ECA,Calculus,Course39,Course40
+844,ICT,ECA,Calculus,Course39,Course40
+845,ICT,ECA,Calculus,Course39,Course40
+846,ICT,ECA,Calculus,Course39,Course40
+847,ICT,ECA,Calculus,Course39,Course40
+848,ICT,ECA,Calculus,Course39,Course40
+849,ICT,ECA,Calculus,Course39,Course40
+850,ICT,ECA,Calculus,Course39,Course40
+851,ICT,ECA,Calculus,Course39,Course40
+852,ICT,ECA,Calculus,Course39,Course40
+853,ICT,ECA,Calculus,Course39,Course40
+854,ICT,ECA,Calculus,Course39,Course40
+855,ICT,ECA,Calculus,Course39,Course40
+856,ICT,ECA,Calculus,Course39,Course40
+857,ICT,ECA,Calculus,Course39,Course40
+858,ICT,ECA,Calculus,Course39,Course40
+859,ICT,ECA,Calculus,Course39,Course40
+860,ICT,ECA,Calculus,Course39,Course40
+861,ICT,ECA,Calculus,Course39,Course40
+862,ICT,ECA,Calculus,Course39,Course40
+863,ICT,ECA,Calculus,Course39,Course40
+864,ICT,ECA,Calculus,Course39,Course40
+865,ICT,ECA,Calculus,Course39,Course40
+866,ICT,ECA,Calculus,Course39,Course40
+867,ICT,ECA,Calculus,Course39,Course40
+868,ICT,ECA,Calculus,Course39,Course40
+869,ICT,ECA,Calculus,Course39,Course40
+870,ICT,ECA,Calculus,Course39,Course40
+871,ICT,ECA,Calculus,Course39,Course40
+872,ICT,ECA,Calculus,Course39,Course40
+873,ICT,ECA,Calculus,Course39,Course40
+874,ICT,ECA,Calculus,Course39,Course40
+875,ICT,ECA,Calculus,Course39,Course40

@@ -1,6 +1,9 @@
 
 package Model;
 
+import Model.semester.Section;
+import Model.student.Student;
+
 public class Clash {
     private Section section;
     private Course course;
