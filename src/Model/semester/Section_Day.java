@@ -3,10 +3,18 @@ package Model.semester;
 import java.util.ArrayList;
 
 public class Section_Day {
+<<<<<<< HEAD:src/Model/semester/Section_Day.java
 
     private int no;
     private ArrayList<Section_Timeslot> timeslots = new ArrayList<>();
 
+=======
+    
+    int no;
+    ArrayList<Section_Timeslot> timeslots = new ArrayList<>() ; 
+//  variable for favorite day or not
+    
+>>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f:src/Model/Section_Day.java
     public Section_Day() {
 
     }

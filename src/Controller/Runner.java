@@ -1,3 +1,4 @@
+
 package Controller;
 
 import Model.Scheduler;
@@ -21,7 +22,16 @@ import static clash_resolving.Student.addRegisteredCourses;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+<<<<<<< HEAD
 
+=======
+import java.sql.Connection;
+import static db.DBConnection.createConnection;
+import javax.swing.JOptionPane;
+
+
+// JOptionPane.showMessageDialog(null, "Error in Fetching Data of Player", "Table", JOptionPane.ERROR_MESSAGE) ; 
+>>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
 
 public class Runner {
 
@@ -36,6 +46,7 @@ public class Runner {
     public static ArrayList<Scheduler> scheduler = new ArrayList<>();  //public
 
     public static void main(String[] args) {                                    // MAIN METHOD  
+<<<<<<< HEAD
         createConnection(); // creating connection with database  
 //        addRegisteredCourses();
 //        System.exit(1);
@@ -44,6 +55,13 @@ public class Runner {
         // fill the semesters ArrayList
         add_Data_to_Semester_List();    // read semester and sections
         
+=======
+        createConnection(); // creating connection with database    
+        System.out.println("I AM CONNECTION        "+getConnection() ) ; 
+        Entities_Main_Arrays.add_Data_to_Student_List();
+        Entities_Main_Arrays.add_Data_to_Semester_List();
+        semesters = Entities_Main_Arrays.semesters;
+>>>>>>> d8d42c20dd764eb319cffd41b0077ebf17c26e9f
         clash_resolving.Student student = new clash_resolving.Student();
 
         // 
@@ -349,7 +367,13 @@ public class Runner {
                                 break;
                             }
                         }
+//                        if(){
+//                            
+//                        }
                         permute(semesters.get(sem).getSections().get(sec).getCourses());
+//                        else{
+//                            
+//                        }
                     } //slot=0 ; 
                 }
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 
