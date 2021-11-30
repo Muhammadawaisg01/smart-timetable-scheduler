@@ -5,9 +5,11 @@
  */
 package View.section;
 
+import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +28,23 @@ public class add_new_program extends javax.swing.JPanel {
 
     public add_new_program() {
         initComponents();
+        createConnection();
+        getTotalPrograms();
+    }
+
+    private void getTotalPrograms() {
+        String q = "select program_name from program";
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.last()) {
+                programID = rs.getRow() + 1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -114,25 +133,27 @@ public class add_new_program extends javax.swing.JPanel {
             PreparedStatement stmt = conn.prepareStatement(q);
             stmt.setInt(1, programID);
             stmt.setString(2, program);
-            boolean res = stmt.execute();
-            if (res) {
-                for (int i = 1; i <= total_semesters; i++) {
-                    q = "insert into semester "
-                            + "("
-                            + "semester_no,"
-                            + "program_id"
-                            + ")"
-                            + " VALEUS "
-                            + "(?, ?)";
-                    stmt = conn.prepareStatement(q);
-                    stmt.setInt(1, i);
-                    stmt.setInt(2, programID);
-                    stmt.execute();
-                }
-                programID++;
-            } else {
-                JOptionPane.showMessageDialog(null, "Someting went wrong!");
+            stmt.execute();
+//            if (res) {
+            for (int i = 1; i <= total_semesters; i++) {
+                q = "insert into semester "
+                        + "("
+                        + "semester_no,"
+                        + "program_id"
+                        + ")"
+                        + " VALUES "
+                        + "(?, ?)";
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, i);
+                stmt.setInt(2, programID);
+                stmt.execute();
             }
+            programID++;
+            program_name.setText("");
+            semesters.setText("");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Someting went wrong!");
+//            }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Semester Number should be integer!");
         } catch (SQLException ex) {
