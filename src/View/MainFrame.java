@@ -1,33 +1,30 @@
 package View;
 
 import Model.Course;
-import Model.Entities_Main_Arrays;
 import Model.professor.Professor;
 import Model.Program;
 import Model.room.Room;
-import View.section.create_section_panel;
 import View.viewtimetable_panel.view_generated_timetable_panel;
 import db.DBConnection;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
 import java.awt.Color;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import View.viewtimetable_panel.search_for_specific_entity;
 import View.viewtimetable_panel.view_schedule;
-import cambodia.raven.Time;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
-public class MainFrame extends javax.swing.JFrame implements Panels_Management 
-{
+public class MainFrame extends javax.swing.JFrame implements Panels_Management {
+
+    private static int slotNum = 1;
 
     public MainFrame() {
         initComponents();
@@ -40,9 +37,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         add_all_panels_of_courses_to_list();
         add_all_panels_of_view_timetable_to_list();
         add_all_panels_of_schedule_generation_to_list();
-        
+
     }
-    
+
     // These array consists of all panels in the different option on the MainPanel 
     ArrayList<JPanel> programs_panels_list = new ArrayList<>();
     ArrayList<JPanel> department_panels_list = new ArrayList<>();
@@ -50,7 +47,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     ArrayList<JPanel> students_panels_list = new ArrayList<>();
     ArrayList<JPanel> courses_panels_list = new ArrayList<>();
     ArrayList<JPanel> schedule_generation_panels_list = new ArrayList<>();
-    
+
     // Implementing Methods of Panels Management section
     @Override
     public void add_all_panels_of_programs_to_list() {
@@ -65,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         programs_panels_list.add(view_schedule_of_section1);
         programs_panels_list.add(professor_course_allocation1);
     }
+
     @Override
     public void add_all_panels_of_department_to_list() {
         department_panels_list.add(room_input_panel1);
@@ -74,16 +72,19 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         department_panels_list.add(view_schedule_panel2);
         department_panels_list.add(dept_details_panel);
         department_panels_list.add(viewData);
-        department_panels_list.add(room_details) ; 
+        department_panels_list.add(room_details);
     }
+
     @Override
     public void add_all_panels_of_students_to_list() {
         students_panels_list.add(create_section_panel1);
     }
+
     @Override
     public void add_all_panels_of_courses_to_list() {
         courses_panels_list.add(create_section_panel1);
     }
+
     @Override
     public void add_all_panels_of_view_timetable_to_list() {
         view_timetable_panels_list.add(create_section_panel1);
@@ -92,13 +93,14 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         view_timetable_panels_list.add(create_section_panel1);
         view_timetable_panels_list.add(create_section_panel1);
     }
+
     @Override
     public void add_all_panels_of_schedule_generation_to_list() {
         schedule_generation_panels_list.add(create_section_panel1);
     }
-    
+
     @Override
-    public void programs_panel_visibility(JPanel panel) {   
+    public void programs_panel_visibility(JPanel panel) {
         for (int i = 0; i < programs_panels_list.size(); i++) {
             if (programs_panels_list.get(i) == panel) {
                 programs_panels_list.get(i).setVisible(true);
@@ -107,9 +109,10 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         }
     }
+
     @Override
-    public void department_panel_visibility(JPanel panel) {   
-        for (int i = 0; i < department_panels_list.size(); i++) {   
+    public void department_panel_visibility(JPanel panel) {
+        for (int i = 0; i < department_panels_list.size(); i++) {
             if (department_panels_list.get(i) == panel) {
                 department_panels_list.get(i).setVisible(true);
             } else {
@@ -117,8 +120,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         }
     }
+
     @Override
-    public void students_panel_visibility(JPanel panel) {   
+    public void students_panel_visibility(JPanel panel) {
         for (int i = 0; i < students_panels_list.size(); i++) {
             if (students_panels_list.get(i) == panel) {
                 students_panels_list.get(i).setVisible(true);
@@ -127,8 +131,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         }
     }
+
     @Override
-    public void courses_panel_visibility(JPanel panel) {   
+    public void courses_panel_visibility(JPanel panel) {
         for (int i = 0; i < courses_panels_list.size(); i++) {
             if (courses_panels_list.get(i) == panel) {
                 courses_panels_list.get(i).setVisible(true);
@@ -137,8 +142,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         }
     }
+
     @Override
-    public void view_timetable_panel_visibility(JPanel panel) {   
+    public void view_timetable_panel_visibility(JPanel panel) {
         for (int i = 0; i < view_timetable_panels_list.size(); i++) {
             if (view_timetable_panels_list.get(i) == panel) {
                 view_timetable_panels_list.get(i).setVisible(true);
@@ -147,8 +153,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         }
     }
+
     @Override
-    public void schedule_generation_panel_visibility(JPanel panel) {   
+    public void schedule_generation_panel_visibility(JPanel panel) {
         for (int i = 0; i < schedule_generation_panels_list.size(); i++) {
             if (schedule_generation_panels_list.get(i) == panel) {
                 schedule_generation_panels_list.get(i).setVisible(true);
@@ -158,11 +165,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         }
     }
 
-    
-    
     //      PANELS MANAGEMENT Ends Here, all methods of the interface panels management are implemented in above section
-    
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -173,19 +176,19 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         jLabel11 = new javax.swing.JLabel();
         nxt_lbl_1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        dep_name = new javax.swing.JTextField();
         working_days_panel = new javax.swing.JPanel();
         back_lbl_1 = new javax.swing.JLabel();
         nxt_lbl_2 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        tues = new javax.swing.JCheckBox();
         jLabel32 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
+        wed = new javax.swing.JCheckBox();
+        thurs = new javax.swing.JCheckBox();
+        fri = new javax.swing.JCheckBox();
+        sat = new javax.swing.JCheckBox();
+        sun = new javax.swing.JCheckBox();
+        mon = new javax.swing.JCheckBox();
         jLabel33 = new javax.swing.JLabel();
         timeslots_panel = new javax.swing.JPanel();
         back_lbl_02 = new javax.swing.JLabel();
@@ -195,15 +198,15 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         jLabel37 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         slot_1_lbl = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
+        latest = new javax.swing.JTextField();
+        jalbel = new javax.swing.JTextField();
         add_button = new javax.swing.JButton();
-        time1 = new cambodia.raven.Time();
+        start = new cambodia.raven.Time();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        slot_preview = new javax.swing.JTextArea();
         add_button1 = new javax.swing.JButton();
         slot_1_lbl1 = new javax.swing.JLabel();
-        time2 = new cambodia.raven.Time();
+        end = new cambodia.raven.Time();
         jLabel38 = new javax.swing.JLabel();
         sv_btn1 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
@@ -503,9 +506,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         });
         dept_name_panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 270, 70));
 
-        jTextField17.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jTextField17.setForeground(new java.awt.Color(0, 102, 153));
-        dept_name_panel.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 660, 60));
+        dep_name.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        dep_name.setForeground(new java.awt.Color(0, 102, 153));
+        dept_name_panel.add(dep_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 660, 60));
 
         jPanel8.add(dept_name_panel, "card2");
 
@@ -546,15 +549,15 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
 
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox1.setText("Tuesday");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        tues.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        tues.setForeground(new java.awt.Color(0, 102, 153));
+        tues.setText("Tuesday");
+        tues.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                tuesActionPerformed(evt);
             }
         });
-        jPanel10.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 40));
+        jPanel10.add(tues, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 40));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 102, 153));
@@ -569,35 +572,65 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         });
         jPanel10.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 560, 70));
 
-        jCheckBox2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox2.setText("Wednesday");
-        jPanel10.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 40));
+        wed.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        wed.setForeground(new java.awt.Color(0, 102, 153));
+        wed.setText("Wednesday");
+        wed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wedActionPerformed(evt);
+            }
+        });
+        jPanel10.add(wed, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 40));
 
-        jCheckBox3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox3.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox3.setText("Thursday");
-        jPanel10.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 40));
+        thurs.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        thurs.setForeground(new java.awt.Color(0, 102, 153));
+        thurs.setText("Thursday");
+        thurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thursActionPerformed(evt);
+            }
+        });
+        jPanel10.add(thurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 40));
 
-        jCheckBox4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox4.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox4.setText("Friday");
-        jPanel10.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 40));
+        fri.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        fri.setForeground(new java.awt.Color(0, 102, 153));
+        fri.setText("Friday");
+        fri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                friActionPerformed(evt);
+            }
+        });
+        jPanel10.add(fri, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 40));
 
-        jCheckBox5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox5.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox5.setText("Saturday");
-        jPanel10.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, 40));
+        sat.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        sat.setForeground(new java.awt.Color(0, 102, 153));
+        sat.setText("Saturday");
+        sat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                satActionPerformed(evt);
+            }
+        });
+        jPanel10.add(sat, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, 40));
 
-        jCheckBox6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox6.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox6.setText("Sunday");
-        jPanel10.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, 40));
+        sun.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        sun.setForeground(new java.awt.Color(0, 102, 153));
+        sun.setText("Sunday");
+        sun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sunActionPerformed(evt);
+            }
+        });
+        jPanel10.add(sun, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, 40));
 
-        jCheckBox7.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jCheckBox7.setForeground(new java.awt.Color(0, 102, 153));
-        jCheckBox7.setText("Monday");
-        jPanel10.add(jCheckBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 40));
+        mon.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        mon.setForeground(new java.awt.Color(0, 102, 153));
+        mon.setText("Monday");
+        mon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monActionPerformed(evt);
+            }
+        });
+        jPanel10.add(mon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 40));
 
         working_days_panel.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 610, 360));
 
@@ -688,8 +721,14 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         });
         jPanel11.add(slot_1_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 50, 60));
-        jPanel11.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 160, 40));
-        jPanel11.add(jTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 160, 40));
+
+        latest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                latestActionPerformed(evt);
+            }
+        });
+        jPanel11.add(latest, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 160, 40));
+        jPanel11.add(jalbel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 160, 40));
 
         add_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         add_button.setForeground(new java.awt.Color(0, 102, 153));
@@ -700,14 +739,15 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         });
         jPanel11.add(add_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 130, 40));
-        jPanel11.add(time1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 120, 70));
+        jPanel11.add(start, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 120, 70));
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea3.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Display Slots Data that is saved by admin on save button\n\n");
-        jScrollPane4.setViewportView(jTextArea3);
+        slot_preview.setColumns(20);
+        slot_preview.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        slot_preview.setForeground(new java.awt.Color(0, 102, 153));
+        slot_preview.setRows(5);
+        slot_preview.setText("Display Slots Data that is saved by admin on save button\n\n");
+        slot_preview.setEnabled(false);
+        jScrollPane4.setViewportView(slot_preview);
 
         jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 640, 120));
 
@@ -733,7 +773,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
             }
         });
         jPanel11.add(slot_1_lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 80, 60));
-        jPanel11.add(time2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
+        jPanel11.add(end, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
 
         jScrollPane7.setViewportView(jPanel11);
 
@@ -2538,7 +2578,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private void DeptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeptMouseClicked
         this.Department.setVisible(true);
         this.MainPanel.setVisible(false);
-        department_panel_visibility(viewData); 
+        department_panel_visibility(viewData);
         String name = Model.Department.get_department_name();
         dept_name.setText(name);
 
@@ -2760,7 +2800,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     }//GEN-LAST:event_courseMouseExited
 
     private void add_roomlblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlblMouseClicked
-        department_panel_visibility(room_input_panel1); 
+        department_panel_visibility(room_input_panel1);
     }//GEN-LAST:event_add_roomlblMouseClicked
 
     private void view_all_roomslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_view_all_roomslblMouseClicked
@@ -2814,9 +2854,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel33MouseEntered
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void tuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tuesActionPerformed
+
+    }//GEN-LAST:event_tuesActionPerformed
 
     private void jLabel34MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseEntered
         // TODO add your handling code here:
@@ -2845,6 +2885,19 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
 //    ArrayList<JPanel> welcome_window_panels= new ArrayList<>();
 
     private void nxt_lbl_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxt_lbl_1MouseClicked
+        Connection conn = getConnection();
+        String q = "insert into department VALUES "
+                + "(?, ?)";
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            stmt.setInt(1, 1);
+            stmt.setString(2, dep_name.getText());
+            stmt.execute();
+            System.out.println("Department added");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
         dept_name_panel.setVisible(false);
         working_days_panel.setVisible(true);
     }//GEN-LAST:event_nxt_lbl_1MouseClicked
@@ -2855,6 +2908,99 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     }//GEN-LAST:event_back_lbl_1MouseClicked
 
     private void nxt_lbl_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxt_lbl_2MouseClicked
+        Connection conn = getConnection();
+        String q;
+        if (mon.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 1);
+                stmt.setString(2, "Monday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (tues.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 2);
+                stmt.setString(2, "Tuesday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (wed.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 3);
+                stmt.setString(2, "Wednesday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (thurs.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 4);
+                stmt.setString(2, "Thursday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (fri.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 5);
+                stmt.setString(2, "Friday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (sat.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 6);
+                stmt.setString(2, "Saturday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (sun.isSelected()) {
+            q = "insert into day VALUES "
+                    + "(?, ?)";
+            PreparedStatement stmt = null;
+            try {
+                stmt = conn.prepareStatement(q);
+                stmt.setInt(1, 7);
+                stmt.setString(2, "Sunday");
+                stmt.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         working_days_panel.setVisible(false);
         timeslots_panel.setVisible(true);
     }//GEN-LAST:event_nxt_lbl_2MouseClicked
@@ -2882,7 +3028,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
 
     private void search_slot_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search_slot_lblMouseClicked
         // TODO add your handling code here:
-        department_panel_visibility(search_free_slot_panel1) ;
+        department_panel_visibility(search_free_slot_panel1);
     }//GEN-LAST:event_search_slot_lblMouseClicked
 
     private void add_roomlbl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl4MouseClicked
@@ -2902,7 +3048,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     }//GEN-LAST:event_view_all_roomslbl2MouseClicked
 
     private void add_new_professorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_new_professorMouseClicked
-        department_panel_visibility(add_professor_panel1); 
+        department_panel_visibility(add_professor_panel1);
     }//GEN-LAST:event_add_new_professorMouseClicked
 
     private void lab_view_schedule_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lab_view_schedule_lblMouseClicked
@@ -2947,7 +3093,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         view_generated_timetable_panel.entity_name_lbl.setText("Room-wise");
         search_for_specific_entity.entity_name_lbl.setText("Room  :  ");
         view_schedule.entity_name_lbl.setText("Room  : ");
-        view_timetable_panel_visibility(view_generated_timetable_panel1) ; 
+        view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_room_wise_lblMouseClicked
 
     private void add_roomlbl9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl9MouseClicked
@@ -2966,21 +3112,21 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         view_generated_timetable_panel.entity_name_lbl.setText("Section-wise");
         search_for_specific_entity.entity_name_lbl.setText("Section :  ");
         view_schedule.entity_name_lbl.setText("Section : ");
-        view_timetable_panel_visibility(view_generated_timetable_panel1) ; 
+        view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_section_wise_lblMouseClicked
 
     private void professor_wise_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_professor_wise_lblMouseClicked
         view_generated_timetable_panel.entity_name_lbl.setText("Professor-wise");
         search_for_specific_entity.entity_name_lbl.setText("Professor  :  ");
         view_schedule.entity_name_lbl.setText("Professor : ");
-        view_timetable_panel_visibility(view_generated_timetable_panel1) ; 
+        view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_professor_wise_lblMouseClicked
 
     private void std_wise_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_std_wise_lblMouseClicked
         view_generated_timetable_panel.entity_name_lbl.setText("Student-wise");
         search_for_specific_entity.entity_name_lbl.setText("Student  :  ");
         view_schedule.entity_name_lbl.setText("Student : ");
-        view_timetable_panel_visibility(view_generated_timetable_panel1) ;         
+        view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_std_wise_lblMouseClicked
 
     private void add_roomlbl17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl17MouseClicked
@@ -3092,12 +3238,62 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     }//GEN-LAST:event_jLabel53MouseClicked
 
     private void add_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_button1ActionPerformed
-        // TODO add your handling code here:
+        String start_time = start.getText();
+        String end_time = end.getText();
+        slot_1_lbl.setText("0" + slotNum);
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        String q = "insert into timeslot "
+                + "(timeslot_no, "
+                + "starting_time,"
+                + "ending_time) "
+                + " VALUES "
+                + "(?, ?, ?)";
+        try {
+            stmt = conn.prepareStatement(q);
+            stmt.setInt(1, slotNum);
+            stmt.setString(2, start_time);
+            stmt.setString(3, end_time);
+            stmt.execute();
+            slot_preview.append("\n" + slotNum++ + "\t" + start_time + "-" + end_time);
+            slot_1_lbl.setText("0" + slotNum);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_add_button1ActionPerformed
 
     private void slot_1_lbl1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slot_1_lbl1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_slot_1_lbl1MouseEntered
+
+    private void monActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monActionPerformed
+
+    }//GEN-LAST:event_monActionPerformed
+
+    private void wedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wedActionPerformed
+
+    }//GEN-LAST:event_wedActionPerformed
+
+    private void thursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thursActionPerformed
+
+    }//GEN-LAST:event_thursActionPerformed
+
+    private void friActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_friActionPerformed
+
+    }//GEN-LAST:event_friActionPerformed
+
+    private void satActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_satActionPerformed
+
+    }//GEN-LAST:event_satActionPerformed
+
+    private void sunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sunActionPerformed
+
+    }//GEN-LAST:event_sunActionPerformed
+
+    private void latestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_latestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_latestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3180,26 +3376,22 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JTextField crs_code2;
     private javax.swing.JPanel delCourse;
     private javax.swing.JButton delbtn;
+    private javax.swing.JTextField dep_name;
     private javax.swing.JPanel dept_details_panel;
     private javax.swing.JLabel dept_name;
     private javax.swing.JPanel dept_name_panel;
     private javax.swing.JTable display_table;
+    private cambodia.raven.Time end;
     private View.student.excel_file_panel excel_file_panel1;
     private View.schedule_generation.final_panel final_panel1;
     private View.schedule_generation.first_panel first_panel1;
     private View.schedule_generation.first_panel_part2 first_panel_part21;
+    private javax.swing.JCheckBox fri;
     private javax.swing.JLabel home_std_lbl;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
@@ -3335,19 +3527,16 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     static javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jalbel;
     private javax.swing.JLabel lab_view_schedule_lbl;
     private javax.swing.JCheckBox labcheckBox;
     private javax.swing.JCheckBox labcheckBox10;
@@ -3359,6 +3548,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JCheckBox labcheckBox8;
     private javax.swing.JCheckBox labcheckBox9;
     private javax.swing.JLabel labslbl;
+    private javax.swing.JTextField latest;
+    private javax.swing.JCheckBox mon;
     private javax.swing.JLabel nxt_lbl_1;
     private javax.swing.JLabel nxt_lbl_2;
     private View.section.Professor_course_allocation professor_course_allocation1;
@@ -3372,6 +3563,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private View.room.room_input_panel room_input_panel1;
     private javax.swing.JLabel room_wise_lbl;
     private javax.swing.JLabel roomslbl;
+    private javax.swing.JCheckBox sat;
     private javax.swing.JPanel schedule_generation;
     private javax.swing.JPanel scheduler_generation;
     private View.room.search_free_slot_panel search_free_slot_panel1;
@@ -3380,18 +3572,21 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JLabel section_wise_lbl;
     private javax.swing.JLabel slot_1_lbl;
     private javax.swing.JLabel slot_1_lbl1;
+    private javax.swing.JTextArea slot_preview;
+    private cambodia.raven.Time start;
     private javax.swing.JLabel std_wise_lbl;
     private javax.swing.JPanel students;
     private javax.swing.JPanel students_management;
+    private javax.swing.JCheckBox sun;
     private javax.swing.JButton sv_btn1;
     private View.schedule_generation.third_panel third_panel1;
-    private cambodia.raven.Time time1;
-    private cambodia.raven.Time time2;
+    private javax.swing.JCheckBox thurs;
     private javax.swing.JPanel timeslots_panel;
     private javax.swing.JPanel timetable_management;
     private javax.swing.JTextField title;
     private javax.swing.JTextField title1;
     private javax.swing.JTextField title2;
+    private javax.swing.JCheckBox tues;
     private javax.swing.JPanel updateCourse;
     private javax.swing.JButton update_coursebtn;
     private View.section.update_section_panel update_section_panel1;
@@ -3414,6 +3609,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private View.section.view_section_details_option_panel view_section_details_option_panel1;
     private View.section.view_section_details_panel view_section_details_panel1;
     private javax.swing.JPanel view_timetable;
+    private javax.swing.JCheckBox wed;
     private javax.swing.JPanel welcome_window;
     private javax.swing.JPanel working_days_panel;
     // End of variables declaration//GEN-END:variables

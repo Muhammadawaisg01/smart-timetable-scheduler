@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
@@ -19,9 +20,9 @@ public class DBConnection {
 
     public static void createConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/schedulerdb?", "newuser", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/server1?", "root", "tariq143");
             System.out.println("connection is successfull");
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
 //            ex.printStackTrace();
             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Error in Connecting to Database", "Error", JOptionPane.ERROR_MESSAGE);
