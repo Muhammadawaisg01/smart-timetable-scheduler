@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Enums.Lab;
 import static db.DBConnection.getConnection;
 import Model.Course;
 import Model.CourseUtility;
@@ -289,7 +290,7 @@ public class Runner {
 //            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
 //            String input6 = in.next() ; 
 
-            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, false));
+            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, Lab.NO));
             n++;
         }
 //        algorithm() ; 

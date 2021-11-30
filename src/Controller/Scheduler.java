@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Scheduler { 
     
 //    String professor;
-//    String program ; 
-    
+
+    String program ;
     int semester_no ;
     String section ; 
     String room ; 

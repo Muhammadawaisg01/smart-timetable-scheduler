@@ -44,10 +44,6 @@ public class create_section_panel extends javax.swing.JPanel {
         jComboBox9 = new javax.swing.JComboBox<>();
         jButton8 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -80,7 +76,7 @@ public class create_section_panel extends javax.swing.JPanel {
 
         roomname.setForeground(new java.awt.Color(0, 102, 153));
         jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 450, 40));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 760, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 880, 760, 10));
 
         jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
@@ -94,7 +90,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("next");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 940, 160, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 910, 160, 60));
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 102, 153));
@@ -120,29 +116,6 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 80, 30));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 750, -1));
 
-        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel61.setText("Assign specific room to section:");
-        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 720, 320, -1));
-
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel99.setText("Room:");
-        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, 160, 30));
-
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, 380, 40));
-
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 102, 153));
-        jButton9.setText("specify");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 870, 80, 30));
-
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
@@ -150,7 +123,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jTextArea1.setText("Courses that are assigned to the section will be printed here\n");
         jScrollPane2.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 100));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 150));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -161,27 +134,19 @@ public class create_section_panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

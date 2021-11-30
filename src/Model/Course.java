@@ -2,6 +2,7 @@
 
 package Model ; 
 
+import Enums.Lab;
 import db.DBConnection;
 import java.util.ArrayList ; 
 import java.sql.Connection;
@@ -16,7 +17,8 @@ public class Course {
     String course_code ; 
     String title ; 
     int credit_hours ;  
-    boolean lab ;       
+    Lab lab ;    
+    
     
 //     maximum enrollment variable          how msny students have enrolled in this course      
 
@@ -35,11 +37,11 @@ public class Course {
         this.course_code = course_code;
         this.title = title;
         credit_hours=3;
-        this.lab=false;
+        this.lab=null;
     }
 
     
-    public Course(String course_code, String title, int credit_hours, boolean lab) {
+    public Course(String course_code, String title, int credit_hours, Lab lab) {
         this.course_code = course_code;
         this.title = title;
         this.credit_hours = credit_hours;
@@ -66,11 +68,6 @@ public class Course {
     public int getCredit_hours() {
         return credit_hours;
     }
-
-    public boolean isLab() {
-        return lab;
-    }
-
     public void setCourse_code(String course_code) {
         this.course_code = course_code;
     }
@@ -83,9 +80,15 @@ public class Course {
         this.credit_hours = credit_hours;
     }
 
-    public void setLab(boolean lab) {
+    public Lab getLab() {
+        return lab;
+    }
+
+    public void setLab(Lab lab) {
         this.lab = lab;
     }
+    
+
 
     @Override
     public String toString() {
@@ -107,7 +110,12 @@ public class Course {
                 course.setCourse_code(rs.getString("course_code"));
                 course.setTitle(rs.getString("title"));
                 course.setCredit_hours(rs.getInt("credit_hours"));
-                course.setLab(rs.getString("hasLab").equalsIgnoreCase("true"));
+                if(rs.getString("hasLab").equalsIgnoreCase("true")){
+                    course.setLab(Lab.YES) ;
+                }
+                else{
+                    course.setLab(Lab.NO) ;                    
+                }
                 return course;
             }
         } catch (SQLException ex) {
@@ -194,7 +202,12 @@ public class Course {
                 course.setCourse_code(rs.getString("course_code"));
                 course.setTitle(rs.getString("title"));
                 course.setCredit_hours(rs.getInt("credit_hours"));
-                course.setLab(rs.getString("hasLab").equalsIgnoreCase("true"));
+                if(rs.getString("hasLab").equalsIgnoreCase("true")){
+                    course.setLab(Lab.YES) ;
+                }
+                else{
+                    course.setLab(Lab.NO) ;                    
+                }
                 return course;
             }
         } catch (SQLException ex) {

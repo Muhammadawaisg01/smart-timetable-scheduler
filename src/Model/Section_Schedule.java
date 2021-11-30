@@ -75,7 +75,7 @@ public class Section_Schedule {
             boolean check = false;
             String room = "";
             for (int j = 0; j < 6; j++) { // 6 timeslots
-                Section_Timeslot obj = new Section_Timeslot(room, j, course, lecture_no, check);
+                Section_Timeslot obj = new Section_Timeslot(j++, room, course, lecture_no, check);
                 obj1.timeslots.add(obj);
             }
             obj1.no = i;

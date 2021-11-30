@@ -17,23 +17,32 @@ public class Student {
 
 //    int program ;
 //    int semester;
+    
     String section_id;
     private static Connection conn;
-    Student_Schedule schedule;
 
+    Student_Schedule schedule;
     ArrayList<Course> registered_courses = new ArrayList<>();
 
     ArrayList<Student_lecture_clash> clash_array = new ArrayList<>();
     ArrayList<Student_Section_Allocation> allocations = new ArrayList<>();
 
-    public Student(String registration_no, String name, String section, ArrayList<Course> courses) {
+    public Student(String registration_no, String name, String section, ArrayList<Course> courses) {    // old constructor
         this.registration_no = registration_no;
         this.name = name;
         this.section_id = section;
         this.registered_courses = courses;
-        schedule = new Student_Schedule(5, 6);
+        schedule = new Student_Schedule(5, 6) ; 
     }
-
+    
+    public Student(String registration_no, String name, String section, ArrayList<Course> courses, int days, int slots) {
+        this.registration_no = registration_no;
+        this.name = name;                                       // new connstructor 
+        this.section_id = section;
+        this.registered_courses = courses ; 
+        schedule = new Student_Schedule(days, slots) ; 
+    } 
+    
 //    public Student(String registration_no, String name, int semester, String section) {
 //        this.registration_no = registration_no;
 //        this.name = name    ;   

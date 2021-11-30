@@ -430,7 +430,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
         jLabel118 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
-        excel_file_panel1 = new View.student.excel_file_panel();
+        excel_file_panel1 = new View.schedule_generation.excel_file_panel();
         view_all_students_panel1 = new View.student.view_all_students_panel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3097,7 +3097,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management
     private javax.swing.JLabel dept_name;
     private javax.swing.JPanel dept_name_panel;
     private javax.swing.JTable display_table;
-    private View.student.excel_file_panel excel_file_panel1;
+    private View.schedule_generation.excel_file_panel excel_file_panel1;
     private View.schedule_generation.final_panel final_panel1;
     private View.schedule_generation.first_panel first_panel1;
     private View.schedule_generation.first_panel_part2 first_panel_part21;

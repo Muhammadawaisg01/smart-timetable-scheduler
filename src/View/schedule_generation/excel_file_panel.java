@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.student;
+package View.schedule_generation;
 
 /**
  *
@@ -48,8 +48,8 @@ public class excel_file_panel extends javax.swing.JPanel {
 
         jLabel107.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel107.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel107.setText("upload excel file for student registration:");
-        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 340, 40));
+        jLabel107.setText("upload excel file for student registration, programs and semesters:");
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 540, 40));
 
         jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel108.setForeground(new java.awt.Color(0, 102, 153));
