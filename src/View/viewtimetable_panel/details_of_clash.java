@@ -34,8 +34,8 @@ public class details_of_clash extends javax.swing.JPanel {
 
         jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel108.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel108.setText("Clash Details for Entity:");
-        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
+        jLabel108.setText("Clash Details for Professor/Student:");
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 350, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 

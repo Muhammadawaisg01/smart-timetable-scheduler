@@ -76,7 +76,7 @@ public class create_section_panel extends javax.swing.JPanel {
 
         roomname.setForeground(new java.awt.Color(0, 102, 153));
         jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 450, 40));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 880, 760, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 760, 10));
 
         jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
@@ -90,7 +90,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("next");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 910, 160, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 780, 160, 60));
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 102, 153));
@@ -107,7 +107,7 @@ public class create_section_panel extends javax.swing.JPanel {
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 102, 153));
-        jButton8.setText("specify");
+        jButton8.setText("assign");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);

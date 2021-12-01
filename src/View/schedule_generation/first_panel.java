@@ -5,6 +5,8 @@
  */
 package View.schedule_generation;
 
+import static View.MainFrame.first_panel_part21;
+
 /**
  *
  * @author muhammad awais 1
@@ -84,6 +86,8 @@ public class first_panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_lbl_02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseClicked
+        this.setVisible(false);
+        first_panel_part21.setVisible(true);
 
     }//GEN-LAST:event_back_lbl_02MouseClicked
 

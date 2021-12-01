@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package View.schedule_generation;
 
-/**
- *
- * @author muhammad awais 1
- */
+import static View.MainFrame.first_panel1;
 public class excel_file_panel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form excel_file_panel
-     */
+    
     public excel_file_panel() {
         initComponents();
     }
@@ -31,6 +23,7 @@ public class excel_file_panel extends javax.swing.JPanel {
         jLabel106 = new javax.swing.JLabel();
         jLabel107 = new javax.swing.JLabel();
         jLabel108 = new javax.swing.JLabel();
+        excel_file_next_btn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -39,12 +32,12 @@ public class excel_file_panel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("upload excel file");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 260, 70));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 320, 70));
 
         jLabel106.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel106.setText("file name (when uploaded) ");
-        add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 240, 50));
+        jLabel106.setText("file name (when uploaded)  and confirmation message");
+        add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 410, 50));
 
         jLabel107.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel107.setForeground(new java.awt.Color(0, 102, 153));
@@ -55,10 +48,37 @@ public class excel_file_panel extends javax.swing.JPanel {
         jLabel108.setForeground(new java.awt.Color(0, 102, 153));
         jLabel108.setText("Student Course Registration Panel:");
         add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 350, 40));
+
+        excel_file_next_btn.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        excel_file_next_btn.setForeground(new java.awt.Color(0, 102, 153));
+        excel_file_next_btn.setText("-->");
+        excel_file_next_btn.setToolTipText("Logo");
+        excel_file_next_btn.setAlignmentX(0.5F);
+        excel_file_next_btn.setAutoscrolls(true);
+        excel_file_next_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                excel_file_next_btnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                excel_file_next_btnMouseEntered(evt);
+            }
+        });
+        add(excel_file_next_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 70, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 
+    private void excel_file_next_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excel_file_next_btnMouseClicked
+        this.setVisible(false);
+        first_panel1.setVisible(true);
+    }//GEN-LAST:event_excel_file_next_btnMouseClicked
+
+    private void excel_file_next_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excel_file_next_btnMouseEntered
+        
+    }//GEN-LAST:event_excel_file_next_btnMouseEntered
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel excel_file_next_btn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
