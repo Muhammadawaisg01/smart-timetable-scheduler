@@ -3,6 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/E:/Scheduler-0(new)/src/View/MainFrame.java</file>
+=======
             <file>file:/E:/FYP/FinalYearProject/src/Model/Section_Day.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/Model/Course.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/Model/Room_Day.java</file>
@@ -25,6 +28,7 @@
             <file>file:/E:/FYP/FinalYearProject/src/Controller/Algo_For_Student_Assigning.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/Model/Room.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/Model/Student.java</file>
+>>>>>>> a6ad1863f0eb2838788cd782336f8c4ee652302f
         </group>
     </open-files>
 </project-private>

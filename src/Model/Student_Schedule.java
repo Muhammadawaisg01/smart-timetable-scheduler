@@ -28,14 +28,14 @@ public class Student_Schedule {
         obj1.no=  i ;
         obj1.timeslots =  new ArrayList<>() ; 
         
+        int program = 0;
         int semester=0;
         String section="";
-        String course="";
+        String course_code="";
         int lecture_no=0 ; 
-        boolean check=false;
         String room="";
         for(int j = 0; j < slots; j++) { // 6 timeslots 
-            Student_Timeslot obj = new Student_Timeslot( j, semester, section , course, lecture_no, check, room, false);
+            Student_Timeslot obj = new Student_Timeslot( j+1, program, semester, section , room, course_code, lecture_no, false);
             obj1.timeslots.add(obj) ;
         }
         this.days.add(obj1) ; 

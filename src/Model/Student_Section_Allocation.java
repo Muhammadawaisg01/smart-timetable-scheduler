@@ -4,16 +4,13 @@ package Model;
 
 public class Student_Section_Allocation {   
     
-    String registration_no  ;   
+    String registration_no ; 
     String course_code;
     String section_id;
 
     public Student_Section_Allocation() {   
         
     }
-    
-    
-    
     
     
     // setters and getters section

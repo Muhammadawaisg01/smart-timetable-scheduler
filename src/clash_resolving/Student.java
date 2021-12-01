@@ -92,7 +92,6 @@ public class Student {
                                     && student_lecture_clash.getSection().equalsIgnoreCase(section.getId())
                                     && student_lecture_clash.getSemester() == semester.getNo()) {
                                 clashes.add(new Clash(section, course, student));
-                                section.incClash();
                             }
                         }
                     }

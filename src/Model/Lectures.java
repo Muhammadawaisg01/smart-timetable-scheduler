@@ -1,4 +1,7 @@
 
+
+
+
 package Model;
 
 public class Lectures {
@@ -22,7 +25,5 @@ public class Lectures {
     public String toString() {
         return "Lectures{" + "sectionID=" + sectionID + ", coursCode=" + coursCode + ", roomNo=" + roomNo + ", day=" + day + ", slot=" + slot + ", isLab=" + isLab + '}';
     }
-    
-    
     
 }

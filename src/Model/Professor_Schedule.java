@@ -20,14 +20,15 @@ public class Professor_Schedule     {
             Professor_Day obj1 = new Professor_Day() ; 
             obj1.timeslots = new ArrayList<>();
 //            int slot_no = 0;
-            String course = "";
-//            int lecture_no = 0;
+            String course_code = "";
+            int lecture_no = 0;
             boolean check = false   ;   
             String room = "" ;  
+            int program = 0 ;
             int semester = 0 ;  
             String section=""   ;   
             for (int j = 0; j < slots; j++  ) { // 6 timeslots    
-                Professor_Timeslot obj = new Professor_Timeslot(j, semester, section, room, course, check )    ;   
+                Professor_Timeslot obj = new Professor_Timeslot(j+1, program, semester, section, room, course_code, lecture_no, check )    ;   
                 obj1.timeslots.add(obj) ;   
             }   
             obj1.no = i ;   

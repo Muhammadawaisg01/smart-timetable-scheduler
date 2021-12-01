@@ -2,21 +2,26 @@
 
 package Model ; 
 
-public class Section_Timeslot { 
- 
+import Enums.Lecture;
+import Enums.Priority;
+
+public class Section_Timeslot {     
+    
+    
     int slot_no;    
     String room;
     String course_code;
     int lecture_no;    
-    boolean isLab;
     boolean check;          // this check is for checking that is this slot is available or not 
     
+    Priority priority ; 
+    Lecture lecture ; 
     
     public Section_Timeslot() {
         
     }
 
-    public Section_Timeslot(String room, int slot_no, String course_code, int lecture_no, boolean check) {
+    public Section_Timeslot(String room, int slot_no, String course_code, int lecture_no , boolean check) {
         this.room = room;
         this.slot_no = slot_no;
         this.course_code = course_code;
@@ -24,11 +29,19 @@ public class Section_Timeslot {
         this.check = check;
     }
     
-    
-   
+    public Section_Timeslot(int slot_no, String room, String course_code, int lecture_no , boolean check) {
+        this.slot_no = slot_no;
+        this.room = room;
+        this.course_code = course_code;                         // new constructor  
+        this.lecture_no = lecture_no;
+        this.priority = null ;
+        this.lecture = null;
+        this.check = check;
+    }
+
     @Override
     public String toString() {
-        return "Section_Timeslot{" + "room=" + room + ", slot_no=" + slot_no + ", course=" + course_code + ", lecture_no=" + lecture_no + ",check=" + check + '}';     
+        return "Section_Timeslot{" + "slot_no=" + slot_no + ", room=" + room + ", course_code=" + course_code + ", lecture_no=" + lecture_no + ", check=" + check + ", priority=" + priority + ", lecture=" + lecture + '}';
     }
     
     // setters and getters section
@@ -73,8 +86,31 @@ public class Section_Timeslot {
     public void setCheck(boolean check) {
         this.check = check;
     }
-    
-    
-    
+
+    public String getCourse_code() {
+        return course_code;
+    }
+
+    public void setCourse_code(String course_code) {
+        this.course_code = course_code;
+    }
+
+ 
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Lecture getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
+    }
     
 }

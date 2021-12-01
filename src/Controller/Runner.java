@@ -1,5 +1,7 @@
+
 package Controller;
 
+import Enums.Lab;
 import static db.DBConnection.getConnection;
 import Model.Course;
 import Model.CourseUtility;
@@ -17,6 +19,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.Connection;
 import static db.DBConnection.createConnection;
+import javax.swing.JOptionPane;
+
+
+// JOptionPane.showMessageDialog(null, "Error in Fetching Data of Player", "Table", JOptionPane.ERROR_MESSAGE) ; 
 
 public class Runner {
 
@@ -35,6 +41,7 @@ public class Runner {
 
     public static void main(String[] args) {                                    // MAIN METHOD  
         createConnection(); // creating connection with database    
+        System.out.println("I AM CONNECTION        "+getConnection() ) ; 
         Entities_Main_Arrays.add_Data_to_Student_List();
         Entities_Main_Arrays.add_Data_to_Semester_List();
         semesters = Entities_Main_Arrays.semesters;
@@ -283,7 +290,7 @@ public class Runner {
 //            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
 //            String input6 = in.next() ; 
 
-            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, false));
+            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, Lab.NO));
             n++;
         }
 //        algorithm() ; 
@@ -352,7 +359,13 @@ public class Runner {
                                 break;
                             }
                         }
+//                        if(){
+//                            
+//                        }
                         permute(semesters.get(sem).getSections().get(sec).getCourses());
+//                        else{
+//                            
+//                        }
                     } //slot=0 ; 
                 }
 //                    System.out.println("Section "+ (k+1)+"  TimeTable" ) ; 
