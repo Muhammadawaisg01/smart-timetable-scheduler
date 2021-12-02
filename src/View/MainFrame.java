@@ -5,6 +5,7 @@ import Model.professor.Professor;
 import Model.Program;
 import Model.room.Room;
 import static View.section.create_section_panel.getPrograms;
+import static View.section.create_section_panel.getCourses;
 import View.viewtimetable_panel.view_generated_timetable_panel;
 import db.DBConnection;
 import static db.DBConnection.createConnection;
@@ -3221,7 +3222,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void jLabel120MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel120MouseClicked
-        getPrograms();        
+        getPrograms();  
+        getCourses();
         programs_panel_visibility(create_section_panel1);
     }//GEN-LAST:event_jLabel120MouseClicked
 
