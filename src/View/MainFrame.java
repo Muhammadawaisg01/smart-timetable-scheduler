@@ -7,7 +7,6 @@ import Model.room.Room;
 import static View.section.create_section_panel.getPrograms;
 import static View.section.create_section_panel.getCourses;
 import View.viewtimetable_panel.view_generated_timetable_panel;
-import db.DBConnection;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
 import java.awt.Color;
@@ -23,12 +22,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import View.section.create_section_panel;
+import View.section.add_new_program;
 
 public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
+    create_section_panel create_section_panel1;
+    add_new_program add_new_program1;
     private static int slotNum = 1;
-
     public MainFrame() {
+        create_section_panel1 = new create_section_panel();
         initComponents();
         this.setLocationRelativeTo(null);
         createConnection();
@@ -79,26 +82,31 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
     @Override
     public void add_all_panels_of_students_to_list() {
-        students_panels_list.add(create_section_panel1);
+        students_panels_list.add(update_section1) ; 
+        students_panels_list.add(view_all_students_panel1) ; 
+        
     }
 
     @Override
     public void add_all_panels_of_courses_to_list() {
-        courses_panels_list.add(create_section_panel1);
+        courses_panels_list.add(addCourse);
+        courses_panels_list.add(viewAllCourses);
+        courses_panels_list.add(delCourse);
     }
 
     @Override
     public void add_all_panels_of_view_timetable_to_list() {
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
-        view_timetable_panels_list.add(create_section_panel1);
+        view_timetable_panels_list.add(view_generated_timetable_panel1);
     }
-
-    @Override
+    
+//    @Override
     public void add_all_panels_of_schedule_generation_to_list() {
-        schedule_generation_panels_list.add(create_section_panel1);
+        schedule_generation_panels_list.add(excel_file_panel1) ; 
+        schedule_generation_panels_list.add(first_panel1);
+        schedule_generation_panels_list.add(first_panel_part21);
+        schedule_generation_panels_list.add(second_panel1);
+        schedule_generation_panels_list.add(third_panel1);
+        schedule_generation_panels_list.add(final_panel1);
     }
 
     @Override
@@ -166,7 +174,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
             }
         }
     }
-
     //      PANELS MANAGEMENT Ends Here, all methods of the interface panels management are implemented in above section
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -333,8 +340,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jLabel54 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         programs_table = new javax.swing.JTable();
-        create_section_panel1 = new View.section.create_section_panel();
-        add_new_program1 = new View.section.add_new_program();
         view_section_details_option_panel1 = new View.section.view_section_details_option_panel();
         view_section_details_panel1 = new View.section.view_section_details_panel();
         add_new_semester_panel1 = new View.section.add_new_semester_panel();
@@ -349,9 +354,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
-        jLabel94 = new javax.swing.JLabel();
         jLabel95 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         addCourse = new javax.swing.JPanel();
@@ -372,23 +375,11 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         coursesTable = new javax.swing.JTable();
         delCourse = new javax.swing.JPanel();
         jLabel108 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
-        title1 = new javax.swing.JTextField();
-        crs_code1 = new javax.swing.JTextField();
-        jButton15 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        updateCourse = new javax.swing.JPanel();
-        update_coursebtn = new javax.swing.JButton();
-        labcheckBox5 = new javax.swing.JCheckBox();
-        credit_hours2 = new javax.swing.JTextField();
-        title2 = new javax.swing.JTextField();
-        crs_code2 = new javax.swing.JTextField();
-        jLabel111 = new javax.swing.JLabel();
-        jLabel112 = new javax.swing.JLabel();
-        jLabel113 = new javax.swing.JLabel();
-        jButton17 = new javax.swing.JButton();
-        jLabel114 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
         schedule_generation = new javax.swing.JPanel();
         jPanel23container = new javax.swing.JPanel();
         Dashboard_Dept1 = new javax.swing.JPanel();
@@ -396,27 +387,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jLabel68 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
+        excel_file_panel1 = new View.schedule_generation.excel_file_panel();
         first_panel1 = new View.schedule_generation.first_panel();
         first_panel_part21 = new View.schedule_generation.first_panel_part2();
         second_panel1 = new View.schedule_generation.second_panel();
         third_panel1 = new View.schedule_generation.third_panel();
         final_panel1 = new View.schedule_generation.final_panel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        labcheckBox4 = new javax.swing.JCheckBox();
-        labcheckBox6 = new javax.swing.JCheckBox();
-        labcheckBox7 = new javax.swing.JCheckBox();
-        labcheckBox8 = new javax.swing.JCheckBox();
-        labcheckBox9 = new javax.swing.JCheckBox();
-        labcheckBox10 = new javax.swing.JCheckBox();
-        labcheckBox11 = new javax.swing.JCheckBox();
         timetable_management = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         Dashboard_timetable = new javax.swing.JPanel();
@@ -444,14 +420,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jTextField23 = new javax.swing.JTextField();
         jLabel59 = new javax.swing.JLabel();
         home_std_lbl = new javax.swing.JLabel();
-        jLabel96 = new javax.swing.JLabel();
+        update_section_lbl = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
-        jLabel116 = new javax.swing.JLabel();
         jLabel117 = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
-        jLabel123 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
-        excel_file_panel1 = new View.student.excel_file_panel();
+        update_section1 = new View.student.update_section();
         view_all_students_panel1 = new View.student.view_all_students_panel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1176,7 +1150,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
                 .addComponent(jLabel3)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, "card2");
@@ -1746,8 +1720,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         all_programs_details_panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 650, 390));
 
         jPanel47.add(all_programs_details_panel, "card3");
-        jPanel47.add(create_section_panel1, "card7");
-        jPanel47.add(add_new_program1, "card3");
         jPanel47.add(view_section_details_option_panel1, "card4");
         jPanel47.add(view_section_details_panel1, "card5");
         jPanel47.add(add_new_semester_panel1, "card6");
@@ -1774,13 +1746,13 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         jLabel55.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel55.setText("View all ");
+        jLabel55.setText("view all ");
         jLabel55.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel55MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 30));
+        Dashboard_Courses.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 200, 30));
 
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
@@ -1794,43 +1766,23 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         jLabel63.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel63.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel63.setText("Delete course");
+        jLabel63.setText("remove course");
         jLabel63.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel63MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, 30));
-
-        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel65.setText("Edit");
-        jLabel65.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel65MouseClicked(evt);
-            }
-        });
-        Dashboard_Courses.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 190, 30));
+        Dashboard_Courses.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 200, 30));
 
         jLabel88.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel88.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel88.setText("Add new course");
+        jLabel88.setText("add new");
         jLabel88.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel88MouseClicked(evt);
             }
         });
-        Dashboard_Courses.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, 30));
-
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel94.setText("op 1");
-        jLabel94.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel94MouseClicked(evt);
-            }
-        });
-        Dashboard_Courses.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 70, 30));
+        Dashboard_Courses.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 210, 30));
 
         jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 255, 255));
@@ -1894,8 +1846,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         labcheckBox.setText("has Lab");
         addCourse.add(labcheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 110, 40));
 
+        jButton6.setBackground(new java.awt.Color(0, 102, 153));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 102, 153));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("add course");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1946,104 +1899,37 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel108.setForeground(new java.awt.Color(0, 102, 153));
         jLabel108.setText("Course Title:");
-        delCourse.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 210, 30));
-
-        jLabel109.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel109.setText("Course Code:");
-        delCourse.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 210, 30));
+        delCourse.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 200, 40));
 
         jLabel110.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel110.setForeground(new java.awt.Color(0, 102, 153));
         jLabel110.setText("Enter Details below");
         delCourse.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 210, 50));
 
-        title1.setForeground(new java.awt.Color(0, 102, 153));
-        delCourse.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 360, 30));
-
-        crs_code1.setForeground(new java.awt.Color(0, 102, 153));
-        delCourse.add(crs_code1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 360, 30));
-
-        jButton15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(0, 102, 153));
-        jButton15.setText("find");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-        delCourse.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 110, 30));
-
+        jButton10.setBackground(new java.awt.Color(0, 102, 153));
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(0, 102, 153));
-        jButton10.setText("Delete course");
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("remove course");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        delCourse.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 200, 60));
+        delCourse.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, 210, 60));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        delCourse.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 470, 40));
+
+        jTextArea4.setColumns(20);
+        jTextArea4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jTextArea4.setForeground(new java.awt.Color(0, 102, 153));
+        jTextArea4.setRows(5);
+        jTextArea4.setText("print all details of selected course\n\nask user with a confirmation message");
+        jScrollPane15.setViewportView(jTextArea4);
+
+        delCourse.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 700, 100));
 
         jPanel6.add(delCourse, "card4");
-
-        updateCourse.setBackground(new java.awt.Color(255, 255, 255));
-        updateCourse.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        update_coursebtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        update_coursebtn.setForeground(new java.awt.Color(0, 102, 153));
-        update_coursebtn.setText("update course");
-        update_coursebtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                update_coursebtnActionPerformed(evt);
-            }
-        });
-        updateCourse.add(update_coursebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 230, 60));
-
-        labcheckBox5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox5.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox5.setText("Lab");
-        updateCourse.add(labcheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 110, 40));
-
-        credit_hours2.setForeground(new java.awt.Color(0, 102, 153));
-        updateCourse.add(credit_hours2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 360, 30));
-
-        title2.setForeground(new java.awt.Color(0, 102, 153));
-        updateCourse.add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 360, 30));
-
-        crs_code2.setForeground(new java.awt.Color(0, 102, 153));
-        updateCourse.add(crs_code2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 360, 30));
-
-        jLabel111.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel111.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel111.setText("Course Code:");
-        updateCourse.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 210, 30));
-
-        jLabel112.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel112.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel112.setText("Course Title:");
-        updateCourse.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 210, 30));
-
-        jLabel113.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel113.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel113.setText("Credit hours:");
-        updateCourse.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 210, 30));
-
-        jButton17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton17.setForeground(new java.awt.Color(0, 102, 153));
-        jButton17.setText("find");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
-            }
-        });
-        updateCourse.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 110, 30));
-
-        jLabel114.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel114.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel114.setText("Enter Details below");
-        updateCourse.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 210, 50));
-
-        jPanel6.add(updateCourse, "card5");
 
         jPanel49.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
 
@@ -2074,96 +1960,26 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel102.setText("Room");
+        jLabel102.setText("//");
         jLabel102.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel102MouseClicked(evt);
             }
         });
-        Dashboard_Dept1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 250, 40));
+        Dashboard_Dept1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 180, 40));
 
         jPanel23container.add(Dashboard_Dept1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 580));
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 255));
         jPanel24.setLayout(new java.awt.CardLayout());
+        jPanel24.add(excel_file_panel1, "card7");
         jPanel24.add(first_panel1, "card3");
         jPanel24.add(first_panel_part21, "card4");
         jPanel24.add(second_panel1, "card5");
         jPanel24.add(third_panel1, "card6");
         jPanel24.add(final_panel1, "card7");
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel27.setText("-->");
-        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 500, 50, 40));
-
-        jTextField14.setText("jTextField14");
-        jPanel4.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 280, 40));
-        jPanel4.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 280, 40));
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel28.setText("Schedule Generation  Inputs");
-        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 280, 70));
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel29.setText("Working Days Information Panel: ");
-        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 340, 50));
-
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel30.setText("No. of Working days:");
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 260, 30));
-
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel31.setText("Timeslot:");
-        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 260, 30));
-
-        labcheckBox4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox4.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox4.setText("Monday");
-        jPanel5.add(labcheckBox4);
-
-        labcheckBox6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox6.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox6.setText("Tuesday");
-        jPanel5.add(labcheckBox6);
-
-        labcheckBox7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox7.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox7.setText("Wednesday");
-        jPanel5.add(labcheckBox7);
-
-        labcheckBox8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox8.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox8.setText("Thursday");
-        jPanel5.add(labcheckBox8);
-
-        labcheckBox9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox9.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox9.setText("Friday");
-        jPanel5.add(labcheckBox9);
-
-        labcheckBox10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox10.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox10.setText("Saturday");
-        jPanel5.add(labcheckBox10);
-
-        labcheckBox11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox11.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox11.setText("Sunday");
-        jPanel5.add(labcheckBox11);
-
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 520, 110));
-
-        jPanel24.add(jPanel4, "card2");
-
-        jPanel23container.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
+        jPanel23container.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 580));
 
         schedule_generation.add(jPanel23container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -2226,7 +2042,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         add_roomlbl10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl10.setForeground(new java.awt.Color(255, 255, 255));
-        add_roomlbl10.setText("Professor-wise");
+        add_roomlbl10.setText("professor-wise");
         add_roomlbl10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 add_roomlbl10MouseClicked(evt);
@@ -2236,7 +2052,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         add_roomlbl11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl11.setForeground(new java.awt.Color(255, 255, 255));
-        add_roomlbl11.setText("Reassign Professor");
+        add_roomlbl11.setText("reassign Professor");
         add_roomlbl11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 add_roomlbl11MouseClicked(evt);
@@ -2289,7 +2105,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         add_roomlbl12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl12.setForeground(new java.awt.Color(255, 255, 255));
-        add_roomlbl12.setText("Student-wise");
+        add_roomlbl12.setText("student-wise");
         add_roomlbl12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 add_roomlbl12MouseClicked(evt);
@@ -2326,11 +2142,11 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         );
         timetable_managementLayout.setVerticalGroup(
             timetable_managementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
             .addGroup(timetable_managementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(timetable_managementLayout.createSequentialGroup()
                     .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 2, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(timetable_management, "card9");
@@ -2358,7 +2174,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
                 jLabel59MouseClicked(evt);
             }
         });
-        Dashboard_std_management.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 30));
+        Dashboard_std_management.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 200, 30));
 
         home_std_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         home_std_lbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -2370,15 +2186,15 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         });
         Dashboard_std_management.add(home_std_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 190, 30));
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel96.setText("update section");
-        jLabel96.addMouseListener(new java.awt.event.MouseAdapter() {
+        update_section_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        update_section_lbl.setForeground(new java.awt.Color(255, 255, 255));
+        update_section_lbl.setText("change section");
+        update_section_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel96MouseClicked(evt);
+                update_section_lblMouseClicked(evt);
             }
         });
-        Dashboard_std_management.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 200, 30));
+        Dashboard_std_management.add(update_section_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 200, 30));
 
         jLabel115.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel115.setForeground(new java.awt.Color(255, 255, 255));
@@ -2388,17 +2204,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
                 jLabel115MouseClicked(evt);
             }
         });
-        Dashboard_std_management.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 190, 30));
-
-        jLabel116.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel116.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel116.setText("external file");
-        jLabel116.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel116MouseClicked(evt);
-            }
-        });
-        Dashboard_std_management.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, 30));
+        Dashboard_std_management.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 190, 30));
 
         jLabel117.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel117.setForeground(new java.awt.Color(255, 255, 255));
@@ -2408,7 +2214,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
                 jLabel117MouseClicked(evt);
             }
         });
-        Dashboard_std_management.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 240, 30));
+        Dashboard_std_management.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 240, 30));
 
         jLabel118.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel118.setForeground(new java.awt.Color(255, 255, 255));
@@ -2420,17 +2226,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         });
         Dashboard_std_management.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 230, 30));
 
-        jLabel123.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel123.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel123.setText("update details// del reg course");
-        jLabel123.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel123MouseClicked(evt);
-            }
-        });
-        Dashboard_std_management.add(jLabel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, 30));
-
-        jPanel56.add(Dashboard_std_management, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 570));
+        jPanel56.add(Dashboard_std_management, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 580));
 
         jPanel27.setBackground(new java.awt.Color(255, 255, 255));
         jPanel27.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2439,12 +2235,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
             }
         });
         jPanel27.setLayout(new java.awt.CardLayout());
-        jPanel27.add(excel_file_panel1, "card3");
+        jPanel27.add(update_section1, "card3");
         jPanel27.add(view_all_students_panel1, "card3");
 
-        jPanel56.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 570));
+        jPanel56.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 580));
 
-        students_management.add(jPanel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 570));
+        students_management.add(jPanel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
         getContentPane().add(students_management, "card5");
 
@@ -2570,6 +2366,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private void scheduler_generationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduler_generationMouseClicked
         this.MainPanel.setVisible(false);
         schedule_generation.setVisible(true);
+
+        schedule_generation_panel_visibility(excel_file_panel1); 
     }//GEN-LAST:event_scheduler_generationMouseClicked
 
     private void scheduler_generationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduler_generationMouseEntered
@@ -2681,47 +2479,24 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         display_table.setModel(TableViewUtility.resultSetToTableModel(Course.get_all_courses()));
     }//GEN-LAST:event_view_coursesbtnActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        String code = crs_code1.getText().trim();
-        String title = title1.getText();
-//        If(code){
-//            
-//        }
-
-        Course crs_by_title = null;
-        Course crs_by_code = null;
-        if (code.equalsIgnoreCase("")) {
-            crs_by_title = Course.get_course_by_title(title);
-        } else if (title.equalsIgnoreCase("")) {
-            crs_by_code = Course.getCourse(code);
-        }
-
-        if (crs_by_code == null) {
-            JOptionPane.showMessageDialog(null, "No course found with this code");
-        } else {
-//            title1.setText(.getTitle() ) ; 
-            crs_code1.setText(code);
-        }
-    }//GEN-LAST:event_jButton15ActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        String code = crs_code1.getText().trim();
-        String title = title1.getText();
-        String query = "delete from course where course_code = ?";
-        try {
-            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
-            stmt1.setString(1, code);
-            int rowCount = stmt1.executeUpdate();
-            if (rowCount == 0) {
-                JOptionPane.showMessageDialog(null, "This Course doesn't exists in database."
-                        + " Row Count returned is  " + rowCount);
-            } else {
-                JOptionPane.showMessageDialog(null, "Course is deleted successfully."
-                        + " Row Count returned is  " + rowCount);
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error in deleting the course", "Table", JOptionPane.ERROR_MESSAGE);
-        }
+
+
+//        String query = "delete from course where course_code = ?";
+//        try {
+//            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
+//            stmt1.setString(1, code);
+//            int rowCount = stmt1.executeUpdate();
+//            if (rowCount == 0) {
+//                JOptionPane.showMessageDialog(null, "This Course doesn't exists in database."
+//                        + " Row Count returned is  " + rowCount);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Course is deleted successfully."
+//                        + " Row Count returned is  " + rowCount);
+//            }
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, "Error in deleting the course", "Table", JOptionPane.ERROR_MESSAGE);
+//        }
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -2729,7 +2504,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         viewAllCourses.setVisible(true);
         addCourse.setVisible(false);
         delCourse.setVisible(false);
-        updateCourse.setVisible(false);
 
         coursesTable.setModel(TableViewUtility.resultSetToTableModel(Course.get_all_courses()));
 
@@ -2737,30 +2511,13 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
     }//GEN-LAST:event_jLabel55MouseClicked
 
-    private void jLabel65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseClicked
-        viewAllCourses.setVisible(false);
-        addCourse.setVisible(false);
-        delCourse.setVisible(false);
-        updateCourse.setVisible(true);
-    }//GEN-LAST:event_jLabel65MouseClicked
-
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel6MouseClicked
 
-    private void update_coursebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_coursebtnActionPerformed
-        String code = crs_code2.getText().trim();
-//        Course
-    }//GEN-LAST:event_update_coursebtnActionPerformed
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
-
     private void jLabel63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel63MouseClicked
         viewAllCourses.setVisible(false);
         addCourse.setVisible(false);
-        updateCourse.setVisible(false);
         delCourse.setVisible(true);
     }//GEN-LAST:event_jLabel63MouseClicked
 
@@ -3074,10 +2831,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         view_schedule_panel1.setVisible(true);
     }//GEN-LAST:event_view_schedule_lblMouseClicked
 
-    private void jLabel94MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel94MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel94MouseClicked
-
     private void jLabel95MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel95MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel95MouseClicked
@@ -3161,17 +2914,13 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         students_management.setVisible(false);
     }//GEN-LAST:event_home_std_lblMouseClicked
 
-    private void jLabel96MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel96MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel96MouseClicked
+    private void update_section_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update_section_lblMouseClicked
+        students_panel_visibility(update_section1);
+    }//GEN-LAST:event_update_section_lblMouseClicked
 
     private void jLabel115MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel115MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel115MouseClicked
-
-    private void jLabel116MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel116MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel116MouseClicked
 
     private void jLabel117MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel117MouseClicked
         // TODO add your handling code here:
@@ -3188,10 +2937,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField23ActionPerformed
-
-    private void jLabel123MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel123MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel123MouseClicked
 
     private void jLabel49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel49MouseClicked
 //        add_new_semester_panel1.setVisible(true);
@@ -3351,7 +3096,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JButton add_button;
     private javax.swing.JButton add_button1;
     private javax.swing.JLabel add_new_professor;
-    private View.section.add_new_program add_new_program1;
     private View.section.add_new_semester_panel add_new_semester_panel1;
     private View.professor.add_professor_panel add_professor_panel1;
     private javax.swing.JLabel add_roomlbl;
@@ -3372,12 +3116,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JPanel course;
     private javax.swing.JTable coursesTable;
     private javax.swing.JLabel courseslbl;
-    private View.section.create_section_panel create_section_panel1;
     private javax.swing.JTextField credit_hours;
-    private javax.swing.JTextField credit_hours2;
     private javax.swing.JTextField crs_code;
-    private javax.swing.JTextField crs_code1;
-    private javax.swing.JTextField crs_code2;
     private javax.swing.JPanel delCourse;
     private javax.swing.JButton delbtn;
     private javax.swing.JTextField dep_name;
@@ -3386,16 +3126,15 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JPanel dept_name_panel;
     private javax.swing.JTable display_table;
     private cambodia.raven.Time end;
-    private View.student.excel_file_panel excel_file_panel1;
-    private View.schedule_generation.final_panel final_panel1;
-    private View.schedule_generation.first_panel first_panel1;
-    private View.schedule_generation.first_panel_part2 first_panel_part21;
+    public static View.schedule_generation.excel_file_panel excel_file_panel1;
+    public static View.schedule_generation.final_panel final_panel1;
+    public static View.schedule_generation.first_panel first_panel1;
+    public static View.schedule_generation.first_panel_part2 first_panel_part21;
     private javax.swing.JCheckBox fri;
     private javax.swing.JLabel home_std_lbl;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
@@ -3406,22 +3145,15 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
-    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
-    private javax.swing.JLabel jLabel111;
-    private javax.swing.JLabel jLabel112;
-    private javax.swing.JLabel jLabel113;
-    private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
-    private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
-    private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
     private javax.swing.JLabel jLabel13;
@@ -3436,12 +3168,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -3466,7 +3193,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel79;
@@ -3478,9 +3204,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
@@ -3506,11 +3230,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel49;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
@@ -3521,6 +3243,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -3531,10 +3254,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     static javax.swing.JTextArea jTextArea2;
+    static javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField22;
@@ -3543,14 +3265,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JTextField jalbel;
     private javax.swing.JLabel lab_view_schedule_lbl;
     private javax.swing.JCheckBox labcheckBox;
-    private javax.swing.JCheckBox labcheckBox10;
-    private javax.swing.JCheckBox labcheckBox11;
-    private javax.swing.JCheckBox labcheckBox4;
-    private javax.swing.JCheckBox labcheckBox5;
-    private javax.swing.JCheckBox labcheckBox6;
-    private javax.swing.JCheckBox labcheckBox7;
-    private javax.swing.JCheckBox labcheckBox8;
-    private javax.swing.JCheckBox labcheckBox9;
     private javax.swing.JLabel labslbl;
     private javax.swing.JTextField latest;
     private javax.swing.JCheckBox mon;
@@ -3572,7 +3286,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JPanel scheduler_generation;
     private View.room.search_free_slot_panel search_free_slot_panel1;
     private javax.swing.JLabel search_slot_lbl;
-    private View.schedule_generation.second_panel second_panel1;
+    public static View.schedule_generation.second_panel second_panel1;
     private javax.swing.JLabel section_wise_lbl;
     private javax.swing.JLabel slot_1_lbl;
     private javax.swing.JLabel slot_1_lbl1;
@@ -3583,16 +3297,14 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JPanel students_management;
     private javax.swing.JCheckBox sun;
     private javax.swing.JButton sv_btn1;
-    private View.schedule_generation.third_panel third_panel1;
+    public static View.schedule_generation.third_panel third_panel1;
     private javax.swing.JCheckBox thurs;
     private javax.swing.JPanel timeslots_panel;
     private javax.swing.JPanel timetable_management;
     private javax.swing.JTextField title;
-    private javax.swing.JTextField title1;
-    private javax.swing.JTextField title2;
     private javax.swing.JCheckBox tues;
-    private javax.swing.JPanel updateCourse;
-    private javax.swing.JButton update_coursebtn;
+    private View.student.update_section update_section1;
+    private javax.swing.JLabel update_section_lbl;
     private View.section.update_section_panel update_section_panel1;
     private javax.swing.JPanel viewAllCourses;
     private javax.swing.JPanel viewData;

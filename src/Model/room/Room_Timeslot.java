@@ -1,10 +1,14 @@
 
 
-package Model.room ; 
+package Model.room ;
+
+import Enums.Priority;
 
 public class Room_Timeslot { 
     int no ; 
     boolean check ;
+    Priority priority ; 
+    
 //    String program;
 //    int semester;
 //    String section;
@@ -12,11 +16,19 @@ public class Room_Timeslot {
 //    String course;
 //    int lecture_no;
     
+    
     public Room_Timeslot(int no, boolean check ) { 
         this.no = no; 
         this.check = check ; 
+        
     } 
 
+    public Room_Timeslot(int no, boolean check, Priority priority ) { 
+        this.no = no; 
+        this.check = check ; 
+        this.priority = priority ; 
+    } 
+    
     public Room_Timeslot() { 
     } 
 

@@ -13,36 +13,29 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Section {
+public class Section {  // GA POPULATION
+//    private int clashes;   // number of clashes
 
-    private int clashes;   // number of clashes
     private String id;
     private int student_strength;           // student strength
+
     ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
     Section_Schedule schedule = new Section_Schedule();
-    ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS   
+    ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS 
 
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
 
-    public int getTotalClashes() {
-        return clashes;
-    }
-
-    public void incClash() {
-        this.clashes++;
-    }
 
     public Section_Schedule createNewSchedule() {
         return new Section_Schedule();
     }
 
-    private void setFittness(int fittness) {
-        this.clashes = fittness;
-    }
-
+//    private void setFittness(int fittness) {
+//        this.clashes = fittness;
+//    }
     public void setDay(int index, int day_no) {
         schedule.getDays().get(index).setNo(day_no);
     }
@@ -69,10 +62,6 @@ public class Section {
     }
 
     public void setAllocations(int profId, String sec, int sem, String course) {
-//        System.out.println("Sectionnnnnnnn: \t\t"+sec);
-//        System.out.println("Semesterrrrrrrrr: \t\t"+sem);
-//        System.out.println("Professor ID:\t\t"+profId);
-//        System.out.println("Course    "+course);
         this.allocations.add(new Professor_Section_Allocation(profId, sec, sem, course));
     }
 
@@ -261,20 +250,17 @@ public class Section {
         }
         return null;
     }
-
     public void initializePopulation() {
         for (int i = 0; i < 10; i++) {
             randomSchedules.add(new Section_Schedule());
         }
     }
-
     public void printFittness() {
-        for (Semester semester : semesters) {
-            ArrayList<Section> sections = semester.getSections();
+        semesters.stream().map((semester) -> semester.getSections()).forEachOrdered((sections) -> {
             for (Section section : sections) {
 //                System.out.println(section.getId() + "\t" + section.fittness);
             }
-        }
+        });
     }
 
     public void resetFitnes() {

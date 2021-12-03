@@ -5,16 +5,14 @@ import java.util.ArrayList;
 import static Model.Entities_Main_Arrays.rooms;
 public class Scheduler { 
     
-//    String professor;
-//    String program ; 
-    
-    private int semester_no ;
-    private String section ; 
-    private String room ; 
-    private int slot ; 
-    private int day ;
-    private String course ; 
-    private int lecture_no;
+    String program ;
+    int semester_no ;
+    String section ; 
+    String room ; 
+    int slot ; 
+    int day ;
+    String course ; 
+    int lecture_no;
     
     public Scheduler( String room, int sem_no,String section ,int day,int slot, String course,int lec_no ) {
         this.section = section;

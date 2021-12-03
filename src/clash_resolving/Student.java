@@ -113,8 +113,12 @@ public class Student {
                             if (course.getTitle().equalsIgnoreCase(student_lecture_clash.getCourse())
                                     && student_lecture_clash.getSection().equalsIgnoreCase(section.getId())
                                     && student_lecture_clash.getSemester() == semester.getNo()) {
+//<<<<<<< HEAD
 //                                clashes.add(new Clash(section, course, student));
-                                section.incClash();
+//                                section.incClash();
+//=======
+//                                clashes.add(new Clash(section, course, student));
+//>>>>>>> ed216f2ac19f37d28ad6001164ed013c52d269f9
                             }
                         }
                     }

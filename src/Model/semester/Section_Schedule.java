@@ -10,10 +10,11 @@ public class Section_Schedule {
     public Section_Schedule() {
         this.initialize_Section_Schedule();
     }
-    
+
     public Section_Schedule(ArrayList<Course> sectionCourses) {
-        
+
     }
+
     public void freeDaySlot(int day, int slot) {
         // set free day slot
         days.forEach(d -> {
@@ -29,6 +30,7 @@ public class Section_Schedule {
             }
         });
     }
+
     public void consumeDaySlot(int day, int slot, String room, String course, int lecture) {
         // free day slot
         days.forEach(d -> {
@@ -49,7 +51,6 @@ public class Section_Schedule {
 //        this.days = days;
 ////        this.initialize_Section_Schedule();
 //    }
-
     public void display() {
         for (Section_Day section_Day : days) {
             section_Day.display();
@@ -76,8 +77,8 @@ public class Section_Schedule {
             boolean check = false;
             String room = "";
             for (int j = 0; j < 6; j++) { // 6 timeslots
-                Section_Timeslot obj = new Section_Timeslot(room, j, course, lecture_no, check);
-                obj1.getTimeslots().add(obj);
+                Section_Timeslot obj = new Section_Timeslot(j++, room, course, lecture_no, check);
+                obj1.timeslots.add(obj);
             }
             obj1.setNo(i);
             this.days.add(obj1);

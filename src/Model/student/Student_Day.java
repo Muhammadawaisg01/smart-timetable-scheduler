@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Student_Day {
     private int no ; 
-    private ArrayList<Student_Timeslot> timeslots ; 
+    ArrayList<Student_Timeslot> timeslots ; 
 
 
     public Student_Day(int no, ArrayList<Student_Timeslot> timeslots) {

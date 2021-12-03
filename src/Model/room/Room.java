@@ -1,6 +1,8 @@
 
 package Model.room;
 
+import Enums.Room_Type;
+import Model.Course;
 import db.DBConnection;
 import java.util.ArrayList;
 import static db.DBConnection.getConnection;
@@ -16,12 +18,13 @@ public class Room {
 
     String name;
     int capacity;
-    boolean isFull;
-    boolean isLab;
+    boolean isFull;    
+    Room_Type room_type ;  
     
 //    Array of specified courses, it means that only these courses will be taught in these rooms
-//    ArrayList<Course> specified_courses =  new ArrayList<>() ;    // a hard Constraint
+    ArrayList<Course> specified_courses =  new ArrayList<>() ;    // a hard Constraint
     
+//    ArrayList<Section> specified_sections =  new ArrayList<>() ;    // remove this array,  no much need of it
     
     private ArrayList<Room_Day> days;
     
@@ -30,6 +33,14 @@ public class Room {
         this.isFull = isFull;
         this.days = days;   
     }   
+
+    public Room(String name, int capacity, ArrayList<Room_Day> days) {
+        this.name = name;
+        this.capacity = capacity;                   // new constructor
+        this.days = days;
+        this.room_type = null; 
+    }
+    
     
     public Room() {     
 
@@ -59,21 +70,49 @@ public class Room {
         this.days = days;
     }
 
-    public boolean isIsLab() {
-        return isLab;
-    }
-
     public int getCapacity() {
         return capacity;
-    }
-
-    public void setIsLab(boolean isLab) {
-        this.isLab = isLab;
     }
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public boolean isIsFull() {
+        return isFull;
+    }
+
+    public void setIsFull(boolean isFull) {
+        this.isFull = isFull;
+    }
+
+    public Room_Type getRoom_type() {
+        return room_type;
+    }
+
+    public void setRoom_type(Room_Type room_type) {
+        this.room_type = room_type;
+    }
+    
+    
+
+
+    public ArrayList<Course> getSpecified_courses() {
+        return specified_courses;
+    }
+
+    public void setSpecified_courses(ArrayList<Course> specified_courses) {
+        this.specified_courses = specified_courses;
+    }
+
+//    public ArrayList<Section> getSpecified_sections() {
+//        return specified_sections;
+//    }
+//
+//    public void setSpecified_sections(ArrayList<Section> specified_sections) {
+//        this.specified_sections = specified_sections;
+//    }
+    
     
     
 

@@ -2,6 +2,7 @@
 
 package Model.professor;
 
+import Enums.Professor_Allocation;
 import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,13 +14,13 @@ import java.util.logging.Logger;
 
 public class Professor_Section_Allocation {     
     
-    private int prof_id ;   
-    private String section;
-    private int semester;
-    private String course_code ; 
-    
-//    boolean forLab ; 
 
+    int prof_id ;   
+    String section;
+    int semester;
+    String course_code ;
+     Professor_Allocation allocation ;
+    
     
     public Professor_Section_Allocation(int prof_id, String section, int semester, String course_code) {
         this.prof_id = prof_id;
@@ -27,7 +28,7 @@ public class Professor_Section_Allocation {
         this.semester = semester;
         this.course_code = course_code;
     }
-
+    
     
     public Professor_Section_Allocation(int prof_id, String course_code) {
         this.prof_id = prof_id;

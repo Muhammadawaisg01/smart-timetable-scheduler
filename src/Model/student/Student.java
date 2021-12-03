@@ -20,23 +20,30 @@ public class Student {
     
     private String registration_no;
     private String name;
-//    int program ;
-//    int semester;
-    private String section_id;
-    private Student_Schedule schedule;
-    private ArrayList<Course> registered_courses = new ArrayList<>();
+    String section_id;
+
+    Student_Schedule schedule;
+    ArrayList<Course> registered_courses = new ArrayList<>();
 
     private ArrayList<Student_lecture_clash> clash_array = new ArrayList<>();
     private ArrayList<Student_Section_Allocation> allocations = new ArrayList<>();
 
-    public Student(String registration_no, String name, String section, ArrayList<Course> courses) {
+    public Student(String registration_no, String name, String section, ArrayList<Course> courses) {    // old constructor
         this.registration_no = registration_no;
         this.name = name;
         this.section_id = section;
         this.registered_courses = courses;
-        schedule = new Student_Schedule(5, 6);
+        schedule = new Student_Schedule(5, 6) ; 
     }
-
+    
+    public Student(String registration_no, String name, String section, ArrayList<Course> courses, int days, int slots) {
+        this.registration_no = registration_no;
+        this.name = name;                                       // new connstructor 
+        this.section_id = section;
+        this.registered_courses = courses ; 
+        schedule = new Student_Schedule(days, slots) ; 
+    } 
+    
 //    public Student(String registration_no, String name, int semester, String section) {
 //        this.registration_no = registration_no;
 //        this.name = name    ;   

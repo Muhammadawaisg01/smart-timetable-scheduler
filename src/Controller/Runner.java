@@ -5,7 +5,7 @@ import static Model.Entities_Main_Arrays.rooms;
 import static Model.Entities_Main_Arrays.semesters;
 import static Model.Entities_Main_Arrays.add_Data_to_Professor_List;
 import static Model.Entities_Main_Arrays.student_list;
-
+import Enums.Lab;
 import Model.Course;
 import Model.Entities_Main_Arrays;
 import Model.semester.Section;
@@ -264,32 +264,35 @@ public class Runner {
 //        } 
     }
 
-//    public static void method1() {
-//        System.out.println("Enter number of students  :  ");
-//        int input1 = in.nextInt();
-//        System.out.println("Enter No. of Sections you want to make  :   ");
-//        sections = in.nextInt();
-//
-//        System.out.println("Number of sections are  :    " + sections + "\tapproximately number of students in each section  are   " + (input1 / sections));
-//
-//        System.out.println("    Enter Courses Details  :   \n\n");
-//        System.out.print("Enter No. of courses  being taught in each section  :   ");
-//        int input3 = in.nextInt();
-//
-//        int n = 0;
-//        while (n < input3) {
-////            System.out.print("Enter Name  :  ") ; 
-////            String input4 = in.next() ; 
-////            System.out.print("Enter Credit Hours  :  ") ; 
-////            int input5 = in.nextInt() ; 
-////            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
-////            String input6 = in.next() ; 
-//
-//            courses.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, false));
-//            n++;
-//        }
-////        algorithm() ; 
-//    }
+
+    public static void method1() {
+        System.out.println("Enter number of students  :  ");
+        int input1 = in.nextInt();
+        System.out.println("Enter No. of Sections you want to make  :   ");
+        sections = in.nextInt();
+
+        System.out.println("Number of sections are  :    " + sections + "\tapproximately number of students in each section  are   " + (input1 / sections));
+
+        System.out.println("    Enter Courses Details  :   \n\n");
+        System.out.print("Enter No. of courses  being taught in each section  :   ");
+        int input3 = in.nextInt();
+
+        int n = 0;
+        while (n < input3) {
+//            System.out.print("Enter Name  :  ") ; 
+//            String input4 = in.next() ; 
+//            System.out.print("Enter Credit Hours  :  ") ; 
+//            int input5 = in.nextInt() ; 
+//            System.out.print("Course is with Lab or Not (y/n) :   ") ; 
+//            String input6 = in.next() ; 
+
+            course.add(new Course(Integer.toString(n + 1), "Course " + (n + 1), 4, Lab.NO));
+            n++;
+        }
+//        algorithm() ; 
+    }
+
+//>>>>>>> ed216f2ac19f37d28ad6001164ed013c52d269f9
 //    public static void fittness_function()  {   
 //        //      
 //    }   
@@ -534,7 +537,7 @@ public class Runner {
         int labs = 0;
 
         for (Room rm : rooms) {
-            if (rm.isIsLab()) {
+            if (rm.isCheck())) {
                 labs++;
             }
         }

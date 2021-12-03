@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Professor_Day {
     private int no ;
-    private ArrayList<Professor_Timeslot> timeslots ; 
+    ArrayList<Professor_Timeslot> timeslots ; 
 
     public Professor_Day(int no, ArrayList<Professor_Timeslot> timeslots) {
         this.no = no;

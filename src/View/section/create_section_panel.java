@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ 
 package View.section;
 
-/**
- *
- * @author muhammad awais 1
- */
 import Model.Queries;
+import static View.section.update_section_panel.jTextArea1;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
@@ -111,10 +104,6 @@ public class create_section_panel extends javax.swing.JPanel {
         courses_dropdown = new javax.swing.JComboBox<>();
         addCourseButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         assigned_courses = new javax.swing.JTextArea();
 
@@ -155,7 +144,6 @@ public class create_section_panel extends javax.swing.JPanel {
         jLabel95.setForeground(new java.awt.Color(0, 102, 153));
         jLabel95.setText("Semester:");
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 40));
-
         section_name.setForeground(new java.awt.Color(0, 102, 153));
         jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 450, 40));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 760, -1));
@@ -167,7 +155,6 @@ public class create_section_panel extends javax.swing.JPanel {
 
         section_ID.setForeground(new java.awt.Color(0, 102, 153));
         jPanel1.add(section_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 450, 40));
-
         create_section_btn.setBackground(new java.awt.Color(0, 102, 153));
         create_section_btn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         create_section_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,49 +179,24 @@ public class create_section_panel extends javax.swing.JPanel {
         courses_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 380, 40));
 
-        addCourseButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        addCourseButton.setForeground(new java.awt.Color(0, 102, 153));
-        addCourseButton.setText("specify");
-        addCourseButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(0, 102, 153));
+        jButton8.setText("assign");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addCourseButtonActionPerformed(evt);
             }
         });
         jPanel1.add(addCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 80, 30));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 750, -1));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Courses that are assigned to the section will be printed here\n");
+        jScrollPane2.setViewportView(jTextArea1);
 
-        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel61.setText("Assign specific room to section:");
-        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 720, 320, -1));
-
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel99.setText("Room:");
-        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, 160, 30));
-
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, 380, 40));
-
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 102, 153));
-        jButton9.setText("specify");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 870, 80, 30));
-
-        assigned_courses.setColumns(20);
-        assigned_courses.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        assigned_courses.setForeground(new java.awt.Color(0, 102, 153));
-        assigned_courses.setRows(5);
-        assigned_courses.setText("Courses that are assigned to the section will be printed here\n");
-        assigned_courses.setDisabledTextColor(new java.awt.Color(250, 250, 250));
-        jScrollPane2.setViewportView(assigned_courses);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 100));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 150));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -245,7 +207,6 @@ public class create_section_panel extends javax.swing.JPanel {
         selected_courses.add(courses_dropdown.getSelectedItem().toString());
         assigned_courses.append("\n" + courses_dropdown.getSelectedItem().toString());
     }//GEN-LAST:event_addCourseButtonActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -347,21 +308,25 @@ public class create_section_panel extends javax.swing.JPanel {
     }//GEN-LAST:event_programs_dropdownActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton addCourseButton;
     static javax.swing.JTextArea assigned_courses;
     private static javax.swing.JComboBox<String> courses_dropdown;
     private javax.swing.JButton create_section_btn;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox10;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

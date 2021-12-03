@@ -9,6 +9,7 @@ package View.schedule_generation;
  *
  * @author muhammad awais 1
  */
+import static View.MainFrame.second_panel1;
 public class first_panel_part2 extends javax.swing.JPanel {
 
     /**
@@ -84,7 +85,8 @@ public class first_panel_part2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_lbl_02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseClicked
-
+        this.setVisible(false);
+        second_panel1.setVisible(true); 
     }//GEN-LAST:event_back_lbl_02MouseClicked
 
     private void back_lbl_02MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseEntered

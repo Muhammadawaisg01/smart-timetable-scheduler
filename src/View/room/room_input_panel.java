@@ -34,28 +34,21 @@ public class room_input_panel extends javax.swing.JPanel {
         jLabel94 = new javax.swing.JLabel();
         capacity = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jComboBox8 = new javax.swing.JComboBox<>();
         labcheckBox1 = new javax.swing.JCheckBox();
         jLabel60 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
         roomname = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         labcheckBox3 = new javax.swing.JCheckBox();
         jButton8 = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JSeparator();
         jLabel97 = new javax.swing.JLabel();
         jComboBox9 = new javax.swing.JComboBox<>();
         jButton10 = new javax.swing.JButton();
-        jLabel61 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         labcheckBox6 = new javax.swing.JCheckBox();
-        jButton11 = new javax.swing.JButton();
-        labcheckBox2 = new javax.swing.JCheckBox();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jLabel98 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1000, 2147483647));
@@ -82,29 +75,21 @@ public class room_input_panel extends javax.swing.JPanel {
 
         capacity.setForeground(new java.awt.Color(0, 102, 153));
         jPanel1.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 360, 30));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 770, -1));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, 380, 30));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 790, -1));
 
         labcheckBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labcheckBox1.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox1.setText("available for all courses");
-        jPanel1.add(labcheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 200, 30));
+        labcheckBox1.setText("available for lectures of all courses");
+        jPanel1.add(labcheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 280, 30));
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel60.setText("Room specification for course:");
-        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 320, -1));
-
-        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel95.setText("Section:");
-        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 160, 30));
+        jLabel60.setText("Room specification for particular course:");
+        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 390, -1));
 
         roomname.setForeground(new java.awt.Color(0, 102, 153));
         jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 360, 30));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 770, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 770, 10));
 
         labcheckBox3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labcheckBox3.setForeground(new java.awt.Color(0, 102, 153));
@@ -120,12 +105,11 @@ public class room_input_panel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 80, 30));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 920, 770, 10));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Course:");
-        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 160, 30));
+        jLabel97.setText("Note: maximum one course can be specified");
+        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 340, 30));
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         jPanel1.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 380, 30));
@@ -139,12 +123,7 @@ public class room_input_panel extends javax.swing.JPanel {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 990, 200, 60));
-
-        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel61.setText("Specify room for specific section:");
-        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 320, -1));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 670, 200, 60));
 
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
@@ -154,7 +133,7 @@ public class room_input_panel extends javax.swing.JPanel {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 70, -1));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 70, -1));
 
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(0, 102, 153));
@@ -171,35 +150,6 @@ public class room_input_panel extends javax.swing.JPanel {
         labcheckBox6.setText("Lecture");
         jPanel1.add(labcheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 120, 30));
 
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(0, 102, 153));
-        jButton11.setText("specify");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 670, 80, 30));
-
-        labcheckBox2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labcheckBox2.setForeground(new java.awt.Color(0, 102, 153));
-        labcheckBox2.setText("available for all sections");
-        labcheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                labcheckBox2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(labcheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 760, 210, 30));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Specification results\n");
-        jScrollPane3.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 820, 770, 80));
-
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jTextArea2.setForeground(new java.awt.Color(0, 102, 153));
@@ -207,7 +157,12 @@ public class room_input_panel extends javax.swing.JPanel {
         jTextArea2.setText("Specification results\n");
         jScrollPane4.setViewportView(jTextArea2);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 770, 80));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 770, 120));
+
+        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setText("Course:");
+        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 160, 30));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -222,10 +177,6 @@ public class room_input_panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         if(jRadioButton2.isSelected()){
            jRadioButton1.setSelected(false); 
@@ -239,38 +190,27 @@ public class room_input_panel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void labcheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labcheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_labcheckBox2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField capacity;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    static javax.swing.JTextArea jTextArea1;
     static javax.swing.JTextArea jTextArea2;
     private javax.swing.JCheckBox labcheckBox1;
-    private javax.swing.JCheckBox labcheckBox2;
     private javax.swing.JCheckBox labcheckBox3;
     private javax.swing.JCheckBox labcheckBox6;
     private javax.swing.JTextField roomname;
