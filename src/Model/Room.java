@@ -92,9 +92,6 @@ public class Room {
     public void setRoom_type(Room_Type room_type) {
         this.room_type = room_type;
     }
-    
-    
-
 
     public ArrayList<Course> getSpecified_courses() {
         return specified_courses;

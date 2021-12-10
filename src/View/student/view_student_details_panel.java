@@ -32,13 +32,11 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jLabel102 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel97 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
-        roomname = new javax.swing.JTextField();
-        roomname1 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton8 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,26 +58,10 @@ public class view_student_details_panel extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 660, 130));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Student Name:");
-        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 210, 40));
-
         jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(0, 102, 153));
         jLabel94.setText("Student Registration No:");
         jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, 40));
-
-        roomname.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 380, 40));
-
-        roomname1.setForeground(new java.awt.Color(0, 102, 153));
-        roomname1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomname1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(roomname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 380, 40));
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -98,16 +80,15 @@ public class view_student_details_panel extends javax.swing.JPanel {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 80, 30));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 80, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 390, 40));
 
         jScrollPane2.setViewportView(jPanel1);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 680, 490));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void roomname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomname1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomname1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -116,16 +97,14 @@ public class view_student_details_panel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField roomname;
-    private javax.swing.JTextField roomname1;
     // End of variables declaration//GEN-END:variables
 }

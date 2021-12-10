@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
+
 package View.schedule_generation;
 
 import static View.MainFrame.first_panel_part21;
 
-/**
- *
- * @author muhammad awais 1
- */
 public class first_panel extends javax.swing.JPanel {
 
     /**
@@ -18,6 +12,7 @@ public class first_panel extends javax.swing.JPanel {
      */
     public first_panel() {
         initComponents();
+        restricting_jspinner1() ;
     }
 
     /**
@@ -50,11 +45,11 @@ public class first_panel extends javax.swing.JPanel {
         jLabel100.setForeground(new java.awt.Color(0, 102, 153));
         jLabel100.setText("Lab:");
         add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 180, 40));
-        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 210, 40));
+        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 210, 40));
 
         jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("1st Step out of No");
+        jLabel101.setText("1st step by 5");
         add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 190, 40));
 
         back_lbl_02.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -67,9 +62,6 @@ public class first_panel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back_lbl_02MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                back_lbl_02MouseEntered(evt);
-            }
         });
         add(back_lbl_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 70, 60));
 
@@ -77,7 +69,9 @@ public class first_panel extends javax.swing.JPanel {
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
         jLabel102.setText("Lecture:");
         add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, 40));
-        add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 210, 40));
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 3, 1));
+        add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 210, 40));
 
         jLabel103.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(0, 102, 153));
@@ -91,9 +85,10 @@ public class first_panel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_back_lbl_02MouseClicked
 
-    private void back_lbl_02MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_back_lbl_02MouseEntered
+    public void restricting_jspinner1(){
+        jSpinner1.setValue(1) ;
+        jSpinner1.setEnabled(false); 
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

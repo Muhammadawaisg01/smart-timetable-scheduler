@@ -5,10 +5,11 @@
  */
 package View.section;
 
-/**
- *
- * @author muhammad awais 1
- */
+import View.MainFrame;
+import static View.MainFrame.professor_course_allocation1;
+import static View.MainFrame.create_section_panel1;
+
+
 public class create_section_panel extends javax.swing.JPanel {
 
     /**
@@ -46,6 +47,8 @@ public class create_section_panel extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jLabel99 = new javax.swing.JLabel();
+        roomname2 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,30 +83,35 @@ public class create_section_panel extends javax.swing.JPanel {
 
         jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Section Name:");
-        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
+        jLabel97.setText("Section Capacity:");
+        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 210, 40));
 
         roomname1.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(roomname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 450, 40));
+        jPanel1.add(roomname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 450, 40));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("next");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 780, 160, 60));
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 102, 153));
         jLabel60.setText("Assign courses to section:");
-        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 320, -1));
+        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 320, -1));
 
         jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
         jLabel98.setText("Course:");
-        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 30));
+        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 160, 30));
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 380, 40));
+        jPanel1.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 380, 40));
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 102, 153));
@@ -113,8 +121,8 @@ public class create_section_panel extends javax.swing.JPanel {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 80, 30));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 750, -1));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 80, 30));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 750, 10));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -125,6 +133,14 @@ public class create_section_panel extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 150));
 
+        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel99.setText("Section Name:");
+        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
+
+        roomname2.setForeground(new java.awt.Color(0, 102, 153));
+        jPanel1.add(roomname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 450, 40));
+
         jScrollPane1.setViewportView(jPanel1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 510));
@@ -133,6 +149,11 @@ public class create_section_panel extends javax.swing.JPanel {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        professor_course_allocation1.setVisible(true);
+        create_section_panel1.setVisible(false) ;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -147,6 +168,7 @@ public class create_section_panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -155,5 +177,6 @@ public class create_section_panel extends javax.swing.JPanel {
     static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField roomname;
     private javax.swing.JTextField roomname1;
+    private javax.swing.JTextField roomname2;
     // End of variables declaration//GEN-END:variables
 }

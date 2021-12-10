@@ -129,8 +129,8 @@ public class Algo_For_Student_Assigning {
     }
 
     public static boolean find_course_in_section(Course course, Section sec) {
-        for (int var1 = 0; var1 < sec.getCourses().size(); var1++) {
-            Course sec_course = sec.getCourses().get(var1);
+        for (int var1 = 0; var1 < sec.getSectionCourses().size(); var1++) {
+            Course sec_course = sec.getSectionCourses().get(var1);
             if (sec_course.getTitle().equalsIgnoreCase(course.getTitle())) {
 //                System.out.println("I am ttrruuee");
                 return true;
@@ -176,7 +176,7 @@ public class Algo_For_Student_Assigning {
             boolean allocated = false;
             boolean clash = false;
             for (Section section : sections) {
-                ArrayList<Course> courses = section.getCourses();
+                ArrayList<Course> courses = section.getSectionCourses();
                 clash_with_section = has_student_clash_with_this_section(std, section, crs);
                 for (Course course : courses) {
                     if (crs.getTitle().equalsIgnoreCase(course.getTitle())) {
@@ -260,7 +260,7 @@ public class Algo_For_Student_Assigning {
             boolean allocated = false;
             boolean clash = false;
             for (Section section : sections) {
-                ArrayList<Course> courses = section.getCourses();
+                ArrayList<Course> courses = section.getSectionCourses();
                 clash_with_section = has_student_clash_with_this_section(std, section, crs);
                 for (Course course : courses) {
                     if (crs.getTitle().equalsIgnoreCase(course.getTitle())) {
@@ -358,7 +358,7 @@ public class Algo_For_Student_Assigning {
         for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
             for (Section section : sections) {
-                ArrayList<Course> courses = section.getCourses();
+                ArrayList<Course> courses = section.getSectionCourses();
                 for (Course crs : courses) {
                     if (crs.getTitle().equalsIgnoreCase(course.getTitle())) {
                         offeringSection.add(section);

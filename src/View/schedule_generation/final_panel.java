@@ -31,6 +31,7 @@ public class final_panel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,7 +68,12 @@ public class final_panel extends javax.swing.JPanel {
         jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
         jLabel102.setText("Generate Timetable");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 210, 40));
+
+        jLabel103.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel103.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel103.setText("5th step by 5");
+        add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -82,6 +88,7 @@ public class final_panel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
     private javax.swing.JScrollPane jScrollPane4;
     static javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables

@@ -17,6 +17,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
      */
     public first_panel_part2() {
         initComponents();
+        restricting_jspinner2(); 
     }
 
     /**
@@ -35,7 +36,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
         jSpinner2 = new javax.swing.JSpinner();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
+        jSpinner1 = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,7 +48,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
 
         jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("2nd Step of 1st");
+        jLabel101.setText("2nd step by 5");
         add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 190, 40));
 
         back_lbl_02.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -81,7 +82,9 @@ public class first_panel_part2 extends javax.swing.JPanel {
         jLabel104.setForeground(new java.awt.Color(0, 102, 153));
         jLabel104.setText("Number of Lectures of each subject in a week:");
         add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 430, 40));
-        add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 80, 40));
+
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2, 1, 2, 1));
+        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 80, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_lbl_02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseClicked
@@ -93,6 +96,11 @@ public class first_panel_part2 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_back_lbl_02MouseEntered
 
+    public void restricting_jspinner2(){
+        jSpinner2.setValue(1) ;
+        jSpinner2.setEnabled(false); 
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back_lbl_02;
@@ -101,7 +109,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel99;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     // End of variables declaration//GEN-END:variables
 }

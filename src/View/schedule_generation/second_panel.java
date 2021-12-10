@@ -46,7 +46,7 @@ public class second_panel extends javax.swing.JPanel {
 
         jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("2nd Step out of No");
+        jLabel101.setText("3rd step by 5");
         add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 190, 40));
 
         back_lbl_02.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -99,6 +99,8 @@ public class second_panel extends javax.swing.JPanel {
         jLabel104.setText("Day:");
         jPanel1.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 90, 40));
         jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 200, 40));
+
+        jSpinner2.setModel(new javax.swing.SpinnerListModel(new String[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}));
         jPanel1.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 200, 40));
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
