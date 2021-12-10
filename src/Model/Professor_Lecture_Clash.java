@@ -17,7 +17,7 @@ public class Professor_Lecture_Clash    {
     boolean isresolved; 
 //    int clash_no;
     int lecture_no ; 
-
+    
     public Professor_Lecture_Clash() {
         
     }

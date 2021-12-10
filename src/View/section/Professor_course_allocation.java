@@ -37,13 +37,11 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jComboBox9 = new javax.swing.JComboBox<>();
-        roomname = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         roomname1 = new javax.swing.JTextField();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jComboBox11 = new javax.swing.JComboBox<>();
-        roomname2 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -81,7 +79,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         checkBox2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         checkBox2.setForeground(new java.awt.Color(0, 102, 153));
         checkBox2.setText("Lab");
-        jPanel1.add(checkBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, 70, 30));
+        jPanel1.add(checkBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 70, 30));
 
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
@@ -91,7 +89,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 240, 70, -1));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 70, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -101,14 +99,6 @@ public class Professor_course_allocation extends javax.swing.JPanel {
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         jPanel1.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 210, 40));
-
-        roomname.setForeground(new java.awt.Color(0, 102, 153));
-        roomname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomnameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 220, 40));
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 102, 153));
@@ -141,22 +131,10 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         jPanel1.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, 40));
 
-        roomname2.setForeground(new java.awt.Color(0, 102, 153));
-        roomname2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomname2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(roomname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 40));
-
         jScrollPane2.setViewportView(jPanel1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 950, 700));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 680, 490));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void roomnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomnameActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -177,10 +155,6 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void roomname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomname2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomname2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox checkBox1;
@@ -198,9 +172,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField roomname;
     private javax.swing.JTextField roomname1;
-    private javax.swing.JTextField roomname2;
     // End of variables declaration//GEN-END:variables
 
 }

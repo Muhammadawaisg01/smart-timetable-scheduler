@@ -116,9 +116,6 @@ public class Section {  // GA POPULATION
         return sectionCourses;
     }
 
-    public ArrayList<Course> getCourses() {
-        return this.sectionCourses;
-    }
 
     public void addCourse(Course crs) {
         this.sectionCourses.add(crs);

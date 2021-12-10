@@ -71,7 +71,7 @@ public class third_panel extends javax.swing.JPanel {
 
         jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel102.setText("3rd Step out of No");
+        jLabel102.setText("4rth step by 5");
         add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 190, 40));
 
         jTextArea3.setColumns(20);
