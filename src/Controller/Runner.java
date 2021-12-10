@@ -537,12 +537,12 @@ public class Runner {
         int labs = 0;
 
         for (Room rm : rooms) {
-            if (rm.isCheck())) {
+            if (rm.isCheck()) {
                 labs++;
             }
         }
         for (Room rm : rooms) {
-            if (!rm.isIsLab()) {
+            if (!rm.isCheck()) {
                 lectures_rooms++;
             }
         }

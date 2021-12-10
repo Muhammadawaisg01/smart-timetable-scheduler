@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Section {  // GA POPULATION
 //    private int clashes;   // number of clashes
@@ -27,7 +28,6 @@ public class Section {  // GA POPULATION
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
-
 
     public Section_Schedule createNewSchedule() {
         return new Section_Schedule();
@@ -185,8 +185,9 @@ public class Section {  // GA POPULATION
         try {
             stmt = conn.prepareStatement(q);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
-            semester_no = rs.getInt(1);
+            if (rs.next()) {
+                semester_no = rs.getInt(1);
+            }
         } catch (SQLException ex) {
             System.out.println("error in getting semester no of the section in the section details  ");
             ex.printStackTrace();
@@ -250,26 +251,57 @@ public class Section {  // GA POPULATION
         }
         return null;
     }
+
+    public static void writeToDatabase(ArrayList<Section> section) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        int day, timeSlot, lectureNo;
+        String courseCode, roomName, q;
+        boolean isLab;
+        for (Section schedule : section) {
+            Section_Schedule section_Schedule = schedule.getSchedule();
+            ArrayList<Section_Day> section_Days = section_Schedule.getDays();
+            for (Section_Day section_Day : section_Days) {
+                day = section_Day.getNo();
+                ArrayList<Section_Timeslot> section_Timeslots = section_Day.getTimeslots();
+                for (Section_Timeslot section_Timeslot : section_Timeslots) {
+                    timeSlot = section_Timeslot.getSlot_no();
+                    lectureNo = section_Timeslot.getLecture_no();
+                    courseCode = section_Timeslot.getCourse_code();
+                    roomName = section_Timeslot.getRoom();
+                    isLab = section_Timeslot.isLab();
+                    q = "Insert into section_schedule"
+                            + "("
+                            + "day_no,"
+                            + "timeslot_no,"
+                            + "course_code,"
+                            + "room_name,"
+                            + "lecture_no,"
+                            + "isLab"
+                            + ")"
+                            + " VALUES "
+                            + "(?, ?, ?, ?, ?, ?)";
+                    try {
+                        stmt = conn.prepareStatement(q);
+                        stmt.setInt(1, day);
+                        stmt.setInt(2, timeSlot);
+                        stmt.setString(3, courseCode);
+                        stmt.setString(4, roomName);
+                        stmt.setInt(5, lectureNo);
+                        stmt.setString(6, isLab + "");
+                    } catch (SQLException ex) {
+                        System.out.println(ex);
+                        JOptionPane.showMessageDialog(null, "Something went wrong!");
+                    }
+                }
+            }
+        }
+    }
+
     public void initializePopulation() {
         for (int i = 0; i < 10; i++) {
             randomSchedules.add(new Section_Schedule());
         }
-    }
-    public void printFittness() {
-        semesters.stream().map((semester) -> semester.getSections()).forEachOrdered((sections) -> {
-            for (Section section : sections) {
-//                System.out.println(section.getId() + "\t" + section.fittness);
-            }
-        });
-    }
-
-    public void resetFitnes() {
-//        for (Semester semester : semesters) {
-//            ArrayList<Section> sections = semester.getSections();
-//            for (Section section : sections) {
-//                section.setFittness(0);
-//            }
-//        }
     }
 
 }

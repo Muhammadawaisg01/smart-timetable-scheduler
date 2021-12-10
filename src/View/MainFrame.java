@@ -22,16 +22,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import View.section.create_section_panel;
-import View.section.add_new_program;
 
 public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
-    create_section_panel create_section_panel1;
-    add_new_program add_new_program1;
     private static int slotNum = 1;
     public MainFrame() {
-        create_section_panel1 = new create_section_panel();
         initComponents();
         this.setLocationRelativeTo(null);
         createConnection();
@@ -63,7 +58,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         programs_panels_list.add(update_section_panel1);
         programs_panels_list.add(all_programs_details_panel);
         programs_panels_list.add(remove_section_panel1);
-        programs_panels_list.add(add_new_program1);
+        programs_panels_list.add(add_new_program);
         programs_panels_list.add(view_schedule_of_section1);
         programs_panels_list.add(professor_course_allocation1);
     }
@@ -82,9 +77,9 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
     @Override
     public void add_all_panels_of_students_to_list() {
-        students_panels_list.add(update_section1) ; 
-        students_panels_list.add(view_all_students_panel1) ; 
-        
+        students_panels_list.add(update_section1);
+        students_panels_list.add(view_all_students_panel1);
+
     }
 
     @Override
@@ -98,10 +93,10 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     public void add_all_panels_of_view_timetable_to_list() {
         view_timetable_panels_list.add(view_generated_timetable_panel1);
     }
-    
+
 //    @Override
     public void add_all_panels_of_schedule_generation_to_list() {
-        schedule_generation_panels_list.add(excel_file_panel1) ; 
+        schedule_generation_panels_list.add(excel_file_panel1);
         schedule_generation_panels_list.add(first_panel1);
         schedule_generation_panels_list.add(first_panel_part21);
         schedule_generation_panels_list.add(second_panel1);
@@ -174,6 +169,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
             }
         }
     }
+
     //      PANELS MANAGEMENT Ends Here, all methods of the interface panels management are implemented in above section
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -347,6 +343,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         update_section_panel1 = new View.section.update_section_panel();
         view_schedule_of_section1 = new View.section.view_schedule_of_section();
         professor_course_allocation1 = new View.section.Professor_course_allocation();
+        add_new_program = new View.section.add_new_program();
+	create_section_panel1 = new View.section.create_section_panel();
         Courses = new javax.swing.JPanel();
         jPanel49 = new javax.swing.JPanel();
         Dashboard_Courses = new javax.swing.JPanel();
@@ -1727,7 +1725,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jPanel47.add(update_section_panel1, "card9");
         jPanel47.add(view_schedule_of_section1, "card10");
         jPanel47.add(professor_course_allocation1, "card11");
-
+        jPanel47.add(add_new_program, "card10");
+	jPanel47.add(create_section_panel1, "card10");
         jPanel2.add(jPanel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 790, 570));
 
         Programs.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 1060, 570));
@@ -2367,7 +2366,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         this.MainPanel.setVisible(false);
         schedule_generation.setVisible(true);
 
-        schedule_generation_panel_visibility(excel_file_panel1); 
+        schedule_generation_panel_visibility(excel_file_panel1);
     }//GEN-LAST:event_scheduler_generationMouseClicked
 
     private void scheduler_generationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduler_generationMouseEntered
@@ -2480,7 +2479,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     }//GEN-LAST:event_view_coursesbtnActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-
 
 //        String query = "delete from course where course_code = ?";
 //        try {
@@ -2944,7 +2942,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     }//GEN-LAST:event_jLabel49MouseClicked
 
     private void jLabel119MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel119MouseClicked
-        programs_panel_visibility(add_new_program1);
+        programs_panel_visibility(add_new_program);
     }//GEN-LAST:event_jLabel119MouseClicked
 
     private void jLabel125MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel125MouseClicked
@@ -2967,7 +2965,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void jLabel120MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel120MouseClicked
-        getPrograms();  
+        getPrograms();
         getCourses();
         programs_panel_visibility(create_section_panel1);
     }//GEN-LAST:event_jLabel120MouseClicked
@@ -3074,6 +3072,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                createConnection();
                 new MainFrame().setVisible(true);
             }
         });
@@ -3096,6 +3095,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JButton add_button;
     private javax.swing.JButton add_button1;
     private javax.swing.JLabel add_new_professor;
+    private View.section.add_new_program add_new_program;
+    private View.section.create_section_panel create_section_panel1;
     private View.section.add_new_semester_panel add_new_semester_panel1;
     private View.professor.add_professor_panel add_professor_panel1;
     private javax.swing.JLabel add_roomlbl;

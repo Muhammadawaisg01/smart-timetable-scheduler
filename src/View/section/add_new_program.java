@@ -29,23 +29,9 @@ public class add_new_program extends javax.swing.JPanel {
     public add_new_program() {
         initComponents();
         createConnection();
-        getTotalPrograms();
     }
 
-    private void getTotalPrograms() {
-        String q = "select program_name from program";
-        Connection conn = getConnection();
-        PreparedStatement stmt = null;
-        try {
-            stmt = conn.prepareStatement(q);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.last()) {
-                programID = rs.getRow() + 1;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

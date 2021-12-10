@@ -2,7 +2,7 @@
 package View.section;
 
 import Model.Queries;
-import static View.section.update_section_panel.jTextArea1;
+//import static View.section.update_section_panel.	;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class create_section_panel extends javax.swing.JPanel {
@@ -87,6 +88,7 @@ public class create_section_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+	jButton8 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
@@ -189,12 +191,12 @@ public class create_section_panel extends javax.swing.JPanel {
         });
         jPanel1.add(addCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 80, 30));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 750, -1));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Courses that are assigned to the section will be printed here\n");
-        jScrollPane2.setViewportView(jTextArea1);
+        // jTextArea1.setColumns(20);
+        // jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        // jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
+        // jTextArea1.setRows(5);
+        // jTextArea1.setText("Courses that are assigned to the section will be printed here\n");
+        // jScrollPane2.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 150));
 

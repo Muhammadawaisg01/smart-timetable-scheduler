@@ -5,10 +5,20 @@
  */
 package View.section;
 
-/**
- *
- * @author muhammad awais 1
- */
+import Model.Program;
+import static Model.Program.get_all_programs;
+import View.TableViewUtility;
+import static db.DBConnection.getConnection;
+import static db.DBConnection.executeQuery;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 public class view_section_details_option_panel extends javax.swing.JPanel {
 
     /**
@@ -16,6 +26,22 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
      */
     public view_section_details_option_panel() {
         initComponents();
+        String[] programs = null;
+        ResultSet rs = get_all_programs();
+        try {
+            if (rs.last()) {
+                programs = new String[rs.getRow()];
+                rs.beforeFirst();
+                int i = 0;
+                while (rs.next()) {
+                    programs[i] = rs.getString(1);
+                    i++;
+                }
+            }
+            programs_dropdown.setModel(new DefaultComboBoxModel<>(programs));
+        } catch (SQLException ex) {
+            Logger.getLogger(view_section_details_option_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -28,12 +54,12 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel98 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
+        semesters_dropdown = new javax.swing.JComboBox<>();
         jLabel99 = new javax.swing.JLabel();
-        jComboBox11 = new javax.swing.JComboBox<>();
+        programs_dropdown = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        section_detail_table = new javax.swing.JTable();
+        search_section_btn = new javax.swing.JButton();
         jLabel100 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -44,28 +70,38 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
         jLabel98.setText("double-click on row will open view_section_details_panel");
         add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 570, 40));
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
+        semesters_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
+        semesters_dropdown.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                semesters_dropdownItemStateChanged(evt);
             }
         });
-        add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 230, 40));
+        semesters_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semesters_dropdownActionPerformed(evt);
+            }
+        });
+        add(semesters_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 230, 40));
 
         jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
         jLabel99.setText("Program:");
         add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 40));
 
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox11ActionPerformed(evt);
+        programs_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
+        programs_dropdown.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                programs_dropdownItemStateChanged(evt);
             }
         });
-        add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 460, 40));
+        programs_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                programs_dropdownActionPerformed(evt);
+            }
+        });
+        add(programs_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 460, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        section_detail_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,19 +112,19 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(section_detail_table);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 660, 130));
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 102, 153));
-        jButton8.setText("search");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        search_section_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        search_section_btn.setForeground(new java.awt.Color(0, 102, 153));
+        search_section_btn.setText("search");
+        search_section_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                search_section_btnActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 90, 30));
+        add(search_section_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 90, 30));
 
         jLabel100.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(0, 102, 153));
@@ -96,27 +132,76 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
         add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 190, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+    private void semesters_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semesters_dropdownActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox10ActionPerformed
+    }//GEN-LAST:event_semesters_dropdownActionPerformed
 
-    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
+    private void programs_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programs_dropdownActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox11ActionPerformed
+    }//GEN-LAST:event_programs_dropdownActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void search_section_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_section_btnActionPerformed
+        
+    }//GEN-LAST:event_search_section_btnActionPerformed
+
+    private void programs_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_programs_dropdownItemStateChanged
+         // get selected program
+        String selecte_program = programs_dropdown.getSelectedItem().toString();
+        // get program id from database
+        int program_id = 0;
+        String q = "select program_id from program where program_name = '" + selecte_program + "'";
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                program_id = rs.getInt(1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Someting went wrong");
+                return;
+            }
+            // get semesters of that program from semester table
+            String[] semesters_list = null;
+            q = "select * from semester where program_id = " + program_id;
+            stmt = conn.prepareStatement(q);
+            ResultSet semesters = stmt.executeQuery();
+            if (semesters.last()) {
+                int total_semesters = semesters.getRow();
+                semesters.beforeFirst();
+                semesters_list = new String[total_semesters];
+            } else {
+                JOptionPane.showMessageDialog(null, "Someting went wrong");
+                return;
+            }
+            int i = 0;
+            while (semesters.next()) {
+                semesters_list[i] = semesters.getInt(1) + "";
+                i++;
+            }
+            semesters_dropdown.setModel(new DefaultComboBoxModel<>(semesters_list));
+        } catch (SQLException ex) {
+            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_programs_dropdownItemStateChanged
+
+    private void semesters_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_semesters_dropdownItemStateChanged
+            int program_id = Program.program_id(programs_dropdown.getSelectedItem().toString());
+            int semester_no = Integer.parseInt(semesters_dropdown.getSelectedItem().toString());
+            String q = "select section_id from section where program_id = " + program_id + " and semester_no = " + semester_no;
+            ResultSet sections = executeQuery(q);
+            section_detail_table.setModel(TableViewUtility.resultSetToTableModel(sections));
+    }//GEN-LAST:event_semesters_dropdownItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> programs_dropdown;
+    private javax.swing.JButton search_section_btn;
+    private javax.swing.JTable section_detail_table;
+    private javax.swing.JComboBox<String> semesters_dropdown;
     // End of variables declaration//GEN-END:variables
 }

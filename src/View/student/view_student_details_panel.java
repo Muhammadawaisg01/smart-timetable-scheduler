@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.student;
 
 /**
@@ -110,7 +105,7 @@ public class view_student_details_panel extends javax.swing.JPanel {
     }//GEN-LAST:event_roomname1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
 

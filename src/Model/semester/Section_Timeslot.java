@@ -107,4 +107,13 @@ public class Section_Timeslot {
         this.lecture = lecture;
     }
 
+    public boolean isLab() {
+        return isLab;
+    }
+
+    public void setIsLab(boolean isLab) {
+        this.isLab = isLab;
+    }
+    
+
 }
