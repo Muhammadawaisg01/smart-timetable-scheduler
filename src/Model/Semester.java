@@ -62,46 +62,46 @@ public class Semester {
         return null;
     }
 
-//    public void createSection(String name) {
-//        sections.add(new Section(name));
-//    }
-//    public static ArrayList<Semester> getSemesters(File file) {
-//        ArrayList<Semester> semesters = new ArrayList<>();
-//        try {
-//            Scanner read = new Scanner(file);
-//            String[] arr;
-//            while (read.hasNext()) {
-//                arr = read.nextLine().split(",");
-//                int semNo = Integer.parseInt(arr[0]);
-//                Semester semester = null;
-//                boolean duplicate = checkDuplication(semesters, semNo);
-//                if (!duplicate) {
-//                    semester = new Semester(semNo);
-//                } else {
-//                    for (Semester s : semesters) {
-//                        if (s.getNo() == semNo) {
-//                            semester = s;
-//                            break;
-//                        }
-//                    }
-//                }
-////                semester.(arr[1]);
-////                System.out.println(semNo + "" + semester.getSections().size() + "\t////////////");
-//                for (int i = 2; i < arr.length; i++) {
-//                    Objects.requireNonNull(semester.getSection(arr[1])).addCourse(new Course(arr[i]));
-////                    System.out.println(semester.getSection(arr[1]).getCourses().size());
-//                }
-//                if (!duplicate) {
-//                    semesters.add(semester);
-//                }
-//            }
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(ex);
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//        return semesters;
-//    }
+    public void createSection(String name) {
+        sections.add(new Section(name));
+    }
+    public static ArrayList<Semester> getSemesters(File file) {
+        ArrayList<Semester> semesters = new ArrayList<>();
+        try {
+            Scanner read = new Scanner(file);
+            String[] arr;
+            while (read.hasNext()) {
+                arr = read.nextLine().split(",");
+                int semNo = Integer.parseInt(arr[0]);
+                Semester semester = null;
+                boolean duplicate = checkDuplication(semesters, semNo);
+                if (!duplicate) {
+                    semester = new Semester(semNo);
+                } else {
+                    for (Semester s : semesters) {
+                        if (s.getNo() == semNo) {
+                            semester = s;
+                            break;
+                        }
+                    }
+                }
+//                semester.(==arr[1]);
+//                System.out.println(semNo + "" + semester.getSections().size() + "\t////////////");
+                for (int i = 2; i < arr.length; i++) {
+                    Objects.requireNonNull(semester.getSection(arr[1])).addCourse(new Course(arr[i]));
+//                    System.out.println(semester.getSection(arr[1]).getCourses().size());
+                }
+                if (!duplicate) {
+                    semesters.add(semester);
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return semesters;
+    }
     public static ArrayList<Semester> getSemesters() {
         Connection conn = getConnection();
         ArrayList<Semester> semesters = new ArrayList<>();

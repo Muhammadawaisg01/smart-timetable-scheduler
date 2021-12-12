@@ -13,13 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
     
-public class Course {   
+public class Course { 
+    
     String course_code ; 
     String title ; 
     int credit_hours ;  
     Lab lab ;    
-    
-    
+
 //     maximum enrollment variable          how msny students have enrolled in this course      
 
 //    static ArrayList<Course> courses  =  CourseUtility.readCourseFile();    // read data          

@@ -75,10 +75,6 @@ public class Section_Timeslot {
         this.slot_no = slot_no;
     }
 
-    public void setCourse(String course_code) {
-        this.course_code = course_code;
-    }
-
     public void setLecture_no(int lecture_no) {
         this.lecture_no = lecture_no;
     }

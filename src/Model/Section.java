@@ -126,9 +126,9 @@ public class Section {  // GA POPULATION
     public String toString() {
         return "Section{" + "ID=" + id + '}';
     }
-
+    
     public void displaySection(int semesterNo) {  // display tabular data
-
+        
         System.out.println("________________________________________");
         int i = 0, j = 0;
         Section_Schedule schedule = this.getSchedule();
@@ -157,7 +157,6 @@ public class Section {  // GA POPULATION
                 if (schedule.days.get(k).timeslots.get(j).check == false) {
                     System.out.print("__");
                 } else {
-
 //                        System.out.print( Course.getCourse(course,schedule.days.get(k).timeslots.get(j).course_code) + " ") ; 
                 }
             }

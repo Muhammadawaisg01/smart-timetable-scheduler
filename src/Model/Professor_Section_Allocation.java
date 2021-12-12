@@ -35,7 +35,7 @@ public class Professor_Section_Allocation {
         this.prof_id = prof_id;
         this.course_code = course_code;
     }
-        
+    
     public Professor_Section_Allocation() {     
         
     }

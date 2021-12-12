@@ -37,7 +37,14 @@ public class Room {
         this.name = name;
         this.capacity = capacity;                   // new constructor
         this.days = days;
-        this.room_type = null; 
+        room_type = null;
+    }
+
+    public Room(String name, int capacity, Room_Type room_type, ArrayList<Room_Day> days) {
+        this.name = name;
+        this.capacity = capacity;
+        this.room_type = room_type;
+        this.days = days;
     }
     
     
