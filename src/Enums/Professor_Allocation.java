@@ -7,6 +7,6 @@ public enum Professor_Allocation {
     LECTURE, 
     LAB,
     
-    BOTH
+//    BOTH
     
 }

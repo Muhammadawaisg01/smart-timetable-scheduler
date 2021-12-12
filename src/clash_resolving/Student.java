@@ -83,7 +83,7 @@ public class Student {
         for (Semester semester : semesters) {
             ArrayList<Section> sections = semester.getSections();
             for (Section section : sections) {
-                ArrayList<Course> courses = section.getCourses();
+                ArrayList<Course> courses = section.getSectionCourses();
                 for (Course course : courses) {
                     for (Model.Student student : student_list) {
                         ArrayList<Student_lecture_clash> student_lecture_clashs = student.getClash_array();

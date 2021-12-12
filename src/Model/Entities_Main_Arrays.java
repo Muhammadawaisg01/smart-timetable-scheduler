@@ -34,16 +34,17 @@ public class Entities_Main_Arrays {
     } 
     public static void add_Data_to_Semester_List()   {   
         if(semesters.isEmpty()){
-//            File file = new File("Semesters.txt");
+            File file = new File("Semesters.txt");
+            System.out.println("ffiillee\t\t"+file);
             // semester
-            semesters = Semester.getSemesters();
-            System.out.println(semesters.size());
+            semesters = Semester.getSemesters(file);
+            System.out.println(file.getAbsolutePath()+"\t\tpath");
 //            System.exit(0);
         }
     }    
     
     public static void add_Data_to_Program_List()   {   
-        
+//        File file = new File();
     }
     
 }   

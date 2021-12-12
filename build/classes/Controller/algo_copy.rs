@@ -1,0 +1,1 @@
+Controller.new_algorithm
