@@ -15,7 +15,6 @@ public class Professor_Lecture_Clash    {
     private int slot_no;
     private String course;
     private boolean isresolved; 
-//    int clash_no;
     private int lecture_no ; 
 
     public Professor_Lecture_Clash() {

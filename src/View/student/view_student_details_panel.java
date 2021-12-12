@@ -1,5 +1,12 @@
 package View.student;
 
+import Model.Queries;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author muhammad awais 1
@@ -11,6 +18,22 @@ public class view_student_details_panel extends javax.swing.JPanel {
      */
     public view_student_details_panel() {
         initComponents();
+        String[] students = null;
+        ResultSet rs = Queries.getAllStudent();
+        try {
+            if (rs.last()) {
+                students = new String[rs.getRow()];
+                rs.beforeFirst();
+                int i = 0;
+                while (rs.next()) {
+                    students[i] = rs.getString("registration_no");
+                    i++;
+                }
+                all_students.setModel(new DefaultComboBoxModel(students));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(view_student_details_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -26,14 +49,14 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel102 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel97 = new javax.swing.JLabel();
-        jLabel94 = new javax.swing.JLabel();
-        roomname = new javax.swing.JTextField();
-        roomname1 = new javax.swing.JTextField();
+        section_assigned_textarea = new javax.swing.JTextArea();
+        student_name = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton8 = new javax.swing.JButton();
+        registered_courses_textarea = new javax.swing.JTextArea();
+        all_students = new javax.swing.JComboBox<>();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,81 +69,114 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jLabel102.setText("Student details:");
         jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 230, 30));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Section assigned to student (student name)\n\ncourse 1 \t\tsection\n//\t\t//\nif section are not assigned yet, then message will be shown\n");
-        jScrollPane1.setViewportView(jTextArea1);
+        section_assigned_textarea.setEditable(false);
+        section_assigned_textarea.setColumns(20);
+        section_assigned_textarea.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        section_assigned_textarea.setForeground(new java.awt.Color(0, 102, 153));
+        section_assigned_textarea.setRows(5);
+        section_assigned_textarea.setEnabled(false);
+        jScrollPane1.setViewportView(section_assigned_textarea);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 660, 130));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Student Name:");
-        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 210, 40));
+        student_name.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        student_name.setForeground(new java.awt.Color(0, 102, 153));
+        jPanel1.add(student_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 470, 40));
 
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel94.setText("Student Registration No:");
-        jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, 40));
-
-        roomname.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 380, 40));
-
-        roomname1.setForeground(new java.awt.Color(0, 102, 153));
-        roomname1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomname1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(roomname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 380, 40));
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Courses registered by (student name), (reg no)\n");
-        jScrollPane3.setViewportView(jTextArea2);
+        registered_courses_textarea.setEditable(false);
+        registered_courses_textarea.setColumns(20);
+        registered_courses_textarea.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        registered_courses_textarea.setForeground(new java.awt.Color(0, 102, 153));
+        registered_courses_textarea.setRows(5);
+        registered_courses_textarea.setEnabled(false);
+        jScrollPane3.setViewportView(registered_courses_textarea);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 660, 130));
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 102, 153));
-        jButton8.setText("search");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+        all_students.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        all_students.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                all_studentsItemStateChanged(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 80, 30));
+        all_students.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                all_studentsPropertyChange(evt);
+            }
+        });
+        jPanel1.add(all_students, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 390, 40));
+
+        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel95.setText("Student Registrated Courses");
+        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 310, 40));
+
+        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel96.setText("Student Registration No:");
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, 40));
+
+        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setText("Student Section Details");
+        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 310, 40));
 
         jScrollPane2.setViewportView(jPanel1);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 680, 490));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void roomname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomname1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roomname1ActionPerformed
+    private void all_studentsPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_all_studentsPropertyChange
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_all_studentsPropertyChange
 
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void all_studentsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_all_studentsItemStateChanged
+        
+        String[] registeredCourses = null;
+        try {
+            String regNo = all_students.getSelectedItem().toString();
+            String name = Queries.getStudent(regNo);
+            System.out.println(name);
+            student_name.setText("Student Name: \t" + name);
+            // get student's registered courses
+            ResultSet registeredCoursesCode = Queries.getStudentRegisteredCourses(regNo);
+            if (registeredCoursesCode.last()) {
+                registeredCourses = new String[registeredCoursesCode.getRow()];
+                registeredCoursesCode.beforeFirst();
+                int i = 0;
+                while (registeredCoursesCode.next()) {
+                    String courseCode = registeredCoursesCode.getString(1);
+                    ResultSet courseDetails = Queries.getCourseDetails(courseCode);
+                    if (courseDetails.next()) {
+                        registeredCourses[i] = courseDetails.getString("title");
+                        i++;
+                    }
+                }
+                // show courses in textarea
+                registered_courses_textarea.setText("");
+                for (String course : registeredCourses) {
+                    registered_courses_textarea.append("\n" + course);
+                }
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(view_student_details_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_all_studentsItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> all_students;
     private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField roomname;
-    private javax.swing.JTextField roomname1;
+    private javax.swing.JTextArea registered_courses_textarea;
+    private javax.swing.JTextArea section_assigned_textarea;
+    private javax.swing.JLabel student_name;
     // End of variables declaration//GEN-END:variables
 }

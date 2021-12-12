@@ -27,24 +27,25 @@ public class final_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton10 = new javax.swing.JButton();
+        generate_schedule = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton10.setBackground(new java.awt.Color(0, 102, 153));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Generate Schedule");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        generate_schedule.setBackground(new java.awt.Color(0, 102, 153));
+        generate_schedule.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        generate_schedule.setForeground(new java.awt.Color(255, 255, 255));
+        generate_schedule.setText("Generate Schedule");
+        generate_schedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                generate_scheduleActionPerformed(evt);
             }
         });
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 360, 80));
+        add(generate_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 360, 80));
 
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -67,12 +68,20 @@ public class final_panel extends javax.swing.JPanel {
         jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
         jLabel102.setText("Generate Timetable");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 210, 40));
+
+        jLabel103.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel103.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel103.setText("5th step by 5");
+        add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void generate_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generate_scheduleActionPerformed
+        // get rooms from room and room_availablity
+        // get teacers from teachers and teacher_schedule
+        // get sections from sections section_schedule
+        
+    }//GEN-LAST:event_generate_scheduleActionPerformed
 
     private void jTextArea2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextArea2AncestorAdded
         // TODO add your handling code here:
@@ -80,8 +89,9 @@ public class final_panel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
+    private javax.swing.JButton generate_schedule;
     private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
     private javax.swing.JScrollPane jScrollPane4;
     static javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables

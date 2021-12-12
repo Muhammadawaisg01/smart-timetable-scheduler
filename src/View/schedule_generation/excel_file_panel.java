@@ -2,6 +2,8 @@
 
 package View.schedule_generation;
 import static View.MainFrame.first_panel1;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 public class excel_file_panel extends javax.swing.JPanel {
 
     
@@ -31,6 +33,11 @@ public class excel_file_panel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("upload excel file");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 320, 70));
 
         jLabel106.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -74,6 +81,15 @@ public class excel_file_panel extends javax.swing.JPanel {
     private void excel_file_next_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excel_file_next_btnMouseEntered
         
     }//GEN-LAST:event_excel_file_next_btnMouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser chooser = new JFileChooser("/");
+        int f = chooser.showSaveDialog(null);
+        if (f == JFileChooser.APPROVE_OPTION) {
+            JOptionPane.showMessageDialog(null, chooser.getSelectedFile().getAbsolutePath());
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

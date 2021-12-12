@@ -1,5 +1,3 @@
-
-
 package Model.professor;
 
 import Enums.Professor_Allocation;
@@ -12,41 +10,43 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Professor_Section_Allocation {     
-    
+public class Professor_Section_Allocation {
 
-    int prof_id ;   
+    int prof_id;
     String section;
     int semester;
-    String course_code ;
-     Professor_Allocation allocation ;
-    
-    
+    String course_code;
+    Professor_Allocation allocation;
+
     public Professor_Section_Allocation(int prof_id, String section, int semester, String course_code) {
         this.prof_id = prof_id;
         this.section = section;
         this.semester = semester;
         this.course_code = course_code;
     }
-    
-    
+
     public Professor_Section_Allocation(int prof_id, String course_code) {
         this.prof_id = prof_id;
         this.course_code = course_code;
     }
-        
-    public Professor_Section_Allocation() {     
-        
+
+    public Professor_Section_Allocation(int prof_id, String course_code, Professor_Allocation allocation) {
+        this.prof_id = prof_id;
+        this.course_code = course_code;
+        this.allocation = allocation;
     }
     
-//    @Override
-//    public String toString() {
-//        return "Professor-to-Course{" + "prof_id=" + prof_id + ", course_code=" + course_code + '}';
-//    }
 
+    public Professor_Section_Allocation() {
+
+    }
     @Override
     public String toString() {
         return "Professor_Section_Allocation{" + "prof_id=" + prof_id + ", section=" + section + ", semester=" + semester + ", course_code=" + course_code + '}';
+    }
+
+    public Professor_Allocation getAllocation() {
+        return allocation;
     }
     
 
@@ -65,7 +65,7 @@ public class Professor_Section_Allocation {
     public void setCourse_code(String course_code) {
         this.course_code = course_code;
     }
-    
+
     public static ResultSet getData() {
         try {
             String q = "select * from section_professor_allocation";
@@ -77,8 +77,5 @@ public class Professor_Section_Allocation {
         }
         return null;
     }
-    
+
 }
-
-
-

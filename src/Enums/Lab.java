@@ -1,7 +1,4 @@
 
-
-
-
 package Enums;
 
 public enum Lab {

@@ -68,37 +68,7 @@ public class Algo_for_Professor_assigning {
         return crs.getCourse_code();
     }
 
-//    public Section_Day[] search_Day(Section sec, String course_code ) { 
-//        Section_Day[] days = new Section_Day[2]; 
-//        int var = 0 ; 
-//        for(int i = 0 ; i < sec.getSchedule().getDays().size(); i++) { 
-//            for(int j = 0 ; j < sec.getSchedule().getDays().get(i).getTimeslots().size(); j++){ 
-//            ArrayList<Section_Timeslot> timeslots= sec.getSchedule().getDays().get(i).getTimeslots();   
-//                if( timeslots.get(j).isCheck() )    {
-////                    String crs_code = get_Course_Code( courses, timeslots.get(j).getCourse() ) ; 
-//                    if(crs_code.equalsIgnoreCase(course_code) )     {   
-//                    days[var] =  sec.getSchedule().getDays().get(i) ;   var++;
-//                    }
-//                }
-//            }
-//        }
-//        return days ;
-//    }
-//    public Section_Timeslot[] search_Timeslot(Section sec, String course_code ) {   
-//        Section_Timeslot[] slots = new Section_Timeslot[2]; 
-//        int var = 0 ; 
-//        for(int i = 0 ; i < sec.getSchedule().getDays().size(); i++) {  
-//            for(int j = 0 ; j < sec.getSchedule().getDays().get(i).getTimeslots().size(); j++){     
-//            ArrayList<Section_Timeslot> timeslots = sec.getSchedule().getDays().get(i).getTimeslots()   ;    
-//            
-////                String crs_code = get_Course_Code( courses, timeslots.get(j).getCourse() ) ; 
-////                if(crs_code.equalsIgnoreCase(course_code) )     {   
-////                    slots[var] =  sec.getSchedule().getDays().get(i).getTimeslots() ;   var++ ; 
-////                }
-//            }
-//        }
-//        return slots ;
-//    }
+
     //  This Method will take every slot of the section and assign them to the professor respective timeslot 
         public static void section_to_Professor_Timeslotting(int sem_no, String sec_no, String course_code, Section_Schedule sec_sch, Professor prof ) {
         for (int i = 0; i < sec_sch.getDays().size(); i++) {             //
@@ -151,6 +121,7 @@ public class Algo_for_Professor_assigning {
 //        obj.professor_Scheduling_Algorithm();
 //    }
     public Algo_for_Professor_assigning() { 
+        
     }
 
 }   // Main Class

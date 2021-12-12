@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/FYP/FinalYearProject/src/View/student/view_student_details_panel.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/View/TableViewUtility.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/View/section/update_section_panel.java</file>
@@ -12,6 +13,10 @@
             <file>file:/E:/FYP/FinalYearProject/src/View/MainFrame.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/View/section/create_section_panel.java</file>
             <file>file:/E:/FYP/FinalYearProject/src/Controller/Runner.java</file>
+=======
+            <file>file:/E:/Scheduler-0(new)/src/Controller/new_algorithm.java</file>
+            <file>file:/E:/Scheduler-0(new)/src/View/MainFrame.java</file>
+>>>>>>> d44d3c1510cedc48d8357b8376ad2588ed36df32
         </group>
     </open-files>
 </project-private>

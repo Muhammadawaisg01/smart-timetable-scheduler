@@ -1,3 +1,4 @@
+
 package Model.semester;
 
 import Enums.Lecture;

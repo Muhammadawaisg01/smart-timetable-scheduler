@@ -68,10 +68,17 @@ public class Runner {
         is_all_slots_available_for_slotting();          // ask user if he want to close any timeslot for lecture scheduling     
         System.out.println(is_scheduling_possible());
         main_algorithm();
+<<<<<<< HEAD
         System.out.println("Scheduler        SIze      " + scheduler.size());
 //        for (Scheduler sch : scheduler) {
 //            System.out.println(sch.toString());
 //        }
+=======
+        System.out.println("Scheduler        Size      " + scheduler.size());
+        for (Scheduler sch : scheduler) {
+            System.out.println(sch.toString());
+        }
+>>>>>>> d44d3c1510cedc48d8357b8376ad2588ed36df32
         assignProfessorToSections();
         SectionUtility.assign_schedule_to_section();
         Algo_for_Professor_assigning.section_to_Professor_Scheduling();
@@ -140,7 +147,7 @@ public class Runner {
             int semNo = semester.getNo();
             for (Section section : sec) {
                 int profId;
-                ArrayList<Course> courses = section.getCourses();
+                ArrayList<Course> courses = section.getSectionCourses();
                 System.out.println(courses.size());
                 for (Course crs : courses) {
 //                    System.out.println("Semester: " + semNo + "\tSection: " + section.getNo() + "\tCourse: " + crs.getTitle());
@@ -245,6 +252,7 @@ public class Runner {
 //        }
 //        System.out.println("");
 //    }
+    
     public static void inputForRooms_Labs() {
         System.out.print("Enter number of rooms in department  :  ");
         int input1 = in.nextInt();
@@ -296,7 +304,7 @@ public class Runner {
 //    public static void fittness_function()  {   
 //        //      
 //    }   
-    public static void main_algorithm() {       // scheduling algorithm         
+    public static void main_algorithm() {               // scheduling algorithm         
 
         boolean check1 = false;
 //        boolean check2 = false ;
@@ -328,7 +336,7 @@ public class Runner {
                 for (o = 0; o < 2; o++) {// for credit hours/timeslots = 2      
                     Section section = semesters.get(sem).getSections().get(sec);
 
-                    for (int a = 0; a < section.getCourses().size(); a++) {
+                    for (int a = 0; a < section.getSectionCourses().size(); a++) {
 
 //                        Room rm = Room.getRoom(rooms , section , sem+1) ; 
 //                        Room_Day day = Room.get_Day() ;   
@@ -341,7 +349,7 @@ public class Runner {
 
                                     rm.getDays().get(day_no).getTimeslots().get(slot_no).setCheck(true);
 
-                                    course_name = semesters.get(sem).getSections().get(sec).getCourses().get(a).getTitle();
+                                    course_name = semesters.get(sem).getSections().get(sec).getSectionCourses().get(a).getTitle();
                                     System.out.println("main alog");
                                     scheduler.add(new Scheduler(rm.getName(), semesters.get(sem).getNo(),
                                             "" + (semesters.get(sem).getSections().get(sec).getId()),
@@ -356,10 +364,7 @@ public class Runner {
                                 break;
                             }
                         }
-//                        if(){
-//                            
-//                        }
-                        permute(semesters.get(sem).getSections().get(sec).getCourses());
+                        permute(semesters.get(sem).getSections().get(sec).getSectionCourses());
 //                        else{
 //                            
 //                        }
@@ -567,7 +572,7 @@ public class Runner {
         int course_num = 0;
         for (Semester sem : semesters) {
             for (Section sec : sem.getSections()) {
-                for (Course crs : sec.getCourses()) {
+                for (Course crs : sec.getSectionCourses()) {
                     course_num++;
                 }
             }
@@ -601,10 +606,6 @@ public class Runner {
         } else if (input1 == 1) {
             System.out.println("All Slots will be picked up for scheduling...");
         }
-
-    }
-
-    public static void m1() {
 
     }
 

@@ -232,11 +232,7 @@ public class Student {
 
         return null;
     }
-
-    /*
-    @param registration number of student
-    @return List of courses registered by student
-     */
+    
     private static ArrayList<Course> getCourses(String stdRegNo) {
         ArrayList<Course> courses = new ArrayList<>();
         String q = "select * from registered_courses where student_registration_no = '" + stdRegNo + "'";

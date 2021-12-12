@@ -1,34 +1,33 @@
-
-
-package Model.professor ; 
-
+package Model.professor;
 
 import Model.WeekDays;
 import db.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList ; 
+import java.util.ArrayList;
 import static db.DBConnection.getConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-public class Professor { 
-    
-    private int id ;    
-    private String name ;
-    private Professor_Schedule schedule ;
-    private ArrayList<Professor_Lecture_Clash> clash_array =  new ArrayList<>();
-    public Professor( int id, String name ) { 
-        this.id = id ; 
-        this.name = name ; 
-        schedule = new Professor_Schedule(5,6);
-    }   
-    
+
+public class Professor {
+
+    private int id;
+    private String name;
+    private Professor_Schedule schedule;
+    private ArrayList<Professor_Lecture_Clash> clash_array = new ArrayList<>();
+
+    public Professor(int id, String name) {
+        this.id = id;
+        this.name = name;
+        schedule = new Professor_Schedule(5, 6);
+    }
+
     public Professor() {
     }
-    
+
     @Override
     public String toString() {
         return "Professor{" + "id=" + id + ", name=" + name + '}';
@@ -65,16 +64,15 @@ public class Professor {
     public void setClash_array(ArrayList<Professor_Lecture_Clash> clash_array) {
         this.clash_array = clash_array;
     }
-        
-    
+
     public void display_Professor() {  // display tabular data
 
-        System.out.println("________________________________________")  ; 
-        int i = 0, j = 0    ;   
-        Professor_Schedule schedule = this.getSchedule() ; 
-        System.out.println("Professor ID :   "+this.id)  ;   
-        System.out.println("Professor Name :   "+this.name)  ;   
-        
+        System.out.println("________________________________________");
+        int i = 0, j = 0;
+        Professor_Schedule schedule = this.getSchedule();
+        System.out.println("Professor ID :   " + this.id);
+        System.out.println("Professor Name :   " + this.name);
+
 //        System.out.println("Semester No:\t" + semesterNo);
 //        System.out.println("Section_no      " + sec_no);
         for (int k = 0; k < schedule.getDays().size(); k++) {
@@ -106,25 +104,25 @@ public class Professor {
             System.out.println();
         }
         System.out.println("_________________________My Clashes_____________________________________");
-        for(int var = 0 ; var < this.getClash_array().size() ; var++) { 
-            System.out.print("ID  : "+getClash_array().get(var).getProfessor_id()+"\t")  ; 
-            System.out.print("Clash_No  : "+getClash_array().get(var).getLecture_no()+"\t")  ;  
-            System.out.print("Semester  : "+getClash_array().get(var).getSemester()+"\t" )  ; 
-            System.out.print("Section  : "+getClash_array().get(var).getSection()+"\t")  ; 
-            System.out.print("Room  : "+getClash_array().get(var).getRoom()+"\t")  ; 
-            System.out.print("Day  : "+getClash_array().get(var).getDay_no()+"\t")  ; 
-            System.out.print("Slot No  : "+getClash_array().get(var).getSlot_no()+"\t")  ; 
-            System.out.print("Course  : "+getClash_array().get(var).getCourse()+"\t")  ;
-            System.out.print("isResolved  : "+getClash_array().get(var).isIsresolved()+"\t")  ; 
+        for (int var = 0; var < this.getClash_array().size(); var++) {
+            System.out.print("ID  : " + getClash_array().get(var).getProfessor_id() + "\t");
+            System.out.print("Clash_No  : " + getClash_array().get(var).getLecture_no() + "\t");
+            System.out.print("Semester  : " + getClash_array().get(var).getSemester() + "\t");
+            System.out.print("Section  : " + getClash_array().get(var).getSection() + "\t");
+            System.out.print("Room  : " + getClash_array().get(var).getRoom() + "\t");
+            System.out.print("Day  : " + getClash_array().get(var).getDay_no() + "\t");
+            System.out.print("Slot No  : " + getClash_array().get(var).getSlot_no() + "\t");
+            System.out.print("Course  : " + getClash_array().get(var).getCourse() + "\t");
+            System.out.print("isResolved  : " + getClash_array().get(var).isIsresolved() + "\t");
             System.out.println("");
-        }         
+        }
 //        for(int var=0; var<this.getAllocations().size(); var++){
 //            System.out.println(this.getAllocations().get(i).toString());
 //        }
     }
-    
+
     public static ResultSet professorIsFree(int day, int slot, int profID) {
-        String q = "SELECT * FROM section_professor_allocation JOIN lectures WHERE section_professor_allocation.professor_id = " + profID + " AND section_professor_allocation.course_code = lectures.course_code AND section_professor_allocation.section_id = lectures.section_id AND lectures.day_no = " + day +" AND lectures.timeslot_no = " + slot;
+        String q = "SELECT * FROM section_professor_allocation JOIN lectures WHERE section_professor_allocation.professor_id = " + profID + " AND section_professor_allocation.course_code = lectures.course_code AND section_professor_allocation.section_id = lectures.section_id AND lectures.day_no = " + day + " AND lectures.timeslot_no = " + slot;
         Connection conn = getConnection();
         PreparedStatement stmt;
         try {
@@ -135,38 +133,33 @@ public class Professor {
         }
         return null;
     }
-    
-        public static int get_total_no_of_professors() { 
+
+    public static int get_total_no_of_professors() {
         Connection conn = db.DBConnection.getConnection();
-        int total_professors = 0 ;
-        String query = "select COUNT(*) from schedulerdb.professor " ; 
-        try{
-        PreparedStatement stmt= conn.prepareStatement(query);
-        ResultSet rs = stmt.executeQuery();
-        while(rs.next() ) {
-            total_professors=rs.getInt(1) ;
+        int total_professors = 0;
+        String query = "select COUNT(*) from schedulerdb.professor ";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                total_professors = rs.getInt(1);
             }
-        }
-        catch (Exception ex){
-            
+        } catch (Exception ex) {
+
         }
         return total_professors;
     }
-        public static ResultSet get_all_professors(){
-        ResultSet rs=null;
-        String query ="select * from schedulerdb.professor" ; 
-        try
-        {
-            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query) ;
-            rs = stmt1.executeQuery() ;
-        }
-        catch(Exception ex)
-        {
-            JOptionPane.showMessageDialog(null, "Error in Fetching Data of Professors", "Professor", JOptionPane.ERROR_MESSAGE) ; 
+
+    public static ResultSet get_all_professors() {
+        ResultSet rs = null;
+        String query = "select * from professor";
+        try {
+            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
+            rs = stmt1.executeQuery();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in Fetching Data of Professors", "Professor", JOptionPane.ERROR_MESSAGE);
         }
         return rs;
     }
 
 }
-
-
