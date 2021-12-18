@@ -5,6 +5,10 @@
  */
 package View.section;
 
+import Model.Queries;
+import View.Alerts;
+import static View.Alerts.alert;
+import static View.Alerts.isEmpty;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
@@ -24,7 +28,6 @@ public class add_new_program extends javax.swing.JPanel {
     /**
      * Creates new form add_new_program
      */
-    private static int programID = 1;
 
     public add_new_program() {
         initComponents();
@@ -106,6 +109,17 @@ public class add_new_program extends javax.swing.JPanel {
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         String program = program_name.getText();
         int total_semesters = 0;
+        if (isEmpty(program)) {
+            alert("Enter program name");
+            return;
+        }
+        // check duplicate
+        String query = "select * from program where program_name = '" + program + "'";
+        if (Queries.duplicate(query)) {
+            alert("Program name already exists");
+            return;
+        }
+        
         String q = "insert into program "
                 + "("
                 + "program_id,"
@@ -114,13 +128,17 @@ public class add_new_program extends javax.swing.JPanel {
                 + " VALUES "
                 + "(?, ?)";
         try {
+            int programID = Queries.getRowCount("select * from program") + 1;
             total_semesters = Integer.parseInt(semesters.getText());
+            if (total_semesters > 10) {
+                alert("You can add maximum ten semesters");
+                return;
+            }
             Connection conn = getConnection();
             PreparedStatement stmt = conn.prepareStatement(q);
             stmt.setInt(1, programID);
             stmt.setString(2, program);
             stmt.execute();
-//            if (res) {
             for (int i = 1; i <= total_semesters; i++) {
                 q = "insert into semester "
                         + "("
@@ -134,12 +152,9 @@ public class add_new_program extends javax.swing.JPanel {
                 stmt.setInt(2, programID);
                 stmt.execute();
             }
-            programID++;
+            alert("Program added successfully");
             program_name.setText("");
             semesters.setText("");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Someting went wrong!");
-//            }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Semester Number should be integer!");
         } catch (SQLException ex) {

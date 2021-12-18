@@ -135,6 +135,7 @@ public class second_panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_lbl_02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseClicked
+        
         this.setVisible(false);
         third_panel1.setVisible(true);
     }//GEN-LAST:event_back_lbl_02MouseClicked

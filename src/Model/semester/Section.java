@@ -23,8 +23,17 @@ public class Section {  // GA POPULATION
     ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
     Section_Schedule schedule = new Section_Schedule();
-    ArrayList<Section_Schedule> randomSchedules = new ArrayList<>();    // GA INDIVIDUALS 
 
+    public Section(String id, int student_strength, ArrayList<Course> sectionCourses, Section_Schedule schedule) {
+        this.id = id;
+        this.student_strength = student_strength;
+        this.sectionCourses = sectionCourses;
+        this.schedule = schedule;
+    }
+
+    
+
+    
     public ArrayList<Professor_Section_Allocation> getAllocations() {
         return this.allocations;
     }
@@ -113,11 +122,16 @@ public class Section {  // GA POPULATION
 
     @Override
     public String toString() {
-        return "Section{" + "ID=" + id + '}';
+        String s =  "Section{" + "id=" + id + ", student_strength=" + student_strength + ", sectionCourses=" + sectionCourses + ", allocations=" + allocations + ", schedule=" + schedule + '}';
+        System.out.println(s);
+        System.out.println(schedule.toString());
+        return "";
     }
 
+    
+    
     public void displaySection(int semesterNo) {  // display tabular data
-
+        
         System.out.println("________________________________________");
         int i = 0, j = 0;
         Section_Schedule schedule = this.getSchedule();
@@ -146,7 +160,6 @@ public class Section {  // GA POPULATION
                 if (schedule.getDays().get(k).getTimeslots().get(j).isCheck() == false) {
                     System.out.print("__");
                 } else {
-
 //                        System.out.print( Course.getCourse(course,schedule.days.get(k).timeslots.get(j).course_code) + " ") ; 
                 }
             }
@@ -292,12 +305,6 @@ public class Section {  // GA POPULATION
                     }
                 }
             }
-        }
-    }
-
-    public void initializePopulation() {
-        for (int i = 0; i < 10; i++) {
-            randomSchedules.add(new Section_Schedule());
         }
     }
 

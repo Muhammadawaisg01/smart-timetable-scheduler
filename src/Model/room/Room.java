@@ -20,10 +20,6 @@ public class Room {
     boolean isFull;
     Room_Type room_type;
 
-//    Array of specified courses, it means that only these courses will be taught in these rooms
-    ArrayList<Course> specified_courses = new ArrayList<>();    // a hard Constraint
-
-//    ArrayList<Section> specified_sections =  new ArrayList<>() ;    // remove this array,  no much need of it
     private ArrayList<Room_Day> days;
 
     public Room(String name, boolean isFull, ArrayList<Room_Day> days) {
@@ -38,6 +34,21 @@ public class Room {
         this.days = days;
         this.room_type = null;
     }
+
+    public Room(String name, int capacity, Room_Type room_type, ArrayList<Room_Day> days) {
+        this.name = name;
+        this.capacity = capacity;
+        this.room_type = room_type;
+        this.days = days;
+    }
+
+    public Room(String name, int capacity, boolean isFull, Room_Type room_type) {
+        this.name = name;
+        this.capacity = capacity;
+        this.isFull = isFull;
+        this.room_type = room_type;
+    }
+    
 
     public Room() {
 
@@ -91,14 +102,6 @@ public class Room {
         this.room_type = room_type;
     }
 
-    public ArrayList<Course> getSpecified_courses() {
-        return specified_courses;
-    }
-
-    public void setSpecified_courses(ArrayList<Course> specified_courses) {
-        this.specified_courses = specified_courses;
-    }
-
 //    public ArrayList<Section> getSpecified_sections() {
 //        return specified_sections;
 //    }
@@ -118,21 +121,24 @@ public class Room {
 //        }
 //        return var ; 
 //    }
-    @Override
-    public String toString() {
-
-        return "Room{" + "name=" + name + ", check=" + isFull + ", days=" + days + '}';
-//            for(int i = 0 ; i < this.days.size(); i++) 
-//            {
-//                System.out.println(this.days.get(i).name+"\t\t") ; 
-//                for(int j = 0 ; j < this.days.get(i).timeslots.size() ; j++) 
-//                { 
-//                    System.out.println(this.days.get(i).name) ; 
-//                    System.out.println(this.days.get(i).timeslots.get(j).no +"   "+this.days.get(i).timeslots.get(j).check ) ; 
-//                }
-//                System.out.println("") ; 
-//            }
+//    @Override
+    public void ToString() {
+        String s =  "Room{" + "name=" + name + ", check=" + isFull + ", days=" + days + '}';
+        System.out.println(s);
+        for (Room_Day room_Day: this.days) {
+            System.out.println(room_Day.no);
+            for (Room_Timeslot room_Timeslot: room_Day.getTimeslots()) {
+                System.out.println(room_Timeslot.toString());
+            }
+        }
     }
+
+//    @Override
+//    public String toString() {
+//        return "Room{" + "name=" + name + ", capacity=" + capacity + ", isFull=" + isFull + ", room_type=" + room_type + '}';
+//    }
+    
+    
 
     public void display() {
         System.out.println("Room" + "name=" + name + ", check=" + isFull);

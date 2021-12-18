@@ -8,6 +8,9 @@ package View.section;
 import Enums.Professor_Allocation;
 import Model.Queries;
 import Model.professor.Professor_Section_Allocation;
+import static View.Alerts.alert;
+import static View.MainFrame.create_section_panel1;
+import static View.MainFrame.professor_course_allocation1;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +18,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -57,6 +59,23 @@ public class Professor_course_allocation extends javax.swing.JPanel {
             i++;
         }
         professor_dropdown.setModel(new DefaultComboBoxModel(prof));
+    }
+
+    /**
+     *
+     * @param courseCode Course to be added
+     * @param type Lecture type
+     * @return true: if course has been already assigned a professor false: if
+     * course has not been assigned a professor
+     */
+    private boolean checkDuplication(String courseCode, Professor_Allocation type) {
+        for (Professor_Section_Allocation professor_Section_Allocation : allocations) {
+            if (professor_Section_Allocation.getCourse_code().equalsIgnoreCase(courseCode)
+                    && professor_Section_Allocation.getAllocation() == type) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -154,7 +173,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 section_nameActionPerformed(evt);
             }
         });
-        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 480, 40));
+        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 370, 40));
 
         jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
@@ -199,15 +218,40 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         String professor = professor_dropdown.getSelectedItem().toString();
         String courseCode = Queries.getCourseCode(course);
         int professorID = Queries.getProfessorID(professor);
+        // assign both lecture and lab to a professor
         if (lectureType.equalsIgnoreCase("Both")) {
+            // cours has no lab
+            if (Queries.duplicate("select * from course where course_code = '" + courseCode + "' and hasLab = 'false'")) {
+                alert("Course has no lab");
+                return;
+            }
+            // course has been assigned a professor already
+            if (checkDuplication(courseCode, Professor_Allocation.LAB) || checkDuplication(courseCode, Professor_Allocation.LECTURE)) {
+                alert("Can not assign two professors to a course");
+                return;
+            }
             allocations.add(new Professor_Section_Allocation(professorID, courseCode, Professor_Allocation.LECTURE));
             allocations.add(new Professor_Section_Allocation(professorID, courseCode, Professor_Allocation.LAB));
             allocated_textarea.append("\n" + professor + "\t" + course + "\tLecture");
             allocated_textarea.append("\n" + professor + "\t" + course + "\tLab");
-        } else if (lectureType.equalsIgnoreCase("Lab")) {
+        } else if (lectureType.equalsIgnoreCase("Lab")) {   // Assign professor to course lab
+            // course has no lab
+            if (Queries.duplicate("select * from course where course_code = '" + courseCode + "' and hasLab = 'false'")) {
+                alert("Course has no lab");
+                return;
+            }
+            // course has already assigned professor
+            if (checkDuplication(courseCode, Professor_Allocation.LAB)) {
+                alert("Can not assign two professors to a course lab");
+                return;
+            }
             allocations.add(new Professor_Section_Allocation(professorID, courseCode, Professor_Allocation.LAB));
             allocated_textarea.append("\n" + professor + "\t" + course + "\tLab");
-        } else if (lectureType.equalsIgnoreCase("Lecture")) {
+        } else if (lectureType.equalsIgnoreCase("Lecture")) {   // asssign professor of lecture 
+            if (checkDuplication(courseCode, Professor_Allocation.LECTURE)) {
+                alert("Can not assign two professors to a course lecture");
+                return;
+            }
             allocations.add(new Professor_Section_Allocation(professorID, courseCode, Professor_Allocation.LECTURE));
             allocated_textarea.append("\n" + professor + "\t" + course + "\tLecture");
         } else {
@@ -254,6 +298,12 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 + "professor_id)"
                 + " VALUES "
                 + "(?, ?, ?, ?)";
+        // check if all courses has been assigned professors
+        int totalCourses = courses_dropdown.getModel().getSize();
+        if (allocations.size() < totalCourses) {
+            alert("Please assign professor to all courses");
+            return;
+        }
         try {
             for (Professor_Section_Allocation allocation : allocations) {
                 stmt = conn.prepareStatement(q);
@@ -263,6 +313,10 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 stmt.setInt(4, allocation.getProf_id());
                 stmt.execute();
             }
+            JOptionPane.showMessageDialog(null, "Professors allocated successfully!");
+            allocated_textarea.setText("Allocations:");
+            professor_course_allocation1.setVisible(false);
+            create_section_panel1.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Professor_course_allocation.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Error in database!");
@@ -270,7 +324,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_save_allocationActionPerformed
 
     // custom veriables
-    private String lectureType;
+    private String lectureType = "";
     private ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

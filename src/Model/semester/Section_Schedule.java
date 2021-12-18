@@ -10,10 +10,7 @@ public class Section_Schedule {
     public Section_Schedule() {
         this.initialize_Section_Schedule();
     }
-
-    public Section_Schedule(ArrayList<Course> sectionCourses) {
-
-    }
+    
 
     public void freeDaySlot(int day, int slot) {
         // set free day slot
@@ -22,7 +19,7 @@ public class Section_Schedule {
                 d.getTimeslots().forEach(sl -> {
                     if (sl.getSlot_no() == slot) {
                         sl.setCheck(false);
-                        sl.setCourse("");
+                        sl.setCourse_code("");
                         sl.setLecture_no(0);
                         sl.setRoom("");
                     }
@@ -38,7 +35,7 @@ public class Section_Schedule {
                 d.getTimeslots().forEach(sl -> {
                     if (sl.getSlot_no() == slot) {
                         sl.setCheck(true);
-                        sl.setCourse(course);
+                        sl.setCourse_code(course);
                         sl.setLecture_no(lecture);
                         sl.setRoom(room);
                     }
@@ -49,7 +46,7 @@ public class Section_Schedule {
 
 //    public Section_Schedule(ArrayList<Section_Day> days) {
 //        this.days = days;
-////        this.initialize_Section_Schedule();
+//        this.initialize_Section_Schedule();
 //    }
     public void display() {
         for (Section_Day section_Day : days) {
@@ -84,4 +81,11 @@ public class Section_Schedule {
             this.days.add(obj1);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Section_Schedule{" + "days=" + days + '}';
+    }
+    
+    
 }

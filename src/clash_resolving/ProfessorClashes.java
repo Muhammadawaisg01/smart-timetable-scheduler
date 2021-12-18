@@ -85,7 +85,7 @@ public class ProfessorClashes {
                                                     getDays().get(day_no).getTimeslots().get(slot_no);
 
                                             sec_timeslot.setCheck(true);
-                                            sec_timeslot.setCourse(clash.getCourse());
+                                            sec_timeslot.setCourse_code(clash.getCourse());
                                             sec_timeslot.setRoom(rm.getName());
                                             sec_timeslot.setSlot_no(slot_no);
                                             sec_timeslot.setLecture_no(0);

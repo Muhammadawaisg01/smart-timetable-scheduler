@@ -34,16 +34,7 @@ public class Runner {
     public static ArrayList<Scheduler> scheduler = new ArrayList<>();  //public
 
     public static void main(String[] args) {                                    // MAIN METHOD  
-//<<<<<<< HEAD
-//        createConnection(); // creating connection with database  
-////        addRegisteredCourses();
-////        System.exit(1);
-//        // fill student_list ArrayList
-//        add_Data_to_Student_List(); // read all student from database
-//        // fill the semesters ArrayList
-//        add_Data_to_Semester_List();    // read semester and sections
-//        
-//=======
+
         createConnection(); // creating connection with database    
         System.out.println("I AM CONNECTION        " + getConnection());
         Entities_Main_Arrays.add_Data_to_Student_List();
@@ -51,7 +42,6 @@ public class Runner {
 //        semesters = Entities_Main_Arrays.semesters;
         clash_resolving.Student student = new clash_resolving.Student();
 
-        // 
 //        readCourseFile();
 //        Section_Schedule obj1 = new Section_Schedule();   
         // fill professor_list ArrayList
@@ -64,6 +54,7 @@ public class Runner {
 //                System.out.println(section.getCourses().size());
 //            }
 //        }
+<<<<<<< HEAD
         inputForRooms_Labs();   // console input for rooms and others
         is_all_slots_available_for_slotting();          // ask user if he want to close any timeslot for lecture scheduling     
         System.out.println(is_scheduling_possible());
@@ -84,6 +75,23 @@ public class Runner {
         Algo_for_Professor_assigning.section_to_Professor_Scheduling();
         Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
         student.handleStudentClashes();
+=======
+//        System.out.println(course.size() + "\tSize of courses");
+//        System.exit(0);
+        inputForRooms_Labs(); // First Work  
+//        is_all_slots_available_for_slotting();          // ask user if he want to close any timeslot for lecture scheduling     
+////        System.out.println(is_scheduling_possible());
+//        main_algorithm();
+//        System.out.println("Scheduler        Size      " + scheduler.size());
+//        for (Scheduler sch : scheduler) {
+//            System.out.println(sch.toString());
+//        }
+//        assignProfessorToSections();
+//        SectionUtility.assign_schedule_to_section();
+//        Algo_for_Professor_assigning.section_to_Professor_Scheduling();
+//        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
+//        student.handleStudentClashes();
+>>>>>>> 00454a4fc1ee248b0331d0ea5927c5b4b622a2c5
 //        student.handleStudentClashes(2);
 //        System.out.println("\n\n\n\n\n\n\n\n\n\n");
 //        Algo_For_Student_Assigning.assign_Data_from_Section_to_Student_Schedule();
@@ -536,6 +544,7 @@ public class Runner {
 //            System.out.println("\n\n") ; 
 //        }
 //    } 
+<<<<<<< HEAD
     public static boolean is_scheduling_possible() {
         int lectures_capacity = 0;
         int lectures_rooms = 0;
@@ -589,6 +598,61 @@ public class Runner {
             return false;
         }
     }
+=======
+//    public static boolean is_scheduling_possible() {
+//        int lectures_capacity = 0;
+//        int lectures_rooms = 0;
+//        int labs = 0;
+//
+//        for (Room rm : rooms) {
+//            if (rm.isIsLab()) {
+//                labs++;
+//            }
+//        }
+//        for (Room rm : rooms) {
+//            if (!rm.isIsLab()) {
+//                lectures_rooms++;
+//            }
+//        }
+//
+//        for (int i = 0; i < rooms.size(); i++) {
+//            for (int j = 0; j < rooms.get(i).getDays().size(); j++) {
+//                for (int k = 0; k < rooms.get(i).getDays().get(j).getTimeslots().size(); k++) {
+//                    Room_Timeslot slot = rooms.get(i).getDays().get(j).getTimeslots().get(k);
+//                    if (!slot.isCheck()) {
+//                        lectures_capacity++;
+//                    }
+//                }
+//            }
+//        }
+//
+////    int days = rooms.get(0).getDays().size();
+////    int timeslots = rooms.get(0).getDays().get(0).getTimeslots().size() ;       
+////    lectures_capacity = lectures_rooms * days * timeslots ;         // for theory lectures  
+//        System.out.println("slots available are\t\t" + lectures_capacity);
+//        int course_lectures = 0;
+//
+//        int course_num = 0;
+//        for (Semester sem : semesters) {
+//            for (Section sec : sem.getSections()) {
+//                for (Course crs : sec.getSectionCourses()) {
+//                    course_num++;
+//                }
+//            }
+//        }
+//
+//        course_lectures = course_num * 2;
+//        System.out.println("lectures  are  \t\t" + course_lectures);
+//        int difference = lectures_capacity - course_lectures;
+//        System.out.println("diff is  \t\t" + difference);
+//
+//        if (difference >= 0) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+>>>>>>> 00454a4fc1ee248b0331d0ea5927c5b4b622a2c5
 
     public static void is_all_slots_available_for_slotting() {
 // ask admin that if he want any timeslot to be closed for scheduling in all rooms or not

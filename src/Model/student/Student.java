@@ -23,7 +23,7 @@ public class Student {
     String section_id;
 
     Student_Schedule schedule;
-    ArrayList<Course> registered_courses = new ArrayList<>();
+    public ArrayList<Course> registered_courses = new ArrayList<>();
 
     private ArrayList<Student_lecture_clash> clash_array = new ArrayList<>();
     private ArrayList<Student_Section_Allocation> allocations = new ArrayList<>();
@@ -43,6 +43,14 @@ public class Student {
         this.registered_courses = courses ; 
         schedule = new Student_Schedule(days, slots) ; 
     } 
+
+    public Student(String registration_no, String name, String section_id) {
+        this.registration_no = registration_no;
+        this.name = name;
+        this.section_id = section_id;
+    }
+    
+    
     
 //    public Student(String registration_no, String name, int semester, String section) {
 //        this.registration_no = registration_no;

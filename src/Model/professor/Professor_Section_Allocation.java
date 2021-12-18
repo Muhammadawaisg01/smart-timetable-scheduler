@@ -29,16 +29,12 @@ public class Professor_Section_Allocation {
         this.prof_id = prof_id;
         this.course_code = course_code;
     }
-
     public Professor_Section_Allocation(int prof_id, String course_code, Professor_Allocation allocation) {
         this.prof_id = prof_id;
         this.course_code = course_code;
         this.allocation = allocation;
     }
-    
-
-    public Professor_Section_Allocation() {
-
+    public Professor_Section_Allocation() {     
     }
     @Override
     public String toString() {

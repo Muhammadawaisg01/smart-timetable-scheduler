@@ -9,6 +9,8 @@ package View.schedule_generation;
  *
  * @author muhammad awais 1
  */
+import Controller.NewAlgorithm;
+import static View.MainFrame.final_panel1;
 import static View.MainFrame.second_panel1;
 public class first_panel_part2 extends javax.swing.JPanel {
 
@@ -33,10 +35,10 @@ public class first_panel_part2 extends javax.swing.JPanel {
         jLabel101 = new javax.swing.JLabel();
         back_lbl_02 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        lab = new javax.swing.JSpinner();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        lec = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,7 +50,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
 
         jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("2nd step by 5");
+        jLabel101.setText("2nd step by 3");
         add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 190, 40));
 
         back_lbl_02.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -71,7 +73,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
         jLabel102.setText("Number of Labs of each subject in a week:");
         add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 410, 40));
-        add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 80, 40));
+        add(lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 80, 40));
 
         jLabel103.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(0, 102, 153));
@@ -83,13 +85,15 @@ public class first_panel_part2 extends javax.swing.JPanel {
         jLabel104.setText("Number of Lectures of each subject in a week:");
         add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 430, 40));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2, 1, 2, 1));
-        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 80, 40));
+        lec.setModel(new javax.swing.SpinnerNumberModel(2, 1, 2, 1));
+        add(lec, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 80, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_lbl_02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseClicked
+        NewAlgorithm.num_of_labs_per_week = (int) lab.getValue();
+        NewAlgorithm.num_of_lectures_per_week = (int) lec.getValue();
         this.setVisible(false);
-        second_panel1.setVisible(true); 
+        final_panel1.setVisible(true); 
     }//GEN-LAST:event_back_lbl_02MouseClicked
 
     private void back_lbl_02MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_lbl_02MouseEntered
@@ -97,8 +101,8 @@ public class first_panel_part2 extends javax.swing.JPanel {
     }//GEN-LAST:event_back_lbl_02MouseEntered
 
     public void restricting_jspinner2(){
-        jSpinner2.setValue(1) ;
-        jSpinner2.setEnabled(false); 
+        lab.setValue(1) ;
+        lab.setEnabled(false); 
     }
 
 
@@ -109,7 +113,7 @@ public class first_panel_part2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner lab;
+    private javax.swing.JSpinner lec;
     // End of variables declaration//GEN-END:variables
 }

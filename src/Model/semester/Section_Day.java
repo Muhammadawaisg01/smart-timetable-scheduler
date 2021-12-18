@@ -11,6 +11,12 @@ public class Section_Day {
 
     }
 
+    public Section_Day(int no, ArrayList<Section_Timeslot> timeslots) {
+        this.no = no;
+        this.timeslots = timeslots;
+    }
+    
+
     public void display() {
         for (Section_Timeslot section_Timeslot : timeslots) {
             System.out.println(section_Timeslot.toString());

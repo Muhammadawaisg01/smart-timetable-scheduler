@@ -6,12 +6,15 @@
 package View.room;
 
 import Model.Queries;
+import View.Alerts;
+import static View.Alerts.alert;
 import static db.DBConnection.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,7 +49,7 @@ public class room_input_panel extends javax.swing.JPanel {
         room_name = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         isLab = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        lecture_radio = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1000, 2147483647));
@@ -55,7 +58,7 @@ public class room_input_panel extends javax.swing.JPanel {
 
         jLabel106.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel106.setText("Inputs for Room");
+        jLabel106.setText("Add New Room or Lab");
         add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -81,7 +84,8 @@ public class room_input_panel extends javax.swing.JPanel {
         jButton10.setBackground(new java.awt.Color(0, 102, 153));
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("create");
+        jButton10.setText("Create Room");
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -92,6 +96,7 @@ public class room_input_panel extends javax.swing.JPanel {
         isLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         isLab.setForeground(new java.awt.Color(0, 102, 153));
         isLab.setText("Lab");
+        isLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         isLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 isLabActionPerformed(evt);
@@ -99,40 +104,50 @@ public class room_input_panel extends javax.swing.JPanel {
         });
         jPanel1.add(isLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 70, -1));
 
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton2.setText("Lecture room");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        lecture_radio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lecture_radio.setForeground(new java.awt.Color(0, 102, 153));
+        lecture_radio.setText("Lecture room");
+        lecture_radio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lecture_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                lecture_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
 
         jScrollPane1.setViewportView(jPanel1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 680, 440));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if (jRadioButton2.isSelected()) {
+    private void lecture_radioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecture_radioActionPerformed
+        if (lecture_radio.isSelected()) {
             isLab.setSelected(false);
         }
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_lecture_radioActionPerformed
 
     private void isLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isLabActionPerformed
         // TODO add your handling code here:
         if (isLab.isSelected()) {
-            jRadioButton2.setSelected(false);
+            lecture_radio.setSelected(false);
         }
     }//GEN-LAST:event_isLabActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         String roomName = room_name.getText();
+        if (roomName.equalsIgnoreCase("")) {
+            alert("Enter room name");
+            return;
+        }
         int roomCapicity;
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         boolean lab = isLab.isSelected();
+        boolean lec = lecture_radio.isSelected();
+        if (!lab && !lec) {
+            alert("Please select room type");
+            return;
+        }
         String q = "insert into room"
                 + "("
                 + "name,"
@@ -172,10 +187,13 @@ public class room_input_panel extends javax.swing.JPanel {
                     stmt.execute();
                 }
             }
+            room_name.setText("");
+            room_capacity.setText("");
+            isLab.setSelected(false);
+            lecture_radio.setSelected(false);
             JOptionPane.showMessageDialog(null, "Room data added successfully!");
         } catch (SQLException ex) {
-            Logger.getLogger(room_input_panel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Room name already exists");
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Invalid Room Capacity!");
         }
@@ -189,9 +207,9 @@ public class room_input_panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JRadioButton lecture_radio;
     private javax.swing.JTextField room_capacity;
     private javax.swing.JTextField room_name;
     // End of variables declaration//GEN-END:variables

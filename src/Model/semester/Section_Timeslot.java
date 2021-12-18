@@ -28,15 +28,21 @@ public class Section_Timeslot {
         this.check = check;
     }
 
-    public Section_Timeslot(int slot_no, String room, String course_code, int lecture_no, boolean check) {
+    public Section_Timeslot(int slot_no, String room, String course_code, int lecture_no, boolean isLab) {
         this.slot_no = slot_no;
         this.room = room;
         this.course_code = course_code;                         // new constructor  
         this.lecture_no = lecture_no;
         this.priority = null;
         this.lecture = null;
-        this.check = check;
+        this.isLab = isLab;
+        if (lecture_no == 0) {
+            this.check = false;
+        } else {
+            this.check = true;
+        }
     }
+    
 
     @Override
     public String toString() {
@@ -70,10 +76,6 @@ public class Section_Timeslot {
 
     public void setSlot_no(int slot_no) {
         this.slot_no = slot_no;
-    }
-
-    public void setCourse(String course_code) {
-        this.course_code = course_code;
     }
 
     public void setLecture_no(int lecture_no) {

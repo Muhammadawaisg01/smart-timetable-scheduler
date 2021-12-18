@@ -7,6 +7,9 @@ import Model.student.Student;
 import java.util.ArrayList;
 import static Controller.Runner.scheduler;
 import static Model.Entities_Main_Arrays.student_list;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 
 public class StdUtility {
@@ -16,80 +19,80 @@ public void reading_Student_From_DB() {
     
 }
     
-//    public void readingCourseRegistration() {   
-//        String line = "", arr[];
-//        int i = 1;
-//        int j = 0;
-//        File f = new File("Course_registration.txt");
-//        try {
-//            Scanner file = new Scanner(f);
-//            while (file.hasNext() ) {
-//                i = 1 ;
-//                line = file.next() ;
-//                arr = line.split(",");
-//                while (i < arr.length) {
-//                    student_list.get(j).registered_courses.add(new Course(arr[i] ) ) ; 
-//                    i++;
-//                }
-//                arr = null;
-//                i = 1;
-//                j++;
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
+    public void readingCourseRegistration() {   
+        String line = "", arr[];
+        int i = 1;
+        int j = 0;
+        File f = new File("Course_registration.txt");
+        try {
+            Scanner file = new Scanner(f);
+            while (file.hasNext() ) {
+                i = 1 ;
+                line = file.next() ;
+                arr = line.split(",");
+                while (i < arr.length) {
+                    student_list.get(j).registered_courses.add(new Course(arr[i] ) ) ; 
+                    i++;
+                }
+                arr = null;
+                i = 1;
+                j++;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+//        for (String str : array) {
+//            System.out.println(str);
 //        }
-////        for (String str : array) {
-////            System.out.println(str);
-////        }
-//    }
-//    public StdUtility() {
-//        int i = 1;
-//        String sec = "1";
-//        String[] arr;
-//        String line;
-//        File f = new File("Students.txt");
-//        try {
-//            Scanner file = new Scanner(f);
-//            while (file.hasNext()) {
-//                line = file.nextLine();
-//                arr = line.split(", ");
-//                if (i <= 10) {
-//                    sec = "1";
-//                }
-//                if (i <= 20 && i > 10) {
-//                    sec = "2";
-//                }
-//                if (i <= 30 && i > 20) {
-//                    sec = "3";
-//                }
-//                if (i <= 40 && i > 30) {
-//                    sec = "4";
-//                }
-//
-////                student_list.add(new Student(arr[0], arr[1], 7, sec)) ; 
-//                i++ ; 
-//            }
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(ex);
-//        }
-//        readingCourseRegistration();
-//
-//        for (int j = 0; j < student_list.size(); j++) { 
-//            System.out.println(student_list.get(j).toString() ) ; 
-//        } 
-//
-////        Student_Timeslot std_slot = new Student_Timeslot();
-////        std_slot.semester = "";
-////        std_slot.section = "";
-////        std_slot.slot_no = 0;
-////        std_slot.check = false;
-////        std_slot.course = "";
-////        std_slot.lecture_no = 0;
-////        std_slot.room = "";
-////        Student_Day std_day = new Student_Day();
-////        std_day.name = "Mon";
-////        std.add(new Student("01","Ali","7",1, )  )  
-//    }
+    }
+    public StdUtility() {
+        int i = 1;
+        String sec = "1";
+        String[] arr;
+        String line;
+        File f = new File("Students.txt");
+        try {
+            Scanner file = new Scanner(f);
+            while (file.hasNext()) {
+                line = file.nextLine();
+                arr = line.split(", ");
+                if (i <= 10) {
+                    sec = "1";
+                }
+                if (i <= 20 && i > 10) {
+                    sec = "2";
+                }
+                if (i <= 30 && i > 20) {
+                    sec = "3";
+                }
+                if (i <= 40 && i > 30) {
+                    sec = "4";
+                }
+
+//                student_list.add(new Student(arr[0], arr[1], 7, sec)) ; 
+                i++ ; 
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+        readingCourseRegistration();
+
+        for (int j = 0; j < student_list.size(); j++) { 
+            System.out.println(student_list.get(j).toString() ) ; 
+        } 
+
+//        Student_Timeslot std_slot = new Student_Timeslot();
+//        std_slot.semester = "";
+//        std_slot.section = "";
+//        std_slot.slot_no = 0;
+//        std_slot.check = false;
+//        std_slot.course = "";
+//        std_slot.lecture_no = 0;
+//        std_slot.room = "";
+//        Student_Day std_day = new Student_Day();
+//        std_day.name = "Mon";
+//        std.add(new Student("01","Ali","7",1, )  )  
+    }
     
     public void section_to_Student_Scheduling() {   // assigning schedule to students   
 

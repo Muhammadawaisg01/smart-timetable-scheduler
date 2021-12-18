@@ -2,6 +2,7 @@ package Model;
 
 import Enums.Lab;
 import db.DBConnection;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,12 +138,12 @@ public class Course {
 
     public static void add_Course_in_database(String code, String title, int hours, boolean lab) {
         conn = db.DBConnection.getConnection();
-        String query = "insert into schedulerdb.course values(?,?,?,?)";
+        String query = "insert into course values(?,?,?,?)";
         try {
             if (conn == null) {
-                System.out.println(" I AM NULL");
+                JOptionPane.showMessageDialog(null, "Database not connected");
+                return;
             }
-            System.out.println(conn == null ? "CLOSED" : "NOT CLOSED");
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, code);
             stmt.setString(2, title);
@@ -150,36 +151,30 @@ public class Course {
             stmt.setString(4, "" + lab);
             stmt.execute();
             JOptionPane.showMessageDialog(null, "New Course Saved Successfully");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error in adding Data of Course in database ");
-            ex.printStackTrace();
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error in adding data of course in database ");
         }
     }
 
     public static boolean check_duplication_in_database(String crs_code, String title) {
         conn = db.DBConnection.getConnection();
-        boolean check = false;
-        String query = "select * from course where course_code = ? and title = ?  ";
+        String query = "select * from course where course_code = '" + crs_code + "' and title = '" + title + "'";
         try {
             if (conn == null) {
-                System.out.println("I AM NULL  in  method check_duplication_in_database");
+                JOptionPane.showMessageDialog(null, "Database not connected!");
             }
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, crs_code);
-            stmt.setString(2, title);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                if (rs.next()) {
-                    check = true;
-                    JOptionPane.showMessageDialog(null, "This Course exists before ");
-                } else {
-                    check = false;
-                }
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Course already exist in database");
+                return true;
+            } else {
+                return false;
             }
-        } catch (Exception ex) {
-
+        } catch (HeadlessException | SQLException ex) {
+            System.out.println(ex);
         }
-        return check;
+        return false;
     }
 
     public static Course get_course_by_title(String title) {

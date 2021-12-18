@@ -13,15 +13,21 @@ import javax.swing.JOptionPane;
 
 public class Program {
 
-    String id;
+    int id;
     String name;
     ArrayList<Semester> semesters;
 
-    public Program(String id, String name, ArrayList<Semester> semesters) {
+    public Program(int id, String name, ArrayList<Semester> semesters) {
         this.id = id;
         this.name = name;
         this.semesters = semesters;
     }
+
+    public Program(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    
 
     public Program() {
     }
@@ -85,11 +91,13 @@ public class Program {
         return rs;
     }
 
-    public String getId() {
+    
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -108,5 +116,11 @@ public class Program {
     public void setSemesters(ArrayList<Semester> semesters) {
         this.semesters = semesters;
     }
+
+    @Override
+    public String toString() {
+        return "Program{" + "id=" + id + ", name=" + name + ", semesters=" + semesters + '}';
+    }
+    
 
 }

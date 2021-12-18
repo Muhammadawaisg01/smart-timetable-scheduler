@@ -80,8 +80,12 @@ public class add_professor_panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addProfessorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfessorBtnActionPerformed
-        int profID = Integer.parseInt(prof_id.getText());
+       
+        int profID = 0;
         String profName = prof_name.getText();
+        if (profName.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "Professor name field is required");
+        }
         Connection conn = getConnection();
         PreparedStatement stmt = null, stmt2 = null;
 
@@ -95,6 +99,7 @@ public class add_professor_panel extends javax.swing.JPanel {
 
         // add prof to db
         try {
+            profID = Integer.parseInt(prof_id.getText());
             stmt = conn.prepareStatement(addProf);
             stmt.setInt(1, profID);
             stmt.setString(2, profName);
@@ -132,9 +137,14 @@ public class add_professor_panel extends javax.swing.JPanel {
                     stmt2.execute();
                 }
             }
+            prof_name.setText("");
+            prof_id.setText("");
+            JOptionPane.showMessageDialog(null, "Professor Added Successfully");
         } catch (SQLException ex) {
-            Logger.getLogger(add_professor_panel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+//            Logger.getLogger(add_professor_panel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Professor with professor ID " + profID + " already exists");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Professor ID should be integer value");
         }
 
     }//GEN-LAST:event_addProfessorBtnActionPerformed

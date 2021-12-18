@@ -5,6 +5,13 @@
  */
 package View.schedule_generation;
 
+import Controller.NewAlgorithm;
+import Model.Program;
+import Model.Queries;
+import static db.DBConnection.createConnection;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author muhammad awais 1
@@ -72,7 +79,7 @@ public class final_panel extends javax.swing.JPanel {
 
         jLabel103.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel103.setText("5th step by 5");
+        jLabel103.setText("3rd step by 3");
         add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -80,7 +87,13 @@ public class final_panel extends javax.swing.JPanel {
         // get rooms from room and room_availablity
         // get teacers from teachers and teacher_schedule
         // get sections from sections section_schedule
-        
+        createConnection();
+        ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+//        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+//        System.out.println("____________________________________________________________________________");
+        Queries.updateSchedule(programs1);
+        JOptionPane.showMessageDialog(null, "Scheduale generated successfully!");
+
     }//GEN-LAST:event_generate_scheduleActionPerformed
 
     private void jTextArea2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextArea2AncestorAdded

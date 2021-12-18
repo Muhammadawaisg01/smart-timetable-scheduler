@@ -175,12 +175,12 @@ public class Student {
                                                             // move lecture in section schedule
                                                             // free section time slot
                                                             section_Timeslot.setCheck(false);
-                                                            section_Timeslot.setCourse("");
+                                                            section_Timeslot.setCourse_code("");
                                                             section_Timeslot.setLecture_no(0);
                                                             section_Timeslot.setRoom("");
                                                             // assign new slot to lecture
                                                             sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCheck(true);
-                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCourse(course);
+                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setCourse_code(course);
                                                             sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setLecture_no(lecture);
                                                             sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).setRoom(room.getName());
 //                                                            sec.getSchedule().getDays().get(dayy.getNo()).getTimeslots().get(room_Timeslot.getNo()).set(true);
@@ -359,7 +359,7 @@ public class Student {
                                 for (Section_Timeslot section_Timeslot : section_Timeslots) {
                                     if (section_Timeslot.getSlot_no() == slot) {
                                         section_Timeslot.setCheck(true);
-                                        section_Timeslot.setCourse(course);
+                                        section_Timeslot.setCourse_code(course);
                                         section_Timeslot.setLecture_no(lecture);
                                         section_Timeslot.setRoom(room);
 //                                        section_Timeslot.setSlot_no(slot);
