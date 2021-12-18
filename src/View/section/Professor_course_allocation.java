@@ -120,7 +120,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         allocated_textarea.setText("Allocations:");
         jScrollPane1.setViewportView(allocated_textarea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 860, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 510, 170));
 
         jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(0, 102, 153));
@@ -140,31 +140,31 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 lecture_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 100, 30));
+        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 100, 30));
 
         save_allocation.setBackground(new java.awt.Color(0, 102, 153));
         save_allocation.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         save_allocation.setForeground(new java.awt.Color(255, 255, 255));
-        save_allocation.setText("save allocations");
+        save_allocation.setText("Save Allocation");
         save_allocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_allocationActionPerformed(evt);
             }
         });
-        jPanel1.add(save_allocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 230, 60));
+        jPanel1.add(save_allocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 600, 230, 60));
 
         professor_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         jPanel1.add(professor_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 210, 40));
 
         allocate_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         allocate_btn.setForeground(new java.awt.Color(0, 102, 153));
-        allocate_btn.setText("specify");
+        allocate_btn.setText("Assign");
         allocate_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allocate_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(allocate_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 80, 30));
+        jPanel1.add(allocate_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 130, 40));
 
         section_name.setForeground(new java.awt.Color(0, 102, 153));
         section_name.setEnabled(false);
@@ -196,7 +196,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 both_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(both_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 70, 30));
+        jPanel1.add(both_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 70, 30));
 
         lab_radio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lab_radio.setForeground(new java.awt.Color(0, 102, 153));
@@ -206,7 +206,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 lab_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lab_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, 70, 30));
+        jPanel1.add(lab_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 70, 30));
 
         jScrollPane2.setViewportView(jPanel1);
 
@@ -315,6 +315,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
             }
             JOptionPane.showMessageDialog(null, "Professors allocated successfully!");
             allocated_textarea.setText("Allocations:");
+            allocations = new ArrayList<>();    
             professor_course_allocation1.setVisible(false);
             create_section_panel1.setVisible(true);
         } catch (SQLException ex) {

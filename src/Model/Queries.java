@@ -11,6 +11,7 @@ import Model.semester.Section_Timeslot;
 import Model.semester.Semester;
 import static db.DBConnection.getConnection;
 import Model.student.Student;
+import static View.Alerts.alert;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -563,15 +564,21 @@ public class Queries {
         }
     }
 
+    /**
+     *
+     * @param file Student registration file Add student in database and section
+     * field is filled with "Section"
+     */
     public static void addStudentsToDB(File file) {
         String addStudent = "insert into students "
                 + "("
                 + "registration_no,"
                 + "name,"
-                + "semester_no"
+                + "semester_no,"
+                + "section_id"
                 + ")"
                 + " values "
-                + "(?, ?, ?)";
+                + "(?, ?, ?, ?)";
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         try {
@@ -580,20 +587,21 @@ public class Queries {
                 String line = read.nextLine();
                 String[] list = line.split(",");
                 String regNo = list[0];
-                System.out.println(line);
                 int semester = Integer.parseInt(list[2]);
                 stmt = conn.prepareStatement(addStudent);
                 stmt.setString(1, regNo);
                 stmt.setString(2, "Student Name");
                 stmt.setInt(3, semester);
-//                stmt.execute();
+                stmt.setString(4, "Section");
+                stmt.execute();
                 String addCourse = "insert into student_section_allocation"
                         + "("
                         + "student_registration_no,"
-                        + "course_code"
+                        + "course_code,"
+                        + "section_id"
                         + ")"
                         + " values "
-                        + "(?, ?)";
+                        + "(?, ?, ?)";
                 for (int i = 3; i < list.length; i++) {
                     String courseTitle = list[i];
                     String courseCode = getCourseCode(courseTitle);
@@ -603,22 +611,141 @@ public class Queries {
                     stmt = conn.prepareStatement(addCourse);
                     stmt.setString(1, regNo);
                     stmt.setString(2, courseCode);
+                    stmt.setString(3, "Section");
+                    stmt.execute();
                 }
             }
+            assignSectionToStudents(1);
         } catch (FileNotFoundException | SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException ex) {
             System.out.println("Semeseter Number is invalid in file");
             System.out.println(ex);
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
-            System.exit(1);
+        }
+    }
+
+    public static void assignSectionToStudents(int program_id) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        // get total semesters of program
+        String getTotalSemester = "select COUNT(*) as total_semesters from semester where program_id = " + program_id;
+        int totalSemester = 0;
+        try {
+            stmt = conn.prepareStatement(getTotalSemester);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            totalSemester = rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+            alert("Can't get semesters");
+            return;
+        }
+        // for each semester get sections of semester
+        for (int semester = 1; semester < totalSemester + 1; semester++) {
+            String[] sectionIDs = getSectionIDs(semester, program_id);
+            // get students of eact semester
+            String[] studentIDs = getStudentIDs(semester);
+            System.out.println("gad");
+            // get section strength of each section
+            int student_in_each_section = (int) studentIDs.length / sectionIDs.length;
+            System.out.println(student_in_each_section);
+//            System.exit(1);
+            int startIndex = 0;
+            for (String sectionID : sectionIDs) {
+//                int sectionStrength = getSectionStrength(sectionID);  should be like this
+                int sectionStrength = student_in_each_section;
+                allocateSections(sectionID, startIndex, sectionStrength, studentIDs);
+                startIndex += sectionStrength;
+            }
+            // assign section to each student
         }
     }
 
     /**
      *
+     * @param semester semester no
+     * @return String[]: Registration numbers of semester
+     */
+    public static String[] getStudentIDs(int semester) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        String[] studendIDs;
+        String q = "SELECT registration_no from students where semester_no = " + semester;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet students = stmt.executeQuery();
+            if (students.last()) {
+                studendIDs = new String[students.getRow()];
+                students.beforeFirst();
+                int id = 0;
+                while (students.next()) {
+                    studendIDs[id] = students.getString("registration_no");
+                    id++;
+                }
+                return studendIDs;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+            alert("Can't get students");
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param sectionID
+     * @return strength of section
+     */
+    public static int getSectionStrength(String sectionID) {
+        String q = "SELECT student_strength FROM section where section_id = '" + sectionID + "'";
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            return rs.getInt("student_strength");
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    /**
+     *
+     * @param semester_no
+     * @param program_id
+     * @return String[]: list of section IDs of semester_no and program_id
+     */
+    public static String[] getSectionIDs(int semester_no, int program_id) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        String[] sectionIDs;
+        try {
+            String q = "SELECT section_id FROM section where semester_no = " + semester_no + " and program_id = " + program_id;
+            stmt = conn.prepareStatement(q);
+            ResultSet sections = stmt.executeQuery();
+            if (sections.last()) {
+                sectionIDs = new String[sections.getRow()];
+                sections.beforeFirst();
+                int id = 0;
+                while (sections.next()) {
+                    sectionIDs[id] = sections.getString("section_id");
+                    id++;
+                }
+                return sectionIDs;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /**
+     *
      * @param semester semester number
-     * @return total sections
+     * @return Integer total number of sections
      */
     public static int getSectionsOfSemester(int semester) {
         String q = "SELECT * FROM section where semester_no = " + semester;
@@ -672,12 +799,11 @@ public class Queries {
         }
         return null;
     }
-    
+
     /**
-     * 
+     *
      * @param query Valid SQL select query statement
-     * @return Number of rows returned in query results
-     *         -1 if case of exception
+     * @return Number of rows returned in query results -1 if case of exception
      */
     public static int getRowCount(String query) {
         Connection conn = getConnection();
@@ -689,16 +815,15 @@ public class Queries {
                 return rs.getRow();
             }
         } catch (SQLException ex) {
-            
+
         }
         return -1;
     }
-    
+
     /**
-     * 
+     *
      * @param query Valid SQL select query statement
-     * @return true: if results found
-     *         false if results not found
+     * @return true: if results found false if results not found
      */
     public static boolean duplicate(String query) {
         Connection conn = getConnection();
@@ -708,14 +833,46 @@ public class Queries {
             ResultSet rs = stmt.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
-            
+
         }
         return false;
     }
-    
+
 //    public static boolean hasLab(String courseCode) {
 //        String q = "select * from course where cours_code = '" + courseCode + "' and hasLab = 'true'"; 
 //        Connection conn = getConnection();
 //        Prepa
 //    }
+    /**
+     *
+     * @param sectionID section ID to assign to students
+     * @param startIndex start index for studentIDs
+     * @param sectionStrength loop iteration
+     * @param studentIDs list of students of specific semesters
+     * 
+     * Assign section to students in studentIDs list from startIndex to strength
+     */
+    private static void allocateSections(String sectionID, int startIndex, int sectionStrength, String[] studentIDs) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            for (int i = 0; i < sectionStrength; i++, startIndex++) {
+                String studentID = studentIDs[startIndex];
+                String q = "update students SET "
+                        + "section_id = '" + sectionID + "'"
+                        + " WHERE "
+                        + "registration_no = '" + studentID + "'";
+                stmt = conn.prepareStatement(q);
+                stmt.executeUpdate();
+                q = "update student_section_allocation SET "
+                        + "section_id = '" + sectionID + "'"
+                        + " WHERE "
+                        + "student_registration_no = '" + studentID + "'";
+                stmt = conn.prepareStatement(q);
+                stmt.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

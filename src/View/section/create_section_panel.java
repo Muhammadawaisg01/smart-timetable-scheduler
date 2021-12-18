@@ -381,6 +381,7 @@ public class create_section_panel extends javax.swing.JPanel {
             Professor_course_allocation.displaySectionID(sectionID);
             Professor_course_allocation.displayProfessors(Queries.getAllProfessors());
             Professor_course_allocation.displayCourses(selected_courses);
+            selected_courses = new ArrayList<>();
             professor_course_allocation1.setVisible(true);
             create_section_panel1.setVisible(false);
         } catch (SQLException ex) {
