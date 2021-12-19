@@ -194,6 +194,10 @@ public class Queries {
         return "";
     }
 
+    /**
+     *
+     * @return ResultSet of all students in database
+     */
     public static ResultSet getAllStudent() {
         String q = "select * from students";
         Connection conn = getConnection();
@@ -823,6 +827,40 @@ public class Queries {
     /**
      *
      * @param query Valid SQL select query statement
+     * @return ResultSet of query
+     */
+    public static ResultSet getRS(String query) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+
+        }
+        return null;
+    }
+    
+    /**
+     *
+     * @param query Valid SQL select query statement
+     * will execute
+     */
+    public static void execute(String query) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(query);
+            stmt.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    /**
+     *
+     * @param query Valid SQL select query statement
      * @return true: if results found false if results not found
      */
     public static boolean duplicate(String query) {
@@ -838,18 +876,13 @@ public class Queries {
         return false;
     }
 
-//    public static boolean hasLab(String courseCode) {
-//        String q = "select * from course where cours_code = '" + courseCode + "' and hasLab = 'true'"; 
-//        Connection conn = getConnection();
-//        Prepa
-//    }
     /**
      *
      * @param sectionID section ID to assign to students
      * @param startIndex start index for studentIDs
      * @param sectionStrength loop iteration
      * @param studentIDs list of students of specific semesters
-     * 
+     *
      * Assign section to students in studentIDs list from startIndex to strength
      */
     private static void allocateSections(String sectionID, int startIndex, int sectionStrength, String[] studentIDs) {
@@ -875,4 +908,155 @@ public class Queries {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     * Creates empty schedule
+     */
+    public static void createInitialStudentSchedule() {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        int days = getDaysCount();
+        int slots = getSlotCount();
+        String query;
+        ResultSet students = getAllStudent();
+        try {
+            String regNo, regularSection;
+            while (students.next()) {
+                regNo = students.getString("registration_no");
+                regularSection = students.getString("section_id");
+                for (int day = 1; day < days + 1; day++) {
+                    for (int slot = 1; slot < slots + 1; slot++) {
+                        query = "INSERT INTO student_schedule "
+                                + "("
+                                + "student_registration_no,"
+                                + "day_no,"
+                                + "timeslot_no,"
+                                + "course_code,"
+                                + "room_name,"
+                                + "section_id,"
+                                + "lecture_no,"
+                                + "isLab"
+                                + ")"
+                                + " VALUES "
+                                + "(?, ?, ?, ?, ?, ?, ?, ?)";
+                        stmt = conn.prepareStatement(query);
+                        stmt.setString(1, regNo);
+                        stmt.setInt(2, day);
+                        stmt.setInt(3, slot);
+                        stmt.setString(4, "");
+                        stmt.setString(5, "");
+                        stmt.setString(6, regularSection);
+                        stmt.setInt(7, 0);
+                        stmt.setString(8, "false");
+                        stmt.execute();
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Student schedule after schedule is generated
+     */
+    public static void mapSectionSchedule_ToStudents() {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        String query;
+        ResultSet students = getAllStudent();
+        try {
+            // get from schedule where course_code and section_id match student's
+
+            while (students.next()) {
+                String stdRegNo = students.getString("registration_no");
+                String stdSection = students.getString("section_id");
+                // get registered courses of each student
+                String[] courses = getStudentCourses(stdRegNo);
+                for (int i = 0; i < courses.length; i++) {
+                    String getSchedule = "select * from section_schedule where section_id = '" + stdSection + "' "
+                            + "course_code = '" + courses[i] + "'";
+                    System.out.println(getSchedule);
+                }
+            }
+            // assign regular student courses scheudle to student
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static String[] getStudentCourses(String regNo) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        String[] courses;
+        String query = "SELECT * FROM student_section_allocation where student_registration_no = '" + regNo + "'";
+        try {
+            stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.last()) {
+                courses = new String[rs.getRow()];
+                rs.beforeFirst();
+                int i = 0;
+                while (rs.next()) {
+                    courses[i] = rs.getString("course_code");
+                    i++;
+                }
+                return courses;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static void mapSectinoSchedule_ToProfessors() {
+        // get all professor course allocations
+        String professor_course_allocation = "SELECT * from section_professor_allocation";
+        ResultSet professorAllocations = getRS(professor_course_allocation);
+        try {
+            // join with section schedule
+            String professorID, courseCode, courseName = "";
+            String getSchedule, updateSchedule;
+            while (professorAllocations.next()) {
+                professorID = professorAllocations.getString("professor_id");
+                courseCode = professorAllocations.getString("course_code");
+                ResultSet courseDetail = getCourseDetails(courseCode);
+                if (courseDetail.next()) {
+                    courseName = courseDetail.getString("title");
+                }
+                getSchedule = "SELECT * FROM section_professor_allocation join section_schedule using(section_id) where "
+                        + "professor_id = " + professorID + " and section_professor_allocation.course_code = '" + courseCode + "' and section_schedule.course_code LIKE '%" + courseName + "%' and "
+                        + "lab_or_theory = isLab";
+                ResultSet result = getRS(getSchedule);
+                String section_id,course_code, room_name, isLab;
+                int lecture_no, day, slot;
+                while (result.next()) {
+                    section_id = result.getString("section_id");
+                    course_code = result.getString("section_professor_allocation.course_code");
+                    room_name = result.getString("room_name");
+                    isLab = result.getString("isLab");
+                    lecture_no = result.getInt("lecture_no");
+                    day = result.getInt("day_no");
+                    slot = result.getInt("timeslot_no");
+                    updateSchedule = "UPDATE professor_schedule SET "
+                            + "section_id = '" + section_id + "',"
+                            + "course_code = '" + courseCode + "', "
+                            + "room_name = '" + room_name + "', "
+                            + "lecture_no = '" + lecture_no + "', "
+                            + "isLab = '" + isLab + "' "
+                            + " WHERE "
+                            + "professor_id = '" + professorID + "' and "
+                            + "day_no = " + day + " and "
+                            + "timeslot_no = " + slot;
+                    System.out.println(updateSchedule);
+                    execute(updateSchedule);
+                }
+//                System.out.println(getSchedule);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 }
