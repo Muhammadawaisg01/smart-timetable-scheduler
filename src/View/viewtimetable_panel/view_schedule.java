@@ -34,7 +34,7 @@ public class view_schedule extends javax.swing.JPanel {
         jLabel107.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel107.setForeground(new java.awt.Color(0, 102, 153));
         jLabel107.setText("View Schedule for all:");
-        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 210, 40));
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 210, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -49,12 +49,12 @@ public class view_schedule extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 660, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 660, 310));
 
         entity_name_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         entity_name_lbl.setForeground(new java.awt.Color(0, 102, 153));
         entity_name_lbl.setText("Entity:");
-        add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, 40));
+        add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 

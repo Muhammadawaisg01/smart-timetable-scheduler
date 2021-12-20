@@ -5,6 +5,13 @@
  */
 package View.room;
 
+import Model.Queries;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author muhammad awais 1
@@ -18,6 +25,13 @@ public class search_slot_for_specific_room extends javax.swing.JPanel {
         initComponents();
     }
 
+    public static void setRoomName(String[] rooms) {
+        room_name_dropdown.setModel(new DefaultComboBoxModel<>(rooms));
+    }
+    
+    public static void setDays(String[] days) {
+        day_dropdown.setModel(new DefaultComboBoxModel<>(days));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,51 +41,35 @@ public class search_slot_for_specific_room extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel96 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel97 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel98 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        room_name_dropdown = new javax.swing.JComboBox<>();
+        day_dropdown = new javax.swing.JComboBox<>();
         jButton8 = new javax.swing.JButton();
         jLabel99 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("No. of consecutive slots:");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 230, 40));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 260, 40));
-
         jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
         jLabel97.setText("Room name:");
-        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 210, 40));
+        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 40));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 370, 40));
+        room_name_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(room_name_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 370, 40));
 
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel98.setText("make option of any day as wel and today");
-        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 400, 40));
+        day_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(day_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 370, 40));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 260, 40));
-
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 102, 153));
-        jButton8.setText("search");
+        jButton8.setText("Search");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 80, 30));
+        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 140, 70));
 
         jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
@@ -80,18 +78,39 @@ public class search_slot_for_specific_room extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        String roomName = room_name_dropdown.getSelectedItem().toString();
+        String day = day_dropdown.getSelectedItem().toString();
+        ResultSet dayRS = Queries.getRS("select day_no from day where name = '" + day + "'");
+        int dayNo = 1;
+        try {
+            if (dayRS.next()) {
+                dayNo = dayRS.getInt("day_no");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(search_slot_for_specific_room.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String q = "select "
+                + "room_name as RoomNumber,"
+                + " name as Day, "
+                + "starting_time as StartTime, "
+                + "ending_time as EndTime "
+                + "from "
+                + "room_availabilty join day using (day_no)"
+                + " join timeslot using (timeslot_no)"
+                + " where "
+                + "is_available = 'false' and "
+                + "room_availabilty.day_no = "+ dayNo +" and "
+                + "room_name = '" + roomName +"'";
+        ResultSet rs = Queries.getRS(q);
+        search_free_slot_panel.fillFreeSlotsTable(rs);
     }//GEN-LAST:event_jButton8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JComboBox<String> day_dropdown;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
+    private static javax.swing.JComboBox<String> room_name_dropdown;
     // End of variables declaration//GEN-END:variables
 }

@@ -70,7 +70,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         result_textarea.setText("Search Results \ndisplay constraints of entity\n");
         jScrollPane1.setViewportView(result_textarea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 700, 100));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 700, 110));
 
         schedule_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,7 +85,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(schedule_table);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 700, 200));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 700, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void general_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_general_dropdownItemStateChanged

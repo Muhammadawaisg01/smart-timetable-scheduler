@@ -5,8 +5,11 @@ import Model.professor.Professor;
 import Model.Program;
 import Model.Queries;
 import Model.room.Room;
+import View.room.search_by_capacity;
 import static View.section.create_section_panel.getPrograms;
 import static View.section.create_section_panel.getCourses;
+import View.student.view_all_students_panel;
+import View.student.view_student_details_panel;
 import View.viewtimetable_panel.view_generated_timetable_panel;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
@@ -84,8 +87,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     public void add_all_panels_of_students_to_list() {
 
         students_panels_list.add(update_section1);
-//        students_panels_list.add(view_all_students_panel1);
-//        students_panels_list.add(view_student_details_panel1);
+//        students_panels_list.add(view_all_students_panel);
+//        students_panels_list.add(view_student_details_panel);
     }
 
     @Override
@@ -2719,7 +2722,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     }//GEN-LAST:event_all_roomsMouseClicked
 
     private void search_slot_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search_slot_lblMouseClicked
-        // TODO add your handling code here:
+        String[] days = Queries.getData("name", "day");
+        String[] start_slots = Queries.getData("starting_time", "timeslot");
+        String[] end_slots = Queries.getData("ending_time", "timeslot");
+        search_by_capacity.setDays(days);
+        search_by_capacity.setEndTime(end_slots);
+        search_by_capacity.setStartTime(start_slots);
         department_panel_visibility(search_free_slot_panel1);
     }//GEN-LAST:event_search_slot_lblMouseClicked
 

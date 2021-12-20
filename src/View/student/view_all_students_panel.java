@@ -7,6 +7,7 @@ package View.student;
 
 import Model.Queries;
 import View.TableViewUtility;
+import static db.DBConnection.createConnection;
 
 /**
  *
@@ -19,7 +20,8 @@ public class view_all_students_panel extends javax.swing.JPanel {
      */
     public view_all_students_panel() {
         initComponents();
-        view_all_students_table.setModel(TableViewUtility.resultSetToTableModel(Queries.getAllStudent()));
+//        createConnection();
+//        view_all_students_table.setModel(TableViewUtility.resultSetToTableModel(Queries.getAllStudent()));
     }
 
     /**

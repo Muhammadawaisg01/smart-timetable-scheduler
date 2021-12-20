@@ -1048,15 +1048,14 @@ public class Queries {
                             + "professor_id = '" + professorID + "' and "
                             + "day_no = " + day + " and "
                             + "timeslot_no = " + slot;
-                    System.out.println(updateSchedule);
                     execute(updateSchedule);
                 }
-//                System.out.println(getSchedule);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+
     
 }
