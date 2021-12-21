@@ -8,6 +8,7 @@ import Model.room.Room;
 import View.room.search_by_capacity;
 import static View.section.create_section_panel.getPrograms;
 import static View.section.create_section_panel.getCourses;
+import View.section.remove_section_panel;
 import View.student.view_all_students_panel;
 import View.student.view_student_details_panel;
 import View.viewtimetable_panel.view_generated_timetable_panel;
@@ -388,7 +389,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         timetable_management = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         Dashboard_timetable = new javax.swing.JPanel();
-        jTextField22 = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
         jPanel22 = new javax.swing.JPanel();
@@ -1883,18 +1883,17 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         Dashboard_timetable.setBackground(new java.awt.Color(0, 102, 153));
         Dashboard_timetable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField22.setText(" ");
-        Dashboard_timetable.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 88, 210, 30));
-
-        jLabel45.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel45.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setText("   Home");
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel45.setText("Home");
+        jLabel45.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel45.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel45MouseClicked(evt);
             }
         });
-        Dashboard_timetable.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 90, 50));
+        Dashboard_timetable.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 210, 80));
 
         jPanel22.setBackground(new java.awt.Color(0, 102, 153));
         jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1902,6 +1901,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jLabel48.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(0, 51, 51));
         jLabel48.setText("Timetable                       -");
+        jLabel48.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel48MouseClicked(evt);
@@ -1912,13 +1912,14 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         room_wise_lbl.setBackground(new java.awt.Color(0, 102, 153));
         room_wise_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         room_wise_lbl.setForeground(new java.awt.Color(255, 255, 255));
-        room_wise_lbl.setText("room-wise");
+        room_wise_lbl.setText("Room Information");
+        room_wise_lbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         room_wise_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 room_wise_lblMouseClicked(evt);
             }
         });
-        jPanel22.add(room_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 30));
+        jPanel22.add(room_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 210, 30));
 
         add_roomlbl9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl9.setForeground(new java.awt.Color(0, 102, 153));
@@ -1953,7 +1954,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         section_wise_lbl.setBackground(new java.awt.Color(0, 102, 153));
         section_wise_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         section_wise_lbl.setForeground(new java.awt.Color(255, 255, 255));
-        section_wise_lbl.setText("section-wise");
+        section_wise_lbl.setText("Section Schedule");
+        section_wise_lbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         section_wise_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 section_wise_lblMouseClicked(evt);
@@ -1964,23 +1966,26 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         professor_wise_lbl.setBackground(new java.awt.Color(0, 102, 153));
         professor_wise_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         professor_wise_lbl.setForeground(new java.awt.Color(255, 255, 255));
-        professor_wise_lbl.setText("professor-wise");
+        professor_wise_lbl.setText("Professor Schedule");
+        professor_wise_lbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         professor_wise_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 professor_wise_lblMouseClicked(evt);
             }
         });
-        jPanel22.add(professor_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 30));
+        jPanel22.add(professor_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, 30));
 
         std_wise_lbl.setBackground(new java.awt.Color(0, 102, 153));
         std_wise_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         std_wise_lbl.setForeground(new java.awt.Color(255, 255, 255));
+        std_wise_lbl.setText("Student Schedule");
+        std_wise_lbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         std_wise_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 std_wise_lblMouseClicked(evt);
             }
         });
-        jPanel22.add(std_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 170, 30));
+        jPanel22.add(std_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 210, 30));
 
         add_roomlbl17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add_roomlbl17.setForeground(new java.awt.Color(0, 102, 153));
@@ -2468,6 +2473,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private void DeptMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeptMouseEntered
         Dept.setBackground(new Color(0, 102, 153));
         jLabel6.setForeground(new Color(255, 255, 255));
+        
     }//GEN-LAST:event_DeptMouseEntered
 
     private void DeptMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeptMouseExited
@@ -2899,7 +2905,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     }//GEN-LAST:event_UpdateSectionMouseClicked
 
     private void jLabel122MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel122MouseClicked
-        // TODO add your handling code here:
+        remove_section_panel.fillSection(Queries.getData("section_id", "section"));
         programs_panel_visibility(remove_section_panel1);
     }//GEN-LAST:event_jLabel122MouseClicked
 
@@ -3209,7 +3215,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lab_view_schedule_lbl;

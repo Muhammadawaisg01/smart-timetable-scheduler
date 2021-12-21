@@ -1,12 +1,15 @@
-
-
 package View.schedule_generation;
+
+import Model.Queries;
+import Model.Reset;
+import static View.Alerts.alert;
 import static View.MainFrame.first_panel1;
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
 public class excel_file_panel extends javax.swing.JPanel {
 
-    
     public excel_file_panel() {
         initComponents();
     }
@@ -79,16 +82,63 @@ public class excel_file_panel extends javax.swing.JPanel {
     }//GEN-LAST:event_excel_file_next_btnMouseClicked
 
     private void excel_file_next_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excel_file_next_btnMouseEntered
-        
+
     }//GEN-LAST:event_excel_file_next_btnMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser chooser = new JFileChooser("/");
-        int f = chooser.showSaveDialog(null);
-        if (f == JFileChooser.APPROVE_OPTION) {
-            JOptionPane.showMessageDialog(null, chooser.getSelectedFile().getAbsolutePath());
+        boolean uploaded = Reset.studentFileUploaded();
+        if (uploaded) {
+            int choice = JOptionPane.showConfirmDialog(null, "Student file already uploaded. Continue will replace previous data");
+            if (choice == 0) {
+                Reset.resetStudents();
+                JFileChooser chooser = new JFileChooser("/");
+                int f = chooser.showSaveDialog(null);
+                if (f == JFileChooser.APPROVE_OPTION) {
+                    String file = chooser.getSelectedFile().getAbsolutePath();
+                    String[] split = file.split(".");
+                    String extension = split[split.length - 1];
+                    if (!extension.equalsIgnoreCase("csv")) {
+                        alert("Please select a .csv file");
+                        return;
+                    }
+                    System.out.println(file);
+                    File file2 = new File(file);
+                    JOptionPane.showMessageDialog(null, "It might take a while. Please have patient");
+                    Queries.addStudentsToDB(file2);
+                    Queries.assignSectionToStudents(1);
+                    Queries.createInitialStudentSchedule();
+                    Reset.uploadStudentFile(1);
+                }
+                JOptionPane.showMessageDialog(null, "File uploaded successfuly!");
+                Reset.uploadStudentFile(1);
+            } else {
+                alert("File not uploaded");
+            }
+        } else {
+            Reset.resetStudents();
+            JFileChooser chooser = new JFileChooser("/");
+            int f = chooser.showSaveDialog(null);
+            if (f == JFileChooser.APPROVE_OPTION) {
+                String file = chooser.getSelectedFile().getAbsolutePath();
+//                String[] split = file.split(".");
+//                String extension = split[split.length - 1];
+//                System.out.println(file);
+//                if (!extension.equalsIgnoreCase("csv")) {
+//                    alert("Please select a .csv file");
+//                    return;
+//                }
+                System.out.println(file);
+                File file2 = new File(file);
+                JOptionPane.showMessageDialog(null, "It might take a while. Please have patient");
+                Queries.addStudentsToDB(file2);
+                Queries.assignSectionToStudents(1);
+                Queries.createInitialStudentSchedule();
+                Reset.uploadStudentFile(1);
+            }
+            JOptionPane.showMessageDialog(null, "File uploaded successfuly!");
+            Reset.uploadStudentFile(1);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

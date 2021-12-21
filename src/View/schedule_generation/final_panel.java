@@ -8,6 +8,8 @@ package View.schedule_generation;
 import Controller.NewAlgorithm;
 import Model.Program;
 import Model.Queries;
+import Model.Reset;
+import static View.Alerts.alert;
 import static db.DBConnection.createConnection;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -84,15 +86,38 @@ public class final_panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void generate_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generate_scheduleActionPerformed
-        // get rooms from room and room_availablity
-        // get teacers from teachers and teacher_schedule
-        // get sections from sections section_schedule
-        createConnection();
-        ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
-//        System.out.println("\n\n\n\n\n\n\n\n\n\n");
-//        System.out.println("____________________________________________________________________________");
-        Queries.updateSchedule(programs1);
-        JOptionPane.showMessageDialog(null, "Scheduale generated successfully!");
+
+//        createConnection();
+        boolean generated = Reset.scheduleGenerated();
+        if (generated) {
+            int choice = JOptionPane.showConfirmDialog(null, "Schedule Already Generated. Want to generate new schedule?");
+            if (choice == 0) {
+                Reset.resetSchedule();
+                JOptionPane.showMessageDialog(null, "Generating schedule might take a while. Be patient");
+                ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+                Queries.updateSchedule(programs1);
+                Queries.mapSectinoSchedule_ToProfessors();
+                Queries.mapSectionSchedule_ToStudents();
+                JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
+                Reset.generateSchedule(1);
+            } else {
+                alert("Schedule not generated");
+            }
+        } else {
+            Reset.resetSchedule();
+            int choice = JOptionPane.showConfirmDialog(null, "Make sure you added all data of entities. Entities added or modified after this won't effect schedule");
+            if (choice == 0) {
+                ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+                Queries.updateSchedule(programs1);
+                Queries.mapSectinoSchedule_ToProfessors();
+                Queries.mapSectionSchedule_ToStudents();
+                JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
+                Reset.generateSchedule(1);
+            } else {
+                alert("Schedule not generated");
+            }
+        }
+
 
     }//GEN-LAST:event_generate_scheduleActionPerformed
 

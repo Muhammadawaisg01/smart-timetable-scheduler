@@ -31,6 +31,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
     public static void setDropdownData(String[] data) {
         general_dropdown.setModel(new DefaultComboBoxModel<>(data));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,11 +121,10 @@ public class search_for_specific_entity extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 Logger.getLogger(search_for_specific_entity.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
             rs = Queries.getFinalSectionSchedule(value);
             schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
-            
+
         } else if (stat.startsWith("Room")) {
             rs = Queries.getSectionScheduleRS("room_availabilty", "room_name", value + "");
             schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));

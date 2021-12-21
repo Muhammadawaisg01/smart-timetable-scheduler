@@ -54,6 +54,7 @@ public class Queries {
      */
     public static String getCourseCode(String courseName) {
         String q = "select course_code from course where title = '" + courseName + "'";
+        System.out.println(q);
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         try {
@@ -652,7 +653,13 @@ public class Queries {
             String[] studentIDs = getStudentIDs(semester);
             System.out.println("gad");
             // get section strength of each section
-            int student_in_each_section = (int) studentIDs.length / sectionIDs.length;
+            int student_in_each_section = -1;
+            try {
+                student_in_each_section = (int) studentIDs.length / sectionIDs.length;
+            } catch (NullPointerException ex) {
+                System.out.println(ex);
+                continue;
+            } 
             System.out.println(student_in_each_section);
 //            System.exit(1);
             int startIndex = 0;
@@ -841,11 +848,10 @@ public class Queries {
         }
         return null;
     }
-    
+
     /**
      *
-     * @param query Valid SQL select query statement
-     * will execute
+     * @param query Valid SQL select query statement will execute
      */
     public static void execute(String query) {
         Connection conn = getConnection();
@@ -961,25 +967,58 @@ public class Queries {
      * Student schedule after schedule is generated
      */
     public static void mapSectionSchedule_ToStudents() {
-        Connection conn = getConnection();
-        PreparedStatement stmt = null;
-        String query;
-        ResultSet students = getAllStudent();
+        String query = "SELECT registration_no as RegNo, students.section_id as Section, course_code as Course, semester_no as Semester FROM server1.students join student_section_allocation where \n"
+                + "registration_no = student_registration_no and\n"
+                + "students.section_id = student_section_allocation.section_ID";
+        ResultSet students = getRS(query);
+        String regNo, section, course;
+        String courseTitle = "";
         try {
-            // get from schedule where course_code and section_id match student's
-
             while (students.next()) {
-                String stdRegNo = students.getString("registration_no");
-                String stdSection = students.getString("section_id");
-                // get registered courses of each student
-                String[] courses = getStudentCourses(stdRegNo);
-                for (int i = 0; i < courses.length; i++) {
-                    String getSchedule = "select * from section_schedule where section_id = '" + stdSection + "' "
-                            + "course_code = '" + courses[i] + "'";
-                    System.out.println(getSchedule);
+                regNo = students.getString("RegNo");
+                section = students.getString("Section");
+                course = students.getString("Course");
+                ResultSet rs = getCourseDetails(course);
+                if (rs.next()) {
+                    courseTitle = rs.getString("title");
+                }
+                String getSchedule = "select * from section_schedule where course_code Like '" + courseTitle + "%' and section_id = '" + section + "'";
+                ResultSet schedule = getRS(getSchedule);
+                if (schedule.next()) {
+                    schedule.beforeFirst();
+                } else {
+                    getSchedule = "select * from section_schedule where course_code Like '" + courseTitle + "%'";
+                    schedule = getRS(getSchedule);
+                    if (schedule.next()) {
+                        String secID = schedule.getString("section_id");
+                        getSchedule = "select * from section_schedule where course_code Like '" + courseTitle + "%' and section_id = '" + secID + "'";
+                        schedule = getRS(getSchedule);
+                    }
+                }
+                String sectionID, course_code, room_name, isLab;
+                int day_no, timeslot_no, lecture_no;
+                while (schedule.next()) {
+                    sectionID = schedule.getString("section_id");
+                    day_no = schedule.getInt("day_no");
+                    timeslot_no = schedule.getInt("timeslot_no");
+                    course_code = schedule.getString("course_code");
+                    room_name = schedule.getString("room_name");
+                    lecture_no = schedule.getInt("lecture_no");
+                    isLab = schedule.getString("isLab");
+                    String updateStudentSchedule = "UPDATE student_schedule"
+                            + " SET "
+                            + "course_code = '" + course_code + "', "
+                            + "room_name = '" + room_name + "', "
+                            + "section_id = '" + sectionID + "', "
+                            + "lecture_no = '" + lecture_no + "', "
+                            + "isLab = '" + isLab + "'"
+                            + " WHERE "
+                            + "student_registration_no = '" + regNo + "' and "
+                            + "day_no = " + day_no + " and "
+                            + "timeslot_no = " + timeslot_no;
+                    execute(updateStudentSchedule);
                 }
             }
-            // assign regular student courses scheudle to student
         } catch (SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1028,7 +1067,7 @@ public class Queries {
                         + "professor_id = " + professorID + " and section_professor_allocation.course_code = '" + courseCode + "' and section_schedule.course_code LIKE '%" + courseName + "%' and "
                         + "lab_or_theory = isLab";
                 ResultSet result = getRS(getSchedule);
-                String section_id,course_code, room_name, isLab;
+                String section_id, course_code, room_name, isLab;
                 int lecture_no, day, slot;
                 while (result.next()) {
                     section_id = result.getString("section_id");
@@ -1055,7 +1094,5 @@ public class Queries {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
-    
 }
