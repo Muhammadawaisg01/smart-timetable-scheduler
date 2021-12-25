@@ -15,9 +15,10 @@ public class Test {
         String query = "SELECT registration_no as RegNo, students.section_id as Section, course_code as Course, semester_no as Semester FROM server1.students join student_section_allocation where \n"
                 + "registration_no = student_registration_no and\n"
                 + "students.section_id = student_section_allocation.section_ID";
+        System.out.println(query);
         createConnection();
-        Reset.resetSchedule();
-        Reset.resetStudents();
+//        Reset.resetSchedule();
+//        Reset.resetStudents();
 //        int choice = JOptionPane.showConfirmDialog(null, "Make sure you added all information. Entities added or modified after this won't effect schedule");
 //        System.out.println(choice);
 //        JFileChooser chooser = new JFileChooser("/");
@@ -29,7 +30,7 @@ public class Test {
 //            Queries.addStudentsToDB(file2);
 //        }
 //        createConnection();
-//        Queries.mapSectionSchedule_ToStudents();
+        Queries.mapSectionSchedule_ToStudents();
         //        File file = new File("Student Registration.csv");
         //        Queries.addStudentsToDB(file);
 //                  Queries.assignSectionToStudents(1);

@@ -95,7 +95,6 @@ public class excel_file_panel extends javax.swing.JPanel {
                 int f = chooser.showSaveDialog(null);
                 if (f == JFileChooser.APPROVE_OPTION) {
                     String file = chooser.getSelectedFile().getAbsolutePath();
-                    System.out.println(file);
                     File file2 = new File(file);
                     JOptionPane.showMessageDialog(null, "It might take a while. Please have patient");
                     Queries.addStudentsToDB(file2);

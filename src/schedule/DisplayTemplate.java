@@ -111,7 +111,6 @@ public class DisplayTemplate extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(DisplayTemplate.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     private void displaySectionDetails(String sectionID) {

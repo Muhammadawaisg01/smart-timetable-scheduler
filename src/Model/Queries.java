@@ -945,6 +945,7 @@ public class Queries {
         ResultSet students = getAllStudent();
         try {
             String regNo, regularSection;
+            System.out.println("Students found");
             while (students.next()) {
                 regNo = students.getString("registration_no");
                 regularSection = students.getString("section_id");
@@ -985,7 +986,7 @@ public class Queries {
      * Student schedule after schedule is generated
      */
     public static void mapSectionSchedule_ToStudents() {
-        String query = "SELECT registration_no as RegNo, students.section_id as Section, course_code as Course, semester_no as Semester FROM server1.students join student_section_allocation where \n"
+        String query = "SELECT registration_no as RegNo, students.section_id as Section, course_code as Course, semester_no as Semester FROM students join student_section_allocation where \n"
                 + "registration_no = student_registration_no and\n"
                 + "students.section_id = student_section_allocation.section_ID";
         ResultSet students = getRS(query);
@@ -1000,6 +1001,7 @@ public class Queries {
                 if (rs.next()) {
                     courseTitle = rs.getString("title");
                 }
+                // try to get course from same section of student
                 String getSchedule = "select * from section_schedule where course_code Like '" + courseTitle + "%' and section_id = '" + section + "'";
                 ResultSet schedule = getRS(getSchedule);
                 if (schedule.next()) {
@@ -1024,44 +1026,44 @@ public class Queries {
                     lecture_no = schedule.getInt("lecture_no");
                     isLab = schedule.getString("isLab");
                     // check if student has already some lecture
-                    String checkClash = "select lecture_no from student_schedule where day_no = " + day_no + " and "
-                            + "timeslot_no = " + timeslot_no + " and "
-                            + "";
-                    ResultSet clash = getRS(checkClash);
-                    if (clash == null) {
-                        continue;
-                    }
-                    if (clash.next()) {
-                        int lecture = clash.getInt("lecture_no");
-                        System.out.println(lecture);
-                        if (lecture != 0) {
-                            String q = "INSERT INTO student_schedule_clashes\n"
-                                    + "(student_registration_no,\n"
-                                    + "day_no,\n"
-                                    + "timeslot_no,\n"
-                                    + "course_code,\n"
-                                    + "room_name,\n"
-                                    + "section_ID,\n"
-                                    + "lecture_no,\n"
-                                    + "isLab,\n"
-                                    + "isResolved)\n"
-                                    + "VALUES "
-                                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                            PreparedStatement stmt = getConnection().prepareStatement(q);
-                            stmt.setString(1, regNo);
-                            stmt.setInt(2, day_no);
-                            stmt.setInt(3, timeslot_no);
-                            stmt.setString(4, course_code);
-                            stmt.setString(5, room_name);
-                            stmt.setString(6, sectionID);
-                            stmt.setInt(7, lecture_no);
-                            stmt.setString(8, isLab);
-                            stmt.setString(9, "false");
-                            stmt.execute();
-                            System.out.println("clash");
-                            continue;
-                        }
-                    }
+//                    String checkClash = "select lecture_no from student_schedule where day_no = " + day_no + " and "
+//                            + "timeslot_no = " + timeslot_no + " and "
+//                            + "";
+//                    ResultSet clash = getRS(checkClash);
+//                    if (clash == null) {
+//                        continue;
+//                    }
+//                    if (clash.next()) {
+//                        int lecture = clash.getInt("lecture_no");
+//                        System.out.println(lecture);
+//                        if (lecture != 0) {
+//                            String q = "INSERT INTO student_schedule_clashes\n"
+//                                    + "(student_registration_no,\n"
+//                                    + "day_no,\n"
+//                                    + "timeslot_no,\n"
+//                                    + "course_code,\n"
+//                                    + "room_name,\n"
+//                                    + "section_ID,\n"
+//                                    + "lecture_no,\n"
+//                                    + "isLab,\n"
+//                                    + "isResolved)\n"
+//                                    + "VALUES "
+//                                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//                            PreparedStatement stmt = getConnection().prepareStatement(q);
+//                            stmt.setString(1, regNo);
+//                            stmt.setInt(2, day_no);
+//                            stmt.setInt(3, timeslot_no);
+//                            stmt.setString(4, course_code);
+//                            stmt.setString(5, room_name);
+//                            stmt.setString(6, sectionID);
+//                            stmt.setInt(7, lecture_no);
+//                            stmt.setString(8, isLab);
+//                            stmt.setString(9, "false");
+//                            stmt.execute();
+//                            System.out.println("clash");
+//                            continue;
+//                        }
+//                    }
                     String updateStudentSchedule = "UPDATE student_schedule"
                             + " SET "
                             + "course_code = '" + course_code + "', "
