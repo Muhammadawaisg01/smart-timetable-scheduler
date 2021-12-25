@@ -241,7 +241,7 @@ public class Queries {
      * @return ResultSet set of course codes of registered courses
      */
     public static ResultSet getStudentRegisteredCourses(String reg_no) {
-        String q = "select course_code from registered_courses where student_registration_no = " + reg_no;
+        String q = "select course_code from registered_courses where student_registration_no = '" + reg_no + "'";
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         try {
@@ -620,7 +620,7 @@ public class Queries {
                     stmt.execute();
                 }
             }
-            assignSectionToStudents(1);
+//            assignSectionToStudents(1);
         } catch (FileNotFoundException | SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException ex) {
@@ -659,9 +659,7 @@ public class Queries {
             } catch (NullPointerException ex) {
                 System.out.println(ex);
                 continue;
-            } 
-            System.out.println(student_in_each_section);
-//            System.exit(1);
+            }
             int startIndex = 0;
             for (String sectionID : sectionIDs) {
 //                int sectionStrength = getSectionStrength(sectionID);  should be like this
@@ -1005,6 +1003,45 @@ public class Queries {
                     room_name = schedule.getString("room_name");
                     lecture_no = schedule.getInt("lecture_no");
                     isLab = schedule.getString("isLab");
+                    // check if student has already some lecture
+                    String checkClash = "select lecture_no from student_schedule where day_no = " + day_no + " and "
+                            + "timeslot_no = " + timeslot_no + " and "
+                            + "";
+                    ResultSet clash = getRS(checkClash);
+                    if (clash == null) {
+                        continue;
+                    }
+                    if (clash.next()) {
+                        int lecture = clash.getInt("lecture_no");
+                        System.out.println(lecture);
+                        if (lecture != 0) {
+                            String q = "INSERT INTO student_schedule_clashes\n"
+                                    + "(student_registration_no,\n"
+                                    + "day_no,\n"
+                                    + "timeslot_no,\n"
+                                    + "course_code,\n"
+                                    + "room_name,\n"
+                                    + "section_ID,\n"
+                                    + "lecture_no,\n"
+                                    + "isLab,\n"
+                                    + "isResolved)\n"
+                                    + "VALUES "
+                                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            PreparedStatement stmt = getConnection().prepareStatement(q);
+                            stmt.setString(1, regNo);
+                            stmt.setInt(2, day_no);
+                            stmt.setInt(3, timeslot_no);
+                            stmt.setString(4, course_code);
+                            stmt.setString(5, room_name);
+                            stmt.setString(6, sectionID);
+                            stmt.setInt(7, lecture_no);
+                            stmt.setString(8, isLab);
+                            stmt.setString(9, "false");
+                            stmt.execute();
+                            System.out.println("clash");
+                            continue;
+                        }
+                    }
                     String updateStudentSchedule = "UPDATE student_schedule"
                             + " SET "
                             + "course_code = '" + course_code + "', "
@@ -1093,6 +1130,19 @@ public class Queries {
         } catch (SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static String getSlotDuration(int slot) {
+        ResultSet rs = getRS("select starting_time, ending_time from timeslot where timeslot_no = " + slot);
+        try {
+            if (rs.next()) {
+                String str = rs.getString(1).split(" ")[0] + " - " + rs.getString(2).split(" ")[0];
+                return str;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }

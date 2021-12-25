@@ -22,6 +22,16 @@ public class Reset {
                 + "where \n"
                 + "section_id in (select section_id from section)";
         Queries.execute(query);
+        query = "Update student_schedule SET course_code = '', room_name = '', lecture_no = 0, isLab = 'false' \n"
+                + "where \n"
+                + "student_registration_no in (select registration_no from students)";
+        Queries.execute(query);
+        query = "Update professor_schedule SET section_id = '', course_code = '', room_name = '', lecture_no = 0, isLab = 'false' \n"
+                + "where \n"
+                + "professor_id in (select professor_id from professor)";
+        Queries.execute(query);
+        query = "update room_availabilty set is_available = 'false'";
+        Queries.execute(query);
         generateSchedule(0);
     }
 

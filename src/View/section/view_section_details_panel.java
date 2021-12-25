@@ -5,6 +5,12 @@
  */
 package View.section;
 
+import View.TableViewUtility;
+import java.awt.PopupMenu;
+import java.sql.ResultSet;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
 /**
  *
  * @author muhammad awais 1
@@ -30,73 +36,158 @@ public class view_section_details_panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
-        jLabel97 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        section_strength_label = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
         jLabel99 = new javax.swing.JLabel();
-        jLabel100 = new javax.swing.JLabel();
+        section_id_label = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        section_allocation_table = new JTable() {
+            public boolean editCellAt(int row, int column, java.util.EventObject e) {
+                return false;
+            }
+        };
+        jScrollPane5 = new javax.swing.JScrollPane();
+        section_courses_table = new JTable() {
+            public boolean editCellAt(int row, int column, java.util.EventObject e) {
+                return false;
+            }
+        };
+        jLabel97 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Section Details:");
-        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 190, 40));
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel96.setText("S e c t i o n  C o u r s e  A l l o c a t i o n s ");
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 490, 40));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("output Strength");
-        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 190, 40));
+        section_strength_label.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        section_strength_label.setForeground(new java.awt.Color(255, 255, 255));
+        section_strength_label.setText("output Strength");
+        jPanel1.add(section_strength_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 170, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Professors allocated to courses of this section");
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 790, 150));
-
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel98.setText("Student Strength:");
-        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 40));
+        jLabel98.setText("Student Strength");
+        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 170, 40));
 
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel99.setText("Section ID:");
-        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 190, 40));
+        jLabel99.setText("Section ID");
+        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 160, 40));
 
-        jLabel100.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel100.setText("Section ID(output):");
-        jPanel1.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 190, 40));
+        section_id_label.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        section_id_label.setForeground(new java.awt.Color(255, 255, 255));
+        section_id_label.setText("Section ID(output):");
+        jPanel1.add(section_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 40));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Details of the section:\ni.e. room, days, slots specification of\nthis section, and all specs of \nthis section\n\nnumber of students of \nsenior semester\n");
-        jScrollPane3.setViewportView(jTextArea2);
+        section_allocation_table.setBackground(new java.awt.Color(50, 50, 50));
+        section_allocation_table.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_allocation_table.setForeground(new java.awt.Color(255, 255, 255));
+        section_allocation_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Section ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 330, 220));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea3.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea3.setRows(5);
-        jTextArea3.setText("courses being taught in this section");
-        jScrollPane4.setViewportView(jTextArea3);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        section_allocation_table.setCellSelectionEnabled(true);
+        section_allocation_table.setEditingColumn(0);
+        section_allocation_table.setEditingRow(0);
+        section_allocation_table.setGridColor(new java.awt.Color(0, 102, 153));
+        section_allocation_table.setRowHeight(30);
+        section_allocation_table.setRowMargin(4);
+        section_allocation_table.setShowVerticalLines(false);
+        section_allocation_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_allocation_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(section_allocation_table);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 790, 150));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 620, 160));
+
+        section_courses_table.setBackground(new java.awt.Color(50, 50, 50));
+        section_courses_table.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_courses_table.setForeground(new java.awt.Color(255, 255, 255));
+        section_courses_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Section ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        section_courses_table.setCellSelectionEnabled(true);
+        section_courses_table.setEditingColumn(0);
+        section_courses_table.setEditingRow(0);
+        section_courses_table.setGridColor(new java.awt.Color(0, 102, 153));
+        section_courses_table.setRowHeight(30);
+        section_courses_table.setRowMargin(4);
+        section_courses_table.setShowVerticalLines(false);
+        section_courses_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_courses_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(section_courses_table);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 620, 170));
+
+        jLabel97.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel97.setText("S e c t i o n  D e t a i l s");
+        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 270, 40));
+
+        jLabel100.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel100.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel100.setText("S e c t i o n  C o u r s e s");
+        jPanel1.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 290, 40));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -118,6 +209,27 @@ public class view_section_details_panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void section_allocation_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_allocation_tableMouseClicked
+        
+
+    }//GEN-LAST:event_section_allocation_tableMouseClicked
+
+    private void section_courses_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_courses_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_courses_tableMouseClicked
+
+    public void setSectionID (String sectionID) {
+        section_id_label.setText(sectionID);
+    }
+    public void setStrength(int strength) {
+        section_strength_label.setText(strength + "");
+    }
+    public void setCoursesTable(ResultSet rs) {
+        section_courses_table.setModel(TableViewUtility.resultSetToTableModel(rs));
+    }
+    public void setAllocationsTable(ResultSet rs) {
+        section_allocation_table.setModel(TableViewUtility.resultSetToTableModel(rs));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel100;
@@ -127,11 +239,15 @@ public class view_section_details_panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private static javax.swing.JTable section_allocation_table;
+    private static javax.swing.JTable section_courses_table;
+    private static javax.swing.JLabel section_id_label;
+    private static javax.swing.JLabel section_strength_label;
     // End of variables declaration//GEN-END:variables
+
+    public JPanel getPanel() {
+        return this;
+    }
 }

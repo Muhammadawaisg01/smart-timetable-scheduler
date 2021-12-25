@@ -34,29 +34,31 @@ public class remove_section_panel extends javax.swing.JPanel {
         section_id_dd = new javax.swing.JComboBox<>();
         remove = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel99.setText("Remove Section ");
-        add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 170, 60));
+        jLabel99.setText("R e m o v e  S e c t i o n ");
+        add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 290, 60));
 
-        jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel102.setText("Section:");
+        jLabel102.setText("Sections");
         add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 40));
 
+        section_id_dd.setBackground(new java.awt.Color(50, 50, 50));
+        section_id_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_id_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         section_id_dd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 section_id_ddActionPerformed(evt);
             }
         });
-        add(section_id_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 460, 40));
+        add(section_id_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 510, 40));
 
         remove.setBackground(new java.awt.Color(0, 102, 153));
-        remove.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        remove.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         remove.setForeground(new java.awt.Color(255, 255, 255));
         remove.setText("Remove Section");
         remove.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +66,7 @@ public class remove_section_panel extends javax.swing.JPanel {
                 removeActionPerformed(evt);
             }
         });
-        add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 230, 60));
+        add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 230, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void section_id_ddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_section_id_ddActionPerformed

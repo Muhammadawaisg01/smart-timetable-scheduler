@@ -1,11 +1,10 @@
 package View.section;
 
-import Model.Queries;
 import static View.Alerts.alert;
 import static View.Alerts.isEmpty;
-//import static View.section.update_section_panel.	;
 import static db.DBConnection.createConnection;
 import static db.DBConnection.getConnection;
+import Model.Queries;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -150,7 +149,6 @@ public class create_section_panel extends javax.swing.JPanel {
         programs_dropdown = new javax.swing.JComboBox<>();
         jLabel95 = new javax.swing.JLabel();
         section_ID = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel97 = new javax.swing.JLabel();
         capacity = new javax.swing.JTextField();
         create_section_btn = new javax.swing.JButton();
@@ -167,23 +165,29 @@ public class create_section_panel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setEnabled(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(0, 102, 153));
         jLabel96.setText("Program:");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 40));
 
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(0, 102, 153));
         jLabel94.setText("Section ID:");
         jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, 40));
 
+        semesters_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        semesters_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        semesters_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         semesters_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(semesters_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 370, 40));
 
+        programs_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        programs_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        programs_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         programs_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         programs_dropdown.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -197,21 +201,24 @@ public class create_section_panel extends javax.swing.JPanel {
         });
         jPanel1.add(programs_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 370, 40));
 
-        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(0, 102, 153));
         jLabel95.setText("Semester:");
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 40));
 
-        section_ID.setForeground(new java.awt.Color(0, 102, 153));
+        section_ID.setBackground(new java.awt.Color(50, 50, 50));
+        section_ID.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_ID.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(section_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 370, 40));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, 640, 10));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
         jLabel97.setText("Section Capacity:");
         jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 210, 40));
 
-        capacity.setForeground(new java.awt.Color(0, 102, 153));
+        capacity.setBackground(new java.awt.Color(50, 50, 50));
+        capacity.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        capacity.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 370, 40));
 
         create_section_btn.setBackground(new java.awt.Color(0, 102, 153));
@@ -223,50 +230,56 @@ public class create_section_panel extends javax.swing.JPanel {
                 create_section_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(create_section_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 760, 160, 60));
+        jPanel1.add(create_section_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 800, 160, 40));
 
-        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel60.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel60.setText("Assign courses to section:");
-        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 260, -1));
+        jLabel60.setText("A s s i g n  Co u r s e s  to Se c t i o n");
+        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 330, 40));
 
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
         jLabel98.setText("Course:");
         jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 90, 30));
 
+        courses_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        courses_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        courses_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         courses_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 380, 40));
 
-        addCourseButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        addCourseButton.setForeground(new java.awt.Color(0, 102, 153));
-        addCourseButton.setText("Assign");
+        addCourseButton.setBackground(new java.awt.Color(0, 102, 153));
+        addCourseButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        addCourseButton.setForeground(new java.awt.Color(255, 255, 255));
+        addCourseButton.setText("Assign Course");
         addCourseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addCourseButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(addCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 80, 30));
+        jPanel1.add(addCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 160, 40));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 630, 20));
 
         assigned_courses.setEditable(false);
-        assigned_courses.setColumns(20);
-        assigned_courses.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        assigned_courses.setForeground(new java.awt.Color(0, 102, 153));
+        assigned_courses.setBackground(new java.awt.Color(50, 50, 50));
+        assigned_courses.setColumns(10);
+        assigned_courses.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        assigned_courses.setForeground(new java.awt.Color(255, 255, 255));
         assigned_courses.setRows(5);
         assigned_courses.setText("Courses that are assigned to the section will be printed here\n");
         assigned_courses.setDisabledTextColor(new java.awt.Color(250, 250, 250));
-        assigned_courses.setEnabled(false);
         jScrollPane2.setViewportView(assigned_courses);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 630, 150));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 630, 150));
 
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
         jLabel99.setText("Section Name:");
         jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
 
-        section_name.setForeground(new java.awt.Color(0, 102, 153));
+        section_name.setBackground(new java.awt.Color(50, 50, 50));
+        section_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_name.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 370, 40));
 
         jScrollPane1.setViewportView(jPanel1);
@@ -418,7 +431,6 @@ public class create_section_panel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private static javax.swing.JComboBox<String> programs_dropdown;
     private javax.swing.JTextField section_ID;

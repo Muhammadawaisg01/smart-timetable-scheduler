@@ -52,50 +52,54 @@ public class add_new_program extends javax.swing.JPanel {
         jLabel97 = new javax.swing.JLabel();
         program_name = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel95.setText("Number of semesters:");
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel95.setText("Number of semesters");
         add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 200, 40));
 
-        semesters.setForeground(new java.awt.Color(0, 102, 153));
+        semesters.setBackground(new java.awt.Color(50, 50, 50));
+        semesters.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        semesters.setForeground(new java.awt.Color(255, 255, 255));
         semesters.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 semestersActionPerformed(evt);
             }
         });
-        add(semesters, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 470, 40));
+        add(semesters, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 260, 40));
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Add New Program Details:");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 270, 40));
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel96.setText("A d d   N e w   P r o g r a m   D e t a i l s");
+        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 350, 40));
 
         save.setBackground(new java.awt.Color(0, 102, 153));
         save.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         save.setForeground(new java.awt.Color(255, 255, 255));
-        save.setText("save program");
+        save.setText("Save Program");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
             }
         });
-        add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 230, 60));
+        add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 170, 60));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Program Title:");
-        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 190, 40));
+        jLabel97.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel97.setText("Program Title");
+        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 140, 40));
 
-        program_name.setForeground(new java.awt.Color(0, 102, 153));
+        program_name.setBackground(new java.awt.Color(50, 50, 50));
+        program_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        program_name.setForeground(new java.awt.Color(255, 255, 255));
         program_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 program_nameActionPerformed(evt);
             }
         });
-        add(program_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 470, 40));
+        add(program_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 260, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void semestersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestersActionPerformed

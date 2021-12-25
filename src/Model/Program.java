@@ -81,7 +81,7 @@ public class Program {
 
     public static ResultSet get_all_data_of_programs() {
         ResultSet rs = null;
-        String query = "SELECT program_name, COUNT(*) as Semesters FROM program join semester where semester.program_id = program.program_id group by program_name;";
+        String query = "SELECT program_name as 'Program Name', COUNT(*) as Semesters FROM program join semester where semester.program_id = program.program_id group by program_name;";
         try {
             PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
             rs = stmt1.executeQuery();

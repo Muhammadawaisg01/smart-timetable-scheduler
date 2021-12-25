@@ -104,46 +104,49 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         both_radio = new javax.swing.JRadioButton();
         lab_radio = new javax.swing.JRadioButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(32767, 35000));
         setPreferredSize(new java.awt.Dimension(409, 500));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        allocated_textarea.setColumns(20);
-        allocated_textarea.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        allocated_textarea.setForeground(new java.awt.Color(0, 102, 153));
+        allocated_textarea.setBackground(new java.awt.Color(50, 50, 50));
+        allocated_textarea.setColumns(10);
+        allocated_textarea.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        allocated_textarea.setForeground(new java.awt.Color(255, 255, 255));
         allocated_textarea.setRows(5);
         allocated_textarea.setText("Allocations:");
         jScrollPane1.setViewportView(allocated_textarea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 510, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 630, 170));
 
-        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel95.setText("Assign Professors to section courses:");
-        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 370, 40));
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel95.setText("A s s i g n  P r o f e s s o r s  t o  S e c t i o n  C o u r s e s");
+        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 490, 40));
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Professor:");
-        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 160, 40));
+        jLabel96.setText("Professor");
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 160, 30));
 
-        lecture_radio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lecture_radio.setForeground(new java.awt.Color(0, 102, 153));
+        lecture_radio.setBackground(new java.awt.Color(50, 50, 50));
+        lecture_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lecture_radio.setForeground(new java.awt.Color(255, 255, 255));
         lecture_radio.setText("Lecture");
+        lecture_radio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 128, 153), 1, true));
         lecture_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lecture_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 100, 30));
+        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 100, 30));
 
         save_allocation.setBackground(new java.awt.Color(0, 102, 153));
-        save_allocation.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        save_allocation.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         save_allocation.setForeground(new java.awt.Color(255, 255, 255));
         save_allocation.setText("Save Allocation");
         save_allocation.addActionListener(new java.awt.event.ActionListener() {
@@ -151,66 +154,76 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 save_allocationActionPerformed(evt);
             }
         });
-        jPanel1.add(save_allocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 600, 230, 60));
+        jPanel1.add(save_allocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 220, 50));
 
+        professor_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         professor_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(professor_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 210, 40));
+        jPanel1.add(professor_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 210, 40));
 
-        allocate_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        allocate_btn.setForeground(new java.awt.Color(0, 102, 153));
-        allocate_btn.setText("Assign");
+        allocate_btn.setBackground(new java.awt.Color(0, 102, 153));
+        allocate_btn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        allocate_btn.setForeground(new java.awt.Color(255, 255, 255));
+        allocate_btn.setText("Assign Professor");
         allocate_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allocate_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(allocate_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 130, 40));
+        jPanel1.add(allocate_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 210, 40));
 
-        section_name.setForeground(new java.awt.Color(0, 102, 153));
+        section_name.setEditable(false);
+        section_name.setBackground(new java.awt.Color(50, 50, 50));
+        section_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_name.setForeground(new java.awt.Color(255, 255, 255));
         section_name.setEnabled(false);
         section_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 section_nameActionPerformed(evt);
             }
         });
-        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 370, 40));
+        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 210, 40));
 
-        jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("All Courses:");
-        jPanel1.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 150, 40));
+        jLabel101.setText("Courses");
+        jPanel1.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 30));
 
-        jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel102.setText("Section:");
-        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 150, 40));
+        jLabel102.setText("Section");
+        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 40));
 
+        courses_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         courses_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, 40));
+        jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 40));
 
-        both_radio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        both_radio.setForeground(new java.awt.Color(0, 102, 153));
+        both_radio.setBackground(new java.awt.Color(50, 50, 50));
+        both_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        both_radio.setForeground(new java.awt.Color(255, 255, 255));
         both_radio.setText("Both");
+        both_radio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 128, 153), 1, true));
         both_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 both_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(both_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 70, 30));
+        jPanel1.add(both_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 70, 30));
 
-        lab_radio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lab_radio.setForeground(new java.awt.Color(0, 102, 153));
+        lab_radio.setBackground(new java.awt.Color(50, 50, 50));
+        lab_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lab_radio.setForeground(new java.awt.Color(255, 255, 255));
         lab_radio.setText("Lab");
+        lab_radio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 128, 153), 1, true));
         lab_radio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lab_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lab_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 70, 30));
+        jPanel1.add(lab_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 70, 30));
 
         jScrollPane2.setViewportView(jPanel1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 680, 490));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 520));
     }// </editor-fold>//GEN-END:initComponents
 
     private void allocate_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allocate_btnActionPerformed

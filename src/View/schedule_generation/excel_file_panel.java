@@ -95,17 +95,13 @@ public class excel_file_panel extends javax.swing.JPanel {
                 int f = chooser.showSaveDialog(null);
                 if (f == JFileChooser.APPROVE_OPTION) {
                     String file = chooser.getSelectedFile().getAbsolutePath();
-                    String[] split = file.split(".");
-                    String extension = split[split.length - 1];
-                    if (!extension.equalsIgnoreCase("csv")) {
-                        alert("Please select a .csv file");
-                        return;
-                    }
                     System.out.println(file);
                     File file2 = new File(file);
                     JOptionPane.showMessageDialog(null, "It might take a while. Please have patient");
                     Queries.addStudentsToDB(file2);
+                    alert("Assigning sections to students");
                     Queries.assignSectionToStudents(1);
+                    alert("Creating initail schedule");
                     Queries.createInitialStudentSchedule();
                     Reset.uploadStudentFile(1);
                 }

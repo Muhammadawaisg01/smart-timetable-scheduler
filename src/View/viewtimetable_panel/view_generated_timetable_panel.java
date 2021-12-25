@@ -5,6 +5,8 @@
  */
 package View.viewtimetable_panel;
 
+import schedule.DisplayTable;
+
 /**
  *
  * @author muhammad awais 1
@@ -30,12 +32,11 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         entity_name_lbl = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         search_for_specific_entity1 = new View.viewtimetable_panel.search_for_specific_entity();
         view_schedule1 = new View.viewtimetable_panel.view_schedule();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(700, 520));
@@ -49,26 +50,6 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
         entity_name_lbl.setText("Section Schedule");
         jPanel2.add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 40));
 
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton2.setText("search for specific ");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
-
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton1.setText("View complete schedule");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
         jPanel1.add(search_for_specific_entity1, "card2");
@@ -78,34 +59,31 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 192, 930, 410));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton1.setText("View Complete Schedule");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 330, 60));
+
         jScrollPane1.setViewportView(jPanel2);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1020, 710));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if(jRadioButton2.isSelected()){
-            jRadioButton1.setSelected(false); 
-            search_for_specific_entity1.setVisible(true);
-            view_schedule1.setVisible(false); 
-        }
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dt.DisplayFullTable();
+        dt.getFrame().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        if(jRadioButton1.isSelected()){
-            jRadioButton2.setSelected(false); 
-            search_for_specific_entity1.setVisible(false);
-            view_schedule1.setVisible(true); 
-        }
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-
+    DisplayTable dt = new DisplayTable();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel entity_name_lbl;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private View.viewtimetable_panel.search_for_specific_entity search_for_specific_entity1;

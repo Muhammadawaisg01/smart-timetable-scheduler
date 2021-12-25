@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import schedule.DisplayTable;
+import schedule.DisplayTemplate;
+import schedule.Template2;
 
 /**
  *
@@ -27,7 +30,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
     public search_for_specific_entity() {
         initComponents();
     }
-
+    
     public static void setDropdownData(String[] data) {
         general_dropdown.setModel(new DefaultComboBoxModel<>(data));
     }
@@ -62,6 +65,11 @@ public class search_for_specific_entity extends javax.swing.JPanel {
                 general_dropdownItemStateChanged(evt);
             }
         });
+        general_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                general_dropdownActionPerformed(evt);
+            }
+        });
         add(general_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 420, 40));
 
         result_textarea.setColumns(20);
@@ -86,7 +94,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(schedule_table);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 700, 180));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 740, 410));
     }// </editor-fold>//GEN-END:initComponents
 
     private void general_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_general_dropdownItemStateChanged
@@ -98,32 +106,47 @@ public class search_for_specific_entity extends javax.swing.JPanel {
             rs = Queries.getSectionScheduleRS("professor_schedule", "professor_id", profID + "");
             schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
         } else if (stat.startsWith("Student")) {
-            rs = Queries.getSectionScheduleRS("student_schedule", "student_registration_no", value + "");
+            String studentSchedule = "select \n"
+                    + "student_registration_no as Student, \n"
+                    + "section_id as Section,\n"
+                    + "name as Day, course_code as Course,\n"
+                    + "starting_time as StartTime,\n"
+                    + "ending_time as EndTime, \n"
+                    + "room_name as Room\n"
+                    + "from "
+                    + "student_schedule join day using (day_no)"
+                    + " join timeslot using (timeslot_no) "
+                    + "where "
+                    + "student_registration_no = '" + value + "'";
+            
+            rs = Queries.getRS(studentSchedule);
             schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
         } else if (stat.startsWith("Section")) {
+            dt.DisplayOneTable(value);
+            dt.getFrame().setVisible(true);
+//            dt.setVisible(true);
             // get section professor allocation
-            ResultSet professorSectionAllocation = Queries.getSectionProfessorAllocation(value);
-            try {
-                String str = "";
-                while (professorSectionAllocation.next()) {
-                    String courseCode = professorSectionAllocation.getString("course_code");
-                    ResultSet course = Queries.getCourseDetails(courseCode);
-                    if (course.next()) {
-                        str += course.getString("title");
-                    }
-                    int professorID = professorSectionAllocation.getInt("professor_id");
-                    String professorName = Queries.getProfessorName(professorID);
-                    str += "\t" + professorName;
-                    str += "\t" + professorSectionAllocation.getString("lab_or_theory");
-                    str += "\n";
-                }
-                result_textarea.setText(str);
-            } catch (SQLException ex) {
-                Logger.getLogger(search_for_specific_entity.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            rs = Queries.getFinalSectionSchedule(value);
-            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
+//            ResultSet professorSectionAllocation = Queries.getSectionProfessorAllocation(value);
+//            try {
+//                String str = "";
+//                while (professorSectionAllocation.next()) {
+//                    String courseCode = professorSectionAllocation.getString("course_code");
+//                    ResultSet course = Queries.getCourseDetails(courseCode);
+//                    if (course.next()) {
+//                        str += course.getString("title");
+//                    }
+//                    int professorID = professorSectionAllocation.getInt("professor_id");
+//                    String professorName = Queries.getProfessorName(professorID);
+//                    str += "\t" + professorName;
+//                    str += "\t" + professorSectionAllocation.getString("lab_or_theory");
+//                    str += "\n";
+//                }
+//                result_textarea.setText(str);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(search_for_specific_entity.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            rs = Queries.getFinalSectionSchedule(value);
+//            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
 
         } else if (stat.startsWith("Room")) {
             rs = Queries.getSectionScheduleRS("room_availabilty", "room_name", value + "");
@@ -131,7 +154,11 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_general_dropdownItemStateChanged
 
-
+    private void general_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_general_dropdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_general_dropdownActionPerformed
+    
+    DisplayTable dt = new DisplayTable();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel entity_name_lbl;
     private static javax.swing.JComboBox<String> general_dropdown;

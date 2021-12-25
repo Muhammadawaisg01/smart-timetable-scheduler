@@ -95,8 +95,12 @@ public class final_panel extends javax.swing.JPanel {
                 Reset.resetSchedule();
                 JOptionPane.showMessageDialog(null, "Generating schedule might take a while. Be patient");
                 ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+                alert("Algorithem genrated");
+                alert("Updating section schedule");
                 Queries.updateSchedule(programs1);
+                alert("Generating professor schedule");
                 Queries.mapSectinoSchedule_ToProfessors();
+                alert("Generating student schedule");
                 Queries.mapSectionSchedule_ToStudents();
                 JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
                 Reset.generateSchedule(1);
@@ -104,12 +108,17 @@ public class final_panel extends javax.swing.JPanel {
                 alert("Schedule not generated");
             }
         } else {
-            Reset.resetSchedule();
             int choice = JOptionPane.showConfirmDialog(null, "Make sure you added all data of entities. Entities added or modified after this won't effect schedule");
+
             if (choice == 0) {
+                Reset.resetSchedule();
                 ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+                alert("Algorithem genrated");
+                alert("Updating section schedule");
                 Queries.updateSchedule(programs1);
+                alert("Generating professor schedule");
                 Queries.mapSectinoSchedule_ToProfessors();
+                alert("Generating student schedule");
                 Queries.mapSectionSchedule_ToStudents();
                 JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
                 Reset.generateSchedule(1);
