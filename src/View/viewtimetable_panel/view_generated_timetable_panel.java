@@ -34,8 +34,7 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
         entity_name_lbl = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        search_for_specific_entity1 = new View.viewtimetable_panel.search_for_specific_entity();
-        view_schedule1 = new View.viewtimetable_panel.view_schedule();
+        search_for_specific_entity2 = new View.viewtimetable_panel.search_for_specific_entity();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -52,12 +51,11 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel1.add(search_for_specific_entity1, "card2");
-        jPanel1.add(view_schedule1, "card3");
+        jPanel1.add(search_for_specific_entity2, "card2");
 
         jScrollPane2.setViewportView(jPanel1);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 192, 930, 410));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 710, 500));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setText("View Complete Schedule");
@@ -70,7 +68,7 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(jPanel2);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1020, 710));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 710, 730));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -86,7 +84,6 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private View.viewtimetable_panel.search_for_specific_entity search_for_specific_entity1;
-    private View.viewtimetable_panel.view_schedule view_schedule1;
+    private View.viewtimetable_panel.search_for_specific_entity search_for_specific_entity2;
     // End of variables declaration//GEN-END:variables
 }

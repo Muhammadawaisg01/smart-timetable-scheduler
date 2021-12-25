@@ -5,18 +5,10 @@
  */
 package View.viewtimetable_panel;
 
-import Model.Course;
 import Model.Queries;
-import View.TableViewUtility;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import schedule.DisplayTable;
-import schedule.DisplayTemplate;
-import schedule.Template2;
 
 /**
  *
@@ -46,10 +38,6 @@ public class search_for_specific_entity extends javax.swing.JPanel {
 
         entity_name_lbl = new javax.swing.JLabel();
         general_dropdown = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        result_textarea = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        schedule_table = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,7 +45,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         entity_name_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         entity_name_lbl.setForeground(new java.awt.Color(0, 102, 153));
         entity_name_lbl.setText("Entity:");
-        add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 170, 40));
+        add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 170, 40));
 
         general_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         general_dropdown.addItemListener(new java.awt.event.ItemListener() {
@@ -70,31 +58,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
                 general_dropdownActionPerformed(evt);
             }
         });
-        add(general_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 420, 40));
-
-        result_textarea.setColumns(20);
-        result_textarea.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        result_textarea.setForeground(new java.awt.Color(0, 102, 153));
-        result_textarea.setRows(5);
-        result_textarea.setText("Search Results \ndisplay constraints of entity\n");
-        jScrollPane1.setViewportView(result_textarea);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 700, 110));
-
-        schedule_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(schedule_table);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 740, 410));
+        add(general_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 250, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void general_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_general_dropdownItemStateChanged
@@ -103,8 +67,9 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         ResultSet rs;
         if (stat.startsWith("Professor")) {
             int profID = Queries.getProfessorID(value);
-            rs = Queries.getSectionScheduleRS("professor_schedule", "professor_id", profID + "");
-            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
+            dt.DisplayProfessorSchedule(profID);
+            dt.getFrame().setVisible(true);
+//            rs = Queries.getSectionScheduleRS("professor_schedule", "professor_id", profID + "");
         } else if (stat.startsWith("Student")) {
             String studentSchedule = "select \n"
                     + "student_registration_no as Student, \n"
@@ -120,37 +85,13 @@ public class search_for_specific_entity extends javax.swing.JPanel {
                     + "student_registration_no = '" + value + "'";
             
             rs = Queries.getRS(studentSchedule);
-            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
-        } else if (stat.startsWith("Section")) {
-            dt.DisplayOneTable(value);
-            dt.getFrame().setVisible(true);
-//            dt.setVisible(true);
-            // get section professor allocation
-//            ResultSet professorSectionAllocation = Queries.getSectionProfessorAllocation(value);
-//            try {
-//                String str = "";
-//                while (professorSectionAllocation.next()) {
-//                    String courseCode = professorSectionAllocation.getString("course_code");
-//                    ResultSet course = Queries.getCourseDetails(courseCode);
-//                    if (course.next()) {
-//                        str += course.getString("title");
-//                    }
-//                    int professorID = professorSectionAllocation.getInt("professor_id");
-//                    String professorName = Queries.getProfessorName(professorID);
-//                    str += "\t" + professorName;
-//                    str += "\t" + professorSectionAllocation.getString("lab_or_theory");
-//                    str += "\n";
-//                }
-//                result_textarea.setText(str);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(search_for_specific_entity.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            rs = Queries.getFinalSectionSchedule(value);
 //            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
-
+        } else if (stat.startsWith("Section")) {
+            dt.DisplayOneSectionSchedule(value);
+            dt.getFrame().setVisible(true);
         } else if (stat.startsWith("Room")) {
             rs = Queries.getSectionScheduleRS("room_availabilty", "room_name", value + "");
-            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
+//            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
         }
     }//GEN-LAST:event_general_dropdownItemStateChanged
 
@@ -162,9 +103,5 @@ public class search_for_specific_entity extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel entity_name_lbl;
     private static javax.swing.JComboBox<String> general_dropdown;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    static javax.swing.JTextArea result_textarea;
-    private javax.swing.JTable schedule_table;
     // End of variables declaration//GEN-END:variables
 }

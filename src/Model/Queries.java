@@ -10,7 +10,6 @@ import Model.semester.Section_Schedule;
 import Model.semester.Section_Timeslot;
 import Model.semester.Semester;
 import static db.DBConnection.getConnection;
-import Model.student.Student;
 import static View.Alerts.alert;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,7 +51,7 @@ public class Queries {
      * @param courseName course name
      * @return course code
      */
-    public static String getCourseCode(String courseName) {
+        public static String getCourseCode(String courseName) {
         String q = "select course_code from course where title = '" + courseName + "'";
         System.out.println(q);
         Connection conn = getConnection();
@@ -66,9 +65,29 @@ public class Queries {
         } catch (SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return "";
     }
 
+    /**
+     *
+     * @param courseCode course code
+     * @return course title
+     */
+    public static String getCourseTitle(String courseCode) {
+        String q = "select title from course where course_code = '" + courseCode + "'";
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("title");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
     /**
      *
      * @param courseCode course code
@@ -732,6 +751,7 @@ public class Queries {
         String[] sectionIDs;
         try {
             String q = "SELECT section_id FROM section where semester_no = " + semester_no + " and program_id = " + program_id;
+            System.out.println(q);
             stmt = conn.prepareStatement(q);
             ResultSet sections = stmt.executeQuery();
             if (sections.last()) {

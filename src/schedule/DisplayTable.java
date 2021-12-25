@@ -7,8 +7,11 @@ public class DisplayTable {
     static JFrame frame = new JFrame("Schedule");
     DisplayTemplate panel;
 
-    public void DisplayOneTable(String sectionID) {
+    public void DisplayOneSectionSchedule(String sectionID) {
         panel.displayOneSection(sectionID);
+    }
+    public void DisplayProfessorSchedule(int professorID) {
+        panel.displayProfessorSchedule(professorID);
     }
     public void DisplayFullTable() {
         panel.displayAllSection();

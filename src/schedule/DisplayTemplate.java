@@ -8,13 +8,11 @@ package schedule;
 import Model.Queries;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.print.PrinterException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,9 +27,14 @@ public class DisplayTemplate extends javax.swing.JPanel {
     public DisplayTemplate() {
         initComponents();
         table.setShowGrid(false);
-        table.setBackground(Color.BLACK);
+        table.setBackground(new Color(50, 50, 50));
         table.setForeground(Color.WHITE);
         table.setFont(new Font("Arial", Font.BOLD, 14));
+        table.setRowHeight(30);
+    }
+
+    public JPanel getPanel() {
+        return panel;
     }
 
     public void displayOneSection(String SectionID) {
@@ -41,7 +44,6 @@ public class DisplayTemplate extends javax.swing.JPanel {
 
     public void displayAllSection() {
         emptyTable();
-
         ResultSet sections = Queries.getRS("select section_id from section");
         try {
             while (sections.next()) {
@@ -56,13 +58,66 @@ public class DisplayTemplate extends javax.swing.JPanel {
         }
     }
 
-    public JPanel getPanel() {
-        return panel;
+    public void displayProfessorSchedule(int professorID) {
+        String name = Queries.getProfessorName(professorID);
+        emptyTable();
+        String[] professorName = {"", "", "", name, "", "", ""};
+        addRow(professorName);
+        int slots = Queries.getSlotCount();
+        for (int slot = 1; slot < slots + 1; slot++) {
+            String q = "select course_code from professor_schedule"
+                    + " where professor_id = " + professorID + " and timeslot_no = " + slot;
+            try {
+                String[] courses = createCoursesRow(Queries.getRS(q));
+                if (courses != null) {
+                    print(courses);
+                } else {
+                    System.out.println("courses are null");
+                }
+                courses[0] = Queries.getSlotDuration(slot);
+                addRow(courses);
+                q = "select room_name from professor_schedule where professor_id = '" + professorID + "' and timeslot_no = " + slot;
+                String[] rooms = createRow(Queries.getRS(q));
+                if (rooms != null) {
+                    print(rooms);
+                } else {
+                    System.out.println("rooms are null");
+                }
+                rooms[0] = "Room #";
+                addRow(rooms);
+            } catch (NullPointerException ex) {
+            }
+
+        }
+        addRow(new String[7]);
+        addRow(new String[7]);
+        addRow(new String[7]);
+        // display professor courses
+
+        String coursesAllocations = "SELECT * FROM section_professor_allocation join course using (course_code) where professor_id = " + professorID;
+        ResultSet allocations = Queries.getRS(coursesAllocations);
+        try {
+            String[] allocationsHeaders = {"Course Code", "Title", "", "", "Type", "", "Section ID"};
+            addRow(allocationsHeaders);
+            String courseCode, title, sectionID, lab;
+            while (allocations.next()) {
+                courseCode = allocations.getString("course_code");
+                title = allocations.getString("title");
+                sectionID = allocations.getString("section_id");
+                lab = allocations.getString("lab_or_theory");
+                String[] newRow = {courseCode, title, "", "", lab, "", sectionID};
+                addRow(newRow);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplayTemplate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
-    public void displaySectionDetails(String sectionID) {
+    private void displaySectionDetails(String sectionID) {
         String[] sectionName = {"", "", "", sectionID, "", "", ""};
         addRow(sectionName);
+        addHR();
         int slots = Queries.getSlotCount();
         for (int slot = 1; slot < slots + 1; slot++) {
             String q = "select course_code from section_schedule where section_id = '" + sectionID + "' and timeslot_no = " + slot;
@@ -73,6 +128,7 @@ public class DisplayTemplate extends javax.swing.JPanel {
             String[] rooms = createRow(Queries.getRS(q));
             rooms[0] = "Room #";
             addRow(rooms);
+            addHR();
         }
         addRow(new String[7]);
         String getProfessors = "SELECT "
@@ -100,7 +156,7 @@ public class DisplayTemplate extends javax.swing.JPanel {
         }
     }
 
-    public static String[] createRow(ResultSet res) {
+    private String[] createRow(ResultSet res) {
         String[] list = null;
         try {
             if (res.last()) {
@@ -118,18 +174,53 @@ public class DisplayTemplate extends javax.swing.JPanel {
         return list;
     }
 
-    public static void addRow(String[] row) {
+    private String[] createCoursesRow(ResultSet courseCodes) {
+        String[] list = null;
+        try {
+            if (courseCodes.last()) {
+                list = new String[courseCodes.getRow() + 1];
+                courseCodes.beforeFirst();
+                int i = 1;
+                while (courseCodes.next()) {
+                    String course_code = courseCodes.getString("course_code");
+                    if (course_code.equals("")) {
+                        list[i] = "";
+                    } else {
+                        list[i] = Queries.getCourseTitle(course_code);
+                    }
+                    i++;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Template2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    private void addRow(String[] row) {
         DefaultTableModel table2 = (DefaultTableModel) table.getModel();
         table2.addRow(row);
     }
 
+    private void addHR() {
+        String[] HR = {"____________", "____________", "____________", "____________", "____________",
+            "___________", "____________"};
+        addRow(HR);
+    }
+
     private void emptyTable() {
-//        table.setModel(new DefaultTableModel());
         System.out.println("Empty");
         DefaultTableModel dm = (DefaultTableModel) table.getModel();
         while (dm.getRowCount() > 0) {
             dm.removeRow(0);
         }
+    }
+
+    private void print(String[] arr) {
+        for (String st : arr) {
+            System.out.print(st + " ");
+        }
+        System.out.println("");
     }
 
     /**

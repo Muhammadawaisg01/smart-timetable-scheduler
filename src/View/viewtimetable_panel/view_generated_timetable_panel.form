@@ -29,7 +29,7 @@
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="20" width="1020" height="710"/>
+          <AbsoluteConstraints x="10" y="20" width="710" height="730"/>
         </Constraint>
       </Constraints>
 
@@ -68,7 +68,7 @@
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="12" y="192" width="930" height="410"/>
+                  <AbsoluteConstraints x="0" y="130" width="710" height="500"/>
                 </Constraint>
               </Constraints>
 
@@ -83,17 +83,10 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                   <SubComponents>
-                    <Component class="View.viewtimetable_panel.search_for_specific_entity" name="search_for_specific_entity1">
+                    <Component class="View.viewtimetable_panel.search_for_specific_entity" name="search_for_specific_entity2">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                           <CardConstraints cardName="card2"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="View.viewtimetable_panel.view_schedule" name="view_schedule1">
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                          <CardConstraints cardName="card3"/>
                         </Constraint>
                       </Constraints>
                     </Component>
