@@ -1,22 +1,22 @@
 package Controller;
 
-import Model.Program;
 import Model.Queries;
-import Model.Reset;
 import static db.DBConnection.createConnection;
-import java.io.File;
-import java.util.ArrayList;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
 public class Test {
 
     public static void main(String[] args) {
-        String query = "SELECT registration_no as RegNo, students.section_id as Section, course_code as Course, semester_no as Semester FROM server1.students join student_section_allocation where \n"
-                + "registration_no = student_registration_no and\n"
-                + "students.section_id = student_section_allocation.section_ID";
-        System.out.println(query);
+//        String query = "SELECT registration_no as RegNo, students.section_id as Section, course_code as Course, semester_no as Semester FROM server1.students join student_section_allocation where \n"
+//                + "registration_no = student_registration_no and\n"
+//                + "students.section_id = student_section_allocation.section_ID";
+//        System.out.println(query);
+//        String checkClash = "select lecture_no from student_schedule where day_no = " + 1 + " and "
+//                + "timeslot_no = " + 1;
+//        System.out.println(checkClash);
         createConnection();
+        Queries.assignLabs();
+//        DisplayTable dt = new DisplayTable();
+//        dt.DisplayStudentSchedule("FA21-BCS-003");
 //        Reset.resetSchedule();
 //        Reset.resetStudents();
 //        int choice = JOptionPane.showConfirmDialog(null, "Make sure you added all information. Entities added or modified after this won't effect schedule");
@@ -30,7 +30,7 @@ public class Test {
 //            Queries.addStudentsToDB(file2);
 //        }
 //        createConnection();
-        Queries.mapSectionSchedule_ToStudents();
+//        Queries.mapSectionSchedule_ToStudents();
         //        File file = new File("Student Registration.csv");
         //        Queries.addStudentsToDB(file);
 //                  Queries.assignSectionToStudents(1);

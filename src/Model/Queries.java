@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +52,7 @@ public class Queries {
      * @param courseName course name
      * @return course code
      */
-        public static String getCourseCode(String courseName) {
+    public static String getCourseCode(String courseName) {
         String q = "select course_code from course where title = '" + courseName + "'";
         System.out.println(q);
         Connection conn = getConnection();
@@ -88,6 +89,7 @@ public class Queries {
         }
         return "";
     }
+
     /**
      *
      * @param courseCode course code
@@ -1026,44 +1028,47 @@ public class Queries {
                     lecture_no = schedule.getInt("lecture_no");
                     isLab = schedule.getString("isLab");
                     // check if student has already some lecture
-//                    String checkClash = "select lecture_no from student_schedule where day_no = " + day_no + " and "
-//                            + "timeslot_no = " + timeslot_no + " and "
-//                            + "";
-//                    ResultSet clash = getRS(checkClash);
-//                    if (clash == null) {
-//                        continue;
-//                    }
-//                    if (clash.next()) {
-//                        int lecture = clash.getInt("lecture_no");
-//                        System.out.println(lecture);
-//                        if (lecture != 0) {
-//                            String q = "INSERT INTO student_schedule_clashes\n"
-//                                    + "(student_registration_no,\n"
-//                                    + "day_no,\n"
-//                                    + "timeslot_no,\n"
-//                                    + "course_code,\n"
-//                                    + "room_name,\n"
-//                                    + "section_ID,\n"
-//                                    + "lecture_no,\n"
-//                                    + "isLab,\n"
-//                                    + "isResolved)\n"
-//                                    + "VALUES "
-//                                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//                            PreparedStatement stmt = getConnection().prepareStatement(q);
-//                            stmt.setString(1, regNo);
-//                            stmt.setInt(2, day_no);
-//                            stmt.setInt(3, timeslot_no);
-//                            stmt.setString(4, course_code);
-//                            stmt.setString(5, room_name);
-//                            stmt.setString(6, sectionID);
-//                            stmt.setInt(7, lecture_no);
-//                            stmt.setString(8, isLab);
-//                            stmt.setString(9, "false");
-//                            stmt.execute();
-//                            System.out.println("clash");
-//                            continue;
-//                        }
-//                    }
+                    String checkClash = "select lecture_no "
+                            + "from student_schedule "
+                            + "where "
+                            + "student_registration_no = '" + regNo + "' and "
+                            + "day_no = " + day_no + " and "
+                            + "timeslot_no = " + timeslot_no + " and "
+                            + "lecture_no != 0";
+                    System.out.println(checkClash);
+                    ResultSet clash = getRS(checkClash);
+                    if (clash != null && clash.next()) {
+                        int lecture = clash.getInt("lecture_no");
+                        System.out.println(lecture);
+//                        alert("Clash");
+                        if (lecture != 0) {
+                            String q = "INSERT INTO student_schedule_clashes\n"
+                                    + "(student_registration_no,\n"
+                                    + "day_no,\n"
+                                    + "timeslot_no,\n"
+                                    + "course_code,\n"
+                                    + "room_name,\n"
+                                    + "section_ID,\n"
+                                    + "lecture_no,\n"
+                                    + "isLab,\n"
+                                    + "isResolved)\n"
+                                    + "VALUES "
+                                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            PreparedStatement stmt = getConnection().prepareStatement(q);
+                            stmt.setString(1, regNo);
+                            stmt.setInt(2, day_no);
+                            stmt.setInt(3, timeslot_no);
+                            stmt.setString(4, course_code);
+                            stmt.setString(5, room_name);
+                            stmt.setString(6, sectionID);
+                            stmt.setInt(7, lecture_no);
+                            stmt.setString(8, isLab);
+                            stmt.setString(9, "false");
+                            stmt.execute();
+                            System.out.println("clash");
+                            continue;
+                        }
+                    }
                     String updateStudentSchedule = "UPDATE student_schedule"
                             + " SET "
                             + "course_code = '" + course_code + "', "
@@ -1075,6 +1080,7 @@ public class Queries {
                             + "student_registration_no = '" + regNo + "' and "
                             + "day_no = " + day_no + " and "
                             + "timeslot_no = " + timeslot_no;
+                    System.out.println(updateStudentSchedule);
                     execute(updateStudentSchedule);
                 }
             }
@@ -1165,6 +1171,130 @@ public class Queries {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    // lab scheduling
+    public static void assignLabs() {
+        // get all labs from sections
+        String labs = "SELECT section_id, title "
+                + "FROM section_professor_allocation join course using (course_code)"
+                + " where "
+                + "lab_or_theory='LAB'";
+        ResultSet labsRS = getRS(labs);
+        try {
+            String sectionID, title;
+            while (labsRS.next()) {
+                sectionID = labsRS.getString("section_id");
+                title = labsRS.getString("title");
+                // get all slots where lab and sections are free
+                ArrayList<FreeSlots> freeSlotsOfLabsAndSections = getTwoConsectiveFreeSlots(sectionID);
+                if (freeSlotsOfLabsAndSections.size() < 1) {
+                    System.out.println("No free slots");
+                    alert("No free slots");
+                    return;
+                }
+                System.out.println("Array Size: " + freeSlotsOfLabsAndSections.size());
+                Random r = new Random(freeSlotsOfLabsAndSections.size());
+                int randomNumber;
+                int day, slot;
+                String room;
+                String updateQuery;
+                
+                while (true) {
+                    // get a randome number in range of free slots array
+                    randomNumber = (int) (Math.random() * freeSlotsOfLabsAndSections.size());
+                    System.out.println(randomNumber);
+                    day = freeSlotsOfLabsAndSections.get(randomNumber).getDay();
+                    slot = freeSlotsOfLabsAndSections.get(randomNumber).getSlot();
+                    room = freeSlotsOfLabsAndSections.get(randomNumber).getRoom();
+                    // check if next slot is free?
+                    if (nextSlotIsFree(day, slot, freeSlotsOfLabsAndSections)) {
+                        // update section schedule
+                        updateQuery = "update section_schedule "
+                                + " SET "
+                                + "course_code = '" + title + " LAB',"
+                                + "room_name = '" + room + "',"
+                                + "lecture_no = 3,"
+                                + "isLab = 'true'"
+                                + " WHERE "
+                                + "section_id = '" + sectionID + "' and "
+                                + "day_no = " + day + " and "
+                                + "timeslot_no = " + slot;
+                        execute(updateQuery);
+                        updateQuery = "update section_schedule "
+                                + " SET "
+                                + "course_code = '" + title + " LAB',"
+                                + "room_name = '" + room + "',"
+                                + "lecture_no = 3,"
+                                + "isLab = 'true'"
+                                + " WHERE "
+                                + "section_id = '" + sectionID + "' and "
+                                + "day_no = " + day + " and "
+                                + "timeslot_no = " + (slot + 1);
+                        execute(updateQuery);
+                        // update room_availability
+                        updateQuery = "update room_availabilty "
+                                + " SET "
+                                + "is_available = 'true' "
+                                + " WHERE "
+                                + "room_name = '" + room + "' and "
+                                + "day_no = " + day + " and "
+                                + "timeslot_no = " + slot;
+                        execute(updateQuery);
+                        updateQuery = "update room_availabilty "
+                                + " SET "
+                                + "is_available = 'true' "
+                                + " WHERE "
+                                + "room_name = '" + room + "' and "
+                                + "day_no = " + day + " and "
+                                + "timeslot_no = " + (slot + 1);
+                        execute(updateQuery);
+                        break;
+                    }
+                        // assign sectionID and title to these slots    
+                }   
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static boolean nextSlotIsFree(int day, int timeslot, ArrayList<FreeSlots> slots) {
+        for (FreeSlots freeSlot: slots) {
+            if (freeSlot.getDay() == day && freeSlot.getSlot() == timeslot + 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // section and labs are free in ArrayList indexes of day and slot
+    public static ArrayList<FreeSlots> getTwoConsectiveFreeSlots(String sectionID) {
+        ArrayList<FreeSlots> freeLabs = new ArrayList<>();
+        String getFreeLabs = "SELECT room_availabilty.room_name, section_schedule.day_no, section_schedule.timeslot_no FROM room_availabilty join room  join section_schedule\n"
+                + "where\n"
+                + "room_availabilty.day_no = section_schedule.day_no and\n"
+                + "room_availabilty.timeslot_no = section_schedule.timeslot_no and\n"
+                + "room_availabilty.room_name = name and\n"
+                + "lecture_no = 0 and\n"
+                + "room.isLab = 'true' and\n"
+                + "is_available = 'false' and "
+                + "section_id = '" + sectionID + "'";
+        System.out.println(getFreeLabs);
+        ResultSet rs = getRS(getFreeLabs);
+        try {
+            int day, slot;
+            String room;
+            while (rs.next()) {
+                day = rs.getInt("day_no");
+                slot = rs.getInt("timeslot_no");
+                room = rs.getString("room_name");
+                
+                freeLabs.add(new FreeSlots(day, slot, room));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return freeLabs;
     }
 
 }

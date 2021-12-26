@@ -113,6 +113,58 @@ public class DisplayTemplate extends javax.swing.JPanel {
         }
     }
 
+    void displayStudentSchedule(String regNo) {
+        String name = Queries.getStudent(regNo);
+        emptyTable();
+        String[] studentName = {"", "", "", name, "", "", ""};
+        addRow(studentName);
+        int slots = Queries.getSlotCount();
+        for (int slot = 1; slot < slots + 1; slot++) {
+            String q = "select course_code from student_schedule"
+                    + " where student_registration_no = '" + regNo + "' and timeslot_no = " + slot;
+            try {
+                String[] courses = createRow(Queries.getRS(q));
+                courses[0] = Queries.getSlotDuration(slot);
+                addRow(courses);
+                String getRooms = "select room_name from student_schedule where student_registration_no = '" + regNo + "' and timeslot_no = " + slot;
+                String[] rooms = createRow(Queries.getRS(getRooms));
+                rooms[0] = "Room #";
+                addRow(rooms);
+            } catch (NullPointerException ex) {
+//                System.out.println("");
+            }
+
+        }
+        addRow(new String[7]);
+        addRow(new String[7]);
+        addRow(new String[7]);
+        // display professor courses
+
+        String coursesAllocations = "SELECT course_code, section_ID, title, credit_hours, hasLab "
+                + "FROM student_section_allocation join course using (course_code) "
+                + "where student_registration_no='" + regNo + "';";
+        ResultSet allocations = Queries.getRS(coursesAllocations);
+        try {
+            String[] allocationsHeaders = {"Course Code", "Title", "", "Credit Hours", "Type", "", "Section ID"};
+            addRow(allocationsHeaders);
+            String courseCode, title, sectionID, lab;
+            int creditHours;
+            while (allocations.next()) {
+                courseCode = allocations.getString("course_code");
+                title = allocations.getString("title");
+                sectionID = allocations.getString("section_ID");
+                creditHours = allocations.getInt("credit_hours");
+                lab = allocations.getString("hasLab");
+                String[] newRow = {courseCode, title, "", creditHours + "", lab, "", sectionID};
+                addRow(newRow);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DisplayTemplate.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            Logger.getLogger(DisplayTemplate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void displaySectionDetails(String sectionID) {
         String[] sectionName = {"", "", "", sectionID, "", "", ""};
         addRow(sectionName);
@@ -296,4 +348,5 @@ public class DisplayTemplate extends javax.swing.JPanel {
     private javax.swing.JPanel panel;
     private static javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
 }

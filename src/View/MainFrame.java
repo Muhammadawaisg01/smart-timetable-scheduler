@@ -2596,7 +2596,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
                 stmt.setString(2, "Tuesday");
                 stmt.execute();
             } catch (SQLException ex) {
-//                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (wed.isSelected()) {
@@ -2768,7 +2767,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         search_for_specific_entity.setDropdownData(data);
         view_generated_timetable_panel.entity_name_lbl.setText("Section-wise");
         search_for_specific_entity.entity_name_lbl.setText("Section :  ");
-        view_schedule.entity_name_lbl.setText("Section : ");
+//        view_schedule.entity_name_lbl.setText("Section : ");
         view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_section_wise_lblMouseClicked
 
@@ -2786,7 +2785,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         search_for_specific_entity.setDropdownData(data);
         view_generated_timetable_panel.entity_name_lbl.setText("Student-wise");
         search_for_specific_entity.entity_name_lbl.setText("Student  :  ");
-        view_schedule.entity_name_lbl.setText("Student : ");
+//        view_schedule.entity_name_lbl.setText("Student : ");
         view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_std_wise_lblMouseClicked
 

@@ -13,6 +13,9 @@ public class DisplayTable {
     public void DisplayProfessorSchedule(int professorID) {
         panel.displayProfessorSchedule(professorID);
     }
+    public void DisplayStudentSchedule (String regNo) {
+        panel.displayStudentSchedule(regNo);
+    }
     public void DisplayFullTable() {
         panel.displayAllSection();
     }

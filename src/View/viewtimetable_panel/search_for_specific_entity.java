@@ -69,22 +69,23 @@ public class search_for_specific_entity extends javax.swing.JPanel {
             int profID = Queries.getProfessorID(value);
             dt.DisplayProfessorSchedule(profID);
             dt.getFrame().setVisible(true);
-//            rs = Queries.getSectionScheduleRS("professor_schedule", "professor_id", profID + "");
         } else if (stat.startsWith("Student")) {
-            String studentSchedule = "select \n"
-                    + "student_registration_no as Student, \n"
-                    + "section_id as Section,\n"
-                    + "name as Day, course_code as Course,\n"
-                    + "starting_time as StartTime,\n"
-                    + "ending_time as EndTime, \n"
-                    + "room_name as Room\n"
-                    + "from "
-                    + "student_schedule join day using (day_no)"
-                    + " join timeslot using (timeslot_no) "
-                    + "where "
-                    + "student_registration_no = '" + value + "'";
-            
-            rs = Queries.getRS(studentSchedule);
+//            String studentSchedule = "select \n"
+//                    + "student_registration_no as Student, \n"
+//                    + "section_id as Section,\n"
+//                    + "name as Day, course_code as Course,\n"
+//                    + "starting_time as StartTime,\n"
+//                    + "ending_time as EndTime, \n"
+//                    + "room_name as Room\n"
+//                    + "from "
+//                    + "student_schedule join day using (day_no)"
+//                    + " join timeslot using (timeslot_no) "
+//                    + "where "
+//                    + "student_registration_no = '" + value + "'";
+//            
+//            rs = Queries.getRS(studentSchedule);
+            dt.DisplayStudentSchedule(value);
+            dt.getFrame().setVisible(true);
 //            schedule_table.setModel(TableViewUtility.resultSetToTableModel(rs));
         } else if (stat.startsWith("Section")) {
             dt.DisplayOneSectionSchedule(value);
