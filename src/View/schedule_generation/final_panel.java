@@ -10,7 +10,10 @@ import Model.Program;
 import Model.Queries;
 import Model.Reset;
 import static View.Alerts.alert;
+import static View.MainFrame.excel_file_panel1;
+import static View.MainFrame.first_panel1;
 import static db.DBConnection.createConnection;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -39,6 +42,10 @@ public class final_panel extends javax.swing.JPanel {
         generate_schedule = new javax.swing.JButton();
         jLabel102 = new javax.swing.JLabel();
         jLabel103 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,16 +59,53 @@ public class final_panel extends javax.swing.JPanel {
                 generate_scheduleActionPerformed(evt);
             }
         });
-        add(generate_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 360, 80));
+        add(generate_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 360, 80));
 
         jLabel102.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel102.setText("G e n e r a t e  T i m e t a b l e");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 360, 40));
+        jLabel102.setText("G e n e r a t e   T i m e t a b l e");
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 360, 40));
 
         jLabel103.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(0, 102, 153));
         add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
+
+        jLabel107.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel107.setText("3)   Generating Schedule Can Take Few Minutes");
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 30));
+
+        jLabel108.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel108.setText("1)   Make Sure All Data Is Entered Before Generating Scheduling");
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, 30));
+
+        jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel109.setText("2)   Data Modified After Scheduling Will Not Effect Schedule");
+        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 540, 30));
+
+        back.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
+        back.setForeground(new java.awt.Color(0, 102, 153));
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setText("<- B a c k");
+        back.setToolTipText("Logo");
+        back.setAlignmentX(0.5F);
+        back.setAutoscrolls(true);
+        back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backMouseExited(evt);
+            }
+        });
+        add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 200, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void generate_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generate_scheduleActionPerformed
@@ -108,10 +152,29 @@ public class final_panel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_generate_scheduleActionPerformed
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        this.setVisible(false);
+        excel_file_panel1.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
+
+    private void backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseEntered
+        back.setBackground(new Color(0, 102, 153));
+        back.setForeground(new Color(250, 250, 250));
+    }//GEN-LAST:event_backMouseEntered
+
+    private void backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseExited
+        back.setBackground(new Color(250, 250, 250));
+        back.setForeground(new Color(0, 102, 153));
+    }//GEN-LAST:event_backMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel back;
     private javax.swing.JButton generate_schedule;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
     // End of variables declaration//GEN-END:variables
 }

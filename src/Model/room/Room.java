@@ -276,7 +276,7 @@ public class Room {
 //}
     public static ResultSet get_all_rooms() {
         ResultSet rs = null;
-        String query = "select * from room";
+        String query = "select name as 'Room Name', capacity as 'Capacity', isLab as 'Lab' from room";
         try {
             PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
             rs = stmt1.executeQuery();
@@ -300,7 +300,7 @@ public class Room {
 
     public static ResultSet get_all_labs() {
         ResultSet rs = null;
-        String query = "select * from room where isLab='true'";
+        String query = "select name as 'Lab Name', capacity as 'Capacity', isLab as 'Lab' from room where isLab='true'";
         try {
             PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
             rs = stmt1.executeQuery();

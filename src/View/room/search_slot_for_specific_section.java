@@ -60,7 +60,7 @@ public class search_slot_for_specific_section extends javax.swing.JPanel {
         add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 110, 30));
 
         end_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        end_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        end_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"End Time"}));
         add(end_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 270, 40));
 
         jButton8.setBackground(new java.awt.Color(0, 102, 153));
@@ -85,15 +85,15 @@ public class search_slot_for_specific_section extends javax.swing.JPanel {
         add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 110, 30));
 
         section_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        section_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        section_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Sections"}));
         add(section_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 270, 40));
 
         start_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        start_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        start_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Start Time"}));
         add(start_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 40));
 
         day_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        day_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        day_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Days"}));
         add(day_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 270, 40));
 
         jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N

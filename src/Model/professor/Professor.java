@@ -152,7 +152,7 @@ public class Professor {
 
     public static ResultSet get_all_professors() {
         ResultSet rs = null;
-        String query = "select * from professor";
+        String query = "select professor_id as 'Professor ID', name as 'Professor Name' from professor";
         try {
             PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
             rs = stmt1.executeQuery();

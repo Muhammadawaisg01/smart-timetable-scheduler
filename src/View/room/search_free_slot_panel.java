@@ -86,6 +86,7 @@ public class search_free_slot_panel extends javax.swing.JPanel {
 
         free_slots_table.setBackground(new java.awt.Color(50, 50, 50));
         free_slots_table.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        free_slots_table.setForeground(new java.awt.Color(255, 255, 255));
         free_slots_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

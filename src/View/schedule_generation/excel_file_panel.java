@@ -4,6 +4,8 @@ import Model.Queries;
 import Model.Reset;
 import static View.Alerts.alert;
 import static View.MainFrame.first_panel1;
+import static View.MainFrame.final_panel1;
+import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -26,7 +28,8 @@ public class excel_file_panel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel107 = new javax.swing.JLabel();
         jLabel108 = new javax.swing.JLabel();
-        excel_file_next_btn = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,44 +43,56 @@ public class excel_file_panel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 320, 70));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 320, 70));
 
-        jLabel107.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel107.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel107.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel107.setText("Upload Student Registration File In .csv Format");
-        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 540, 50));
+        jLabel107.setText("2)    Uploading File Can Take Few Mintues");
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 540, 50));
 
-        jLabel108.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel108.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel108.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel108.setText("S t u d e  n t   C o u r s e   R e g i s t r a t i o n P a n e l");
-        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 490, 70));
+        jLabel108.setText("S t u d e n t   C o u r s e   R e g i s t r a t i o n   P a n e l");
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 620, 70));
 
-        excel_file_next_btn.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        excel_file_next_btn.setForeground(new java.awt.Color(0, 102, 153));
-        excel_file_next_btn.setText("-->");
-        excel_file_next_btn.setToolTipText("Logo");
-        excel_file_next_btn.setAlignmentX(0.5F);
-        excel_file_next_btn.setAutoscrolls(true);
-        excel_file_next_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+        next.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
+        next.setForeground(new java.awt.Color(0, 102, 153));
+        next.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        next.setText("N e x t ->");
+        next.setToolTipText("Logo");
+        next.setAlignmentX(0.5F);
+        next.setAutoscrolls(true);
+        next.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        next.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                excel_file_next_btnMouseClicked(evt);
+                nextMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                excel_file_next_btnMouseEntered(evt);
+                nextMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nextMouseExited(evt);
             }
         });
-        add(excel_file_next_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 70, 60));
+        add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 200, 60));
+
+        jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel109.setText("1)    Upload Student Registration File In .csv Format");
+        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 540, 50));
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void excel_file_next_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excel_file_next_btnMouseClicked
+    private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         this.setVisible(false);
-        first_panel1.setVisible(true);
-    }//GEN-LAST:event_excel_file_next_btnMouseClicked
+        final_panel1.setVisible(true);
+    }//GEN-LAST:event_nextMouseClicked
 
-    private void excel_file_next_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excel_file_next_btnMouseEntered
-
-    }//GEN-LAST:event_excel_file_next_btnMouseEntered
+    private void nextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseEntered
+        next.setBackground(new Color(0, 102, 153));
+        next.setForeground(new Color(250, 250, 250));
+    }//GEN-LAST:event_nextMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean uploaded = Reset.studentFileUploaded();
@@ -130,11 +145,17 @@ public class excel_file_panel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void nextMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseExited
+        next.setBackground(new Color(250, 250, 250));
+        next.setForeground(new Color(0, 102, 153));
+    }//GEN-LAST:event_nextMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JLabel excel_file_next_btn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
+    public static javax.swing.JLabel next;
     // End of variables declaration//GEN-END:variables
 }

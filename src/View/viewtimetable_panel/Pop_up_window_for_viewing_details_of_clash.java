@@ -49,7 +49,7 @@ public class Pop_up_window_for_viewing_details_of_clash extends javax.swing.JPan
         jTextArea1.setText("Display result of timeslot\nClash Lecture");
         jScrollPane1.setViewportView(jTextArea1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 580, 100));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 580, 130));
 
         jLabel111.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel111.setForeground(new java.awt.Color(0, 102, 153));
@@ -63,7 +63,7 @@ public class Pop_up_window_for_viewing_details_of_clash extends javax.swing.JPan
         jTextArea2.setText("Display result of timeslot");
         jScrollPane2.setViewportView(jTextArea2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 580, 100));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 580, 130));
     }// </editor-fold>//GEN-END:initComponents
 
 

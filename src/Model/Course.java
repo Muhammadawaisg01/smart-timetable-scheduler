@@ -227,7 +227,12 @@ public class Course {
 
     public static ResultSet get_all_courses() {
         ResultSet rs = null;
-        String query = "select * from course";
+        String query = "select "
+                + "course_code as 'Course Code',"
+                + "title as 'Course Title',"
+                + "credit_hours as 'Credit Hours',"
+                + "hasLab as 'Has Lab'"
+                + " from course";
         try {
             PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query);
             rs = stmt1.executeQuery();

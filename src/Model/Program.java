@@ -50,7 +50,7 @@ public class Program {
 
     public static ResultSet get_all_programs() {
         ResultSet rs = null;
-        String query = "select program_name from program";
+        String query = "select program_name as 'Program Name' from program";
         try {
             PreparedStatement stmt1 = getConnection().prepareStatement(query);
             rs = stmt1.executeQuery();

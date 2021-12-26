@@ -31,16 +31,18 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         entity_name = new javax.swing.JLabel();
-        info_lbl = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel109.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel109.setForeground(new java.awt.Color(0, 102, 153));
         jLabel109.setText("Clash Details Panel:");
         add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
 
+        jTable1.setBackground(new java.awt.Color(50, 50, 50));
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -52,25 +54,23 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setGridColor(new java.awt.Color(0, 51, 204));
+        jTable1.setRowHeight(30);
+        jTable1.setRowMargin(4);
+        jTable1.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 680, 310));
 
-        entity_name.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        entity_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         entity_name.setForeground(new java.awt.Color(0, 102, 153));
         entity_name.setText("Professor-wise/Student-wise");
         add(entity_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 40));
-
-        info_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        info_lbl.setForeground(new java.awt.Color(0, 102, 153));
-        info_lbl.setText("double click on row to view details (pop-up window)");
-        add(info_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 480, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel entity_name;
-    public static javax.swing.JLabel info_lbl;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
