@@ -41,34 +41,38 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(700, 520));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(50, 50, 50));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        entity_name_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        entity_name_lbl.setForeground(new java.awt.Color(0, 102, 153));
-        entity_name_lbl.setText("Section Schedule");
-        jPanel2.add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 40));
+        entity_name_lbl.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        entity_name_lbl.setForeground(new java.awt.Color(255, 255, 255));
+        entity_name_lbl.setText("S e c t i o n  S c h e d u l e");
+        jPanel2.add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
+
+        search_for_specific_entity2.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.add(search_for_specific_entity2, "card2");
 
         jScrollPane2.setViewportView(jPanel1);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 710, 500));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setText("View Complete Schedule");
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("View Complete Sections Schedule");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 330, 60));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 340, 60));
 
         jScrollPane1.setViewportView(jPanel2);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 710, 730));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 650));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -39,56 +39,65 @@ public class search_by_capacity extends javax.swing.JPanel {
         end_time = new javax.swing.JComboBox<>();
         jLabel98 = new javax.swing.JLabel();
         search_btn = new javax.swing.JButton();
-        jLabel101 = new javax.swing.JLabel();
         start_time = new javax.swing.JComboBox<>();
         jLabel102 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        day_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        day_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        day_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         day_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(day_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 300, 40));
+        day_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                day_dropdownActionPerformed(evt);
+            }
+        });
+        add(day_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 260, 40));
 
-        jLabel100.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(0, 102, 153));
         jLabel100.setText("Day:");
-        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 110, 40));
+        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
 
+        end_time.setBackground(new java.awt.Color(50, 50, 50));
+        end_time.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        end_time.setForeground(new java.awt.Color(255, 255, 255));
         end_time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         end_time.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 end_timeActionPerformed(evt);
             }
         });
-        add(end_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 200, 40));
+        add(end_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 260, 40));
 
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
         jLabel98.setText("End time:");
-        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 90, 40));
+        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 90, 30));
 
-        search_btn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        search_btn.setForeground(new java.awt.Color(0, 102, 153));
+        search_btn.setBackground(new java.awt.Color(0, 102, 153));
+        search_btn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        search_btn.setForeground(new java.awt.Color(255, 255, 255));
         search_btn.setText("Search");
         search_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 search_btnActionPerformed(evt);
             }
         });
-        add(search_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 190, 60));
+        add(search_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 260, 50));
 
-        jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("Search Free Slot");
-        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 180, 40));
-
+        start_time.setBackground(new java.awt.Color(50, 50, 50));
+        start_time.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        start_time.setForeground(new java.awt.Color(255, 255, 255));
         start_time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(start_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 200, 40));
+        add(start_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 230, 40));
 
-        jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
         jLabel102.setText("Start time:");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 110, 40));
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 110, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void search_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_btnActionPerformed
@@ -129,6 +138,10 @@ public class search_by_capacity extends javax.swing.JPanel {
     private void end_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_end_timeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_end_timeActionPerformed
+
+    private void day_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_dropdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_day_dropdownActionPerformed
     
     public static void setDays(String[] days) {
         day_dropdown.setModel(new DefaultComboBoxModel<>(days));
@@ -147,7 +160,6 @@ public class search_by_capacity extends javax.swing.JPanel {
     private static javax.swing.JComboBox<String> day_dropdown;
     private static javax.swing.JComboBox<String> end_time;
     private javax.swing.JLabel jLabel100;
-    private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JButton search_btn;

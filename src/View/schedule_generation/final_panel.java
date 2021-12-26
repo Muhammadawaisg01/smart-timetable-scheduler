@@ -37,12 +37,10 @@ public class final_panel extends javax.swing.JPanel {
     private void initComponents() {
 
         generate_schedule = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jLabel102 = new javax.swing.JLabel();
         jLabel103 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         generate_schedule.setBackground(new java.awt.Color(0, 102, 153));
@@ -54,53 +52,32 @@ public class final_panel extends javax.swing.JPanel {
                 generate_scheduleActionPerformed(evt);
             }
         });
-        add(generate_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 360, 80));
+        add(generate_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 360, 80));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("All set to go for the timetable generation");
-        jTextArea2.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTextArea2AncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        jScrollPane4.setViewportView(jTextArea2);
-
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 450, 120));
-
-        jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel102.setText("Generate Timetable");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 210, 40));
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel102.setText("G e n e r a t e  T i m e t a b l e");
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 360, 40));
 
         jLabel103.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel103.setText("3rd step by 3");
         add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void generate_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generate_scheduleActionPerformed
-
-//        createConnection();
         boolean generated = Reset.scheduleGenerated();
         if (generated) {
             int choice = JOptionPane.showConfirmDialog(null, "Schedule Already Generated. Want to generate new schedule?");
             if (choice == 0) {
-                Reset.resetSchedule();
                 JOptionPane.showMessageDialog(null, "Generating schedule might take a while. Be patient");
+                Reset.resetSchedule();
+                alert("Generating Sections Schedule");
+                Queries.assignLabs();
                 ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
-                alert("Algorithem genrated");
-                alert("Updating section schedule");
                 Queries.updateSchedule(programs1);
-                alert("Generating professor schedule");
+                alert("Generating Professors Schedule");
                 Queries.mapSectinoSchedule_ToProfessors();
-                alert("Generating student schedule");
+                alert("Generating Students Schedule");
                 Queries.mapSectionSchedule_ToStudents();
                 JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
                 Reset.generateSchedule(1);
@@ -111,14 +88,15 @@ public class final_panel extends javax.swing.JPanel {
             int choice = JOptionPane.showConfirmDialog(null, "Make sure you added all data of entities. Entities added or modified after this won't effect schedule");
 
             if (choice == 0) {
+                JOptionPane.showMessageDialog(null, "Generating schedule might take a while. Be patient");
                 Reset.resetSchedule();
+                alert("Generating Sections Schedule");
+                Queries.assignLabs();
                 ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
-                alert("Algorithem genrated");
-                alert("Updating section schedule");
                 Queries.updateSchedule(programs1);
-                alert("Generating professor schedule");
+                alert("Generating Professors Schedule");
                 Queries.mapSectinoSchedule_ToProfessors();
-                alert("Generating student schedule");
+                alert("Generating Students Schedule");
                 Queries.mapSectionSchedule_ToStudents();
                 JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
                 Reset.generateSchedule(1);
@@ -130,16 +108,10 @@ public class final_panel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_generate_scheduleActionPerformed
 
-    private void jTextArea2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextArea2AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextArea2AncestorAdded
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton generate_schedule;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
-    private javax.swing.JScrollPane jScrollPane4;
-    static javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }

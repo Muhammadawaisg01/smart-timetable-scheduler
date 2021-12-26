@@ -121,17 +121,17 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         allocated_textarea.setText("Allocations:");
         jScrollPane1.setViewportView(allocated_textarea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 630, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 630, 170));
 
-        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("A s s i g n  P r o f e s s o r s  t o  S e c t i o n  C o u r s e s");
-        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 490, 40));
+        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 650, 40));
 
         jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(0, 102, 153));
         jLabel96.setText("Professor");
-        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 160, 30));
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 160, 30));
 
         lecture_radio.setBackground(new java.awt.Color(50, 50, 50));
         lecture_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -143,7 +143,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 lecture_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 100, 30));
+        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 100, 30));
 
         save_allocation.setBackground(new java.awt.Color(0, 102, 153));
         save_allocation.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -154,11 +154,13 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 save_allocationActionPerformed(evt);
             }
         });
-        jPanel1.add(save_allocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 220, 50));
+        jPanel1.add(save_allocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, 220, 50));
 
+        professor_dropdown.setBackground(new java.awt.Color(50, 50, 50));
         professor_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        professor_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         professor_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(professor_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 210, 40));
+        jPanel1.add(professor_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 270, 40));
 
         allocate_btn.setBackground(new java.awt.Color(0, 102, 153));
         allocate_btn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -169,11 +171,11 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 allocate_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(allocate_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 210, 40));
+        jPanel1.add(allocate_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 210, 40));
 
         section_name.setEditable(false);
         section_name.setBackground(new java.awt.Color(50, 50, 50));
-        section_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_name.setForeground(new java.awt.Color(255, 255, 255));
         section_name.setEnabled(false);
         section_name.addActionListener(new java.awt.event.ActionListener() {
@@ -181,21 +183,23 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 section_nameActionPerformed(evt);
             }
         });
-        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 210, 40));
+        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 270, 40));
 
         jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
         jLabel101.setText("Courses");
-        jPanel1.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 30));
+        jPanel1.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, 30));
 
         jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 102, 153));
         jLabel102.setText("Section");
-        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 40));
+        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, 40));
 
+        courses_dropdown.setBackground(new java.awt.Color(50, 50, 50));
         courses_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        courses_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         courses_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 40));
+        jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 270, 40));
 
         both_radio.setBackground(new java.awt.Color(50, 50, 50));
         both_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -207,7 +211,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 both_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(both_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 70, 30));
+        jPanel1.add(both_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 70, 30));
 
         lab_radio.setBackground(new java.awt.Color(50, 50, 50));
         lab_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -219,7 +223,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
                 lab_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lab_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 70, 30));
+        jPanel1.add(lab_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 70, 30));
 
         jScrollPane2.setViewportView(jPanel1);
 

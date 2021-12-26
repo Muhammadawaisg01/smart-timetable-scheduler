@@ -65,28 +65,28 @@ public class view_section_details_panel extends javax.swing.JPanel {
         jLabel96.setText("S e c t i o n  C o u r s e  A l l o c a t i o n s ");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 490, 40));
 
-        section_strength_label.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        section_strength_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_strength_label.setForeground(new java.awt.Color(255, 255, 255));
         section_strength_label.setText("output Strength");
         jPanel1.add(section_strength_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 170, 40));
 
-        jLabel98.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
         jLabel98.setText("Student Strength");
         jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 170, 40));
 
-        jLabel99.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
         jLabel99.setText("Section ID");
         jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 160, 40));
 
-        section_id_label.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        section_id_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_id_label.setForeground(new java.awt.Color(255, 255, 255));
         section_id_label.setText("Section ID(output):");
         jPanel1.add(section_id_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 170, 40));
 
         section_allocation_table.setBackground(new java.awt.Color(50, 50, 50));
-        section_allocation_table.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_allocation_table.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_allocation_table.setForeground(new java.awt.Color(255, 255, 255));
         section_allocation_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,10 +130,10 @@ public class view_section_details_panel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(section_allocation_table);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 620, 160));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 630, 150));
 
         section_courses_table.setBackground(new java.awt.Color(50, 50, 50));
-        section_courses_table.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_courses_table.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_courses_table.setForeground(new java.awt.Color(255, 255, 255));
         section_courses_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,7 +177,7 @@ public class view_section_details_panel extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(section_courses_table);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 620, 170));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 630, 170));
 
         jLabel97.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,16 +195,12 @@ public class view_section_details_panel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

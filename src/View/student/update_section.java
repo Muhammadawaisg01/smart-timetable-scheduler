@@ -55,6 +55,8 @@ public class update_section extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.CardLayout());
+
+        update_section_for_extra_courses1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel3.add(update_section_for_extra_courses1, "card3");
         jPanel3.add(update_regular_section1, "card2");
 

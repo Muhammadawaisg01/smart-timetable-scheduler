@@ -55,10 +55,10 @@ public class add_new_program extends javax.swing.JPanel {
         setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
         jLabel95.setText("Number of semesters");
-        add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 200, 40));
+        add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 200, 40));
 
         semesters.setBackground(new java.awt.Color(50, 50, 50));
         semesters.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -68,28 +68,28 @@ public class add_new_program extends javax.swing.JPanel {
                 semestersActionPerformed(evt);
             }
         });
-        add(semesters, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 260, 40));
+        add(semesters, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 260, 40));
 
-        jLabel96.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("A d d   N e w   P r o g r a m   D e t a i l s");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 350, 40));
+        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 460, 40));
 
         save.setBackground(new java.awt.Color(0, 102, 153));
-        save.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        save.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         save.setForeground(new java.awt.Color(255, 255, 255));
-        save.setText("Save Program");
+        save.setText("Add Program");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
             }
         });
-        add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 170, 60));
+        add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, 50));
 
-        jLabel97.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
         jLabel97.setText("Program Title");
-        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 140, 40));
+        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, 40));
 
         program_name.setBackground(new java.awt.Color(50, 50, 50));
         program_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -99,7 +99,7 @@ public class add_new_program extends javax.swing.JPanel {
                 program_nameActionPerformed(evt);
             }
         });
-        add(program_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 260, 40));
+        add(program_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 260, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void semestersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestersActionPerformed

@@ -43,40 +43,45 @@ public class add_professor_panel extends javax.swing.JPanel {
         jLabel97 = new javax.swing.JLabel();
         addProfessorBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
+        setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Professor Details:");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 210, 30));
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel96.setText("Add New P r o f e s s o r ");
+        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 310, 50));
 
-        prof_id.setForeground(new java.awt.Color(0, 102, 153));
-        add(prof_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 360, 30));
+        prof_id.setBackground(new java.awt.Color(50, 50, 50));
+        prof_id.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        prof_id.setForeground(new java.awt.Color(255, 255, 255));
+        add(prof_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 290, 30));
 
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(0, 102, 153));
         jLabel94.setText("Professor name:");
-        add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, 30));
+        add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 30));
 
-        prof_name.setForeground(new java.awt.Color(0, 102, 153));
-        add(prof_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 360, 30));
+        prof_name.setBackground(new java.awt.Color(50, 50, 50));
+        prof_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        prof_name.setForeground(new java.awt.Color(255, 255, 255));
+        add(prof_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 290, 30));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel97.setForeground(new java.awt.Color(0, 102, 153));
         jLabel97.setText("Professor ID:");
-        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 210, 30));
+        add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, 30));
 
         addProfessorBtn.setBackground(new java.awt.Color(0, 102, 153));
-        addProfessorBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        addProfessorBtn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         addProfessorBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addProfessorBtn.setText("add");
+        addProfessorBtn.setText("Add Professor");
         addProfessorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addProfessorBtnActionPerformed(evt);
             }
         });
-        add(addProfessorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 220, 60));
+        add(addProfessorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 220, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addProfessorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfessorBtnActionPerformed

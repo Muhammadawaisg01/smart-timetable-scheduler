@@ -75,18 +75,18 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel102.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(255, 255, 255));
         jLabel102.setText("S t u d e n t  D e t a i l s");
-        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 230, 30));
+        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 280, 30));
 
-        semester_label.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        semester_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         semester_label.setForeground(new java.awt.Color(0, 102, 153));
         semester_label.setText("Semester");
-        jPanel1.add(semester_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 170, 40));
+        jPanel1.add(semester_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
 
         all_students.setBackground(new java.awt.Color(50, 50, 50));
-        all_students.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        all_students.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         all_students.setForeground(new java.awt.Color(255, 255, 255));
         all_students.setMaximumRowCount(7);
         all_students.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Students" }));
@@ -100,20 +100,20 @@ public class view_student_details_panel extends javax.swing.JPanel {
                 all_studentsPropertyChange(evt);
             }
         });
-        jPanel1.add(all_students, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 390, 40));
+        jPanel1.add(all_students, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 390, 40));
 
-        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("S t u d e n t  R e g i s t r a t e d  C o u r s e s");
-        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 370, 40));
+        jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 500, 40));
 
-        jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(0, 102, 153));
         jLabel96.setText("Student Registration No");
-        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 180, 40));
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 220, 40));
 
         student_courses_table.setBackground(new java.awt.Color(50, 50, 50));
-        student_courses_table.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        student_courses_table.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         student_courses_table.setForeground(new java.awt.Color(255, 255, 255));
         student_courses_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,32 +157,32 @@ public class view_student_details_panel extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(student_courses_table);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 650, 190));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 710, 190));
 
-        student_name_label.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        student_name_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         student_name_label.setForeground(new java.awt.Color(0, 102, 153));
         student_name_label.setText("Student Name");
-        jPanel1.add(student_name_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 160, 40));
+        jPanel1.add(student_name_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 40));
 
-        section_label.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_label.setForeground(new java.awt.Color(0, 102, 153));
         section_label.setText("Section");
-        jPanel1.add(section_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 150, 40));
+        jPanel1.add(section_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 180, 40));
 
-        section_id.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_id.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_id.setForeground(new java.awt.Color(255, 255, 255));
         section_id.setText("Section");
-        jPanel1.add(section_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 250, 30));
+        jPanel1.add(section_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 250, 40));
 
-        student_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        student_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         student_name.setForeground(new java.awt.Color(255, 255, 255));
         student_name.setText("Student Name");
-        jPanel1.add(student_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 250, 40));
+        jPanel1.add(student_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 250, 40));
 
-        semester.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        semester.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         semester.setForeground(new java.awt.Color(255, 255, 255));
         semester.setText("Semester");
-        jPanel1.add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 230, 30));
+        jPanel1.add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 230, 40));
 
         jScrollPane2.setViewportView(jPanel1);
 

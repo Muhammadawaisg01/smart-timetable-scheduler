@@ -39,14 +39,17 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         entity_name_lbl = new javax.swing.JLabel();
         general_dropdown = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        entity_name_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        entity_name_lbl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         entity_name_lbl.setForeground(new java.awt.Color(0, 102, 153));
-        entity_name_lbl.setText("Entity:");
+        entity_name_lbl.setText("Entity");
         add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 170, 40));
 
+        general_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        general_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        general_dropdown.setForeground(new java.awt.Color(255, 255, 255));
         general_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         general_dropdown.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -58,7 +61,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
                 general_dropdownActionPerformed(evt);
             }
         });
-        add(general_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 250, 40));
+        add(general_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 250, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void general_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_general_dropdownItemStateChanged

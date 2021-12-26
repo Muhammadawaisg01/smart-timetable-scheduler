@@ -39,50 +39,47 @@ public class room_input_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel106 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
         room_capacity = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
         room_name = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         isLab = new javax.swing.JRadioButton();
         lecture_radio = new javax.swing.JRadioButton();
+        jLabel106 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setMaximumSize(new java.awt.Dimension(1000, 2147483647));
         setMinimumSize(new java.awt.Dimension(760, 550));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel106.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel106.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel106.setText("Add New Room or Lab");
-        add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, 40));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(0, 102, 153));
         jLabel96.setText("Room name:");
-        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 30));
+        jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 210, 30));
 
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(0, 102, 153));
         jLabel94.setText("Room capacity:");
-        jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 210, 30));
+        jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 210, 30));
 
-        room_capacity.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(room_capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 360, 30));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 192, 620, 10));
+        room_capacity.setBackground(new java.awt.Color(50, 50, 50));
+        room_capacity.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        room_capacity.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(room_capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 360, 30));
 
-        room_name.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(room_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 360, 30));
+        room_name.setBackground(new java.awt.Color(50, 50, 50));
+        room_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        room_name.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(room_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 360, 30));
 
         jButton10.setBackground(new java.awt.Color(0, 102, 153));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton10.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Create Room");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -91,10 +88,11 @@ public class room_input_panel extends javax.swing.JPanel {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 200, 60));
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 200, 60));
 
-        isLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        isLab.setForeground(new java.awt.Color(0, 102, 153));
+        isLab.setBackground(new java.awt.Color(50, 50, 50));
+        isLab.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        isLab.setForeground(new java.awt.Color(255, 255, 255));
         isLab.setText("Lab");
         isLab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         isLab.addActionListener(new java.awt.event.ActionListener() {
@@ -102,10 +100,11 @@ public class room_input_panel extends javax.swing.JPanel {
                 isLabActionPerformed(evt);
             }
         });
-        jPanel1.add(isLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 70, -1));
+        jPanel1.add(isLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 70, -1));
 
-        lecture_radio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lecture_radio.setForeground(new java.awt.Color(0, 102, 153));
+        lecture_radio.setBackground(new java.awt.Color(50, 50, 50));
+        lecture_radio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lecture_radio.setForeground(new java.awt.Color(255, 255, 255));
         lecture_radio.setText("Lecture room");
         lecture_radio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lecture_radio.addActionListener(new java.awt.event.ActionListener() {
@@ -113,11 +112,16 @@ public class room_input_panel extends javax.swing.JPanel {
                 lecture_radioActionPerformed(evt);
             }
         });
-        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+        jPanel1.add(lecture_radio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, -1));
+
+        jLabel106.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel106.setText("A d d   N e w   R o o m   o r   L a b");
+        jPanel1.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 420, 40));
 
         jScrollPane1.setViewportView(jPanel1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 680, 440));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 570));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lecture_radioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecture_radioActionPerformed
@@ -208,7 +212,6 @@ public class room_input_panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel96;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JRadioButton lecture_radio;
     private javax.swing.JTextField room_capacity;
     private javax.swing.JTextField room_name;

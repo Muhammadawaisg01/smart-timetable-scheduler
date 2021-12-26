@@ -51,50 +51,55 @@ public class search_slot_for_specific_section extends javax.swing.JPanel {
         day_dd = new javax.swing.JComboBox<>();
         jLabel101 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
         jLabel98.setText("End time:");
-        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 110, 40));
+        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 110, 30));
 
+        end_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         end_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(end_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 40));
+        add(end_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 270, 40));
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 102, 153));
+        jButton8.setBackground(new java.awt.Color(0, 102, 153));
+        jButton8.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Search");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 80, 30));
+        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 270, 50));
 
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 102, 153));
         jLabel99.setText("Section:");
-        add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 100, 40));
+        add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
 
-        jLabel100.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(0, 102, 153));
         jLabel100.setText("Start time:");
-        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, 40));
+        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 110, 30));
 
+        section_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(section_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 420, 40));
+        add(section_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 270, 40));
 
+        start_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         start_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(start_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, 40));
+        add(start_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 40));
 
+        day_dd.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         day_dd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(day_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 310, 40));
+        add(day_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 270, 40));
 
-        jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel101.setForeground(new java.awt.Color(0, 102, 153));
         jLabel101.setText("Day:");
-        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 40));
+        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 130, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

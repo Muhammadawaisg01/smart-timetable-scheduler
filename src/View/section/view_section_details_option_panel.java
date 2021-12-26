@@ -94,17 +94,18 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
             }
         };
         jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel98.setText("double-click on row will open view_section_details_panel");
-        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 410, 40));
+        jLabel98.setText("Double Click On Row To See Section Details");
+        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 390, 40));
 
         semesters_dropdown.setBackground(new java.awt.Color(50, 50, 50));
-        semesters_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        semesters_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         semesters_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         semesters_dropdown.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -116,15 +117,15 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
                 semesters_dropdownActionPerformed(evt);
             }
         });
-        add(semesters_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 220, 40));
+        add(semesters_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 270, 40));
 
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel99.setText("Program:");
-        add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 150, 40));
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel99.setText("S e c t i o n   D e t a i l s");
+        add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 40));
 
         programs_dropdown.setBackground(new java.awt.Color(50, 50, 50));
-        programs_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        programs_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         programs_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
         programs_dropdown.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -136,10 +137,10 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
                 programs_dropdownActionPerformed(evt);
             }
         });
-        add(programs_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 220, 40));
+        add(programs_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 270, 40));
 
         section_detail_table.setBackground(new java.awt.Color(50, 50, 50));
-        section_detail_table.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_detail_table.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         section_detail_table.setForeground(new java.awt.Color(255, 255, 255));
         section_detail_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,10 +186,15 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 690, 130));
 
-        jLabel100.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(0, 102, 153));
         jLabel100.setText("Semester:");
-        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 140, 40));
+        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, 40));
+
+        jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel101.setText("Program:");
+        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void semesters_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semesters_dropdownActionPerformed
@@ -301,6 +307,7 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JScrollPane jScrollPane1;
