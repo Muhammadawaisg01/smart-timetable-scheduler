@@ -58,7 +58,7 @@ public class add_professor_panel extends javax.swing.JPanel {
         add(prof_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 290, 30));
 
         jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
         jLabel94.setText("Professor name:");
         add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 30));
 
@@ -68,7 +68,7 @@ public class add_professor_panel extends javax.swing.JPanel {
         add(prof_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 290, 30));
 
         jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Professor ID:");
         add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, 30));
 

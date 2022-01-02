@@ -36,7 +36,7 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
         jLabel109.setText("Clash Details Panel:");
         add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
 
@@ -63,7 +63,7 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 680, 310));
 
         entity_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        entity_name.setForeground(new java.awt.Color(0, 102, 153));
+        entity_name.setForeground(new java.awt.Color(255, 255, 255));
         entity_name.setText("Professor-wise/Student-wise");
         add(entity_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 40));
     }// </editor-fold>//GEN-END:initComponents

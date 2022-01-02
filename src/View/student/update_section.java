@@ -33,7 +33,7 @@ public class update_section extends javax.swing.JPanel {
 
         jRadioButton2.setBackground(new java.awt.Color(50, 50, 50));
         jRadioButton2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 102, 153));
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setText("Change Regular Section");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,7 +44,7 @@ public class update_section extends javax.swing.JPanel {
 
         jRadioButton1.setBackground(new java.awt.Color(50, 50, 50));
         jRadioButton1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Change Section For Extra Courses");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

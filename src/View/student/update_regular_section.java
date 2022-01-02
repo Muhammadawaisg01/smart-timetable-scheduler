@@ -201,7 +201,7 @@ public class update_regular_section extends javax.swing.JPanel {
         add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 40));
 
         jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Move To Section");
         add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 180, 40));
 

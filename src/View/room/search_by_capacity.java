@@ -57,7 +57,7 @@ public class search_by_capacity extends javax.swing.JPanel {
         add(day_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 260, 40));
 
         jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel100.setForeground(new java.awt.Color(255, 255, 255));
         jLabel100.setText("Day:");
         add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
 
@@ -73,7 +73,7 @@ public class search_by_capacity extends javax.swing.JPanel {
         add(end_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 260, 40));
 
         jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("End time:");
         add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 90, 30));
 
@@ -95,7 +95,7 @@ public class search_by_capacity extends javax.swing.JPanel {
         add(start_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 230, 40));
 
         jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
         jLabel102.setText("Start time:");
         add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 110, 30));
     }// </editor-fold>//GEN-END:initComponents

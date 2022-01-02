@@ -59,12 +59,12 @@ public class room_input_panel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("Room name:");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 210, 30));
 
         jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
         jLabel94.setText("Room capacity:");
         jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 210, 30));
 

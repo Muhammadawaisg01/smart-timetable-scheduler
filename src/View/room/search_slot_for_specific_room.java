@@ -51,7 +51,7 @@ public class search_slot_for_specific_room extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Room name:");
         add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 130, 40));
 
@@ -77,7 +77,7 @@ public class search_slot_for_specific_room extends javax.swing.JPanel {
         add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 260, 50));
 
         jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
         jLabel99.setText("Day:");
         add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 120, 40));
     }// </editor-fold>//GEN-END:initComponents

@@ -169,12 +169,12 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("Program");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 40));
 
         jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
         jLabel94.setText("Section ID");
         jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, 40));
 
@@ -201,7 +201,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1.add(programs_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 370, 40));
 
         jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("Semester");
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 40));
 
@@ -211,7 +211,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1.add(section_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 370, 40));
 
         jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Section Capacity");
         jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, 40));
 
@@ -237,7 +237,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 430, 40));
 
         jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("Course");
         jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 110, 40));
 
@@ -271,7 +271,7 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 770, 150));
 
         jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
         jLabel99.setText("Section Name");
         jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
 

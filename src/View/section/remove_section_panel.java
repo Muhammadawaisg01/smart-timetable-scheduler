@@ -43,7 +43,7 @@ public class remove_section_panel extends javax.swing.JPanel {
         add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 60));
 
         jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
         jLabel102.setText("Sections");
         add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 150, 40));
 

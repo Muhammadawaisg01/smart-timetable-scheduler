@@ -129,7 +129,7 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 650, 40));
 
         jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("Professor");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 160, 30));
 
@@ -186,12 +186,12 @@ public class Professor_course_allocation extends javax.swing.JPanel {
         jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 270, 40));
 
         jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel101.setForeground(new java.awt.Color(255, 255, 255));
         jLabel101.setText("Courses");
         jPanel1.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, 30));
 
         jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
         jLabel102.setText("Section");
         jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, 40));
 

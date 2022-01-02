@@ -81,7 +81,7 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 280, 30));
 
         semester_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        semester_label.setForeground(new java.awt.Color(0, 102, 153));
+        semester_label.setForeground(new java.awt.Color(255, 255, 255));
         semester_label.setText("Semester");
         jPanel1.add(semester_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
 
@@ -108,7 +108,7 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 500, 40));
 
         jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("Student Registration No");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 220, 40));
 
@@ -160,12 +160,12 @@ public class view_student_details_panel extends javax.swing.JPanel {
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 710, 190));
 
         student_name_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        student_name_label.setForeground(new java.awt.Color(0, 102, 153));
+        student_name_label.setForeground(new java.awt.Color(255, 255, 255));
         student_name_label.setText("Student Name");
         jPanel1.add(student_name_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 40));
 
         section_label.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        section_label.setForeground(new java.awt.Color(0, 102, 153));
+        section_label.setForeground(new java.awt.Color(255, 255, 255));
         section_label.setText("Section");
         jPanel1.add(section_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 180, 40));
 

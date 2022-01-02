@@ -71,22 +71,22 @@ public class final_panel extends javax.swing.JPanel {
         add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
 
         jLabel107.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
         jLabel107.setText("3)   Generating Schedule Can Take Few Minutes");
         add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 30));
 
         jLabel108.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel108.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel108.setForeground(new java.awt.Color(255, 255, 255));
         jLabel108.setText("1)   Make Sure All Data Is Entered Before Generating Scheduling");
         add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, 30));
 
         jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
         jLabel109.setText("2)   Data Modified After Scheduling Will Not Effect Schedule");
         add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 540, 30));
 
         back.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
-        back.setForeground(new java.awt.Color(0, 102, 153));
+        back.setForeground(new java.awt.Color(255, 255, 255));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setText("<- B a c k");
         back.setToolTipText("Logo");

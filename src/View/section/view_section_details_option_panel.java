@@ -100,7 +100,7 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("Double Click On Row To See Section Details");
         add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 390, 40));
 
@@ -187,12 +187,12 @@ public class view_section_details_option_panel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 690, 130));
 
         jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel100.setForeground(new java.awt.Color(255, 255, 255));
         jLabel100.setText("Semester:");
         add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, 40));
 
         jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel101.setForeground(new java.awt.Color(255, 255, 255));
         jLabel101.setText("Program:");
         add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, 40));
     }// </editor-fold>//GEN-END:initComponents

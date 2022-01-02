@@ -55,7 +55,7 @@ public class search_slot_for_specific_section extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("End time:");
         add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 110, 30));
 
@@ -75,12 +75,12 @@ public class search_slot_for_specific_section extends javax.swing.JPanel {
         add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 270, 50));
 
         jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
         jLabel99.setText("Section:");
         add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
 
         jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel100.setForeground(new java.awt.Color(255, 255, 255));
         jLabel100.setText("Start time:");
         add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 110, 30));
 
@@ -97,7 +97,7 @@ public class search_slot_for_specific_section extends javax.swing.JPanel {
         add(day_dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 270, 40));
 
         jLabel101.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel101.setForeground(new java.awt.Color(255, 255, 255));
         jLabel101.setText("Day:");
         add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 130, 40));
     }// </editor-fold>//GEN-END:initComponents

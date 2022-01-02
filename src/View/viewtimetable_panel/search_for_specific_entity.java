@@ -43,7 +43,7 @@ public class search_for_specific_entity extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         entity_name_lbl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        entity_name_lbl.setForeground(new java.awt.Color(0, 102, 153));
+        entity_name_lbl.setForeground(new java.awt.Color(255, 255, 255));
         entity_name_lbl.setText("Entity");
         add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 170, 40));
 

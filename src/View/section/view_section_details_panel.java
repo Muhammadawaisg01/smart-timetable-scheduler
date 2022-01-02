@@ -71,12 +71,12 @@ public class view_section_details_panel extends javax.swing.JPanel {
         jPanel1.add(section_strength_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 170, 40));
 
         jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("Student Strength");
         jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 170, 40));
 
         jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
         jLabel99.setText("Section ID");
         jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 160, 40));
 

@@ -46,7 +46,7 @@ public class excel_file_panel extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 320, 70));
 
         jLabel107.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
         jLabel107.setText("2)    Uploading File Can Take Few Mintues");
         add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 540, 50));
 
@@ -78,7 +78,7 @@ public class excel_file_panel extends javax.swing.JPanel {
         add(next, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 200, 60));
 
         jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
         jLabel109.setText("1)    Upload Student Registration File In .csv Format");
         add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 540, 50));
     }// </editor-fold>//GEN-END:initComponents

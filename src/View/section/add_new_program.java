@@ -56,7 +56,7 @@ public class add_new_program extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("Number of semesters");
         add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 200, 40));
 
@@ -87,7 +87,7 @@ public class add_new_program extends javax.swing.JPanel {
         add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, 50));
 
         jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Program Title");
         add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, 40));
 
