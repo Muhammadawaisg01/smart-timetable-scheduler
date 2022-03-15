@@ -5,6 +5,8 @@
  */
 package View.viewtimetable_panel;
 
+import Model.Queries;
+
 /**
  *
  * @author muhammad awais 1
@@ -27,52 +29,574 @@ public class Pop_up_window_for_viewing_details_of_clash extends javax.swing.JPan
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel110 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel110 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        section_wise_lbl = new javax.swing.JLabel();
+        section_wise_lbl1 = new javax.swing.JLabel();
+        section_wise_lbl2 = new javax.swing.JLabel();
+        section_wise_lbl3 = new javax.swing.JLabel();
+        section_wise_lbl4 = new javax.swing.JLabel();
+        section_wise_lbl5 = new javax.swing.JLabel();
+        section_wise_lbl6 = new javax.swing.JLabel();
+        section_wise_lbl7 = new javax.swing.JLabel();
+        section_wise_lbl8 = new javax.swing.JLabel();
+        section_wise_lbl9 = new javax.swing.JLabel();
+        section_wise_lbl10 = new javax.swing.JLabel();
+        section_wise_lbl11 = new javax.swing.JLabel();
+        section_wise_lbl12 = new javax.swing.JLabel();
+        section_wise_lbl13 = new javax.swing.JLabel();
+        section_wise_lbl14 = new javax.swing.JLabel();
+        section_wise_lbl15 = new javax.swing.JLabel();
+        section_wise_lbl16 = new javax.swing.JLabel();
+        section_wise_lbl17 = new javax.swing.JLabel();
+        section_wise_lbl18 = new javax.swing.JLabel();
+        section_wise_lbl19 = new javax.swing.JLabel();
+        section_wise_lbl20 = new javax.swing.JLabel();
+        section_wise_lbl21 = new javax.swing.JLabel();
+        section_wise_lbl22 = new javax.swing.JLabel();
+        section_wise_lbl23 = new javax.swing.JLabel();
+        section_wise_lbl24 = new javax.swing.JLabel();
+        section_wise_lbl25 = new javax.swing.JLabel();
+        section_wise_lbl26 = new javax.swing.JLabel();
+        section_wise_lbl27 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setBackground(new java.awt.Color(50, 50, 50));
+
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel110.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel110.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel110.setText("Other Lecture assigned in this Timeslot:");
-        add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 410, 40));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Display result of timeslot\nClash Lecture");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 580, 130));
+        jLabel110.setText("Other Lecture assigned");
+        jPanel1.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 250, 40));
 
         jLabel111.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel111.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel111.setText("Lecture allocated in this Timeslot");
-        add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 350, 40));
+        jLabel111.setText("Assigned Lecture");
+        jPanel1.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 40));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Display result of timeslot");
-        jScrollPane2.setViewportView(jTextArea2);
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("resolve");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, 160, 40));
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 580, 130));
+        section_wise_lbl.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl.setText("Lecture no:");
+        section_wise_lbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lblMouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 130, 40));
+
+        section_wise_lbl1.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl1.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl1.setText("Mon");
+        section_wise_lbl1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 150, 40));
+
+        section_wise_lbl2.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl2.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl2.setText("Timeslot:");
+        section_wise_lbl2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 80, 40));
+
+        section_wise_lbl3.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl3.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl3.setText("Section:");
+        section_wise_lbl3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 40));
+
+        section_wise_lbl4.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl4.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl4.setText("Room:");
+        section_wise_lbl4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 40));
+
+        section_wise_lbl5.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl5.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl5.setText("Course:");
+        section_wise_lbl5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 80, 40));
+
+        section_wise_lbl6.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl6.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl6.setText("Lecture no:");
+        section_wise_lbl6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 130, 40));
+
+        section_wise_lbl7.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl7.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl7.setText("Room:");
+        section_wise_lbl7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 110, 40));
+
+        section_wise_lbl8.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl8.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl8.setText("Section:");
+        section_wise_lbl8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl8MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 80, 40));
+
+        section_wise_lbl9.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl9.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl9.setText("Course:");
+        section_wise_lbl9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl9MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 80, 40));
+
+        section_wise_lbl10.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl10.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl10.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl10.setText("Timeslot:");
+        section_wise_lbl10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl10MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 80, 40));
+
+        section_wise_lbl11.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl11.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl11.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl11.setText("Day:");
+        section_wise_lbl11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl11MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 60, 40));
+
+        section_wise_lbl12.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl12.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl12.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl12.setText("Day:");
+        section_wise_lbl12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl12MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 60, 40));
+
+        section_wise_lbl13.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl13.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl13.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl13.setText("Mon");
+        section_wise_lbl13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl13MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 150, 40));
+
+        section_wise_lbl14.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl14.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl14.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl14.setText("8:30-10:00 AM");
+        section_wise_lbl14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 130, 40));
+
+        section_wise_lbl15.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl15.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl15.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl15.setText("Mon");
+        section_wise_lbl15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl15MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 150, 40));
+
+        section_wise_lbl16.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl16.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl16.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl16.setText("Mon");
+        section_wise_lbl16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl16MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 150, 40));
+
+        section_wise_lbl17.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl17.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl17.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl17.setText("Mon");
+        section_wise_lbl17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl17MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 150, 40));
+
+        section_wise_lbl18.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl18.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl18.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl18.setText("Mon");
+        section_wise_lbl18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl18MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl18, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 170, 40));
+
+        section_wise_lbl19.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl19.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl19.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl19.setText("8:30-10:00 AM");
+        section_wise_lbl19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl19MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 170, 40));
+
+        section_wise_lbl20.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl20.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl20.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl20.setText("Mon");
+        section_wise_lbl20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl20MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl20, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 170, 40));
+
+        section_wise_lbl21.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl21.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl21.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl21.setText("Mon");
+        section_wise_lbl21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl21MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl21, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 170, 40));
+
+        section_wise_lbl22.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl22.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl22.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl22.setText("Mon");
+        section_wise_lbl22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        section_wise_lbl22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl22MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 170, 40));
+
+        section_wise_lbl23.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl23.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl23.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl23.setText("Mon");
+        section_wise_lbl23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl23MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl23, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 170, 40));
+
+        section_wise_lbl24.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl24.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl24.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl24.setText("Mon");
+        section_wise_lbl24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl24MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl24, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 150, 40));
+
+        section_wise_lbl25.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl25.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl25.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl25.setText("Lecture type:");
+        section_wise_lbl25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl25MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 130, 40));
+
+        section_wise_lbl26.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl26.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl26.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl26.setText("Mon");
+        section_wise_lbl26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl26MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl26, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 170, 40));
+
+        section_wise_lbl27.setBackground(new java.awt.Color(0, 102, 153));
+        section_wise_lbl27.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        section_wise_lbl27.setForeground(new java.awt.Color(255, 255, 255));
+        section_wise_lbl27.setText("Lecture type:");
+        section_wise_lbl27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        section_wise_lbl27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                section_wise_lbl27MouseClicked(evt);
+            }
+        });
+        jPanel1.add(section_wise_lbl27, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 130, 40));
+
+        jPanel4.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, 400));
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void section_wise_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lblMouseClicked
+        String[] data = Queries.getData("section_id", "section");
+        search_for_specific_entity.setDropdownData(data);
+        view_generated_timetable_panel.entity_name_lbl.setText("S e c t i o n   S c h e d u l e");
+        search_for_specific_entity.entity_name_lbl.setText("Section :  ");
+        //        view_schedule.entity_name_lbl.setText("Section : ");
+//        view_timetable_panel_visibility(view_generated_timetable_panel1);
+    }//GEN-LAST:event_section_wise_lblMouseClicked
+
+    private void section_wise_lbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl1MouseClicked
+
+    private void section_wise_lbl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl2MouseClicked
+
+    private void section_wise_lbl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl3MouseClicked
+
+    private void section_wise_lbl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl4MouseClicked
+
+    private void section_wise_lbl5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl5MouseClicked
+
+    private void section_wise_lbl6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl6MouseClicked
+
+    private void section_wise_lbl7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl7MouseClicked
+
+    private void section_wise_lbl8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl8MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl8MouseClicked
+
+    private void section_wise_lbl9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl9MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl9MouseClicked
+
+    private void section_wise_lbl10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl10MouseClicked
+
+    private void section_wise_lbl11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl11MouseClicked
+
+    private void section_wise_lbl12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl12MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl12MouseClicked
+
+    private void section_wise_lbl13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl13MouseClicked
+
+    private void section_wise_lbl14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl14MouseClicked
+
+    private void section_wise_lbl15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl15MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl15MouseClicked
+
+    private void section_wise_lbl16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl16MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl16MouseClicked
+
+    private void section_wise_lbl17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl17MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl17MouseClicked
+
+    private void section_wise_lbl18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl18MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl18MouseClicked
+
+    private void section_wise_lbl19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl19MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl19MouseClicked
+
+    private void section_wise_lbl20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl20MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl20MouseClicked
+
+    private void section_wise_lbl21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl21MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl21MouseClicked
+
+    private void section_wise_lbl22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl22MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl22MouseClicked
+
+    private void section_wise_lbl23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl23MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl23MouseClicked
+
+    private void section_wise_lbl24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl24MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl24MouseClicked
+
+    private void section_wise_lbl25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl25MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl25MouseClicked
+
+    private void section_wise_lbl26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl26MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl26MouseClicked
+
+    private void section_wise_lbl27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lbl27MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_section_wise_lbl27MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    static javax.swing.JTextArea jTextArea1;
-    static javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel section_wise_lbl;
+    private javax.swing.JLabel section_wise_lbl1;
+    private javax.swing.JLabel section_wise_lbl10;
+    private javax.swing.JLabel section_wise_lbl11;
+    private javax.swing.JLabel section_wise_lbl12;
+    private javax.swing.JLabel section_wise_lbl13;
+    private javax.swing.JLabel section_wise_lbl14;
+    private javax.swing.JLabel section_wise_lbl15;
+    private javax.swing.JLabel section_wise_lbl16;
+    private javax.swing.JLabel section_wise_lbl17;
+    private javax.swing.JLabel section_wise_lbl18;
+    private javax.swing.JLabel section_wise_lbl19;
+    private javax.swing.JLabel section_wise_lbl2;
+    private javax.swing.JLabel section_wise_lbl20;
+    private javax.swing.JLabel section_wise_lbl21;
+    private javax.swing.JLabel section_wise_lbl22;
+    private javax.swing.JLabel section_wise_lbl23;
+    private javax.swing.JLabel section_wise_lbl24;
+    private javax.swing.JLabel section_wise_lbl25;
+    private javax.swing.JLabel section_wise_lbl26;
+    private javax.swing.JLabel section_wise_lbl27;
+    private javax.swing.JLabel section_wise_lbl3;
+    private javax.swing.JLabel section_wise_lbl4;
+    private javax.swing.JLabel section_wise_lbl5;
+    private javax.swing.JLabel section_wise_lbl6;
+    private javax.swing.JLabel section_wise_lbl7;
+    private javax.swing.JLabel section_wise_lbl8;
+    private javax.swing.JLabel section_wise_lbl9;
     // End of variables declaration//GEN-END:variables
 }

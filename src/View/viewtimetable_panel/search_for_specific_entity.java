@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View.viewtimetable_panel;
 
 import Model.Queries;
@@ -10,15 +6,10 @@ import java.sql.ResultSet;
 import javax.swing.DefaultComboBoxModel;
 import schedule.DisplayTable;
 
-/**
- *
- * @author muhammad awais 1
- */
+
 public class search_for_specific_entity extends javax.swing.JPanel {
 
-    /**
-     * Creates new form search_for_specific_entity
-     */
+    
     public search_for_specific_entity() {
         initComponents();
     }

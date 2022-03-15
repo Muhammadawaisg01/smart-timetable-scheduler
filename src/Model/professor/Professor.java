@@ -1,6 +1,7 @@
 package Model.professor;
 
 import Model.WeekDays;
+import Model.datesheet_generation.Datesheet;
 import db.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +19,11 @@ public class Professor {
     private String name;
     private Professor_Schedule schedule;
     private ArrayList<Professor_Lecture_Clash> clash_array = new ArrayList<>();
-
+    
+   
+     
+    
+    
     public Professor(int id, String name) {
         this.id = id;
         this.name = name;

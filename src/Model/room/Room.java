@@ -21,7 +21,9 @@ public class Room {
     Room_Type room_type;
 
     private ArrayList<Room_Day> days;
-
+    
+    private Room_Datesheet datesheet = new Room_Datesheet();
+    
     public Room(String name, boolean isFull, ArrayList<Room_Day> days) {
         this.name = name;
         this.isFull = isFull;
@@ -54,6 +56,15 @@ public class Room {
 
     }
 
+    public Room_Datesheet getDatesheet() {
+        return datesheet;
+    }
+
+    public void setDatesheet(Room_Datesheet datesheet) {
+        this.datesheet = datesheet;
+    }
+
+    
     public String getName() {
         return name;
     }

@@ -5,6 +5,8 @@
  */
 package View.viewtimetable_panel;
 
+import javax.swing.JTable;
+
 /**
  *
  * @author muhammad awais 1
@@ -16,6 +18,7 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
      */
     public View_all_clashes_panel() {
         initComponents();
+        jTable1.setEnabled(false);
     }
 
     /**
@@ -31,14 +34,15 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         entity_name = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel109.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel109.setText("Clash Details Panel:");
-        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 40));
+        jLabel109.setText("Clashes in the generated Timetable:");
+        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 550, 40));
 
         jTable1.setBackground(new java.awt.Color(50, 50, 50));
         jTable1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -58,20 +62,39 @@ public class View_all_clashes_panel extends javax.swing.JPanel {
         jTable1.setRowHeight(30);
         jTable1.setRowMargin(4);
         jTable1.setShowVerticalLines(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 680, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 680, 230));
 
         entity_name.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         entity_name.setForeground(new java.awt.Color(255, 255, 255));
         entity_name.setText("Professor-wise/Student-wise");
         add(entity_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 40));
+
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel98.setText("Double Click On Row To See Clash Details");
+        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 390, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() == 2) {
+            JTable target = (JTable) evt.getSource();
+            int row = target.getSelectedRow();
+            new clash_resolving_frame().setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel entity_name;
     private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel98;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

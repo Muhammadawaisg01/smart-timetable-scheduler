@@ -237,11 +237,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jLabel6 = new javax.swing.JLabel();
         course = new JPanel();
         jLabel8 = new javax.swing.JLabel();
+        datesheet = new JPanel();
+        jLabel7 = new javax.swing.JLabel();
         scheduler_generation = new JPanel();
         jLabel5 = new javax.swing.JLabel();
         view_timetable = new JPanel();
         jLabel26 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -416,12 +417,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jPanel22 = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
         room_wise_lbl = new javax.swing.JLabel();
-        add_roomlbl9 = new javax.swing.JLabel();
-        add_roomlbl10 = new javax.swing.JLabel();
+        clash_lbl = new javax.swing.JLabel();
+        professor_clasheslbl = new javax.swing.JLabel();
         section_wise_lbl = new javax.swing.JLabel();
         professor_wise_lbl = new javax.swing.JLabel();
         std_wise_lbl = new javax.swing.JLabel();
-        add_roomlbl12 = new javax.swing.JLabel();
+        student_clasheslbl = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
         jPanel26 = new javax.swing.JPanel();
@@ -437,6 +438,12 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         jPanel27 = new javax.swing.JPanel();
         view_student_details_panel1 = new View.student.view_student_details_panel();
         update_section1 = new View.student.update_section();
+        datesheet_generation = new javax.swing.JPanel();
+        jPanel23container1 = new javax.swing.JPanel();
+        Dashboard_Datesheet = new javax.swing.JPanel();
+        jLabel69 = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        excel_file_panel2 = new View.schedule_generation.excel_file_panel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -674,6 +681,23 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         jPanel9.add(course, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 350, 50));
 
+        datesheet.setBackground(new java.awt.Color(204, 204, 204));
+        datesheet.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        datesheet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        datesheet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                datesheetMouseClicked(evt);
+            }
+        });
+        datesheet.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Datesheet Generation");
+        datesheet.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 350, -1));
+
+        jPanel9.add(datesheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 350, 50));
+
         scheduler_generation.setBackground(new java.awt.Color(204, 204, 204));
         scheduler_generation.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         scheduler_generation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -707,7 +731,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         view_timetable.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 350, -1));
 
         jPanel9.add(view_timetable, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 350, 50));
-        jPanel9.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(50, 50, 50));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -720,10 +743,10 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addGap(0, 418, Short.MAX_VALUE)
         );
 
-        jPanel9.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 10, 350));
+        jPanel9.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 10, 420));
 
         jTextArea2.setEditable(false);
         jTextArea2.setBackground(new java.awt.Color(80, 80, 80));
@@ -1250,8 +1273,6 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.CardLayout());
-
-        room_input_panel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel3.add(room_input_panel1, "card5");
         jPanel3.add(view_schedule_panel1, "card6");
         jPanel3.add(view_schedule_panel2, "card9");
@@ -1966,27 +1987,30 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         });
         jPanel22.add(room_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 260, 40));
 
-        add_roomlbl9.setBackground(new java.awt.Color(0, 102, 153));
-        add_roomlbl9.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        add_roomlbl9.setText("   Clashes                ");
-        add_roomlbl9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add_roomlbl9.addMouseListener(new java.awt.event.MouseAdapter() {
+        clash_lbl.setBackground(new java.awt.Color(0, 102, 153));
+        clash_lbl.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        clash_lbl.setForeground(new java.awt.Color(0, 102, 153));
+        clash_lbl.setText("   Clashes                ");
+        clash_lbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        clash_lbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        clash_lbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                add_roomlbl9MouseClicked(evt);
+                clash_lblMouseClicked(evt);
             }
         });
-        jPanel22.add(add_roomlbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 280, 40));
+        jPanel22.add(clash_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 280, 40));
 
-        add_roomlbl10.setBackground(new java.awt.Color(0, 102, 153));
-        add_roomlbl10.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        add_roomlbl10.setText("Professor Clashes");
-        add_roomlbl10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add_roomlbl10.addMouseListener(new java.awt.event.MouseAdapter() {
+        professor_clasheslbl.setBackground(new java.awt.Color(0, 102, 153));
+        professor_clasheslbl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        professor_clasheslbl.setForeground(new java.awt.Color(255, 255, 255));
+        professor_clasheslbl.setText("Professor Clashes");
+        professor_clasheslbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        professor_clasheslbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                add_roomlbl10MouseClicked(evt);
+                professor_clasheslblMouseClicked(evt);
             }
         });
-        jPanel22.add(add_roomlbl10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 260, 40));
+        jPanel22.add(professor_clasheslbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 260, 40));
 
         section_wise_lbl.setBackground(new java.awt.Color(0, 102, 153));
         section_wise_lbl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -2024,16 +2048,17 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         });
         jPanel22.add(std_wise_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, 40));
 
-        add_roomlbl12.setBackground(new java.awt.Color(0, 102, 153));
-        add_roomlbl12.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        add_roomlbl12.setText("Student Clashes");
-        add_roomlbl12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add_roomlbl12.addMouseListener(new java.awt.event.MouseAdapter() {
+        student_clasheslbl.setBackground(new java.awt.Color(0, 102, 153));
+        student_clasheslbl.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        student_clasheslbl.setForeground(new java.awt.Color(255, 255, 255));
+        student_clasheslbl.setText("Student Clashes");
+        student_clasheslbl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        student_clasheslbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                add_roomlbl12MouseClicked(evt);
+                student_clasheslblMouseClicked(evt);
             }
         });
-        jPanel22.add(add_roomlbl12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, 40));
+        jPanel22.add(student_clasheslbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, 40));
 
         jScrollPane11.setViewportView(jPanel22);
 
@@ -2145,6 +2170,40 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         students_management.add(jPanel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 580));
 
         getContentPane().add(students_management, "card5");
+
+        datesheet_generation.setBackground(new java.awt.Color(255, 255, 255));
+        datesheet_generation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel23container1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Dashboard_Datesheet.setBackground(new java.awt.Color(0, 0, 0));
+        Dashboard_Datesheet.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel69.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel69.setText("   <- R e t u r n");
+        jLabel69.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jLabel69.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel69.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel69.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel69MouseClicked(evt);
+            }
+        });
+        Dashboard_Datesheet.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 90));
+
+        jPanel23container1.add(Dashboard_Datesheet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 580));
+
+        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel29.setLayout(new java.awt.CardLayout());
+        jPanel29.add(excel_file_panel2, "card7");
+
+        jPanel23container1.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 780, 580));
+
+        datesheet_generation.add(jPanel23container1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(datesheet_generation, "card7");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2736,14 +2795,16 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_room_wise_lblMouseClicked
 
-    private void add_roomlbl9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl9MouseClicked
+    private void clash_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clash_lblMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_roomlbl9MouseClicked
+    }//GEN-LAST:event_clash_lblMouseClicked
 
-    private void add_roomlbl10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl10MouseClicked
+    private void professor_clasheslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_professor_clasheslblMouseClicked
         view_timetable_panel_visibility(view_all_clashes_panel1);
         view_all_clashes_panel1.entity_name.setText("Professor-wise");
-    }//GEN-LAST:event_add_roomlbl10MouseClicked
+        
+        
+    }//GEN-LAST:event_professor_clasheslblMouseClicked
 
     private void section_wise_lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_section_wise_lblMouseClicked
         String[] data = Queries.getData("section_id", "section");
@@ -2772,10 +2833,10 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
         view_timetable_panel_visibility(view_generated_timetable_panel1);
     }//GEN-LAST:event_std_wise_lblMouseClicked
 
-    private void add_roomlbl12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_roomlbl12MouseClicked
+    private void student_clasheslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_student_clasheslblMouseClicked
         view_timetable_panel_visibility(view_all_clashes_panel1);
         view_all_clashes_panel1.entity_name.setText("Student-wise");
-    }//GEN-LAST:event_add_roomlbl12MouseClicked
+    }//GEN-LAST:event_student_clasheslblMouseClicked
 
     private void crs_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crs_codeActionPerformed
     }//GEN-LAST:event_crs_codeActionPerformed
@@ -2936,6 +2997,18 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
 //std_label.setForeground(Color.WHITE);
     }//GEN-LAST:event_student_mouse_entered
 
+    private void datesheetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datesheetMouseClicked
+        this.MainPanel.setVisible(false);
+        datesheet_generation.setVisible(true);
+
+    }//GEN-LAST:event_datesheetMouseClicked
+
+    private void jLabel69MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel69MouseClicked
+        this.MainPanel.setVisible(true) ; 
+        datesheet_generation.setVisible(false);
+
+    }//GEN-LAST:event_jLabel69MouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2972,6 +3045,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Courses;
     private javax.swing.JPanel Dashboard_Courses;
+    private javax.swing.JPanel Dashboard_Datesheet;
     private javax.swing.JPanel Dashboard_Dept;
     private javax.swing.JPanel Dashboard_Dept1;
     private javax.swing.JPanel Dashboard_Programs;
@@ -2991,15 +3065,13 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private View.professor.add_professor_panel add_professor_panel1;
     private javax.swing.JLabel add_roomlbl;
     private javax.swing.JLabel add_roomlbl1;
-    private javax.swing.JLabel add_roomlbl10;
-    private javax.swing.JLabel add_roomlbl12;
-    private javax.swing.JLabel add_roomlbl9;
     private javax.swing.JLabel all_labs_lbl;
     private javax.swing.JPanel all_programs_details_panel;
     private javax.swing.JLabel all_rooms;
     private javax.swing.JLabel available_datalbl;
     private javax.swing.JLabel back_lbl_02;
     private javax.swing.JLabel back_lbl_1;
+    private javax.swing.JLabel clash_lbl;
     private javax.swing.JPanel course;
     static javax.swing.JTextArea course_details_textarea;
     private javax.swing.JComboBox<String> course_title_dropdown;
@@ -3008,6 +3080,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     public static View.section.create_section_panel create_section_panel1;
     private javax.swing.JTextField credit_hours;
     private javax.swing.JTextField crs_code;
+    private javax.swing.JPanel datesheet;
+    private javax.swing.JPanel datesheet_generation;
     private javax.swing.JPanel delCourse;
     private javax.swing.JButton delbtn;
     private javax.swing.JTextField dep_name;
@@ -3017,7 +3091,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JTable display_table;
     private cambodia.raven.Time end;
     public static View.schedule_generation.excel_file_panel excel_file_panel1;
-    private javax.swing.Box.Filler filler1;
+    public static View.schedule_generation.excel_file_panel excel_file_panel2;
     public static View.schedule_generation.final_panel final_panel1;
     public static View.schedule_generation.first_panel first_panel1;
     public static View.schedule_generation.first_panel_part2 first_panel_part21;
@@ -3078,6 +3152,8 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel88;
@@ -3106,11 +3182,13 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23container;
+    private javax.swing.JPanel jPanel23container1;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel45;
@@ -3141,6 +3219,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private javax.swing.JCheckBox mon;
     private javax.swing.JLabel nxt_lbl_1;
     private javax.swing.JLabel nxt_lbl_2;
+    private javax.swing.JLabel professor_clasheslbl;
     public static View.section.Professor_course_allocation professor_course_allocation1;
     private javax.swing.JLabel professor_wise_lbl;
     private javax.swing.JLabel professorslbl;
@@ -3163,6 +3242,7 @@ public class MainFrame extends javax.swing.JFrame implements Panels_Management {
     private cambodia.raven.Time start;
     private javax.swing.JLabel std_label;
     private javax.swing.JLabel std_wise_lbl;
+    private javax.swing.JLabel student_clasheslbl;
     private javax.swing.JPanel students;
     private javax.swing.JPanel students_management;
     private javax.swing.JCheckBox sun;

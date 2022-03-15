@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import static Model.Entities_Main_Arrays.semesters;
+import Model.datesheet_generation.Datesheet;
 import static db.DBConnection.getConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,15 +24,15 @@ public class Section {  // GA POPULATION
     ArrayList<Course> sectionCourses = new ArrayList<>();           // courses offered in this section  
     ArrayList<Professor_Section_Allocation> allocations = new ArrayList<>();            // this professor is assigned to which course
     Section_Schedule schedule = new Section_Schedule();
-
+    
+    private Section_Datesheet section_datesheet = new Section_Datesheet();
+    
     public Section(String id, int student_strength, ArrayList<Course> sectionCourses, Section_Schedule schedule) {
         this.id = id;
         this.student_strength = student_strength;
         this.sectionCourses = sectionCourses;
         this.schedule = schedule;
     }
-
-    
 
     
     public ArrayList<Professor_Section_Allocation> getAllocations() {
@@ -42,9 +43,16 @@ public class Section {  // GA POPULATION
         return new Section_Schedule();
     }
 
-//    private void setFittness(int fittness) {
-//        this.clashes = fittness;
-//    }
+    public Section_Datesheet getSection_datesheet() {
+        return section_datesheet;
+    }
+
+    public void setSection_datesheet(Section_Datesheet section_datesheet) {
+        this.section_datesheet = section_datesheet;
+    }
+
+    
+    
     public void setDay(int index, int day_no) {
         schedule.getDays().get(index).setNo(day_no);
     }

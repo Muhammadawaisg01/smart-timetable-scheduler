@@ -7,10 +7,7 @@ package View.viewtimetable_panel;
 
 import schedule.DisplayTable;
 
-/**
- *
- * @author muhammad awais 1
- */
+
 public class view_generated_timetable_panel extends javax.swing.JPanel {
 
     /**

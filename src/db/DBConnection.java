@@ -22,7 +22,7 @@ public class DBConnection {
 
     public static void createConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/server1?", "root", "tariq143");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/schedulerdb", "newuser", "password");
             System.out.println("connection is successfull");
         } catch (SQLException ex) {
 //            ex.printStackTrace();
@@ -32,21 +32,7 @@ public class DBConnection {
         }
     }
 
-    static int getting_Club_ID(String club_name) {
-        int clubID = -1;
-        String query1 = "select Club_id from league.club where name = ?  limit 1 ";
-        try {
-            PreparedStatement stmt1 = DBConnection.getConnection().prepareStatement(query1);  // searching Club ID Query 
-            stmt1.setString(1, club_name);
-            ResultSet rs = stmt1.executeQuery();
-            if (rs.next()) {
-                clubID = rs.getInt(1);
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error in FInding Key of Club", "Connection", JOptionPane.ERROR_MESSAGE);
-        }
-        return clubID;
-    }
+ 
 
     static ResultSet searching_City(String city_name) {
         ResultSet rs = null;

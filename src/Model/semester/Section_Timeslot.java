@@ -17,7 +17,7 @@ public class Section_Timeslot {
     Lecture lecture;
 
     public Section_Timeslot() {
-
+        
     }
 
     public Section_Timeslot(String room, int slot_no, String course_code, int lecture_no, boolean check) {

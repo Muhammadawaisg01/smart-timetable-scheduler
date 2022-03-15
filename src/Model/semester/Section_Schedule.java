@@ -11,7 +11,6 @@ public class Section_Schedule {
         this.initialize_Section_Schedule();
     }
     
-
     public void freeDaySlot(int day, int slot) {
         // set free day slot
         days.forEach(d -> {

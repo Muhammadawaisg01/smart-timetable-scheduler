@@ -10,6 +10,7 @@ import Model.semester.Section_Schedule;
 import Model.semester.Section_Timeslot;
 import Model.semester.Semester;
 import static db.DBConnection.getConnection;
+import static db.DBConnection.createConnection;
 import static View.Alerts.alert;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -393,6 +394,7 @@ public class Queries {
      */
     public static ArrayList<Course> getSectionCourses(String sectionID) {
         String q = "select course_code from section_courses where section_id = '" + sectionID + "'";
+        System.out.println(q);
         Connection conn = getConnection();
         ArrayList<Course> courses = new ArrayList<>();
         PreparedStatement stmt = null;
@@ -451,7 +453,7 @@ public class Queries {
     /**
      *
      * @param sectionID section id
-     * @return section schedule > section days > sectino timeslots
+     * @return section schedule > section days > section timeslots
      */
     public static Section_Schedule getSectionSchedule(String sectionID) {
         Section_Schedule section_Schedule = new Section_Schedule();
@@ -1199,7 +1201,7 @@ public class Queries {
                 int day, slot;
                 String room;
                 String updateQuery;
-                
+
                 while (true) {
                     // get a randome number in range of free slots array
                     randomNumber = (int) (Math.random() * freeSlotsOfLabsAndSections.size());
@@ -1251,8 +1253,8 @@ public class Queries {
                         execute(updateQuery);
                         break;
                     }
-                        // assign sectionID and title to these slots    
-                }   
+                    // assign sectionID and title to these slots    
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
@@ -1260,13 +1262,14 @@ public class Queries {
     }
 
     public static boolean nextSlotIsFree(int day, int timeslot, ArrayList<FreeSlots> slots) {
-        for (FreeSlots freeSlot: slots) {
+        for (FreeSlots freeSlot : slots) {
             if (freeSlot.getDay() == day && freeSlot.getSlot() == timeslot + 1) {
                 return true;
             }
         }
         return false;
     }
+
     // section and labs are free in ArrayList indexes of day and slot
     public static ArrayList<FreeSlots> getTwoConsectiveFreeSlots(String sectionID) {
         ArrayList<FreeSlots> freeLabs = new ArrayList<>();
@@ -1288,13 +1291,165 @@ public class Queries {
                 day = rs.getInt("day_no");
                 slot = rs.getInt("timeslot_no");
                 room = rs.getString("room_name");
-                
+
                 freeLabs.add(new FreeSlots(day, slot, room));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
         }
         return freeLabs;
+    }
+
+    public static int get_Num_of_ExamDays() {
+        int row_count = 0;
+        String q = "select Count(*) as num_rows from exam_day";
+        ResultSet rs = getRS(q);
+        try {
+            while (rs.next()) {
+                row_count = rs.getInt("num_rows");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in getting number of exam days");
+        }
+        return row_count;
+    }
+
+    public static int get_Num_of_ExamTimeslots() {
+        int row_count = 0;
+        String q = "select Count(*) as num_rows from exam_timeslot";
+        ResultSet rs = getRS(q);
+        try {
+            while (rs.next()) {
+                row_count = rs.getInt("num_rows");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in getting number of exam timeeslots");
+        }
+        return row_count;
+    }
+
+    public static void add_Row_to_ExamDay(int day_no, String date, String weekday) {
+        String q = "INSERT INTO exam_day"
+                + " ("
+                + "exam_day_no,"
+                + "exam_date,"
+                + "day"
+                + ")"
+                + " VALUES(?,?,?)";
+        try {
+            createConnection();
+            PreparedStatement stmt = getConnection().prepareStatement(q);
+            stmt.setInt(1, day_no);
+            stmt.setString(2, date);
+            stmt.setString(3, weekday);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void add_Row_to_ExamTimeslot(int slot_no, String start_time, String end_time) {
+        String q = "INSERT INTO exam_timeslot"
+                + " ("
+                + "timeslot_no,"
+                + "starting_time,"
+                + "ending_time"
+                + ")"
+                + " VALUES(?,?,?)";
+        try {
+            createConnection();
+            PreparedStatement stmt = getConnection().prepareStatement(q);
+            stmt.setInt(1, slot_no);
+            stmt.setString(2, start_time);
+            stmt.setString(3, end_time);
+            stmt.execute();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in adding exam timeslots in database");
+        }
+    }
+
+    public static void add_Row_to_Datesheet(String rm_name, int day_no, int slot_no, String sec, String crs_code, int prof_id) {
+        String q = "INSERT INTO datesheet"
+                + " ("
+                + "room_name,"
+                + "exam_day_no,"
+                + "timeslot_no,"
+                + "section_id,"
+                + "course_code,"
+                + "professor_id"
+                + ")"
+                + " values(?,?,?,?,?,?)";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(q);
+            stmt.setString(1, rm_name);
+            stmt.setInt(2, day_no);
+            stmt.setInt(3, slot_no);
+            stmt.setString(4, sec);
+            stmt.setString(5, crs_code);
+            stmt.setInt(6, prof_id);
+            stmt.execute();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex + "   Error in adding row to the datesheet");
+        }
+    }
+
+    public static ResultSet fetch_Complete_Datesheet() {
+        createConnection();
+        String q = "select exam_date as Date,"
+                + " starting_time as start_time,"
+                + " ending_time as end_time,"
+                + " section_id as Section_id,"
+                + " course_code as Title,"
+                + " professor_id as Professor,"
+                + " room_name as Room "
+                + "from exam_day join datesheet using (exam_day_no) JOIN exam_timeslot using (timeslot_no) "
+                + "where Section_id != \"\"\n"
+                + "order by Date asc ";
+        ResultSet rs = null;
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(q);
+            rs = stmt.executeQuery();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in Fetching Complete Datesheet");
+        }
+        return rs;
+    }
+
+    public static void add_ExaminationTitle(String title) {
+        String q = "INSERT INTO examination"
+                + " ("
+                + "examination_id,"
+                + "title"
+                + ")"
+                + " VALUES(?,?)";
+        try {
+            createConnection();
+            PreparedStatement stmt = getConnection().prepareStatement(q);
+            stmt.setInt(1, 1);
+            stmt.setString(2, title);
+            stmt.execute();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in inserting examination Title");
+        }
+
+    }
+
+    public static String get_Examination_Title() {
+        String q = "select title from examination limit 1";
+        ResultSet rs = null;
+        String str = null;
+        try {
+            createConnection();
+            PreparedStatement stmt = getConnection().prepareStatement(q);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                str = rs.getString("title");
+                System.out.println(str);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error in getting examination Title");
+        }
+        return str;
     }
 
 }
