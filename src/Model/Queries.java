@@ -12,6 +12,7 @@ import Model.semester.Semester;
 import static db.DBConnection.getConnection;
 import static db.DBConnection.createConnection;
 import static View.Alerts.alert;
+import db.DBConnection;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -55,7 +56,6 @@ public class Queries {
      */
     public static String getCourseCode(String courseName) {
         String q = "select course_code from course where title = '" + courseName + "'";
-        System.out.println(q);
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         try {
@@ -859,6 +859,7 @@ public class Queries {
      * @return ResultSet of query
      */
     public static ResultSet getRS(String query) {
+        DBConnection.createConnection();
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         try {
