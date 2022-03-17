@@ -5,6 +5,10 @@
  */
 package View.student;
 
+import Model.Queries;
+import View.TableViewUtility;
+import static db.DBConnection.createConnection;
+
 /**
  *
  * @author muhammad awais 1
@@ -16,6 +20,8 @@ public class view_all_students_panel extends javax.swing.JPanel {
      */
     public view_all_students_panel() {
         initComponents();
+//        createConnection();
+//        view_all_students_table.setModel(TableViewUtility.resultSetToTableModel(Queries.getAllStudent()));
     }
 
     /**
@@ -29,7 +35,7 @@ public class view_all_students_panel extends javax.swing.JPanel {
 
         jLabel106 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        view_all_students_table = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -39,7 +45,7 @@ public class view_all_students_panel extends javax.swing.JPanel {
         jLabel106.setText("All students:");
         add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        view_all_students_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,7 +56,7 @@ public class view_all_students_panel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(view_all_students_table);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 660, 370));
     }// </editor-fold>//GEN-END:initComponents
@@ -59,6 +65,6 @@ public class view_all_students_panel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel106;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable view_all_students_table;
     // End of variables declaration//GEN-END:variables
 }

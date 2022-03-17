@@ -1,6 +1,6 @@
 package Model ; 
 
-import Model.Room_Day;
+import Model.room.Room_Day;
 import java.util.ArrayList;
 
 public class Week { 

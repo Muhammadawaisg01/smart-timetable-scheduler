@@ -1,19 +1,17 @@
 package clash_resolving;
 
-import Model.Room_Day;
 import static Model.Entities_Main_Arrays.professor_list;
-import static Controller.Runner.semesters;
-import Model.Professor;
-import Model.Professor_Day;
-import Model.Section;
-import Model.Professor_Lecture_Clash;
-import Model.Professor_Timeslot;
-import Model.Room;
-import Model.Section_Day;
-import Model.Section_Timeslot;
-import Model.Room_Timeslot;
+import static Model.Entities_Main_Arrays.semesters;
+import Model.professor.Professor;
+import Model.professor.Professor_Day;
+import Model.semester.Section;
+import Model.professor.Professor_Lecture_Clash;
+import Model.professor.Professor_Timeslot;
+import Model.room.Room;
+import Model.semester.Section_Day;
+import Model.semester.Section_Timeslot;
 import java.util.ArrayList;
-import static Controller.Runner.rooms;
+import static Model.Entities_Main_Arrays.rooms;
 
 public class ProfessorClashes {
 
@@ -87,7 +85,7 @@ public class ProfessorClashes {
                                                     getDays().get(day_no).getTimeslots().get(slot_no);
 
                                             sec_timeslot.setCheck(true);
-                                            sec_timeslot.setCourse(clash.getCourse());
+                                            sec_timeslot.setCourse_code(clash.getCourse());
                                             sec_timeslot.setRoom(rm.getName());
                                             sec_timeslot.setSlot_no(slot_no);
                                             sec_timeslot.setLecture_no(0);

@@ -2,10 +2,10 @@ package schedule;
 
 import Model.Lectures;
 import java.sql.Connection;
-import static Model.Professor_Section_Allocation.getData;   // allocations
-import static Model.Professor.professorIsFree;
-import static Model.Room.getRooms;
-import static Model.Section.sectionIsFree;
+import static Model.professor.Professor_Section_Allocation.getData;   // allocations
+import static Model.professor.Professor.professorIsFree;
+import static Model.room.Room.getRooms;
+import static Model.semester.Section.sectionIsFree;
 import static db.DBConnection.getConnection;
 import static db.DBConnection.createConnection;
 import java.sql.PreparedStatement;

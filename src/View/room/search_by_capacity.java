@@ -9,7 +9,13 @@ package View.room;
  *
  * @author muhammad awais 1
  */
-import static View.room.search_free_slot_panel.jTextArea1;
+import Model.Queries;
+import View.TableViewUtility;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 public class search_by_capacity extends javax.swing.JPanel {
 
     /**
@@ -28,79 +34,135 @@ public class search_by_capacity extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel96 = new javax.swing.JLabel();
-        roomname = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        day_dropdown = new javax.swing.JComboBox<>();
         jLabel100 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        end_time = new javax.swing.JComboBox<>();
         jLabel98 = new javax.swing.JLabel();
         search_btn = new javax.swing.JButton();
-        jLabel101 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        start_time = new javax.swing.JComboBox<>();
+        jLabel102 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Capacity:");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 30));
+        day_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        day_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        day_dropdown.setForeground(new java.awt.Color(255, 255, 255));
+        day_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        day_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                day_dropdownActionPerformed(evt);
+            }
+        });
+        add(day_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 260, 40));
 
-        roomname.setForeground(new java.awt.Color(0, 102, 153));
-        add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 360, 30));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 310, 40));
-
-        jLabel100.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel100.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel100.setForeground(new java.awt.Color(255, 255, 255));
         jLabel100.setText("Day:");
-        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 40));
+        add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 40));
+        end_time.setBackground(new java.awt.Color(50, 50, 50));
+        end_time.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        end_time.setForeground(new java.awt.Color(255, 255, 255));
+        end_time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        end_time.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                end_timeActionPerformed(evt);
+            }
+        });
+        add(end_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 260, 40));
 
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("End time:");
-        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 110, 40));
+        add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 90, 30));
 
-        search_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        search_btn.setForeground(new java.awt.Color(0, 102, 153));
-        search_btn.setText("search");
+        search_btn.setBackground(new java.awt.Color(0, 102, 153));
+        search_btn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        search_btn.setForeground(new java.awt.Color(255, 255, 255));
+        search_btn.setText("Search");
         search_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 search_btnActionPerformed(evt);
             }
         });
-        add(search_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, 80, 30));
+        add(search_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 260, 50));
 
-        jLabel101.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel101.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel101.setText("Start time:");
-        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, 40));
+        start_time.setBackground(new java.awt.Color(50, 50, 50));
+        start_time.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        start_time.setForeground(new java.awt.Color(255, 255, 255));
+        start_time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(start_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 230, 40));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, 40));
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel102.setText("Start time:");
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 110, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void search_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_btnActionPerformed
-//        search();
+        String dayName = day_dropdown.getSelectedItem().toString();
+        String startTime = start_time.getSelectedItem().toString();
+        String endTime = end_time.getSelectedItem().toString();
+        ResultSet rs = Queries.getRS("select day_no from day where name = '" + dayName + "'");
+        ResultSet startRS = Queries.getRS("select timeslot_no from timeslot where starting_time = '" + startTime + "'");
+        ResultSet endRS = Queries.getRS("select timeslot_no from timeslot where ending_time = '" + endTime + "'");
+        int day_no = 1, start_time = 1, end_time = 1;
+        try {
+            if (rs.next()) {
+                day_no = rs.getInt("day_no");
+            } if (startRS.next()) {
+                start_time = startRS.getInt("timeslot_no");
+            } if (endRS.next()) {
+                end_time = endRS.getInt("timeslot_no");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(search_by_capacity.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String query = "SELECT "
+                + "name as Day, "
+                + "starting_time as StartTime, "
+                + "ending_time as EndTime, "
+                + "room_name as RoomNumber "
+                + "FROM "
+                + "room_availabilty join day using (day_no) join timeslot using (timeslot_no)"
+                + " WHERE "
+                + "is_available = 'false' and "
+                + "day_no = " + day_no + " and "
+                + "timeslot_no >=" + start_time + " and "
+                + "timeslot_no <= " + end_time;
+        rs = Queries.getRS(query);
+        search_free_slot_panel.fillFreeSlotsTable(rs);
     }//GEN-LAST:event_search_btnActionPerformed
+
+    private void end_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_end_timeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_end_timeActionPerformed
+
+    private void day_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_day_dropdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_day_dropdownActionPerformed
     
+    public static void setDays(String[] days) {
+        day_dropdown.setModel(new DefaultComboBoxModel<>(days));
+    }
+    public static void setStartTime(String[] start) {
+        start_time.setModel(new DefaultComboBoxModel<>(start));
+    }
+    public static void setEndTime(String[] end) {
+        end_time.setModel(new DefaultComboBoxModel<>(end));
+    }
     public static void search() {
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private static javax.swing.JComboBox<String> day_dropdown;
+    private static javax.swing.JComboBox<String> end_time;
     private javax.swing.JLabel jLabel100;
-    private javax.swing.JLabel jLabel101;
-    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel98;
-    private javax.swing.JTextField roomname;
     private javax.swing.JButton search_btn;
+    private static javax.swing.JComboBox<String> start_time;
     // End of variables declaration//GEN-END:variables
 }

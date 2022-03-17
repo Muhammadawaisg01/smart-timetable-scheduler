@@ -1,9 +1,11 @@
-
 package View.room;
- 
+
+import Model.Queries;
+import View.TableViewUtility;
+import java.sql.ResultSet;
+
 public class search_free_slot_panel extends javax.swing.JPanel {
-    
-    
+
     public search_free_slot_panel() {
         initComponents();
     }
@@ -17,131 +19,161 @@ public class search_free_slot_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
+        by_room = new javax.swing.JRadioButton();
         jLabel89 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        by_day = new javax.swing.JRadioButton();
+        by_section = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        search_by_capacity = new View.room.search_by_capacity();
         search_slot_for_specific_section = new View.room.search_slot_for_specific_section();
         search_slot_for_specific_room = new View.room.search_slot_for_specific_room();
+        search_by_capacity1 = new View.room.search_by_capacity();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        free_slots_table = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton1.setText("search in specific room");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        by_room.setBackground(new java.awt.Color(50, 50, 50));
+        by_room.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        by_room.setForeground(new java.awt.Color(255, 255, 255));
+        by_room.setText("search in specific room");
+        by_room.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                by_roomActionPerformed(evt);
             }
         });
-        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        add(by_room, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        jLabel89.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel89.setText("Search free Slots: ");
-        add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 210, 50));
+        jLabel89.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel89.setText("S e a r c h   F r e e   S l o t s ");
+        add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, 50));
 
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton2.setText("search by capacity");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        by_day.setBackground(new java.awt.Color(50, 50, 50));
+        by_day.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        by_day.setForeground(new java.awt.Color(255, 255, 255));
+        by_day.setText("Search By Day");
+        by_day.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                by_dayActionPerformed(evt);
             }
         });
-        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+        add(by_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
 
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton3.setText("search for specific section");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        by_section.setBackground(new java.awt.Color(50, 50, 50));
+        by_section.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        by_section.setForeground(new java.awt.Color(255, 255, 255));
+        by_section.setText("search for specific section");
+        by_section.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                by_sectionActionPerformed(evt);
             }
         });
-        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Search Results\n");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 760, 100));
+        add(by_section, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 462, 780, 0));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 760, 10));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel1.add(search_by_capacity, "card2");
         jPanel1.add(search_slot_for_specific_section, "card3");
         jPanel1.add(search_slot_for_specific_room, "card4");
+        jPanel1.add(search_by_capacity1, "card4");
 
         jScrollPane2.setViewportView(jPanel1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 760, 290));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 760, 330));
+
+        free_slots_table.setBackground(new java.awt.Color(50, 50, 50));
+        free_slots_table.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        free_slots_table.setForeground(new java.awt.Color(255, 255, 255));
+        free_slots_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        free_slots_table.setGridColor(new java.awt.Color(51, 102, 255));
+        free_slots_table.setRowHeight(30);
+        free_slots_table.setRowMargin(4);
+        free_slots_table.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(free_slots_table);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 760, 150));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-        if(jRadioButton1.isSelected()){
-            jRadioButton2.setSelected(false);
-            jRadioButton3.setSelected(false); 
-            
+    private void by_roomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_by_roomActionPerformed
+        String[] rooms = Queries.getData("name", "room");
+        String[] days = Queries.getData("name", "day");
+        if (by_room.isSelected()) {
+            search_slot_for_specific_room.setRoomName(rooms);
+            search_slot_for_specific_room.setDays(days);
+            searchMode = "room";
+            by_day.setSelected(false);
+            by_section.setSelected(false);
+
             search_slot_for_specific_room.setVisible(true);
             search_slot_for_specific_section.setVisible(false);
-            search_by_capacity.setVisible(false);
+            search_by_capacity1.setVisible(false);
         }
-       
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-                if(jRadioButton2.isSelected()){
-            jRadioButton1.setSelected(false);
-            jRadioButton3.setSelected(false); 
-            
+    }//GEN-LAST:event_by_roomActionPerformed
+
+    private void by_dayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_by_dayActionPerformed
+
+        if (by_day.isSelected()) {
+            searchMode = "day";
+            by_room.setSelected(false);
+            by_section.setSelected(false);
+
             search_slot_for_specific_room.setVisible(false);
             search_slot_for_specific_section.setVisible(false);
-            search_by_capacity.setVisible(true);
+            search_by_capacity1.setVisible(true);
         }
 
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_by_dayActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        if(jRadioButton3.isSelected()){
-            jRadioButton1.setSelected(false);
-            jRadioButton2.setSelected(false);
-            
-            search_slot_for_specific_section.setVisible(true);            
+    private void by_sectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_by_sectionActionPerformed
+        String[] sections = Queries.getData("section_id", "section");
+        String[] days = Queries.getData("name", "day");
+        String[] start = Queries.getData("starting_time", "timeslot");
+        String[] end = Queries.getData("ending_time", "timeslot");
+        if (by_section.isSelected()) {
+            search_slot_for_specific_section.setSection(sections);
+            search_slot_for_specific_section.setDays(days);
+            search_slot_for_specific_section.setStart(start);
+            search_slot_for_specific_section.setEnd(end);
+            searchMode = "section";
+            by_room.setSelected(false);
+            by_day.setSelected(false);
+            search_slot_for_specific_section.setVisible(true);
             search_slot_for_specific_room.setVisible(false);
-            search_by_capacity.setVisible(false);
+            search_by_capacity1.setVisible(false);
         }
 
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    }//GEN-LAST:event_by_sectionActionPerformed
 
+    public static void fillFreeSlotsTable(ResultSet rs) {
+        free_slots_table.setModel(TableViewUtility.resultSetToTableModel(rs));
+    }
+    private static String searchMode = "day";
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton by_day;
+    private javax.swing.JRadioButton by_room;
+    private javax.swing.JRadioButton by_section;
+    private static javax.swing.JTable free_slots_table;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    static javax.swing.JTextArea jTextArea1;
-    private View.room.search_by_capacity search_by_capacity;
+    private View.room.search_by_capacity search_by_capacity1;
     private View.room.search_slot_for_specific_room search_slot_for_specific_room;
     private View.room.search_slot_for_specific_section search_slot_for_specific_section;
     // End of variables declaration//GEN-END:variables

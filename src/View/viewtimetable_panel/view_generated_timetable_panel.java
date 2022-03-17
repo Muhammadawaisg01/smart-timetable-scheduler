@@ -5,10 +5,9 @@
  */
 package View.viewtimetable_panel;
 
-/**
- *
- * @author muhammad awais 1
- */
+import schedule.DisplayTable;
+
+
 public class view_generated_timetable_panel extends javax.swing.JPanel {
 
     /**
@@ -30,92 +29,62 @@ public class view_generated_timetable_panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         entity_name_lbl = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        search_for_specific_entity1 = new View.viewtimetable_panel.search_for_specific_entity();
-        view_schedule1 = new View.viewtimetable_panel.view_schedule();
+        search_for_specific_entity2 = new View.viewtimetable_panel.search_for_specific_entity();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(700, 520));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(50, 50, 50));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        entity_name_lbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        entity_name_lbl.setForeground(new java.awt.Color(0, 102, 153));
-        entity_name_lbl.setText("Section-wise/professor-wise/room-wise");
-        jPanel2.add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 420, 40));
-
-        jLabel107.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel107.setText("Generated Timetable:");
-        jPanel2.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 26, 210, 40));
-
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton2.setText("search for specific ");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
-
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 102, 153));
-        jRadioButton1.setText("View complete schedule");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        entity_name_lbl.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        entity_name_lbl.setForeground(new java.awt.Color(255, 255, 255));
+        entity_name_lbl.setText("S e c t i o n  S c h e d u l e");
+        jPanel2.add(entity_name_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 330, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.CardLayout());
-        jPanel1.add(search_for_specific_entity1, "card2");
-        jPanel1.add(view_schedule1, "card3");
+
+        search_for_specific_entity2.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel1.add(search_for_specific_entity2, "card2");
 
         jScrollPane2.setViewportView(jPanel1);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 192, 930, 410));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 710, 500));
+
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("View Complete Sections Schedule");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 340, 60));
 
         jScrollPane1.setViewportView(jPanel2);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 1020, 710));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 650));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if(jRadioButton2.isSelected()){
-            jRadioButton1.setSelected(false); 
-            search_for_specific_entity1.setVisible(true);
-            view_schedule1.setVisible(false); 
-        }
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dt.DisplayFullTable();
+        dt.getFrame().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        if(jRadioButton1.isSelected()){
-            jRadioButton2.setSelected(false); 
-            search_for_specific_entity1.setVisible(false);
-            view_schedule1.setVisible(true); 
-        }
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-
+    DisplayTable dt = new DisplayTable();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel entity_name_lbl;
-    private javax.swing.JLabel jLabel107;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private View.viewtimetable_panel.search_for_specific_entity search_for_specific_entity1;
-    private View.viewtimetable_panel.view_schedule view_schedule1;
+    private View.viewtimetable_panel.search_for_specific_entity search_for_specific_entity2;
     // End of variables declaration//GEN-END:variables
 }

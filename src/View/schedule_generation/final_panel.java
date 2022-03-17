@@ -5,6 +5,18 @@
  */
 package View.schedule_generation;
 
+import Controller.NewAlgorithm;
+import Model.Program;
+import Model.Queries;
+import Model.Reset;
+import static View.Alerts.alert;
+import static View.MainFrame.excel_file_panel1;
+import static View.MainFrame.first_panel1;
+import static db.DBConnection.createConnection;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author muhammad awais 1
@@ -27,62 +39,142 @@ public class final_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton10 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        generate_schedule = new javax.swing.JButton();
         jLabel102 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton10.setBackground(new java.awt.Color(0, 102, 153));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Generate Schedule");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        generate_schedule.setBackground(new java.awt.Color(0, 102, 153));
+        generate_schedule.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        generate_schedule.setForeground(new java.awt.Color(255, 255, 255));
+        generate_schedule.setText("Generate Schedule");
+        generate_schedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                generate_scheduleActionPerformed(evt);
             }
         });
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 360, 80));
+        add(generate_schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 360, 80));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea2.setRows(5);
-        jTextArea2.setText("All set to go for the timetable generation");
-        jTextArea2.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+        jLabel102.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel102.setText("G e n e r a t e   T i m e t a b l e");
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 360, 40));
+
+        jLabel103.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel103.setForeground(new java.awt.Color(0, 102, 153));
+        add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
+
+        jLabel107.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel107.setText("3)   Generating Schedule Can Take Few Minutes");
+        add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 30));
+
+        jLabel108.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel108.setText("1)   Make Sure All Data Is Entered Before Generating Scheduling");
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, 30));
+
+        jLabel109.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel109.setText("2)   Data Modified After Scheduling Will Not Effect Schedule");
+        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 540, 30));
+
+        back.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
+        back.setForeground(new java.awt.Color(255, 255, 255));
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setText("<- B a c k");
+        back.setToolTipText("Logo");
+        back.setAlignmentX(0.5F);
+        back.setAutoscrolls(true);
+        back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
             }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTextArea2AncestorAdded(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backMouseEntered(evt);
             }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backMouseExited(evt);
             }
         });
-        jScrollPane4.setViewportView(jTextArea2);
-
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 450, 120));
-
-        jLabel102.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel102.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel102.setText("Generate Timetable");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, 40));
+        add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 200, 60));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void generate_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generate_scheduleActionPerformed
+        boolean generated = Reset.scheduleGenerated();
+        if (generated) {
+            int choice = JOptionPane.showConfirmDialog(null, "Schedule Already Generated. Want to generate new schedule?");
+            if (choice == 0) {
+                JOptionPane.showMessageDialog(null, "Generating schedule might take a while. Be patient");
+                Reset.resetSchedule();
+                alert("Generating Sections Schedule");
+                Queries.assignLabs();
+                ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+                Queries.updateSchedule(programs1);
+                alert("Generating Professors Schedule");
+                Queries.mapSectinoSchedule_ToProfessors();
+                alert("Generating Students Schedule");
+                Queries.mapSectionSchedule_ToStudents();
+                JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
+                Reset.generateSchedule(1);
+            } else {
+                alert("Schedule not generated");
+            }
+        } else {
+            int choice = JOptionPane.showConfirmDialog(null, "Make sure you added all data of entities. Entities added or modified after this won't effect schedule");
 
-    private void jTextArea2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextArea2AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextArea2AncestorAdded
+            if (choice == 0) {
+                JOptionPane.showMessageDialog(null, "Generating schedule might take a while. Be patient");
+                Reset.resetSchedule();
+                alert("Generating Sections Schedule");
+                Queries.assignLabs();
+                ArrayList<Program> programs1 = NewAlgorithm.algorithm_based_on_randomization();
+                Queries.updateSchedule(programs1);
+                alert("Generating Professors Schedule");
+                Queries.mapSectinoSchedule_ToProfessors();
+                alert("Generating Students Schedule");
+                Queries.mapSectionSchedule_ToStudents();
+                JOptionPane.showMessageDialog(null, "Schedule Generated Successfully!");
+                Reset.generateSchedule(1);
+            } else {
+                alert("Schedule not generated");
+            }
+        }
+
+
+    }//GEN-LAST:event_generate_scheduleActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        this.setVisible(false);
+        excel_file_panel1.setVisible(true);
+    }//GEN-LAST:event_backMouseClicked
+
+    private void backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseEntered
+        back.setBackground(new Color(0, 102, 153));
+        back.setForeground(new Color(250, 250, 250));
+    }//GEN-LAST:event_backMouseEntered
+
+    private void backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseExited
+        back.setBackground(new Color(250, 250, 250));
+        back.setForeground(new Color(0, 102, 153));
+    }//GEN-LAST:event_backMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
+    public static javax.swing.JLabel back;
+    private javax.swing.JButton generate_schedule;
     private javax.swing.JLabel jLabel102;
-    private javax.swing.JScrollPane jScrollPane4;
-    static javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
     // End of variables declaration//GEN-END:variables
 }

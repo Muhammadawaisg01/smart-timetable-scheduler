@@ -31,14 +31,17 @@ public class view_all_professors_panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(50, 50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("All Faculty members in Department:");
-        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 370, 30));
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel96.setText("R e g i s t e r e d  P r o f e s s o r s");
+        add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 390, 30));
 
+        jTable1.setBackground(new java.awt.Color(50, 50, 50));
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -50,9 +53,12 @@ public class view_all_professors_panel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setRowHeight(30);
+        jTable1.setRowMargin(4);
+        jTable1.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 660, 340));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 710, 410));
     }// </editor-fold>//GEN-END:initComponents
 
 

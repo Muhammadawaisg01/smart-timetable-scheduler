@@ -1,23 +1,137 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.section;
 
-/**
- *
- * @author muhammad awais 1
- */
+import static View.Alerts.alert;
+import static View.Alerts.isEmpty;
+import static db.DBConnection.createConnection;
+import static db.DBConnection.getConnection;
+import Model.Queries;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import static View.MainFrame.professor_course_allocation1;
+import static View.MainFrame.create_section_panel1;
+
 public class create_section_panel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form create_section_panel
-     */
+    public static ArrayList<String> selected_courses = new ArrayList<>();
+    public static String section_id;
+
     public create_section_panel() {
         initComponents();
     }
 
+    /**
+     * 
+     * @return ArrayList of all programs names
+     */
+    public static String[] getPrograms() {
+        String[] programs = null;
+        String q = "select program_name from program";
+        createConnection();
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.last()) {
+                int rows = rs.getRow();
+                System.out.println(rows);
+                programs = new String[rows];
+                rs.beforeFirst();
+            }
+            int i = 0;
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+                programs[i] = rs.getString(1);
+                i++;
+            }
+            programs_dropdown.setModel(new DefaultComboBoxModel<>(programs));
+        } catch (SQLException ex) {
+            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return programs;
+    }
+
+    public static String[] getCourses() {
+        String[] courses = null;
+        String q = "select * from course";
+        createConnection();
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.last()) {
+                int rows = rs.getRow();
+                courses = new String[rows];
+                rs.beforeFirst();
+            }
+            int i = 0;
+            while (rs.next()) {
+                courses[i] = rs.getString(2);
+                i++;
+            }
+            courses_dropdown.setModel(new DefaultComboBoxModel<>(courses));
+        } catch (SQLException ex) {
+            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return courses;
+    }
+
+    public static void fillSemesters() {
+        // get selected program
+        String selecte_program = programs_dropdown.getSelectedItem().toString();
+        // get program id from database
+        int program_id = 0;
+        String q = "select program_id from program where program_name = '" + selecte_program + "'";
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = conn.prepareStatement(q);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                program_id = rs.getInt(1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Someting went wrong");
+                return;
+            }
+            // get semesters of that program from semester table
+            String[] semesters_list = null;
+            q = "select * from semester where program_id = " + program_id;
+            stmt = conn.prepareStatement(q);
+            ResultSet semesters = stmt.executeQuery();
+            if (semesters.last()) {
+                int total_semesters = semesters.getRow();
+                semesters.beforeFirst();
+                semesters_list = new String[total_semesters];
+            } else {
+                JOptionPane.showMessageDialog(null, "Someting went wrong");
+                return;
+            }
+            int i = 0;
+            while (semesters.next()) {
+                semesters_list[i] = semesters.getInt(1) + "";
+                i++;
+            }
+            semesters_dropdown.setModel(new DefaultComboBoxModel<>(semesters_list));
+        } catch (SQLException ex) {
+            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void updateTextArea() {
+        String str = "Allocations:\n";
+        for (String course: selected_courses) {
+            str += "\n" + course;
+        }
+        assigned_courses.setText(str);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,151 +145,281 @@ public class create_section_panel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
         jLabel94 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        semesters_dropdown = new javax.swing.JComboBox<>();
+        programs_dropdown = new javax.swing.JComboBox<>();
         jLabel95 = new javax.swing.JLabel();
-        roomname = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
+        section_ID = new javax.swing.JTextField();
         jLabel97 = new javax.swing.JLabel();
-        roomname1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        capacity = new javax.swing.JTextField();
+        create_section_btn = new javax.swing.JButton();
         jLabel60 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        jButton8 = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
+        courses_dropdown = new javax.swing.JComboBox<>();
+        addCourseButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        assigned_courses = new javax.swing.JTextArea();
+        jLabel99 = new javax.swing.JLabel();
+        section_name = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel1.setEnabled(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel96.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel96.setText("Program:");
+        jLabel96.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel96.setText("Program");
         jPanel1.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 40));
 
-        jLabel94.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel94.setText("Section ID:");
+        jLabel94.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel94.setText("Section ID");
         jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 450, 40));
+        semesters_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        semesters_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        semesters_dropdown.setForeground(new java.awt.Color(255, 255, 255));
+        semesters_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(semesters_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 370, 40));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 450, 40));
+        programs_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        programs_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        programs_dropdown.setForeground(new java.awt.Color(255, 255, 255));
+        programs_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        programs_dropdown.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                programs_dropdownItemStateChanged(evt);
+            }
+        });
+        programs_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                programs_dropdownActionPerformed(evt);
+            }
+        });
+        jPanel1.add(programs_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 370, 40));
 
-        jLabel95.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel95.setText("Semester:");
+        jLabel95.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel95.setText("Semester");
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 40));
 
-        roomname.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(roomname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 450, 40));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 760, -1));
+        section_ID.setBackground(new java.awt.Color(50, 50, 50));
+        section_ID.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_ID.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(section_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 370, 40));
 
-        jLabel97.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel97.setText("Section Name:");
-        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
+        jLabel97.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel97.setText("Section Capacity");
+        jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, 40));
 
-        roomname1.setForeground(new java.awt.Color(0, 102, 153));
-        jPanel1.add(roomname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 450, 40));
+        capacity.setBackground(new java.awt.Color(50, 50, 50));
+        capacity.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        capacity.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 370, 40));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("next");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 940, 160, 60));
-
-        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel60.setText("Assign courses to section:");
-        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 320, -1));
-
-        jLabel98.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel98.setText("Course:");
-        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 30));
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 380, 40));
-
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 102, 153));
-        jButton8.setText("specify");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        create_section_btn.setBackground(new java.awt.Color(0, 102, 153));
+        create_section_btn.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        create_section_btn.setForeground(new java.awt.Color(255, 255, 255));
+        create_section_btn.setText("NEXT");
+        create_section_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                create_section_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 80, 30));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 750, -1));
+        jPanel1.add(create_section_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 730, 160, 40));
 
-        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel61.setText("Assign specific room to section:");
-        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 720, 320, -1));
+        jLabel60.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel60.setText("A s s i g n  Co u r s e s  to Se c t i o n");
+        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 430, 40));
 
-        jLabel99.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel99.setText("Room:");
-        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, 160, 30));
+        jLabel98.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel98.setText("Course");
+        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 110, 40));
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
-        jPanel1.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, 380, 40));
+        courses_dropdown.setBackground(new java.awt.Color(50, 50, 50));
+        courses_dropdown.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        courses_dropdown.setForeground(new java.awt.Color(255, 255, 255));
+        courses_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"" }));
+        jPanel1.add(courses_dropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 370, 40));
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 102, 153));
-        jButton9.setText("specify");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        addCourseButton.setBackground(new java.awt.Color(0, 102, 153));
+        addCourseButton.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        addCourseButton.setForeground(new java.awt.Color(255, 255, 255));
+        addCourseButton.setText("Assign Course");
+        addCourseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                addCourseButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 870, 80, 30));
+        jPanel1.add(addCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 160, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 102, 153));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Courses that are assigned to the section will be printed here\n");
-        jScrollPane2.setViewportView(jTextArea1);
+        assigned_courses.setEditable(false);
+        assigned_courses.setBackground(new java.awt.Color(50, 50, 50));
+        assigned_courses.setColumns(10);
+        assigned_courses.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        assigned_courses.setForeground(new java.awt.Color(255, 255, 255));
+        assigned_courses.setRows(5);
+        assigned_courses.setText("Courses that are assigned to the section will be printed here\n");
+        assigned_courses.setDisabledTextColor(new java.awt.Color(250, 250, 250));
+        jScrollPane2.setViewportView(assigned_courses);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 760, 100));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 770, 150));
+
+        jLabel99.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel99.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel99.setText("Section Name");
+        jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 210, 40));
+
+        section_name.setBackground(new java.awt.Color(50, 50, 50));
+        section_name.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        section_name.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(section_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 370, 40));
 
         jScrollPane1.setViewportView(jPanel1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 700, 510));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 690, 510));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
+    private void addCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseButtonActionPerformed
+        if (!selected_courses.remove(courses_dropdown.getSelectedItem().toString())) {
+            selected_courses.add(courses_dropdown.getSelectedItem().toString());
+        }
+        updateTextArea();
+    }//GEN-LAST:event_addCourseButtonActionPerformed
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void programs_dropdownItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_programs_dropdownItemStateChanged
+        fillSemesters();
+    }//GEN-LAST:event_programs_dropdownItemStateChanged
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton8;
+    private void create_section_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create_section_btnActionPerformed
+        Connection conn = getConnection();
+        PreparedStatement stmt = null;
+        String programName = programs_dropdown.getSelectedItem().toString();
+        String sectionID = section_ID.getText();
+        section_id = section_ID.getText();
+        String sectionName = section_name.getText();
+        int semester = 0, cpacity;
+        int programID = Queries.getProgramID(programName);
+        // Frontend validation
+        if (isEmpty(sectionID)) {
+            alert("Please Enter Section ID");
+            return;
+        }
+        if (isEmpty(sectionName)) {
+            alert("Please Enter Section Name");
+            return;
+        }
+        if (selected_courses.size() < 4) {
+            JOptionPane.showMessageDialog(null, "Please select at least three courses");
+            return;
+        }
+        // create section
+        String create_section_query = "insert into section "
+                + "("
+                + "section_id,"
+                + "name,"
+                + "semester_no,"
+                + "program_id,"
+                + "student_strength"
+                + ")"
+                + " VALUES "
+                + "(?, ?, ?, ?, ?)";
+        try {
+            cpacity = Integer.parseInt(capacity.getText());
+            semester = Integer.parseInt(semesters_dropdown.getSelectedItem().toString());
+            stmt = conn.prepareStatement(create_section_query);
+            stmt.setString(1, sectionID);
+            stmt.setString(2, sectionName);
+            stmt.setInt(3, semester);
+            stmt.setInt(4, programID);
+            stmt.setInt(5, cpacity);
+            stmt.execute();
+            //  add selected courses
+            for (String selectedCourse : selected_courses) {
+                String q = "insert into section_courses"
+                        + "("
+                        + "section_id,"
+                        + "course_code"
+                        + ")"
+                        + " VALUES "
+                        + "(?, ?)";
+                stmt = conn.prepareStatement(q);
+                stmt.setString(1, sectionID);
+                stmt.setString(2, Queries.getCourseCode(selectedCourse));
+                stmt.execute();
+                assigned_courses.append("\n" + selectedCourse);
+            }
+            // generate temp schedule
+            int days = Queries.getDaysCount();
+            int slots = Queries.getSlotCount();
+            // add empty section schedule in db according to day and slot count
+            String addTempSchedule = "insert into section_schedule"
+                    + "(section_id,\n"
+                    + "day_no,\n"
+                    + "timeslot_no,\n"
+                    + "course_code,\n"
+                    + "room_name,\n"
+                    + "lecture_no,\n"
+                    + "isLab)"
+                    + " VALUES "
+                    + "(?, ?, ?, ?, ?, ?, ?)";
+            for (int day = 1; day <= days; day++) {
+                for (int slot = 1; slot <= slots; slot++) {
+                    stmt = conn.prepareStatement(addTempSchedule);
+                    stmt.setString(1, sectionID);
+                    stmt.setInt(2, day);
+                    stmt.setInt(3, slot);
+                    stmt.setString(4, "");
+                    stmt.setString(5, "");
+                    stmt.setInt(6, 0);
+                    stmt.setString(7, "false");
+                    stmt.execute();
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Section data added successfully!");
+            assigned_courses.setText("");
+            capacity.setText("");
+            section_ID.setText("");
+            section_name.setText("");
+            Professor_course_allocation.displaySectionID(sectionID);
+            Professor_course_allocation.displayProfessors(Queries.getAllProfessors());
+            Professor_course_allocation.displayCourses(selected_courses);
+            selected_courses = new ArrayList<>();
+            professor_course_allocation1.setVisible(true);
+            create_section_panel1.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(create_section_panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Semester number or Capacity is invalid!");
+        }
+    }//GEN-LAST:event_create_section_btnActionPerformed
+
+    private void programs_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programs_dropdownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_programs_dropdownActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        professor_course_allocation1.setVisible(true);
+        create_section_panel1.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox9;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCourseButton;
+    static javax.swing.JTextArea assigned_courses;
+    private javax.swing.JTextField capacity;
+    private static javax.swing.JComboBox<String> courses_dropdown;
+    private javax.swing.JButton create_section_btn;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
@@ -185,10 +429,9 @@ public class create_section_panel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    static javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField roomname;
-    private javax.swing.JTextField roomname1;
+    private static javax.swing.JComboBox<String> programs_dropdown;
+    private javax.swing.JTextField section_ID;
+    private javax.swing.JTextField section_name;
+    private static javax.swing.JComboBox<String> semesters_dropdown;
     // End of variables declaration//GEN-END:variables
 }
