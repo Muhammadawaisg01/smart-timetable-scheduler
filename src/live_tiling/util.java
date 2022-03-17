@@ -55,7 +55,7 @@ public class util {
 
     public static ResultSet getSchedule() {
         System.out.println(getCurrentSlot());
-        String query = ConstQuerries.GET_LIVE_CLASSES(2, 1);
+        String query = ConstQuerries.GET_LIVE_CLASSES(2, getCurrentSlot());
         ResultSet rs = Queries.getRS(query);
         return rs;
     }

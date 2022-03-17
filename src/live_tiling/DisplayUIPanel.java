@@ -32,7 +32,7 @@ public class DisplayUIPanel {
         try {
             while (schedule.next()) {
                 JPanel p1 = new JPanel();
-//                p1.setBounds(x, y, BOX_WIDTH, BOX_HEIGHT);
+                p1.setBounds(x, y, BOX_WIDTH, BOX_HEIGHT);
                 p1.setBackground(Color.GRAY);
                 p1.setLayout(null);
                 JLabel roomName = new JLabel();

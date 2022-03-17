@@ -22,13 +22,10 @@ public class DBConnection {
 
     public static void createConnection() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/schedulerdb", "newuser", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/server1", "root", "tariq143");
             System.out.println("connection is successfull");
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            System.out.println(ex);
-            JOptionPane.showMessageDialog(null, "Error in Connecting to Database", "Error", JOptionPane.ERROR_MESSAGE);
-//        return null ; 
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
